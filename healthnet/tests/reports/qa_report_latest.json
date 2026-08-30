@@ -1,0 +1,83 @@
+{
+  "timestamp": "2026-08-30_13-30-46",
+  "summary": {
+    "total": 156,
+    "passed": 156,
+    "failed": 0,
+    "skipped": 0,
+    "pass_rate_pct": 100.0
+  },
+  "modules": {
+    "Backend & Consistency": {
+      "status": "PASS",
+      "total": 12,
+      "passed": 12,
+      "failed": 0
+    },
+    "REST API Suite": {
+      "status": "PASS",
+      "total": 29,
+      "passed": 29,
+      "failed": 0
+    },
+    "WebSocket Event Bus": {
+      "status": "PASS",
+      "total": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    "Frontend Playwright E2E": {
+      "status": "PASS",
+      "total": 17,
+      "passed": 17,
+      "failed": 0
+    },
+    "Phase 8 Regression": {
+      "status": "PASS",
+      "total": 17,
+      "passed": 17,
+      "failed": 0
+    },
+    "Phase 7 AI Regression": {
+      "status": "PASS",
+      "total": 15,
+      "passed": 15,
+      "failed": 0
+    },
+    "Phase 6 Realtime Regression": {
+      "status": "PASS",
+      "total": 18,
+      "passed": 18,
+      "failed": 0
+    },
+    "Phase 5 Emergency Regression": {
+      "status": "PASS",
+      "total": 19,
+      "passed": 19,
+      "failed": 0
+    },
+    "Phase 4 Doctor Regression": {
+      "status": "PASS",
+      "total": 24,
+      "passed": 24,
+      "failed": 0
+    },
+    "Phase 3 Nurse Regression": {
+      "status": "PASS",
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "Phase 2 Bed Regression": {
+      "status": "PASS",
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    }
+  },
+  "failures": [],
+  "console_audit": {},
+  "code_audit": {
+    "unintended_placeholders": []
+  }
+}

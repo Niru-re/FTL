@@ -1,0 +1,41 @@
+name: HealthNet Full Automated QA & End-to-End Tests
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install Backend Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install playwright pytest-asyncio pytest-html
+        python -m playwright install chromium
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install Frontend Dependencies & Build
+      run: |
+        cd client
+        npm install
+        npm run build
+
+    - name: Run Backend & API & E2E Tests
+      run: |
+        python run_full_qa.py
