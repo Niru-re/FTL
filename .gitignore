@@ -41,3 +41,6 @@ healthnet/server/uploads/xrays/*
 # Database backups & corrupted files
 *.db.corrupted*
 *.db.old
+
+# SQLite databases (runtime, not for version control)
+*.db
