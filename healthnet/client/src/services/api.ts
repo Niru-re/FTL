@@ -9,7 +9,8 @@ import {
   DoctorDashboardSummary, DoctorPatient, DoctorPatientDetail, VitalTrendPoint,
   TimelineEvent, DoctorOrder, PatientTransfer, PatientDischarge, AIRiskReport, LabResult,
   EmergencyCaseCreate, EmergencyCaseDetail, HospitalMatch, BedCandidate, BedReservationRecord,
-  AmbulanceCandidate, EmergencyTimelineItem, EmergencyNotificationItem
+  AmbulanceCandidate, EmergencyTimelineItem, EmergencyNotificationItem,
+  XRayPredictionResult, XRayAnalysisRecord
 } from '../types';
 import {
   MOCK_HOSPITALS, MOCK_BEDS, MOCK_PATIENTS, MOCK_AMBULANCES,
@@ -1116,6 +1117,45 @@ export const aiAPI = {
     const res = await api.post('/api/admin/ai/simulation/reset');
     return res.data;
   }
+};
+
+export const xrayAPI = {
+  /**
+   * Upload a chest X-ray image for AI pneumonia screening.
+   * Optionally link to a patient and save the result.
+   */
+  predictXRay: async (
+    file: File,
+    patientId?: number | null,
+    notes?: string,
+    saveRecord: boolean = true
+  ): Promise<XRayPredictionResult> => {
+    const formData = new FormData();
+    formData.append('file', file);
+    if (patientId != null) formData.append('patient_id', String(patientId));
+    if (notes) formData.append('notes', notes);
+    formData.append('save_record', String(saveRecord));
+
+    const res = await api.post('/api/xray/predict', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+      timeout: 60000,  // 60 s for inference
+    });
+    return res.data;
+  },
+
+  /** Retrieve scan history (all or filtered by patient) */
+  getXRayHistory: async (patientId?: number | null, limit: number = 50): Promise<XRayAnalysisRecord[]> => {
+    const params: any = { limit };
+    if (patientId != null) params.patient_id = patientId;
+    const res = await api.get('/api/xray/history', { params });
+    return res.data;
+  },
+
+  /** Get all X-ray scans for a specific patient */
+  getPatientXRays: async (patientId: number): Promise<XRayAnalysisRecord[]> => {
+    const res = await api.get(`/api/xray/patient/${patientId}`);
+    return res.data;
+  },
 };
 
 export const systemAPI = {

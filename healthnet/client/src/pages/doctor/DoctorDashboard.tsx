@@ -101,7 +101,7 @@ export const DoctorDashboard: React.FC = () => {
             Welcome, {user?.full_name || 'Dr. Arjun Sharma'}
           </h1>
           <p className="text-xs text-slate-400 mt-0.5">
-            Specialist in Critical Care &bull; HealthNet Central Hospital &bull; Medical ICU (Downtown Campus)
+            Specialist in Critical Care &bull; CareBridge Central Hospital &bull; Medical ICU (Downtown Campus)
           </p>
         </div>
         <div className="flex items-center gap-3">

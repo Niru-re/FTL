@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { doctorAPI } from '../../services/api';
+import { doctorAPI, xrayAPI } from '../../services/api';
 import { useWebSocket } from '../../hooks/useWebSocket';
 import {
   DoctorPatientDetail, VitalTrendPoint, LabResult, Medication,
-  ClinicalNote, DoctorOrder, TimelineEvent, AIRiskReport
+  ClinicalNote, DoctorOrder, TimelineEvent, AIRiskReport,
+  XRayPredictionResult, XRayAnalysisRecord
 } from '../../types';
 import { ECGWaveform } from '../../components/common/ECGWaveform';
 import { formatTime, formatDate } from '../../utils/formatters';
@@ -16,7 +17,8 @@ import {
   Users, Activity, ShieldAlert, HeartPulse, Stethoscope, ArrowLeft,
   Pill, FileText, FlaskConical, History, Sparkles, Clock, AlertTriangle,
   Plus, CheckCircle2, ChevronRight, BedDouble, ArrowRightLeft, LogOut,
-  Send, RefreshCw, X, FileSpreadsheet, Eye
+  Send, RefreshCw, X, FileSpreadsheet, Eye, ScanLine, Upload, Brain,
+  Loader2, Info, FileImage
 } from 'lucide-react';
 
 export const DoctorPatientDetailPage: React.FC = () => {
@@ -26,7 +28,7 @@ export const DoctorPatientDetailPage: React.FC = () => {
   const { subscribe } = useWebSocket();
 
   const [patient, setPatient] = useState<DoctorPatientDetail | null>(null);
-  const [activeTab, setActiveTab] = useState<'overview' | 'monitoring' | 'risk' | 'history' | 'labs' | 'medications' | 'notes' | 'nursing' | 'orders' | 'timeline'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'monitoring' | 'risk' | 'history' | 'labs' | 'medications' | 'notes' | 'nursing' | 'orders' | 'timeline' | 'xray'>('overview');
   const [vitalRange, setVitalRange] = useState('24h');
   const [vitalTrends, setVitalTrends] = useState<VitalTrendPoint[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -47,6 +49,19 @@ export const DoctorPatientDetailPage: React.FC = () => {
   const [labForm, setLabForm] = useState<{ test_name: string; category: string; value: string; unit: string; reference_range: string; status: any }>({ test_name: '', category: 'Biochemistry', value: '', unit: '', reference_range: '', status: 'NORMAL' });
   const [transferForm, setTransferForm] = useState({ to_department_id: 1, to_unit_name: 'Surgical ICU', reason: '', priority: 'URGENT', notes: '' });
   const [dischargeForm, setDischargeForm] = useState({ reason: 'RECOVERY', discharge_summary: '', instructions: '' });
+
+  // X-Ray tab state
+  const [xrayFile, setXrayFile] = useState<File | null>(null);
+  const [xrayPreview, setXrayPreview] = useState<string | null>(null);
+  const [xrayDragging, setXrayDragging] = useState(false);
+  const [xrayAnalyzing, setXrayAnalyzing] = useState(false);
+  const [xrayResult, setXrayResult] = useState<XRayPredictionResult | null>(null);
+  const [xrayError, setXrayError] = useState<string | null>(null);
+  const [xrayNotes, setXrayNotes] = useState('');
+  const [patientScans, setPatientScans] = useState<XRayAnalysisRecord[]>([]);
+  const [scansLoading, setScansLoading] = useState(false);
+  const xrayFileRef = useRef<HTMLInputElement>(null);
+  const API_BASE = (import.meta as any).env?.VITE_API_BASE_URL || 'http://127.0.0.1:8000';
 
   const fetchPatientData = async () => {
     try {
@@ -344,7 +359,8 @@ export const DoctorPatientDetailPage: React.FC = () => {
           { key: 'notes', label: `Doctor Notes (${patient.clinical_notes.length})`, icon: FileText },
           { key: 'nursing', label: `Nursing (${patient.nursing_notes.length})`, icon: Stethoscope },
           { key: 'orders', label: `Orders (${patient.doctor_orders.length})`, icon: Clock },
-          { key: 'timeline', label: 'Timeline', icon: History }
+          { key: 'timeline', label: 'Timeline', icon: History },
+          { key: 'xray', label: 'AI X-Ray', icon: ScanLine, badge: 'AI' }
         ].map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.key;
@@ -650,11 +666,11 @@ export const DoctorPatientDetailPage: React.FC = () => {
                 <div className="space-y-2 text-xs text-slate-200">
                   <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 space-y-1">
                     <div className="font-bold text-white">2024-03-12 &bull; Acute Exacerbation Bronchitis</div>
-                    <p className="text-[11px] text-slate-400">HealthNet Central Hospital &bull; Inpatient recovery completed</p>
+                    <p className="text-[11px] text-slate-400">CareBridge Central Hospital &bull; Inpatient recovery completed</p>
                   </div>
                   <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 space-y-1">
                     <div className="font-bold text-white">2022-11-04 &bull; Arthroscopy Elective</div>
-                    <p className="text-[11px] text-slate-400">HealthNet North Hospital &bull; Uneventful surgical recovery</p>
+                    <p className="text-[11px] text-slate-400">CareBridge North Hospital &bull; Uneventful surgical recovery</p>
                   </div>
                 </div>
               </div>
@@ -1398,6 +1414,178 @@ export const DoctorPatientDetailPage: React.FC = () => {
           </div>
         </div>
       )}
+      {/* 11. X-RAY TAB */}
+      {activeTab === 'xray' && (
+        <div className="space-y-6">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+            {/* Upload Zone */}
+            <div className="space-y-4">
+              <div
+                onDragOver={e => { e.preventDefault(); setXrayDragging(true); }}
+                onDragLeave={() => setXrayDragging(false)}
+                onDrop={e => {
+                  e.preventDefault(); setXrayDragging(false);
+                  const f = e.dataTransfer.files[0];
+                  if (f && ['image/jpeg','image/png','image/jpg'].includes(f.type)) {
+                    setXrayFile(f); setXrayResult(null); setXrayError(null); setXrayPreview(URL.createObjectURL(f));
+                  } else { setXrayError('Please upload JPEG or PNG.'); }
+                }}
+                onClick={() => !xrayFile && xrayFileRef.current?.click()}
+                className={`relative rounded-2xl border-2 border-dashed transition-all cursor-pointer ${
+                  xrayDragging ? 'border-violet-500 bg-violet-500/10' : xrayFile ? 'border-teal-500/40 bg-teal-950/10' : 'border-slate-700 bg-slate-900/50 hover:border-violet-500/50'
+                }`} style={{ minHeight: 200 }}
+              >
+                <input ref={xrayFileRef} type="file" accept="image/jpeg,image/jpg,image/png" className="hidden"
+                  onChange={e => { const f = e.target.files?.[0]; if (f) { setXrayFile(f); setXrayResult(null); setXrayError(null); setXrayPreview(URL.createObjectURL(f)); } }} />
+                {xrayFile && xrayPreview ? (
+                  <div className="relative p-4">
+                    <button onClick={e => { e.stopPropagation(); setXrayFile(null); setXrayPreview(null); setXrayResult(null); setXrayError(null); if (xrayFileRef.current) xrayFileRef.current.value = ''; }}
+                      className="absolute top-3 right-3 z-10 flex items-center justify-center h-7 w-7 rounded-full bg-slate-800 border border-slate-700 text-slate-400 hover:text-red-400 transition">
+                      <X className="h-4 w-4" />
+                    </button>
+                    <img src={xrayPreview} alt="X-ray" className="rounded-xl object-contain max-h-52 w-full bg-slate-950" />
+                    <div className="mt-2 text-center text-xs text-slate-400 flex items-center justify-center gap-1">
+                      <FileImage className="h-3.5 w-3.5 text-teal-400" />{xrayFile.name}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center justify-center py-12 px-6 text-center">
+                    <div className="mb-3 flex items-center justify-center h-12 w-12 rounded-2xl bg-violet-500/15 border border-violet-500/25">
+                      <Upload className="h-6 w-6 text-violet-400" />
+                    </div>
+                    <p className="text-sm font-bold text-slate-200 mb-1">Drop Chest X-Ray Here</p>
+                    <p className="text-xs text-slate-500">JPEG / PNG · Max 10 MB</p>
+                  </div>
+                )}
+              </div>
+
+              <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-2">
+                <div className="text-xs font-bold text-slate-300 uppercase tracking-wider">Clinical Notes</div>
+                <textarea value={xrayNotes} onChange={e => setXrayNotes(e.target.value)}
+                  placeholder="Context, symptoms, clinical findings..." rows={2}
+                  className="w-full px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-violet-500/50 resize-none transition" />
+              </div>
+
+              <button
+                onClick={async () => {
+                  if (!xrayFile) return;
+                  setXrayAnalyzing(true); setXrayError(null); setXrayResult(null);
+                  try {
+                    const res = await xrayAPI.predictXRay(xrayFile, patientId, xrayNotes || undefined, true);
+                    setXrayResult(res);
+                    // Refresh scan history
+                    xrayAPI.getPatientXRays(patientId).then(setPatientScans).catch(() => {});
+                  } catch (err: any) {
+                    setXrayError(err?.response?.data?.detail || err?.message || 'Analysis failed.');
+                  } finally { setXrayAnalyzing(false); }
+                }}
+                disabled={!xrayFile || xrayAnalyzing}
+                className={`w-full flex items-center justify-center gap-2.5 py-3.5 rounded-2xl font-black text-xs uppercase tracking-widest transition-all ${
+                  !xrayFile || xrayAnalyzing ? 'bg-slate-800 text-slate-600 cursor-not-allowed' : 'bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white shadow-lg shadow-violet-900/30 hover:scale-[1.01]'
+                }`}
+              >
+                {xrayAnalyzing ? <><Loader2 className="h-4 w-4 animate-spin" />Analyzing...</> : <><Brain className="h-4 w-4" />Run AI Pneumonia Screen</>}
+              </button>
+
+              {xrayError && (
+                <div className="flex items-start gap-2 rounded-xl border border-red-500/30 bg-red-950/30 px-4 py-3">
+                  <AlertTriangle className="h-4 w-4 text-red-400 mt-0.5 flex-shrink-0" />
+                  <p className="text-xs text-red-300">{xrayError}</p>
+                </div>
+              )}
+            </div>
+
+            {/* Result Panel */}
+            <div>
+              {xrayResult ? (
+                <div className={`rounded-2xl border p-5 space-y-4 ${
+                  xrayResult.prediction === 'PNEUMONIA' ? 'border-red-500/30 bg-gradient-to-br from-red-950/40 to-slate-900' : 'border-emerald-500/30 bg-gradient-to-br from-emerald-950/40 to-slate-900'
+                }`}>
+                  <div className="flex items-center gap-3">
+                    {xrayResult.prediction === 'PNEUMONIA'
+                      ? <div className="flex items-center justify-center h-11 w-11 rounded-xl bg-red-500/20 border border-red-500/30"><AlertTriangle className="h-5 w-5 text-red-400" /></div>
+                      : <div className="flex items-center justify-center h-11 w-11 rounded-xl bg-emerald-500/20 border border-emerald-500/30"><CheckCircle2 className="h-5 w-5 text-emerald-400" /></div>
+                    }
+                    <div>
+                      <div className={`text-xl font-black ${xrayResult.prediction === 'PNEUMONIA' ? 'text-red-400' : 'text-emerald-400'}`}>{xrayResult.prediction}</div>
+                      <div className="text-[11px] text-slate-400">{xrayResult.architecture} · v{xrayResult.model_version}</div>
+                    </div>
+                    <div className="ml-auto text-right">
+                      <div className="text-sm font-black text-white">{(xrayResult.confidence * 100).toFixed(1)}%</div>
+                      <div className="text-[10px] text-slate-500">Confidence</div>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-xs text-slate-400"><span>Normal</span><span>{(xrayResult.normal_probability*100).toFixed(1)}%</span></div>
+                    <div className="h-2 rounded-full bg-slate-800 overflow-hidden"><div className="h-full rounded-full bg-emerald-500 transition-all duration-700" style={{width:`${xrayResult.normal_probability*100}%`}} /></div>
+                    <div className="flex justify-between text-xs text-slate-400 mt-2"><span>Pneumonia</span><span>{(xrayResult.pneumonia_probability*100).toFixed(1)}%</span></div>
+                    <div className="h-2 rounded-full bg-slate-800 overflow-hidden"><div className="h-full rounded-full bg-red-500 transition-all duration-700" style={{width:`${xrayResult.pneumonia_probability*100}%`}} /></div>
+                  </div>
+                  {xrayPreview && <img src={xrayPreview} alt="xray" className="rounded-xl max-h-48 w-full object-contain bg-slate-950" />}
+                  <div className="rounded-lg border border-amber-500/20 bg-amber-950/20 p-3 flex gap-2">
+                    <Info className="h-3.5 w-3.5 text-amber-400 flex-shrink-0 mt-0.5" />
+                    <p className="text-[10px] text-amber-200/80 leading-relaxed">{xrayResult.disclaimer}</p>
+                  </div>
+                </div>
+              ) : (
+                <div className="rounded-2xl border border-dashed border-slate-800 h-full flex flex-col items-center justify-center py-16 text-center px-6">
+                  <ScanLine className="h-10 w-10 text-slate-700 mb-3" />
+                  <p className="text-sm font-bold text-slate-500">AI analysis results appear here</p>
+                  <p className="text-xs text-slate-600 mt-1">Upload an X-ray and run the AI screen</p>
+                  <div className="mt-4 grid grid-cols-2 gap-2">
+                    {[{label:'86.2% Accuracy'},{label:'99.2% Recall'},{label:'EfficientNet-B0'},{label:'Sub-second'}].map(({label}) => (
+                      <div key={label} className="rounded-lg border border-slate-800 bg-slate-900/50 px-3 py-1.5 text-[11px] text-slate-500">{label}</div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Patient Scan History */}
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden">
+            <div className="flex items-center justify-between px-5 py-3 border-b border-slate-800">
+              <div className="flex items-center gap-2">
+                <History className="h-4 w-4 text-violet-400" />
+                <span className="text-sm font-bold text-slate-200">Patient X-Ray History</span>
+              </div>
+              <button onClick={() => { setScansLoading(true); xrayAPI.getPatientXRays(patientId).then(setPatientScans).finally(() => setScansLoading(false)); }}
+                className="flex items-center gap-1 text-xs text-slate-400 hover:text-white transition">
+                <RefreshCw className={`h-3.5 w-3.5 ${scansLoading?'animate-spin':''}`} /> Load History
+              </button>
+            </div>
+            {patientScans.length === 0 ? (
+              <div className="py-10 text-center text-xs text-slate-600">Click 'Load History' to view past scans for this patient.</div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full text-xs">
+                  <thead><tr className="border-b border-slate-800">
+                    {['Result','Confidence','Image','Date','By'].map(h => <th key={h} className="py-2 px-4 text-left text-[10px] font-bold uppercase text-slate-500 tracking-wider">{h}</th>)}
+                  </tr></thead>
+                  <tbody>
+                    {patientScans.map(scan => (
+                      <tr key={scan.id} className="border-b border-slate-800/50 hover:bg-slate-800/20">
+                        <td className="py-2.5 px-4">
+                          <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase ${
+                            scan.prediction==='PNEUMONIA' ? 'bg-red-500/15 text-red-400 border border-red-500/20' : 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20'
+                          }`}>{scan.prediction==='PNEUMONIA'?<AlertTriangle className="h-2.5 w-2.5" />:<CheckCircle2 className="h-2.5 w-2.5" />}{scan.prediction}</span>
+                        </td>
+                        <td className="py-2.5 px-4 font-bold text-white">{(scan.confidence*100).toFixed(1)}%</td>
+                        <td className="py-2.5 px-4">
+                          {scan.image_url ? <a href={`${API_BASE}${scan.image_url}`} target="_blank" rel="noopener noreferrer" className="text-sky-400 hover:text-sky-300 text-[10px] flex items-center gap-1"><FileImage className="h-3 w-3" />{scan.original_filename||'View'}</a> : <span className="text-slate-600">-</span>}
+                        </td>
+                        <td className="py-2.5 px-4 text-slate-400">{new Date(scan.created_at).toLocaleDateString()}</td>
+                        <td className="py-2.5 px-4 text-slate-400">{scan.created_by}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };

@@ -8,11 +8,11 @@ export const DoctorLayout: React.FC = () => {
   const [isEmergencyModalOpen, setIsEmergencyModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-gray-50 text-gray-800 flex flex-col">
       <Navbar onOpenEmergencyModal={() => setIsEmergencyModalOpen(true)} />
       <div className="flex flex-1 overflow-hidden">
         <Sidebar />
-        <main className="flex-1 overflow-y-auto p-6 custom-scrollbar bg-gradient-to-br from-slate-950 via-slate-900/40 to-slate-950">
+        <main className="flex-1 overflow-y-auto p-6 custom-scrollbar bg-gray-50">
           <Outlet context={{ openEmergencyModal: () => setIsEmergencyModalOpen(true) }} />
         </main>
       </div>

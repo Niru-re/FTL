@@ -52,6 +52,19 @@ class Hospital(Base):
     branch_name = Column(String(255), nullable=False)
     code = Column(String(20), unique=True, index=True, nullable=False)
     address = Column(String(500), nullable=False)
+    city = Column(String(100), default="Nagpur")
+    zone = Column(String(100), default="Central")
+    service_area = Column(String(200), default="City Network")
+    hospital_type = Column(String(100), default="Multi-Specialty")
+    services = Column(Text, default="[]")
+    contact_person = Column(String(255), default="Network Administrator")
+    email = Column(String(255), default="contact@hospital.in")
+    total_staff = Column(Integer, default=0)
+    doctors_count = Column(Integer, default=0)
+    nurses_count = Column(Integer, default=0)
+    ambulance_count = Column(Integer, default=0)
+    ambulances_available = Column(Integer, default=0)
+    bed_occupancy_rate = Column(Float, default=0.0)
     lat = Column(Float, nullable=False)
     lng = Column(Float, nullable=False)
     total_beds = Column(Integer, default=50)
@@ -226,6 +239,7 @@ class Patient(Base):
     transfers = relationship("PatientTransfer", back_populates="patient", cascade="all, delete-orphan", order_by="desc(PatientTransfer.timestamp)")
     discharges = relationship("PatientDischarge", back_populates="patient", cascade="all, delete-orphan", order_by="desc(PatientDischarge.timestamp)")
     risk_predictions = relationship("RiskPrediction", back_populates="patient", cascade="all, delete-orphan", order_by="desc(RiskPrediction.timestamp)")
+    xray_analyses = relationship("XRayAnalysis", back_populates="patient", cascade="all, delete-orphan", order_by="desc(XRayAnalysis.created_at)")
 
 class PatientVital(Base):
     __tablename__ = "patient_vitals"
@@ -673,5 +687,24 @@ class CapacityForecast(Base):
     timestamp = Column(DateTime, default=datetime.datetime.utcnow, index=True)
 
     hospital = relationship("Hospital")
+
+
+class XRayAnalysis(Base):
+    __tablename__ = "xray_analyses"
+
+    id = Column(Integer, primary_key=True, index=True)
+    patient_id = Column(Integer, ForeignKey("patients.id"), nullable=True)
+    prediction = Column(String(50), nullable=False)  # "NORMAL", "PNEUMONIA"
+    confidence = Column(Float, nullable=False)
+    normal_probability = Column(Float, nullable=False)
+    pneumonia_probability = Column(Float, nullable=False)
+    image_filename = Column(String(255), nullable=True)
+    image_url = Column(String(500), nullable=True)
+    original_filename = Column(String(255), nullable=True)
+    notes = Column(Text, nullable=True)
+    created_by = Column(String(255), default="Attending Physician")
+    created_at = Column(DateTime, default=datetime.datetime.utcnow, index=True)
+
+    patient = relationship("Patient", back_populates="xray_analyses")
 
 

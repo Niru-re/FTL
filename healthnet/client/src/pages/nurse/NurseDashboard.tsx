@@ -109,7 +109,7 @@ export const NurseDashboard: React.FC = () => {
             Nurse Operations Command
           </h1>
           <p className="text-xs text-slate-400">
-            HealthNet Central Hospital • Downtown Medical Campus • Shift: Morning
+            CareBridge Central Hospital • Downtown Medical Campus • Shift: Morning
           </p>
         </div>
 
@@ -260,7 +260,7 @@ export const NurseDashboard: React.FC = () => {
                   {incomingAmb.current_patient_name || 'Emergency Intake Patient'}
                 </h3>
                 <p className="text-xs text-slate-300">
-                  Condition: <span className="font-bold text-rose-400">CRITICAL / ACUTE INTAKE</span> • Destination: HealthNet Central
+                  <p className="text-xs text-rose-600">CRITICAL / ACUTE INTAKE &bull; Destination: CareBridge Central</p>
                 </p>
               </div>
             </div>

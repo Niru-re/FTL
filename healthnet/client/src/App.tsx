@@ -55,6 +55,7 @@ import { DoctorAlertsPage } from './pages/doctor/DoctorAlertsPage';
 import { DoctorIncomingPage } from './pages/doctor/DoctorIncomingPage';
 import { DoctorReportsPage } from './pages/doctor/DoctorReportsPage';
 import { DoctorAIRiskPage } from './pages/doctor/DoctorAIRiskPage';
+import { DoctorXRayPage } from './pages/doctor/DoctorXRayPage';
 import { AdminAICapacityPage } from './pages/admin/AdminAICapacityPage';
 import { ICUNetworkPage } from './pages/admin/ICUNetworkPage';
 import { CriticalPatientsPage } from './pages/admin/CriticalPatientsPage';
@@ -71,8 +72,8 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, allowedRole }
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center text-teal-400 font-bold text-xs uppercase tracking-wider">
-        Loading HealthNet Platform...
+      <div className="min-h-screen bg-white flex items-center justify-center text-orange-500 font-bold text-xs uppercase tracking-wider">
+        Loading CareBridge Platform...
       </div>
     );
   }
@@ -97,8 +98,8 @@ const RootRedirect: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center text-teal-400 font-bold text-xs uppercase tracking-wider">
-        Loading HealthNet Platform...
+      <div className="min-h-screen bg-white flex items-center justify-center text-orange-500 font-bold text-xs uppercase tracking-wider">
+        Loading CareBridge Platform...
       </div>
     );
   }
@@ -196,6 +197,7 @@ export const App: React.FC = () => {
         <Route path="patients/:id" element={<DoctorPatientDetailPage />} />
         <Route path="patients/:id/risk" element={<DoctorPatientDetailPage />} />
         <Route path="ai-risk" element={<DoctorAIRiskPage />} />
+        <Route path="xray-screening" element={<DoctorXRayPage />} />
         <Route path="monitoring" element={<DoctorLiveMonitoringPage />} />
         <Route path="incoming" element={<DoctorIncomingPage />} />
         <Route path="alerts" element={<DoctorAlertsPage />} />

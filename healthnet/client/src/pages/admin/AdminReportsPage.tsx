@@ -31,7 +31,7 @@ export const AdminReportsPage: React.FC = () => {
   const exportCSV = () => {
     let headers: string[] = [];
     let rows: string[][] = [];
-    let filename = `HealthNet_${reportType}_${timeRange}.csv`;
+    let filename = `CareBridge_${reportType}_${timeRange}.csv`;
 
     if (reportType === 'HOSPITAL_CAPACITY' || reportType === 'ICU_UTILIZATION') {
       headers = ['Hospital Name', 'Branch', 'Code', 'Total Beds', 'Available Beds', 'ICU Total', 'Available ICU', 'ICU Occupancy %', 'Emergency Status'];

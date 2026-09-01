@@ -89,7 +89,7 @@ export const CityNetworkMap: React.FC<CityNetworkMapProps> = ({
         <Compass className="w-4 h-4 text-sky-400 animate-spin" style={{ animationDuration: '24s' }} />
         <div>
           <div className="text-xs font-semibold text-white tracking-wide flex items-center gap-2">
-            METROPOLITAN HEALTHNET GRID
+            METROPOLITAN CAREBRIDGE GRID
             <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
           </div>
           <div className="text-[10px] text-slate-400">

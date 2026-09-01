@@ -269,7 +269,7 @@ export const BranchesPage: React.FC = () => {
                 <input
                   type="text"
                   required
-                  placeholder="e.g. HealthNet Central - East Wing"
+                  placeholder="e.g. CareBridge Central - East Wing"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"

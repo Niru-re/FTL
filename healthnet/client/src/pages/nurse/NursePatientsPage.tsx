@@ -55,7 +55,7 @@ export const NursePatientsPage: React.FC = () => {
             My Assigned Patients
           </h1>
           <p className="text-xs text-slate-400">
-            Active patient roster under direct nursing care at HealthNet Central Hospital
+            Active patient roster under direct nursing care at CareBridge Central Hospital
           </p>
         </div>
 

@@ -119,7 +119,7 @@ export const NurseAmbulancesPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {incomingAmbulances.length === 0 ? (
             <div className="lg:col-span-2 rounded-2xl border border-slate-800 bg-slate-900/40 p-8 text-center text-slate-400 text-xs">
-              No emergency ambulances currently inbound to HealthNet Central Hospital.
+              No emergency ambulances currently inbound to CareBridge Central Hospital.
             </div>
           ) : (
             incomingAmbulances.map((amb) => (
@@ -252,7 +252,7 @@ export const NurseAmbulancesPage: React.FC = () => {
                       {amb.current_patient_name || <span className="text-slate-500 italic">None</span>}
                     </td>
                     <td className="py-3.5 text-slate-300">
-                      {amb.destination_hospital_name || 'HealthNet Central'}
+                      {amb.destination_hospital_name || 'CareBridge Central'}
                     </td>
                     <td className="py-3.5 font-mono text-xs font-bold text-slate-200">
                       {amb.eta_minutes > 0 ? `${amb.eta_minutes} min` : 'At Facility'}

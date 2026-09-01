@@ -27,6 +27,19 @@ export interface Hospital {
   branch_name: string;
   code: string;
   address: string;
+  city?: string;
+  zone?: string;
+  service_area?: string;
+  hospital_type?: string;
+  services?: string[];
+  contact_person?: string;
+  email?: string;
+  total_staff?: number;
+  doctors_count?: number;
+  nurses_count?: number;
+  ambulance_count?: number;
+  ambulances_available?: number;
+  bed_occupancy_rate?: number;
   lat: number;
   lng: number;
   total_beds: number;
@@ -882,6 +895,38 @@ export interface EmergencyCaseDetail {
   matches: HospitalMatch[];
   timeline_events: EmergencyTimelineItem[];
   assigned_ambulance?: Ambulance | null;
+}
+
+export interface XRayPredictionResult {
+  prediction: 'NORMAL' | 'PNEUMONIA';
+  confidence: number;
+  normal_probability: number;
+  pneumonia_probability: number;
+  model_version: string;
+  architecture: string;
+  disclaimer: string;
+  record_id?: number | null;
+  patient_id?: number | null;
+  patient_name?: string | null;
+  patient_mrn?: string | null;
+  image_url?: string | null;
+}
+
+export interface XRayAnalysisRecord {
+  id: number;
+  patient_id?: number | null;
+  patient_name?: string | null;
+  patient_mrn?: string | null;
+  prediction: 'NORMAL' | 'PNEUMONIA';
+  confidence: number;
+  normal_probability: number;
+  pneumonia_probability: number;
+  image_filename?: string | null;
+  image_url?: string | null;
+  original_filename?: string | null;
+  notes?: string | null;
+  created_by: string;
+  created_at: string;
 }
 
 

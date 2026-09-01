@@ -31,6 +31,19 @@ export const HospitalsPage: React.FC = () => {
     branch_name: string;
     code: string;
     address: string;
+    city: string;
+    zone: string;
+    service_area: string;
+    hospital_type: string;
+    services: string;
+    contact_person: string;
+    email: string;
+    total_staff: number;
+    doctors_count: number;
+    nurses_count: number;
+    ambulance_count: number;
+    ambulances_available: number;
+    bed_occupancy_rate: number;
     lat: number;
     lng: number;
     contact_phone: string;
@@ -45,8 +58,21 @@ export const HospitalsPage: React.FC = () => {
     branch_name: '',
     code: '',
     address: '',
-    lat: 40.7128,
-    lng: -74.0060,
+    city: 'Nagpur',
+    zone: 'Central',
+    service_area: 'Civil Lines',
+    hospital_type: 'Multi-Specialty',
+    services: 'Emergency, ICU, Cardiology, Trauma',
+    contact_person: 'Hospital Administrator',
+    email: 'admin@hospital.in',
+    total_staff: 220,
+    doctors_count: 28,
+    nurses_count: 90,
+    ambulance_count: 6,
+    ambulances_available: 4,
+    bed_occupancy_rate: 62,
+    lat: 21.1458,
+    lng: 79.0882,
     contact_phone: '+1-555-0100',
     emergency_status: 'NORMAL',
     total_beds: 50,
@@ -92,8 +118,21 @@ export const HospitalsPage: React.FC = () => {
         branch_name: formData.branch_name,
         code: formData.code || `HN-${Math.floor(100 + Math.random() * 900)}`,
         address: formData.address,
-        lat: Number(formData.lat) || 40.7128,
-        lng: Number(formData.lng) || -74.0060,
+        city: formData.city,
+        zone: formData.zone,
+        service_area: formData.service_area,
+        hospital_type: formData.hospital_type,
+        services: formData.services.split(',').map((item) => item.trim()).filter(Boolean),
+        contact_person: formData.contact_person,
+        email: formData.email,
+        total_staff: Number(formData.total_staff),
+        doctors_count: Number(formData.doctors_count),
+        nurses_count: Number(formData.nurses_count),
+        ambulance_count: Number(formData.ambulance_count),
+        ambulances_available: Number(formData.ambulances_available),
+        bed_occupancy_rate: Number(formData.bed_occupancy_rate),
+        lat: Number(formData.lat) || 21.1458,
+        lng: Number(formData.lng) || 79.0882,
         total_beds: Number(formData.total_beds),
         icu_capacity: Number(formData.icu_capacity),
         ward_capacity: Number(formData.total_beds) - Number(formData.icu_capacity) - Number(formData.er_capacity),
@@ -119,6 +158,19 @@ export const HospitalsPage: React.FC = () => {
         name: formData.name,
         branch_name: formData.branch_name,
         address: formData.address,
+        city: formData.city,
+        zone: formData.zone,
+        service_area: formData.service_area,
+        hospital_type: formData.hospital_type,
+        services: formData.services.split(',').map((item) => item.trim()).filter(Boolean),
+        contact_person: formData.contact_person,
+        email: formData.email,
+        total_staff: Number(formData.total_staff),
+        doctors_count: Number(formData.doctors_count),
+        nurses_count: Number(formData.nurses_count),
+        ambulance_count: Number(formData.ambulance_count),
+        ambulances_available: Number(formData.ambulances_available),
+        bed_occupancy_rate: Number(formData.bed_occupancy_rate),
         contact_phone: formData.contact_phone,
         emergency_status: formData.emergency_status,
         ventilators_total: Number(formData.ventilators_total),
@@ -138,8 +190,21 @@ export const HospitalsPage: React.FC = () => {
       branch_name: '',
       code: '',
       address: '',
-      lat: 40.7128,
-      lng: -74.0060,
+      city: 'Nagpur',
+      zone: 'Central',
+      service_area: 'Civil Lines',
+      hospital_type: 'Multi-Specialty',
+      services: 'Emergency, ICU, Cardiology, Trauma',
+      contact_person: 'Hospital Administrator',
+      email: 'admin@hospital.in',
+      total_staff: 220,
+      doctors_count: 28,
+      nurses_count: 90,
+      ambulance_count: 6,
+      ambulances_available: 4,
+      bed_occupancy_rate: 62,
+      lat: 21.1458,
+      lng: 79.0882,
       contact_phone: '+1-555-0100',
       emergency_status: 'NORMAL',
       total_beds: 50,
@@ -340,6 +405,19 @@ export const HospitalsPage: React.FC = () => {
                         branch_name: hosp.branch_name,
                         code: hosp.code,
                         address: hosp.address,
+                        city: hosp.city || 'Nagpur',
+                        zone: hosp.zone || 'Central',
+                        service_area: hosp.service_area || 'Civil Lines',
+                        hospital_type: hosp.hospital_type || 'Multi-Specialty',
+                        services: Array.isArray(hosp.services) ? hosp.services.join(', ') : 'Emergency, ICU, Cardiology',
+                        contact_person: hosp.contact_person || 'Hospital Administrator',
+                        email: hosp.email || 'admin@hospital.in',
+                        total_staff: hosp.total_staff || 0,
+                        doctors_count: hosp.doctors_count || 0,
+                        nurses_count: hosp.nurses_count || 0,
+                        ambulance_count: hosp.ambulance_count || 0,
+                        ambulances_available: hosp.ambulances_available || 0,
+                        bed_occupancy_rate: hosp.bed_occupancy_rate || 0,
                         lat: hosp.lat,
                         lng: hosp.lng,
                         contact_phone: hosp.contact_phone,
@@ -420,6 +498,19 @@ export const HospitalsPage: React.FC = () => {
                               branch_name: hosp.branch_name,
                               code: hosp.code,
                               address: hosp.address,
+                              city: hosp.city || 'Nagpur',
+                              zone: hosp.zone || 'Central',
+                              service_area: hosp.service_area || 'Civil Lines',
+                              hospital_type: hosp.hospital_type || 'Multi-Specialty',
+                              services: Array.isArray(hosp.services) ? hosp.services.join(', ') : 'Emergency, ICU, Cardiology',
+                              contact_person: hosp.contact_person || 'Hospital Administrator',
+                              email: hosp.email || 'admin@hospital.in',
+                              total_staff: hosp.total_staff || 0,
+                              doctors_count: hosp.doctors_count || 0,
+                              nurses_count: hosp.nurses_count || 0,
+                              ambulance_count: hosp.ambulance_count || 0,
+                              ambulances_available: hosp.ambulances_available || 0,
+                              bed_occupancy_rate: hosp.bed_occupancy_rate || 0,
                               lat: hosp.lat,
                               lng: hosp.lng,
                               contact_phone: hosp.contact_phone,
@@ -463,7 +554,7 @@ export const HospitalsPage: React.FC = () => {
                   <input
                     type="text"
                     required
-                    placeholder="e.g. HealthNet Midtown"
+                    placeholder="e.g. CareBridge Midtown"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
@@ -477,6 +568,145 @@ export const HospitalsPage: React.FC = () => {
                     placeholder="e.g. Midtown Main"
                     value={formData.branch_name}
                     onChange={(e) => setFormData({ ...formData, branch_name: e.target.value })}
+                    className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs font-semibold text-slate-400">City</label>
+                  <input
+                    type="text"
+                    value={formData.city}
+                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                    className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-400">Zone</label>
+                  <input
+                    type="text"
+                    value={formData.zone}
+                    onChange={(e) => setFormData({ ...formData, zone: e.target.value })}
+                    className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs font-semibold text-slate-400">Service Area</label>
+                  <input
+                    type="text"
+                    value={formData.service_area}
+                    onChange={(e) => setFormData({ ...formData, service_area: e.target.value })}
+                    className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-400">Hospital Type</label>
+                  <input
+                    type="text"
+                    value={formData.hospital_type}
+                    onChange={(e) => setFormData({ ...formData, hospital_type: e.target.value })}
+                    className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-slate-400">Services</label>
+                <input
+                  type="text"
+                  value={formData.services}
+                  onChange={(e) => setFormData({ ...formData, services: e.target.value })}
+                  className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs font-semibold text-slate-400">Contact Person</label>
+                  <input
+                    type="text"
+                    value={formData.contact_person}
+                    onChange={(e) => setFormData({ ...formData, contact_person: e.target.value })}
+                    className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-400">Email</label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs font-semibold text-slate-400">Total Staff</label>
+                  <input
+                    type="number"
+                    value={formData.total_staff}
+                    onChange={(e) => setFormData({ ...formData, total_staff: Number(e.target.value) })}
+                    className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-400">Physicians</label>
+                  <input
+                    type="number"
+                    value={formData.doctors_count}
+                    onChange={(e) => setFormData({ ...formData, doctors_count: Number(e.target.value) })}
+                    className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs font-semibold text-slate-400">Nursing Staff</label>
+                  <input
+                    type="number"
+                    value={formData.nurses_count}
+                    onChange={(e) => setFormData({ ...formData, nurses_count: Number(e.target.value) })}
+                    className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-400">Ambulances</label>
+                  <input
+                    type="number"
+                    value={formData.ambulance_count}
+                    onChange={(e) => setFormData({ ...formData, ambulance_count: Number(e.target.value) })}
+                    className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs font-semibold text-slate-400">Available Ambulances</label>
+                  <input
+                    type="number"
+                    value={formData.ambulances_available}
+                    onChange={(e) => setFormData({ ...formData, ambulances_available: Number(e.target.value) })}
+                    className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-400">Bed Occupancy %</label>
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    step="0.1"
+                    value={formData.bed_occupancy_rate}
+                    onChange={(e) => setFormData({ ...formData, bed_occupancy_rate: Number(e.target.value) })}
                     className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
                   />
                 </div>

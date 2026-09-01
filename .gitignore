@@ -1,0 +1,43 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+
+# Node / Frontend
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Datasets & Archive files (Never commit raw dataset)
+data/chest_xray/
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+
+# macOS / OS metadata
+.DS_Store
+__MACOSX/
+Thumbs.db
+
+# Temporary test / log artifacts
+*.log
+.pytest_cache/
+.coverage
+htmlcov/
+tests/reports/
+
+# Uploaded temporary scan images
+healthnet/server/uploads/xrays/*
+!healthnet/server/uploads/xrays/.gitkeep
+
+# Database backups & corrupted files
+*.db.corrupted*
+*.db.old

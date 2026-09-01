@@ -1,3 +1,4 @@
+import json
 from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
@@ -19,6 +20,19 @@ from ..services.notification_service import notification_service
 from ..services.websocket_manager import websocket_manager
 
 router = APIRouter(tags=["hospitals_and_network"])
+
+def normalize_service_list(raw_value) -> List[str]:
+    if isinstance(raw_value, list):
+        return [str(item).strip() for item in raw_value if str(item).strip()]
+    if isinstance(raw_value, str):
+        try:
+            parsed = json.loads(raw_value)
+            if isinstance(parsed, list):
+                return [str(item).strip() for item in parsed if str(item).strip()]
+        except (TypeError, ValueError):
+            pass
+        return [item.strip() for item in raw_value.split(',') if item.strip()]
+    return []
 
 def build_hospital_out(hospital: Hospital, db: Session) -> HospitalOut:
     beds = db.query(Bed).filter(Bed.hospital_id == hospital.id).all()
@@ -69,6 +83,19 @@ def build_hospital_out(hospital: Hospital, db: Session) -> HospitalOut:
         branch_name=hospital.branch_name,
         code=hospital.code,
         address=hospital.address,
+        city=getattr(hospital, "city", "Nagpur") or "Nagpur",
+        zone=getattr(hospital, "zone", "Central") or "Central",
+        service_area=getattr(hospital, "service_area", "City Network") or "City Network",
+        hospital_type=getattr(hospital, "hospital_type", "Multi-Specialty") or "Multi-Specialty",
+        services=normalize_service_list(getattr(hospital, "services", [])),
+        contact_person=getattr(hospital, "contact_person", "Network Administrator") or "Network Administrator",
+        email=getattr(hospital, "email", "contact@hospital.in") or "contact@hospital.in",
+        total_staff=getattr(hospital, "total_staff", 0) or 0,
+        doctors_count=getattr(hospital, "doctors_count", docs_on_duty) or docs_on_duty,
+        nurses_count=getattr(hospital, "nurses_count", nurses_on_duty) or nurses_on_duty,
+        ambulance_count=getattr(hospital, "ambulance_count", 0) or 0,
+        ambulances_available=getattr(hospital, "ambulances_available", 0) or 0,
+        bed_occupancy_rate=float(getattr(hospital, "bed_occupancy_rate", overall_rate) or overall_rate),
         lat=hospital.lat,
         lng=hospital.lng,
         total_beds=total_beds,
@@ -254,7 +281,9 @@ def create_hospital(hosp_in: HospitalCreate, db: Session = Depends(get_db), curr
     if existing:
         raise HTTPException(status_code=400, detail="Hospital code already exists")
 
-    new_hosp = Hospital(**hosp_in.model_dump())
+    payload = hosp_in.model_dump()
+    payload["services"] = json.dumps(payload.get("services", []))
+    new_hosp = Hospital(**payload)
     db.add(new_hosp)
     db.commit()
     db.refresh(new_hosp)
@@ -293,6 +322,8 @@ def update_hospital(hospital_id: int, hosp_update: HospitalUpdate, db: Session =
         raise HTTPException(status_code=404, detail="Hospital not found")
 
     for field, value in hosp_update.model_dump(exclude_unset=True).items():
+        if field == "services" and value is not None:
+            value = json.dumps(value)
         setattr(hosp, field, value)
 
     db.commit()

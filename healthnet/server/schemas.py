@@ -129,8 +129,21 @@ class HospitalBase(BaseModel):
     branch_name: str
     code: str
     address: str
-    lat: float
-    lng: float
+    city: str = "Nagpur"
+    zone: str = "Central"
+    service_area: str = "City Network"
+    hospital_type: str = "Multi-Specialty"
+    services: List[str] = Field(default_factory=list)
+    contact_person: str = "Network Administrator"
+    email: str = "contact@hospital.in"
+    total_staff: int = 0
+    doctors_count: int = 0
+    nurses_count: int = 0
+    ambulance_count: int = 0
+    ambulances_available: int = 0
+    bed_occupancy_rate: float = 0.0
+    lat: float = 21.1458
+    lng: float = 79.0882
     total_beds: int = 50
     icu_capacity: int = 15
     ward_capacity: int = 25
@@ -150,6 +163,19 @@ class HospitalUpdate(BaseModel):
     branch_name: Optional[str] = None
     code: Optional[str] = None
     address: Optional[str] = None
+    city: Optional[str] = None
+    zone: Optional[str] = None
+    service_area: Optional[str] = None
+    hospital_type: Optional[str] = None
+    services: Optional[List[str]] = None
+    contact_person: Optional[str] = None
+    email: Optional[str] = None
+    total_staff: Optional[int] = None
+    doctors_count: Optional[int] = None
+    nurses_count: Optional[int] = None
+    ambulance_count: Optional[int] = None
+    ambulances_available: Optional[int] = None
+    bed_occupancy_rate: Optional[float] = None
     lat: Optional[float] = None
     lng: Optional[float] = None
     emergency_status: Optional[str] = None
@@ -1238,6 +1264,40 @@ class DoctorPatientDetailOut(BaseModel):
     doctor_orders: List[DoctorOrderOut] = []
     risk_prediction: Optional[AIRiskReportOut] = None
     timeline_events: List[TimelineEventOut] = []
+
+    class Config:
+        from_attributes = True
+
+# X-Ray AI Schemas
+class XRayPredictionResponse(BaseModel):
+    prediction: str  # "NORMAL" or "PNEUMONIA"
+    confidence: float
+    normal_probability: float
+    pneumonia_probability: float
+    model_version: str = "1.0.0"
+    architecture: str = "efficientnet_b0"
+    disclaimer: str
+    record_id: Optional[int] = None
+    patient_id: Optional[int] = None
+    patient_name: Optional[str] = None
+    patient_mrn: Optional[str] = None
+    image_url: Optional[str] = None
+
+class XRayRecordOut(BaseModel):
+    id: int
+    patient_id: Optional[int] = None
+    patient_name: Optional[str] = None
+    patient_mrn: Optional[str] = None
+    prediction: str
+    confidence: float
+    normal_probability: float
+    pneumonia_probability: float
+    image_filename: Optional[str] = None
+    image_url: Optional[str] = None
+    original_filename: Optional[str] = None
+    notes: Optional[str] = None
+    created_by: str
+    created_at: datetime.datetime
 
     class Config:
         from_attributes = True

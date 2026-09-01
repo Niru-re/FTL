@@ -50,7 +50,7 @@ export const DoctorLiveMonitoringPage: React.FC = () => {
             Multi-Bed Live Telemetry Monitoring
           </h1>
           <p className="text-xs text-slate-400 mt-0.5">
-            Continuous multi-lead ECG & vitals stream across active ICU census &bull; HealthNet Central Hospital
+            Continuous multi-lead ECG & vitals stream across active ICU census &bull; CareBridge Central Hospital
           </p>
         </div>
         <div className="flex items-center gap-3">

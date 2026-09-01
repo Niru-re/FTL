@@ -11,8 +11,8 @@ interface StatCardProps {
     value: string;
     isPositive?: boolean;
   };
-  colorScheme?: 'teal' | 'rose' | 'amber' | 'blue' | 'purple' | 'emerald' | 'sky';
-  variant?: 'teal' | 'rose' | 'amber' | 'blue' | 'purple' | 'emerald' | 'sky';
+  colorScheme?: 'teal' | 'rose' | 'amber' | 'blue' | 'purple' | 'emerald' | 'sky' | 'orange';
+  variant?:     'teal' | 'rose' | 'amber' | 'blue' | 'purple' | 'emerald' | 'sky' | 'orange';
   onClick?: () => void;
   className?: string;
 }
@@ -27,56 +27,62 @@ export const StatCard: React.FC<StatCardProps> = ({
   colorScheme,
   variant,
   onClick,
-  className = ''
+  className = '',
 }) => {
-  const chosenColor = variant || colorScheme || 'teal';
+  const chosenColor = variant || colorScheme || 'orange';
   const subText = subValue || subtitle;
 
-  const colorMap = {
-    teal: 'border-teal-500/20 from-teal-500/10 to-transparent text-teal-400',
-    rose: 'border-rose-500/20 from-rose-500/10 to-transparent text-rose-400',
-    amber: 'border-amber-500/20 from-amber-500/10 to-transparent text-amber-400',
-    blue: 'border-sky-500/20 from-sky-500/10 to-transparent text-sky-400',
-    sky: 'border-sky-500/20 from-sky-500/10 to-transparent text-sky-400',
-    purple: 'border-purple-500/20 from-purple-500/10 to-transparent text-purple-400',
-    emerald: 'border-emerald-500/20 from-emerald-500/10 to-transparent text-emerald-400'
+  // Border + icon accent colours — light-mode palette
+  const borderMap: Record<string, string> = {
+    orange:  'border-orange-200',
+    teal:    'border-teal-200',
+    rose:    'border-rose-200',
+    amber:   'border-amber-200',
+    blue:    'border-blue-200',
+    sky:     'border-sky-200',
+    purple:  'border-purple-200',
+    emerald: 'border-emerald-200',
   };
 
-  const iconBgMap = {
-    teal: 'bg-teal-500/15 text-teal-300 border-teal-500/30',
-    rose: 'bg-rose-500/15 text-rose-300 border-rose-500/30',
-    amber: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
-    blue: 'bg-sky-500/15 text-sky-300 border-sky-500/30',
-    sky: 'bg-sky-500/15 text-sky-300 border-sky-500/30',
-    purple: 'bg-purple-500/15 text-purple-300 border-purple-500/30',
-    emerald: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30'
+  const iconBgMap: Record<string, string> = {
+    orange:  'bg-orange-50  text-orange-500  border-orange-200',
+    teal:    'bg-teal-50    text-teal-600    border-teal-200',
+    rose:    'bg-rose-50    text-rose-500    border-rose-200',
+    amber:   'bg-amber-50   text-amber-600   border-amber-200',
+    blue:    'bg-blue-50    text-blue-500    border-blue-200',
+    sky:     'bg-sky-50     text-sky-500     border-sky-200',
+    purple:  'bg-purple-50  text-purple-500  border-purple-200',
+    emerald: 'bg-emerald-50 text-emerald-600 border-emerald-200',
   };
+
+  const border  = borderMap[chosenColor]  ?? borderMap.orange;
+  const iconBg  = iconBgMap[chosenColor]  ?? iconBgMap.orange;
 
   return (
     <div
       onClick={onClick}
-      className={`relative overflow-hidden rounded-xl border bg-gradient-to-b ${colorMap[chosenColor as keyof typeof colorMap] || colorMap.teal} bg-slate-900/80 p-5 shadow-lg backdrop-blur-sm transition-all duration-200 hover:border-slate-600 ${
+      className={`relative overflow-hidden rounded-xl border ${border} bg-white p-5 shadow-card transition-all duration-200 hover:shadow-card-md ${
         onClick ? 'cursor-pointer hover:scale-[1.01]' : ''
       } ${className}`}
     >
       <div className="flex items-center justify-between">
-        <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">{title}</span>
-        <div className={`flex h-10 w-10 items-center justify-center rounded-lg border ${iconBgMap[chosenColor as keyof typeof iconBgMap] || iconBgMap.teal}`}>
+        <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">{title}</span>
+        <div className={`flex h-10 w-10 items-center justify-center rounded-lg border ${iconBg}`}>
           <Icon className="h-5 w-5" />
         </div>
       </div>
 
       <div className="mt-3 flex items-baseline gap-2">
-        <span className="text-2xl font-bold tracking-tight text-white">{value}</span>
+        <span className="text-2xl font-bold tracking-tight text-gray-900">{value}</span>
         {trend && (
-          <span className={`text-xs font-medium ${trend.isPositive ? 'text-emerald-400' : 'text-rose-400'}`}>
+          <span className={`text-xs font-medium ${trend.isPositive ? 'text-emerald-600' : 'text-rose-500'}`}>
             {trend.value}
           </span>
         )}
       </div>
 
       {subText && (
-        <p className="mt-1 text-xs text-slate-400">{subText}</p>
+        <p className="mt-1 text-xs text-gray-400">{subText}</p>
       )}
     </div>
   );

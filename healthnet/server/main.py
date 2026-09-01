@@ -7,16 +7,16 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
-from .database import engine, Base, get_db, SessionLocal
+from .database import engine, Base, get_db, SessionLocal, ensure_hospital_schema
 from .models import Hospital
 from .seed_data import seed_database
 from .services.notification_service import notification_service
 from .services.telemetry_simulator import telemetry_simulator
-
+from .services.xray_service import xray_service
 from .services.websocket_manager import websocket_manager
 
 from .routers import (
-    auth, hospitals, beds, patients, ambulances, emergency, alerts, users, analytics, resources, nurse, doctor, simulation, ai
+    auth, hospitals, beds, patients, ambulances, emergency, alerts, users, analytics, resources, nurse, doctor, simulation, ai, xray
 )
 
 logging.basicConfig(
@@ -30,6 +30,13 @@ async def lifespan(app: FastAPI):
     logger.info("Starting HealthNet Server...")
     # Initialize DB tables
     Base.metadata.create_all(bind=engine)
+    ensure_hospital_schema()
+
+    # Pre-load AI inference models
+    try:
+        xray_service.load_model()
+    except Exception as e:
+        logger.warning(f"X-Ray model preload note: {e}")
 
     # Check if database needs seeding
     db = SessionLocal()
@@ -86,6 +93,7 @@ app.include_router(analytics.router)
 app.include_router(simulation.router)
 app.include_router(simulation.events_router)
 app.include_router(ai.router)
+app.include_router(xray.router)
 
 # WebSocket Endpoints (Supporting both /api/ws and /ws with JWT authentication)
 async def handle_websocket_connection(websocket: WebSocket, token: Optional[str] = None):
