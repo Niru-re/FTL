@@ -60,6 +60,90 @@
   animation: beacon-pulse 2s infinite;
 }
 
+/* ── Dark-theme compatibility layer ─────────────────────────────────────────
+   Many components still carry the original dark-slate Tailwind classes from
+   the pre-rebrand theme.  Rather than editing ~57 files, we remap every dark
+   slate background to a light equivalent and every dark-on-dark text to a
+   readable dark-on-light value.  Layout, spacing, and colours are unchanged.
+   ─────────────────────────────────────────────────────────────────────────── */
+@layer utilities {
+  /* ── Background remaps ── */
+  .bg-slate-950  { background-color: #f9fafb !important; }   /* → gray-50  */
+  .bg-slate-900  { background-color: #f3f4f6 !important; }   /* → gray-100 */
+  .bg-slate-800  { background-color: #e5e7eb !important; }   /* → gray-200 */
+  .bg-slate-700  { background-color: #d1d5db !important; }   /* → gray-300 */
+
+  /* Opacity variants */
+  .bg-slate-950\/70 { background-color: rgba(249,250,251,0.85) !important; }
+  .bg-slate-950\/50 { background-color: rgba(249,250,251,0.7)  !important; }
+  .bg-slate-900\/60 { background-color: rgba(243,244,246,0.8)  !important; }
+  .bg-slate-900\/80 { background-color: rgba(243,244,246,0.9)  !important; }
+  .bg-slate-900\/40 { background-color: rgba(0,0,0,0.3)        !important; } /* modal overlay — keep dark */
+  .bg-slate-800\/80 { background-color: rgba(229,231,235,0.9)  !important; }
+  .bg-slate-800\/60 { background-color: rgba(229,231,235,0.7)  !important; }
+  .bg-slate-800\/40 { background-color: rgba(229,231,235,0.5)  !important; }
+
+  /* ── Text remaps: light text → dark readable text ── */
+  .text-white        { color: #111827 !important; }   /* → gray-900  */
+  .text-slate-100    { color: #1f2937 !important; }   /* → gray-800  */
+  .text-slate-200    { color: #374151 !important; }   /* → gray-700  */
+  .text-slate-300    { color: #4b5563 !important; }   /* → gray-600  */
+  .text-slate-400    { color: #6b7280 !important; }   /* → gray-500  */
+  .text-slate-500    { color: #9ca3af !important; }   /* → gray-400  */
+
+  /* ── Border remaps ── */
+  .border-slate-800  { border-color: #e5e7eb !important; }   /* → gray-200 */
+  .border-slate-700  { border-color: #d1d5db !important; }   /* → gray-300 */
+
+  .border-slate-800\/80 { border-color: rgba(229,231,235,0.9) !important; }
+  .border-slate-800\/60 { border-color: rgba(229,231,235,0.7) !important; }
+  .border-slate-700\/80 { border-color: rgba(209,213,219,0.9) !important; }
+  .border-slate-700\/50 { border-color: rgba(209,213,219,0.6) !important; }
+
+  /* ── Hover variants ── */
+  .hover\:bg-slate-800:hover { background-color: #e5e7eb !important; }
+  .hover\:bg-slate-700:hover { background-color: #d1d5db !important; }
+  .hover\:text-white:hover   { color: #111827 !important; }
+
+  /* ── Divide (table row separators) ── */
+  .divide-slate-800\/60 > :not([hidden]) ~ :not([hidden]) { border-color: rgba(229,231,235,0.7) !important; }
+
+  /* ── Buttons that are intentionally dark (keep them readable) ── */
+  /* Orange buttons with text-white should stay white — allow by scoping */
+  .bg-orange-500 .text-white,
+  .bg-rose-500   .text-white,
+  .bg-rose-600   .text-white,
+  .bg-teal-600   .text-white,
+  .bg-emerald-500 .text-white { color: #ffffff !important; }
+}
+
+/* Explicit button/badge overrides: coloured bg → white text must stay white */
+.bg-orange-500, .bg-orange-600,
+.bg-rose-500,   .bg-rose-600,
+.bg-teal-600,   .bg-teal-500,
+.bg-emerald-600,.bg-emerald-500,
+.bg-purple-600, .bg-blue-600,
+.bg-sky-600,    .bg-amber-500,
+.bg-slate-800.font-bold, /* dark badges */
+.bg-slate-900.font-bold {
+  /* intentionally dark — white text must stay white */
+}
+/* The above selectors do nothing by themselves; the real fix is below: */
+/* When an element has BOTH a coloured background AND text-white,
+   restore white text (the utility override above was too broad). */
+.bg-orange-500.text-white,  .bg-orange-600.text-white,
+.bg-rose-500.text-white,    .bg-rose-600.text-white,
+.bg-teal-500.text-white,    .bg-teal-600.text-white,
+.bg-emerald-500.text-white, .bg-emerald-600.text-white,
+.bg-purple-500.text-white,  .bg-purple-600.text-white,
+.bg-blue-500.text-white,    .bg-blue-600.text-white,
+.bg-sky-500.text-white,     .bg-sky-600.text-white,
+.bg-amber-500.text-white,   .bg-amber-600.text-white,
+.bg-red-500.text-white,     .bg-red-600.text-white,
+.bg-indigo-500.text-white,  .bg-indigo-600.text-white {
+  color: #ffffff !important;
+}
+
 /* Leaflet Map overrides for light theme */
 .leaflet-container {
   background: #f3f4f6 !important;
