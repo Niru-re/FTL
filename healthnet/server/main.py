@@ -67,9 +67,28 @@ app = FastAPI(
 )
 
 # Configure CORS
+# In production, ALLOWED_ORIGINS should be set as a comma-separated env var,
+# e.g. "https://carebridge.vercel.app,https://your-preview-url.vercel.app"
+# Wildcard + credentials is rejected by browsers, so we use explicit origins.
+_raw_origins = os.environ.get("ALLOWED_ORIGINS", "")
+_explicit_origins: list[str] = [o.strip() for o in _raw_origins.split(",") if o.strip()]
+
+# Always allow localhost for local development
+_dev_origins = [
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:5174",
+]
+
+CORS_ORIGINS = _explicit_origins if _explicit_origins else ["*"]
+# If explicit origins are provided, also include dev origins
+if _explicit_origins:
+    CORS_ORIGINS = list(set(_explicit_origins + _dev_origins))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

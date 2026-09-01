@@ -11,9 +11,13 @@ ENV/
 
 # Node / Frontend
 node_modules/
-dist/
 dist-ssr/
 *.local
+
+# Environment variable files (never commit real secrets)
+.env
+.env.local
+.env.*.local
 
 # Datasets & Archive files (Never commit raw dataset)
 data/chest_xray/
@@ -42,5 +46,10 @@ healthnet/server/uploads/xrays/*
 *.db.corrupted*
 *.db.old
 
-# SQLite databases (runtime, not for version control)
+# SQLite databases (runtime, regenerated on server start)
 *.db
+
+# Python cache
+healthnet/server/__pycache__/
+healthnet/server/routers/__pycache__/
+healthnet/server/services/__pycache__/
