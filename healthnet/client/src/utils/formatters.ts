@@ -56,8 +56,8 @@ export const getBedStatusClasses = (status: string) => {
     case 'OUT_OF_SERVICE':
     default:
       return {
-        bg: 'bg-slate-700/20 border-slate-700 text-slate-400',
-        badge: 'bg-slate-800 text-slate-400 border-slate-700',
+        bg: 'bg-gray-300/20 border-gray-300 text-gray-500',
+        badge: 'bg-gray-200 text-gray-500 border-gray-300',
         indicator: 'bg-slate-500',
         label: 'Out of Service'
       };
@@ -78,7 +78,7 @@ export const getAmbulanceStatusClasses = (status: string) => {
     case 'RETURNING':
       return 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30';
     default:
-      return 'bg-slate-700 text-slate-300 border-slate-600';
+      return 'bg-gray-300 text-gray-600 border-slate-600';
   }
 };
 
@@ -91,9 +91,9 @@ export const getAcuityClasses = (status: string) => {
     case 'STABLE':
       return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40';
     case 'DISCHARGED':
-      return 'bg-slate-600/20 text-slate-400 border-slate-600';
+      return 'bg-slate-600/20 text-gray-500 border-slate-600';
     default:
-      return 'bg-slate-700 text-slate-300';
+      return 'bg-gray-300 text-gray-600';
   }
 };
 
@@ -106,8 +106,8 @@ export const getHospitalEmergencyStatusClasses = (status: string) => {
     case 'DIVERT':
       return 'bg-rose-500/10 text-rose-400 border-rose-500/30';
     case 'CLOSED':
-      return 'bg-slate-800 text-slate-400 border-slate-700';
+      return 'bg-gray-200 text-gray-500 border-gray-300';
     default:
-      return 'bg-slate-800 text-slate-300 border-slate-700';
+      return 'bg-gray-200 text-gray-600 border-gray-300';
   }
 };

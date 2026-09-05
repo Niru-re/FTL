@@ -70,7 +70,7 @@ export const PatientLayout: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
+    <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col font-sans">
       {/* Top Bar (Calm, Clean, White + Orange) */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
@@ -81,12 +81,12 @@ export const PatientLayout: React.FC = () => {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-slate-900 tracking-tight text-sm sm:text-base">{t('appName')}</span>
+                <span className="font-bold text-gray-900 tracking-tight text-sm sm:text-base">{t('appName')}</span>
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-orange-600 bg-orange-50 px-2 py-0.5 rounded-full border border-orange-200">
                   {t('portalPatientFamily')}
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 font-medium hidden sm:block">{t('tagline')}</p>
+              <p className="text-[11px] text-gray-400 font-medium hidden sm:block">{t('tagline')}</p>
             </div>
           </div>
 
@@ -108,7 +108,7 @@ export const PatientLayout: React.FC = () => {
                 <select
                   value={selectedPatientId || ''}
                   onChange={(e) => handlePatientSwitch(Number(e.target.value))}
-                  className="text-xs font-semibold bg-slate-100 border border-slate-200 text-slate-800 rounded-lg px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-orange-500 pr-6 appearance-none cursor-pointer"
+                  className="text-xs font-semibold bg-gray-50 border border-slate-200 text-gray-900 rounded-lg px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-orange-500 pr-6 appearance-none cursor-pointer"
                 >
                   {authorizedPatients.map((p) => (
                     <option key={p.patient_id} value={p.patient_id}>
@@ -116,14 +116,14 @@ export const PatientLayout: React.FC = () => {
                     </option>
                   ))}
                 </select>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-500 absolute right-2 top-2.5 pointer-events-none" />
+                <ChevronDown className="w-3.5 h-3.5 text-gray-400 absolute right-2 top-2.5 pointer-events-none" />
               </div>
             )}
 
             {/* Notifications Button */}
             <button
               onClick={() => navigate('/patient/notifications')}
-              className="relative p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+              className="relative p-2 rounded-xl text-slate-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-50 transition-colors"
               title="Notifications"
             >
               <Bell className="w-5 h-5" />
@@ -138,12 +138,12 @@ export const PatientLayout: React.FC = () => {
                 {user?.full_name ? user.full_name.charAt(0) : 'P'}
               </div>
               <div className="hidden lg:block text-left">
-                <p className="text-xs font-semibold text-slate-800 leading-tight">{user?.full_name || 'Patient'}</p>
-                <p className="text-[10px] text-slate-500 capitalize">{user?.role?.toLowerCase().replace('_', ' ')}</p>
+                <p className="text-xs font-semibold text-gray-900 leading-tight">{user?.full_name || 'Patient'}</p>
+                <p className="text-[10px] text-gray-400 capitalize">{user?.role?.toLowerCase().replace('_', ' ')}</p>
               </div>
               <button
                 onClick={handleLogout}
-                className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors ml-1"
+                className="p-1.5 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-rose-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-50 rounded-lg transition-colors ml-1"
                 title="Log Out"
               >
                 <LogOut className="w-4 h-4" />
@@ -158,7 +158,7 @@ export const PatientLayout: React.FC = () => {
         {/* Desktop Sidebar Navigation */}
         <aside className="hidden md:flex flex-col w-56 shrink-0 gap-6">
           <div className="bg-white rounded-2xl border border-slate-200 p-3 shadow-xs space-y-1">
-            <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-3 py-1.5">Overview</p>
+            <p className="text-[10px] font-bold uppercase tracking-wider text-gray-500 px-3 py-1.5">Overview</p>
             {primaryNavItems.map((item) => {
               const Icon = item.icon;
               return (
@@ -169,7 +169,7 @@ export const PatientLayout: React.FC = () => {
                     `flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-colors ${
                       isActive
                         ? 'bg-orange-50 text-orange-600 border border-orange-200 shadow-xs'
-                        : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                        : 'text-slate-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-slate-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900'
                     }`
                   }
                 >
@@ -181,7 +181,7 @@ export const PatientLayout: React.FC = () => {
           </div>
 
           <div className="bg-white rounded-2xl border border-slate-200 p-3 shadow-xs space-y-1">
-            <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-3 py-1.5">Care Details</p>
+            <p className="text-[10px] font-bold uppercase tracking-wider text-gray-500 px-3 py-1.5">Care Details</p>
             {moreNavItems.map((item) => {
               const Icon = item.icon;
               return (
@@ -192,7 +192,7 @@ export const PatientLayout: React.FC = () => {
                     `flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium transition-colors ${
                       isActive
                         ? 'bg-orange-50 text-orange-600 font-semibold'
-                        : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                        : 'text-slate-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-slate-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900'
                     }`
                   }
                 >
@@ -206,11 +206,11 @@ export const PatientLayout: React.FC = () => {
           {/* Calming Clinical Helpline Card */}
           <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl border border-orange-200/60 p-4 text-center">
             <Heart className="w-5 h-5 text-orange-500 mx-auto mb-2" />
-            <h4 className="text-xs font-bold text-slate-800">Need Immediate Help?</h4>
+            <h4 className="text-xs font-bold text-gray-900">Need Immediate Help?</h4>
             <p className="text-[11px] text-slate-600 mt-1">If you have urgent questions, contact the patient liaison desk directly.</p>
             <a
               href="tel:+15550100"
-              className="mt-3 block text-xs font-bold text-white bg-orange-500 hover:bg-orange-600 py-1.5 px-3 rounded-lg shadow-xs transition-colors"
+              className="mt-3 block text-xs font-bold text-white bg-orange-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-600 py-1.5 px-3 rounded-lg shadow-xs transition-colors"
             >
               Call Main Desk
             </a>
@@ -234,7 +234,7 @@ export const PatientLayout: React.FC = () => {
                 key={item.path}
                 to={item.path}
                 className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-xl transition-colors ${
-                  isActive ? 'text-orange-600' : 'text-slate-500 hover:text-slate-800'
+                  isActive ? 'text-orange-600' : 'text-gray-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900'
                 }`}
               >
                 <Icon className={`w-5 h-5 ${isActive ? 'stroke-[2.5]' : 'stroke-2'}`} />
@@ -247,7 +247,7 @@ export const PatientLayout: React.FC = () => {
           <button
             onClick={() => setIsMoreMenuOpen(!isMoreMenuOpen)}
             className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-xl transition-colors ${
-              isMoreMenuOpen ? 'text-orange-600' : 'text-slate-500 hover:text-slate-800'
+              isMoreMenuOpen ? 'text-orange-600' : 'text-gray-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900'
             }`}
           >
             {isMoreMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -258,13 +258,13 @@ export const PatientLayout: React.FC = () => {
 
       {/* Mobile "More" Drawer Modal */}
       {isMoreMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex flex-col justify-end">
+        <div className="md:hidden fixed inset-0 z-50 bg-gray-100/40 backdrop-blur-xs flex flex-col justify-end">
           <div className="bg-white rounded-t-3xl border-t border-slate-200 p-5 max-h-[80vh] overflow-y-auto space-y-3 shadow-2xl">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-              <span className="text-sm font-bold text-slate-900">Care Navigation</span>
+              <span className="text-sm font-bold text-gray-900">Care Navigation</span>
               <button
                 onClick={() => setIsMoreMenuOpen(false)}
-                className="p-1 rounded-full text-slate-400 hover:bg-slate-100"
+                className="p-1 rounded-full text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-50"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -278,7 +278,7 @@ export const PatientLayout: React.FC = () => {
                     key={item.path}
                     to={item.path}
                     onClick={() => setIsMoreMenuOpen(false)}
-                    className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 hover:bg-orange-50 hover:text-orange-600 border border-slate-200 text-xs font-semibold text-slate-700 transition-colors"
+                    className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-600 border border-slate-200 text-xs font-semibold text-slate-700 transition-colors"
                   >
                     <Icon className="w-4 h-4 text-orange-500" />
                     <span>{item.label}</span>
@@ -290,7 +290,7 @@ export const PatientLayout: React.FC = () => {
             <div className="pt-4 border-t border-slate-100">
               <button
                 onClick={handleLogout}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold text-rose-600 bg-rose-50 border border-rose-200 hover:bg-rose-100 transition-colors"
+                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold text-rose-600 bg-rose-50 border border-rose-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-100 transition-colors"
               >
                 <LogOut className="w-4 h-4" />
                 Sign Out of Patient Portal

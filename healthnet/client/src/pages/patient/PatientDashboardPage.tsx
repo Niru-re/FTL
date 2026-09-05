@@ -32,7 +32,7 @@ export const PatientDashboardPage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center py-20 text-slate-500 text-xs font-semibold">
+      <div className="flex items-center justify-center py-20 text-gray-400 text-xs font-semibold">
         <div className="animate-spin w-5 h-5 border-2 border-orange-500 border-t-transparent rounded-full mr-2" />
         Loading patient care dashboard...
       </div>
@@ -54,11 +54,11 @@ export const PatientDashboardPage: React.FC = () => {
       {/* 1. Header Greeting & Patient Identifier */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-5 rounded-3xl border border-slate-200 shadow-xs">
         <div>
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Personal Care Portal</span>
+          <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500">Personal Care Portal</span>
           <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
             Hello, {data.first_name}
           </h1>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <p className="text-xs text-gray-400 mt-0.5">
             Patient ID: <span className="font-semibold text-slate-800">{data.mrn}</span> • {data.age} yrs • {data.gender}
           </p>
         </div>
@@ -91,7 +91,7 @@ export const PatientDashboardPage: React.FC = () => {
           </div>
           <Link
             to="/patient/hospital"
-            className="shrink-0 text-xs font-bold text-amber-900 bg-white hover:bg-amber-100 px-3 py-1.5 rounded-xl border border-amber-200 transition-colors"
+            className="shrink-0 text-xs font-bold text-amber-900 bg-white bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-amber-100 px-3 py-1.5 rounded-xl border border-amber-200 transition-colors"
           >
             Track Route
           </Link>
@@ -102,7 +102,7 @@ export const PatientDashboardPage: React.FC = () => {
       <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs relative overflow-hidden">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100">
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Current Care Status</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Current Care Status</span>
             <div className="flex items-center gap-3 mt-1">
               <div className="w-3.5 h-3.5 rounded-full bg-emerald-500 animate-pulse" />
               <h2 className="text-lg font-black text-slate-900 tracking-tight">
@@ -115,9 +115,9 @@ export const PatientDashboardPage: React.FC = () => {
           </div>
 
           <div className="shrink-0 sm:text-right">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Current Location</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Current Location</span>
             <p className="text-xs font-bold text-slate-800 mt-0.5">{data.department_name}</p>
-            <p className="text-xs text-slate-500">{data.room_unit} • Room {data.bed_code}</p>
+            <p className="text-xs text-gray-400">{data.room_unit} • Room {data.bed_code}</p>
           </div>
         </div>
 
@@ -125,39 +125,39 @@ export const PatientDashboardPage: React.FC = () => {
         {data.vitals && (
           <div className="pt-5">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Simplified Vital Observations</span>
-              <span className="text-[11px] text-slate-400 italic">{data.vitals.disclaimer}</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Simplified Vital Observations</span>
+              <span className="text-[11px] text-gray-500 italic">{data.vitals.disclaimer}</span>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
-                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Heart Rate</span>
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Heart Rate</span>
                 <p className="text-lg font-extrabold text-slate-900 mt-1">
-                  {data.vitals.heart_rate || '--'} <span className="text-xs font-normal text-slate-500">bpm</span>
+                  {data.vitals.heart_rate || '--'} <span className="text-xs font-normal text-gray-400">bpm</span>
                 </p>
                 <span className="text-[10px] font-medium text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Regular Rhythm</span>
               </div>
 
               <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
-                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Oxygen Level</span>
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Oxygen Level</span>
                 <p className="text-lg font-extrabold text-slate-900 mt-1">
-                  {data.vitals.spo2 || '--'}% <span className="text-xs font-normal text-slate-500">SpO2</span>
+                  {data.vitals.spo2 || '--'}% <span className="text-xs font-normal text-gray-400">SpO2</span>
                 </p>
                 <span className="text-[10px] font-medium text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Assisted Oxygen</span>
               </div>
 
               <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
-                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Blood Pressure</span>
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Blood Pressure</span>
                 <p className="text-lg font-extrabold text-slate-900 mt-1">
-                  {data.vitals.systolic_bp}/{data.vitals.diastolic_bp} <span className="text-xs font-normal text-slate-500">mmHg</span>
+                  {data.vitals.systolic_bp}/{data.vitals.diastolic_bp} <span className="text-xs font-normal text-gray-400">mmHg</span>
                 </p>
                 <span className="text-[10px] font-medium text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Monitored</span>
               </div>
 
               <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
-                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Temperature</span>
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Temperature</span>
                 <p className="text-lg font-extrabold text-slate-900 mt-1">
-                  {data.vitals.temperature || '37.0'} <span className="text-xs font-normal text-slate-500">°C</span>
+                  {data.vitals.temperature || '37.0'} <span className="text-xs font-normal text-gray-400">°C</span>
                 </p>
                 <span className="text-[10px] font-medium text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Normal Range</span>
               </div>
@@ -173,7 +173,7 @@ export const PatientDashboardPage: React.FC = () => {
           <div>
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">My Dedicated Care Team</span>
-              <Link to="/patient/care-team" className="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1">
+              <Link to="/patient/care-team" className="text-xs font-bold text-orange-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-700 flex items-center gap-1">
                 View Profiles <ChevronRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -191,7 +191,7 @@ export const PatientDashboardPage: React.FC = () => {
                       On Duty
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-500">Attending Physician • Critical Care</p>
+                  <p className="text-[11px] text-gray-400">Attending Physician • Critical Care</p>
                 </div>
               </div>
 
@@ -207,17 +207,17 @@ export const PatientDashboardPage: React.FC = () => {
                       On Duty
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-500">Primary Care Nurse • Day Shift</p>
+                  <p className="text-[11px] text-gray-400">Primary Care Nurse • Day Shift</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
-            <span className="text-[11px] text-slate-500">Have a question for your team?</span>
+            <span className="text-[11px] text-gray-400">Have a question for your team?</span>
             <Link
               to="/patient/requests"
-              className="text-xs font-bold text-orange-600 hover:text-orange-700"
+              className="text-xs font-bold text-orange-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-700"
             >
               Submit Request →
             </Link>
@@ -229,51 +229,51 @@ export const PatientDashboardPage: React.FC = () => {
           <div>
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Patient Care Hub</span>
-              <span className="text-[11px] font-medium text-slate-400">Safe Access</span>
+              <span className="text-[11px] font-medium text-gray-500">Safe Access</span>
             </div>
 
             <div className="mt-4 grid grid-cols-2 gap-3">
               <Link
                 to="/patient/updates"
-                className="p-3.5 rounded-2xl bg-slate-50 hover:bg-orange-50 border border-slate-200/70 hover:border-orange-200 text-left transition-colors group"
+                className="p-3.5 rounded-2xl bg-slate-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-50 border border-slate-200/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-orange-200 text-left transition-colors group"
               >
                 <Clock className="w-4 h-4 text-orange-500 mb-1.5" />
-                <p className="text-xs font-bold text-slate-900 group-hover:text-orange-900">Recent Updates</p>
-                <p className="text-[11px] text-slate-500 mt-0.5">{data.recent_updates_count} logged updates</p>
+                <p className="text-xs font-bold text-slate-900 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-900">Recent Updates</p>
+                <p className="text-[11px] text-gray-400 mt-0.5">{data.recent_updates_count} logged updates</p>
               </Link>
 
               <Link
                 to="/patient/appointments"
-                className="p-3.5 rounded-2xl bg-slate-50 hover:bg-orange-50 border border-slate-200/70 hover:border-orange-200 text-left transition-colors group"
+                className="p-3.5 rounded-2xl bg-slate-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-50 border border-slate-200/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-orange-200 text-left transition-colors group"
               >
                 <Calendar className="w-4 h-4 text-orange-500 mb-1.5" />
-                <p className="text-xs font-bold text-slate-900 group-hover:text-orange-900">Appointments</p>
-                <p className="text-[11px] text-slate-500 mt-0.5">{data.upcoming_appointments_count} scheduled</p>
+                <p className="text-xs font-bold text-slate-900 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-900">Appointments</p>
+                <p className="text-[11px] text-gray-400 mt-0.5">{data.upcoming_appointments_count} scheduled</p>
               </Link>
 
               <Link
                 to="/patient/documents"
-                className="p-3.5 rounded-2xl bg-slate-50 hover:bg-orange-50 border border-slate-200/70 hover:border-orange-200 text-left transition-colors group"
+                className="p-3.5 rounded-2xl bg-slate-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-50 border border-slate-200/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-orange-200 text-left transition-colors group"
               >
                 <FileText className="w-4 h-4 text-orange-500 mb-1.5" />
-                <p className="text-xs font-bold text-slate-900 group-hover:text-orange-900">Documents</p>
-                <p className="text-[11px] text-slate-500 mt-0.5">{data.available_documents_count} available</p>
+                <p className="text-xs font-bold text-slate-900 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-900">Documents</p>
+                <p className="text-[11px] text-gray-400 mt-0.5">{data.available_documents_count} available</p>
               </Link>
 
               <Link
                 to="/patient/hospital"
-                className="p-3.5 rounded-2xl bg-slate-50 hover:bg-orange-50 border border-slate-200/70 hover:border-orange-200 text-left transition-colors group"
+                className="p-3.5 rounded-2xl bg-slate-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-50 border border-slate-200/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-orange-200 text-left transition-colors group"
               >
                 <MapPin className="w-4 h-4 text-orange-500 mb-1.5" />
-                <p className="text-xs font-bold text-slate-900 group-hover:text-orange-900">Hospital & Map</p>
-                <p className="text-[11px] text-slate-500 mt-0.5">Visitor hours & directions</p>
+                <p className="text-xs font-bold text-slate-900 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-900">Hospital & Map</p>
+                <p className="text-[11px] text-gray-400 mt-0.5">Visitor hours & directions</p>
               </Link>
             </div>
           </div>
 
-          <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-slate-500 text-[11px]">
+          <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-gray-400 text-[11px]">
             <span>Authorized Family Access Enabled</span>
-            <Link to="/patient/family" className="font-bold text-slate-700 hover:text-slate-900">
+            <Link to="/patient/family" className="font-bold text-slate-700 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-slate-900">
               Manage Access →
             </Link>
           </div>

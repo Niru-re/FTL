@@ -167,7 +167,7 @@ export const HospitalDetailPage: React.FC = () => {
 
   if (!hospital) {
     return (
-      <div className="p-8 text-center text-slate-400">
+      <div className="p-8 text-center text-gray-500">
         Hospital not found.
         <button onClick={() => navigate('/admin/hospitals')} className="mt-4 block mx-auto text-teal-400 underline">
           Return to Hospitals
@@ -194,11 +194,11 @@ export const HospitalDetailPage: React.FC = () => {
   return (
     <div className="space-y-6 pb-12">
       {/* Top Header & Breadcrumb */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-gray-200 pb-5">
         <div className="flex items-center gap-3">
           <button
             onClick={() => navigate('/admin/hospitals')}
-            className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-800 bg-slate-900 text-slate-400 hover:text-white transition"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-gray-100 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 transition"
           >
             <ArrowLeft className="h-4 w-4" />
           </button>
@@ -207,12 +207,12 @@ export const HospitalDetailPage: React.FC = () => {
               <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">{hospital.name}</h1>
               <StatusBadge status={hospital.emergency_status} type="hospital" />
             </div>
-            <p className="text-xs text-slate-400 mt-0.5 flex items-center gap-2">
+            <p className="text-xs text-gray-500 mt-0.5 flex items-center gap-2">
               <span>{hospital.branch_name}</span>
               <span>•</span>
               <span className="font-mono text-teal-400">{hospital.code}</span>
               <span>•</span>
-              <span className="flex items-center gap-1"><MapPin className="h-3 w-3 text-slate-500" />{hospital.address}</span>
+              <span className="flex items-center gap-1"><MapPin className="h-3 w-3 text-gray-400" />{hospital.address}</span>
             </p>
           </div>
         </div>
@@ -220,14 +220,14 @@ export const HospitalDetailPage: React.FC = () => {
         <div className="flex items-center gap-2.5">
           <button
             onClick={() => setShowEditModal(true)}
-            className="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-800/80 px-3.5 py-2 text-xs font-bold text-white hover:bg-slate-700 transition"
+            className="flex items-center gap-2 rounded-xl border border-gray-300 bg-gray-200/80 px-3.5 py-2 text-xs font-bold text-white bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 transition"
           >
             <Edit3 className="h-4 w-4 text-teal-400" />
             <span>Edit Hospital</span>
           </button>
           <button
             onClick={loadAllHospitalData}
-            className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-800 bg-slate-900 text-slate-400 hover:text-teal-400 transition"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-gray-100 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-teal-400 transition"
             title="Refresh Data"
           >
             <RefreshCw className="h-4 w-4" />
@@ -289,7 +289,7 @@ export const HospitalDetailPage: React.FC = () => {
       </div>
 
       {/* Tabs Navigation */}
-      <div className="flex items-center gap-1 border-b border-slate-800 overflow-x-auto custom-scrollbar pb-px">
+      <div className="flex items-center gap-1 border-b border-gray-200 overflow-x-auto custom-scrollbar pb-px">
         {[
           { key: 'overview', label: 'Overview', icon: Building2 },
           { key: 'departments', label: `Departments (${departments.length})`, icon: FolderTree },
@@ -307,7 +307,7 @@ export const HospitalDetailPage: React.FC = () => {
               className={`flex items-center gap-2 px-4 py-3 text-xs font-bold whitespace-nowrap transition-all border-b-2 ${
                 isActive
                   ? 'border-teal-400 text-teal-300 bg-teal-500/5'
-                  : 'border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-900/40'
+                  : 'border-transparent text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-700 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-100/40'
               }`}
             >
               <Icon className="h-4 w-4" />
@@ -320,27 +320,27 @@ export const HospitalDetailPage: React.FC = () => {
       {/* Tab 1: Overview */}
       {activeTab === 'overview' && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 rounded-2xl border border-slate-800 bg-slate-900/60 p-6 space-y-6">
+          <div className="lg:col-span-2 rounded-2xl border border-gray-200 bg-gray-100/60 p-6 space-y-6">
             <h3 className="text-base font-bold text-white flex items-center gap-2">
               <Building2 className="h-5 w-5 text-teal-400" />
               <span>Hospital Facility Profile</span>
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="rounded-xl border border-slate-800 bg-slate-950/40 p-4 space-y-1">
-                <span className="text-[11px] font-semibold uppercase text-slate-400">Campus Code</span>
+              <div className="rounded-xl border border-gray-200 bg-gray-50/40 p-4 space-y-1">
+                <span className="text-[11px] font-semibold uppercase text-gray-500">Campus Code</span>
                 <p className="text-sm font-bold text-white font-mono">{hospital.code}</p>
               </div>
-              <div className="rounded-xl border border-slate-800 bg-slate-950/40 p-4 space-y-1">
-                <span className="text-[11px] font-semibold uppercase text-slate-400">Trauma Designation</span>
+              <div className="rounded-xl border border-gray-200 bg-gray-50/40 p-4 space-y-1">
+                <span className="text-[11px] font-semibold uppercase text-gray-500">Trauma Designation</span>
                 <p className="text-sm font-bold text-white">{hospital.trauma_level}</p>
               </div>
-              <div className="rounded-xl border border-slate-800 bg-slate-950/40 p-4 space-y-1">
-                <span className="text-[11px] font-semibold uppercase text-slate-400">Emergency Dispatch Phone</span>
+              <div className="rounded-xl border border-gray-200 bg-gray-50/40 p-4 space-y-1">
+                <span className="text-[11px] font-semibold uppercase text-gray-500">Emergency Dispatch Phone</span>
                 <p className="text-sm font-bold text-teal-400 font-mono">{hospital.contact_phone}</p>
               </div>
-              <div className="rounded-xl border border-slate-800 bg-slate-950/40 p-4 space-y-1">
-                <span className="text-[11px] font-semibold uppercase text-slate-400">ECMO Availability</span>
+              <div className="rounded-xl border border-gray-200 bg-gray-50/40 p-4 space-y-1">
+                <span className="text-[11px] font-semibold uppercase text-gray-500">ECMO Availability</span>
                 <p className="text-sm font-bold text-emerald-400">{hospital.ecmo_available ? 'Available (Ready for Cannulation)' : 'Not Equipped'}</p>
               </div>
             </div>
@@ -348,16 +348,16 @@ export const HospitalDetailPage: React.FC = () => {
             {/* Capacity Distribution Bar */}
             <div className="space-y-3">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-semibold text-slate-300">Overall Bed Distribution</span>
+                <span className="font-semibold text-gray-600">Overall Bed Distribution</span>
                 <span className="font-bold text-teal-300">{summary?.overall_occupancy_rate ?? hospital.overall_occupancy_rate}% Occupied</span>
               </div>
-              <div className="w-full bg-slate-800 rounded-full h-3 flex overflow-hidden">
+              <div className="w-full bg-gray-200 rounded-full h-3 flex overflow-hidden">
                 <div style={{ width: `${((summary?.occupied_beds ?? hospital.occupied_beds) / ((summary?.total_beds ?? hospital.total_beds) || 1)) * 100}%` }} className="bg-rose-500 h-full" title="Occupied"></div>
                 <div style={{ width: `${((summary?.reserved_beds ?? hospital.reserved_beds) / ((summary?.total_beds ?? hospital.total_beds) || 1)) * 100}%` }} className="bg-sky-500 h-full" title="Reserved"></div>
                 <div style={{ width: `${((summary?.cleaning_beds ?? hospital.cleaning_beds) / ((summary?.total_beds ?? hospital.total_beds) || 1)) * 100}%` }} className="bg-amber-500 h-full" title="Cleaning"></div>
                 <div style={{ width: `${((summary?.available_beds ?? hospital.available_beds) / ((summary?.total_beds ?? hospital.total_beds) || 1)) * 100}%` }} className="bg-emerald-500 h-full" title="Available"></div>
               </div>
-              <div className="flex items-center justify-between text-[11px] text-slate-400 font-mono pt-1">
+              <div className="flex items-center justify-between text-[11px] text-gray-500 font-mono pt-1">
                 <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-rose-500"></span>Occupied ({summary?.occupied_beds ?? hospital.occupied_beds})</span>
                 <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-sky-500"></span>Reserved ({summary?.reserved_beds ?? hospital.reserved_beds})</span>
                 <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-amber-500"></span>Cleaning ({summary?.cleaning_beds ?? hospital.cleaning_beds})</span>
@@ -368,19 +368,19 @@ export const HospitalDetailPage: React.FC = () => {
 
           {/* Quick Actions & Geo Info */}
           <div className="space-y-6">
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 space-y-4">
+            <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-6 space-y-4">
               <h4 className="text-sm font-bold text-white">Geographical Coordinates</h4>
-              <div className="rounded-xl border border-slate-800 bg-slate-950/40 p-4 space-y-2 text-xs">
+              <div className="rounded-xl border border-gray-200 bg-gray-50/40 p-4 space-y-2 text-xs">
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Latitude:</span>
-                  <span className="font-mono text-slate-200">{hospital.lat.toFixed(4)}</span>
+                  <span className="text-gray-500">Latitude:</span>
+                  <span className="font-mono text-gray-700">{hospital.lat.toFixed(4)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Longitude:</span>
-                  <span className="font-mono text-slate-200">{hospital.lng.toFixed(4)}</span>
+                  <span className="text-gray-500">Longitude:</span>
+                  <span className="font-mono text-gray-700">{hospital.lng.toFixed(4)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Status Protocol:</span>
+                  <span className="text-gray-500">Status Protocol:</span>
                   <span className="font-bold text-teal-400">{hospital.emergency_status}</span>
                 </div>
               </div>
@@ -388,13 +388,13 @@ export const HospitalDetailPage: React.FC = () => {
               <div className="pt-2 space-y-2">
                 <button
                   onClick={() => setActiveTab('beds')}
-                  className="w-full rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition text-center"
+                  className="w-full rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition text-center"
                 >
                   Manage Hospital Beds
                 </button>
                 <button
                   onClick={() => setActiveTab('resources')}
-                  className="w-full rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 py-2.5 text-xs font-bold text-slate-200 transition text-center"
+                  className="w-full rounded-xl border border-gray-300 bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 py-2.5 text-xs font-bold text-gray-700 transition text-center"
                 >
                   Manage Medical Resources
                 </button>
@@ -411,7 +411,7 @@ export const HospitalDetailPage: React.FC = () => {
             <h3 className="text-base font-bold text-white">Clinical Departments ({departments.length})</h3>
             <button
               onClick={() => setShowAddDeptModal(true)}
-              className="rounded-xl bg-teal-600 hover:bg-teal-500 px-3.5 py-2 text-xs font-bold text-white transition flex items-center gap-1.5"
+              className="rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 px-3.5 py-2 text-xs font-bold text-white transition flex items-center gap-1.5"
             >
               <span>Add Department</span>
             </button>
@@ -419,21 +419,21 @@ export const HospitalDetailPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {departments.map(dept => (
-              <div key={dept.id} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 space-y-3 hover:border-slate-700 transition">
+              <div key={dept.id} className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-3 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono font-bold text-teal-400">{dept.code}</span>
                   <StatusBadge status={dept.status} type="icu" />
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-white">{dept.name}</h4>
-                  <p className="text-[11px] text-slate-400 mt-0.5">{dept.floor}</p>
+                  <p className="text-[11px] text-gray-500 mt-0.5">{dept.floor}</p>
                 </div>
-                <div className="border-t border-slate-800/80 pt-3 flex items-center justify-between text-xs">
-                  <span className="text-slate-400">Head:</span>
-                  <span className="font-semibold text-slate-200">{dept.head_doctor_name || 'Dr. Attending'}</span>
+                <div className="border-t border-gray-200/80 pt-3 flex items-center justify-between text-xs">
+                  <span className="text-gray-500">Head:</span>
+                  <span className="font-semibold text-gray-700">{dept.head_doctor_name || 'Dr. Attending'}</span>
                 </div>
-                <div className="flex items-center justify-between text-xs bg-slate-950/40 p-2.5 rounded-xl">
-                  <span className="text-slate-400">Capacity:</span>
+                <div className="flex items-center justify-between text-xs bg-gray-50/40 p-2.5 rounded-xl">
+                  <span className="text-gray-500">Capacity:</span>
                   <span className="font-bold text-white">{dept.occupied_beds} / {dept.total_beds} Beds ({dept.occupancy_rate}%)</span>
                 </div>
               </div>
@@ -448,7 +448,7 @@ export const HospitalDetailPage: React.FC = () => {
           <h3 className="text-base font-bold text-white">ICU Units & Inpatient Wards ({units.length})</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {units.map(unit => (
-              <div key={unit.id} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 space-y-4 hover:border-slate-700 transition">
+              <div key={unit.id} className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-4 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition">
                 <div className="flex items-center justify-between">
                   <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md border ${
                     unit.unit_type === 'ICU' ? 'bg-purple-500/10 text-purple-300 border-purple-500/20' : 'bg-teal-500/10 text-teal-300 border-teal-500/20'
@@ -459,15 +459,15 @@ export const HospitalDetailPage: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-white">{unit.name}</h4>
-                  <p className="text-[11px] text-slate-400 mt-0.5">{unit.department_name}</p>
+                  <p className="text-[11px] text-gray-500 mt-0.5">{unit.department_name}</p>
                 </div>
 
                 <div className="space-y-1.5">
                   <div className="flex justify-between text-xs">
-                    <span className="text-slate-400">Occupancy</span>
+                    <span className="text-gray-500">Occupancy</span>
                     <span className="font-bold text-white">{unit.occupied} / {unit.capacity} ({unit.occupancy_rate}%)</span>
                   </div>
-                  <div className="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                  <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
                     <div
                       style={{ width: `${Math.min(100, unit.occupancy_rate)}%` }}
                       className={`h-full rounded-full ${
@@ -478,16 +478,16 @@ export const HospitalDetailPage: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-3 gap-2 text-center text-xs pt-1">
-                  <div className="rounded-lg bg-slate-950/40 p-2">
-                    <span className="text-[10px] text-slate-400 block">Available</span>
+                  <div className="rounded-lg bg-gray-50/40 p-2">
+                    <span className="text-[10px] text-gray-500 block">Available</span>
                     <span className="font-bold text-emerald-400">{unit.available}</span>
                   </div>
-                  <div className="rounded-lg bg-slate-950/40 p-2">
-                    <span className="text-[10px] text-slate-400 block">Occupied</span>
+                  <div className="rounded-lg bg-gray-50/40 p-2">
+                    <span className="text-[10px] text-gray-500 block">Occupied</span>
                     <span className="font-bold text-rose-400">{unit.occupied}</span>
                   </div>
-                  <div className="rounded-lg bg-slate-950/40 p-2">
-                    <span className="text-[10px] text-slate-400 block">Cleaning</span>
+                  <div className="rounded-lg bg-gray-50/40 p-2">
+                    <span className="text-[10px] text-gray-500 block">Cleaning</span>
                     <span className="font-bold text-amber-400">{unit.cleaning}</span>
                   </div>
                 </div>
@@ -500,15 +500,15 @@ export const HospitalDetailPage: React.FC = () => {
       {/* Tab 4: Beds */}
       {activeTab === 'beds' && (
         <div className="space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-gray-100/60 p-4 rounded-2xl border border-gray-200">
             <div className="relative flex-1 max-w-sm">
-              <Search className="h-4 w-4 text-slate-500 absolute left-3 top-3" />
+              <Search className="h-4 w-4 text-gray-400 absolute left-3 top-3" />
               <input
                 type="text"
                 placeholder="Search bed code or patient name..."
                 value={bedSearch}
                 onChange={(e) => setBedSearch(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-teal-500"
+                className="w-full pl-9 pr-4 py-2 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-900 placeholder-slate-500 focus:outline-none focus:border-teal-500"
               />
             </div>
 
@@ -516,7 +516,7 @@ export const HospitalDetailPage: React.FC = () => {
               <select
                 value={bedStatusFilter}
                 onChange={(e) => setBedStatusFilter(e.target.value)}
-                className="rounded-xl bg-slate-950 border border-slate-800 px-3 py-2 text-xs text-slate-300 focus:outline-none focus:border-teal-500"
+                className="rounded-xl bg-gray-50 border border-gray-200 px-3 py-2 text-xs text-gray-600 focus:outline-none focus:border-teal-500"
               >
                 <option value="ALL">All Statuses</option>
                 <option value="AVAILABLE">Available</option>
@@ -530,7 +530,7 @@ export const HospitalDetailPage: React.FC = () => {
               <select
                 value={bedTypeFilter}
                 onChange={(e) => setBedTypeFilter(e.target.value)}
-                className="rounded-xl bg-slate-950 border border-slate-800 px-3 py-2 text-xs text-slate-300 focus:outline-none focus:border-teal-500"
+                className="rounded-xl bg-gray-50 border border-gray-200 px-3 py-2 text-xs text-gray-600 focus:outline-none focus:border-teal-500"
               >
                 <option value="ALL">All Types</option>
                 <option value="ICU">ICU</option>
@@ -545,21 +545,21 @@ export const HospitalDetailPage: React.FC = () => {
             {filteredBeds.map(bed => (
               <div
                 key={bed.id}
-                className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-3 hover:border-slate-700 transition"
+                className="rounded-2xl border border-gray-200 bg-gray-100/60 p-4 space-y-3 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono font-bold text-white">{bed.code}</span>
                   <StatusBadge status={bed.status} type="bed" />
                 </div>
-                <p className="text-[11px] text-slate-400">{bed.department_name || bed.bed_type}</p>
+                <p className="text-[11px] text-gray-500">{bed.department_name || bed.bed_type}</p>
 
                 {bed.status === 'OCCUPIED' && bed.patient_name ? (
-                  <div className="rounded-xl bg-slate-950/60 p-2.5 border border-slate-800/80">
-                    <span className="text-[10px] text-slate-500 block uppercase">Current Patient</span>
-                    <span className="text-xs font-bold text-slate-200 block truncate">{bed.patient_name}</span>
+                  <div className="rounded-xl bg-gray-50/60 p-2.5 border border-gray-200/80">
+                    <span className="text-[10px] text-gray-400 block uppercase">Current Patient</span>
+                    <span className="text-xs font-bold text-gray-700 block truncate">{bed.patient_name}</span>
                   </div>
                 ) : (
-                  <div className="rounded-xl bg-slate-950/30 p-2.5 border border-slate-800/40 text-center">
+                  <div className="rounded-xl bg-gray-50/30 p-2.5 border border-gray-200/40 text-center">
                     <span className="text-[11px] font-semibold text-emerald-400">Available for Admission</span>
                   </div>
                 )}
@@ -567,13 +567,13 @@ export const HospitalDetailPage: React.FC = () => {
                 <div className="flex items-center gap-2 pt-1">
                   <button
                     onClick={() => setViewBedDetail(bed)}
-                    className="flex-1 rounded-lg border border-slate-700 bg-slate-800/80 py-1.5 text-xs font-bold text-slate-300 hover:text-white transition"
+                    className="flex-1 rounded-lg border border-gray-300 bg-gray-200/80 py-1.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
                   >
                     View
                   </button>
                   <button
                     onClick={() => setSelectedBed(bed)}
-                    className="flex-1 rounded-lg bg-teal-600 hover:bg-teal-500 py-1.5 text-xs font-bold text-white transition"
+                    className="flex-1 rounded-lg bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-1.5 text-xs font-bold text-white transition"
                   >
                     Change Status
                   </button>
@@ -590,23 +590,23 @@ export const HospitalDetailPage: React.FC = () => {
           <h3 className="text-base font-bold text-white">Tracked Medical Equipment & Resources ({resources.length})</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {resources.map(res => (
-              <div key={res.id} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 space-y-3 hover:border-slate-700 transition">
+              <div key={res.id} className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-3 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono font-bold text-teal-400">{res.resource_id}</span>
                   <StatusBadge status={res.status} type="hospital" />
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-white">{res.name}</h4>
-                  <p className="text-[11px] text-slate-400 mt-0.5">{res.resource_type}</p>
+                  <p className="text-[11px] text-gray-500 mt-0.5">{res.resource_type}</p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 bg-slate-950/40 p-3 rounded-xl text-xs">
+                <div className="grid grid-cols-2 gap-2 bg-gray-50/40 p-3 rounded-xl text-xs">
                   <div>
-                    <span className="text-[10px] text-slate-400 block">Total Quantity</span>
+                    <span className="text-[10px] text-gray-500 block">Total Quantity</span>
                     <span className="font-bold text-white">{res.quantity}</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-slate-400 block">Available</span>
+                    <span className="text-[10px] text-gray-500 block">Available</span>
                     <span className="font-bold text-emerald-400">{res.available_quantity}</span>
                   </div>
                 </div>
@@ -617,7 +617,7 @@ export const HospitalDetailPage: React.FC = () => {
                     setResourceAvailQty(res.available_quantity);
                     setResourceStatus(res.status);
                   }}
-                  className="w-full rounded-xl bg-slate-800 hover:bg-slate-700 py-2 text-xs font-bold text-teal-400 transition"
+                  className="w-full rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 py-2 text-xs font-bold text-teal-400 transition"
                 >
                   Update Quantity / Status
                 </button>
@@ -633,15 +633,15 @@ export const HospitalDetailPage: React.FC = () => {
           <h3 className="text-base font-bold text-white">Hospital Clinical Staff Roster ({staff.length})</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {staff.map(member => (
-              <div key={member.id} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 flex items-center justify-between">
+              <div key={member.id} className="rounded-2xl border border-gray-200 bg-gray-100/60 p-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-teal-400 font-bold text-sm">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-200 text-teal-400 font-bold text-sm">
                     {member.staff_type === 'DOCTOR' ? <Stethoscope className="h-5 w-5 text-sky-400" /> : <UserCheck className="h-5 w-5 text-teal-400" />}
                   </div>
                   <div>
                     <h4 className="text-xs font-bold text-white">{member.name}</h4>
-                    <p className="text-[11px] text-slate-400">{member.specialization}</p>
-                    <span className="text-[10px] font-mono text-slate-500">{member.employee_code} • {member.shift}</span>
+                    <p className="text-[11px] text-gray-500">{member.specialization}</p>
+                    <span className="text-[10px] font-mono text-gray-400">{member.employee_code} • {member.shift}</span>
                   </div>
                 </div>
                 <StatusBadge status={member.on_duty_status} type="hospital" />
@@ -662,44 +662,44 @@ export const HospitalDetailPage: React.FC = () => {
 
       {/* Bed View Detail Modal */}
       {viewBedDetail && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
+          <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-gray-200 pb-3">
               <span className="text-base font-bold text-white flex items-center gap-2">
                 <BedDouble className="h-5 w-5 text-teal-400" />
                 <span>Bed {viewBedDetail.code} Details</span>
               </span>
-              <button onClick={() => setViewBedDetail(null)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setViewBedDetail(null)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
 
-            <div className="space-y-2 text-xs text-slate-300">
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Department:</span>
+            <div className="space-y-2 text-xs text-gray-600">
+              <div className="flex justify-between py-1 border-b border-gray-200/60">
+                <span className="text-gray-500">Department:</span>
                 <span className="font-semibold text-white">{viewBedDetail.department_name}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Type:</span>
+              <div className="flex justify-between py-1 border-b border-gray-200/60">
+                <span className="text-gray-500">Type:</span>
                 <span className="font-semibold text-white">{viewBedDetail.bed_type}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Status:</span>
+              <div className="flex justify-between py-1 border-b border-gray-200/60">
+                <span className="text-gray-500">Status:</span>
                 <StatusBadge status={viewBedDetail.status} type="bed" />
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Patient:</span>
+              <div className="flex justify-between py-1 border-b border-gray-200/60">
+                <span className="text-gray-500">Patient:</span>
                 <span className="font-semibold text-white">{viewBedDetail.patient_name || 'None (Available)'}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Equipment:</span>
+              <div className="flex justify-between py-1 border-b border-gray-200/60">
+                <span className="text-gray-500">Equipment:</span>
                 <span className="font-semibold text-teal-400">{viewBedDetail.equipment || 'Standard Ports'}</span>
               </div>
             </div>
 
             <button
               onClick={() => setViewBedDetail(null)}
-              className="w-full rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
+              className="w-full rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
             >
               Close
             </button>
@@ -709,66 +709,66 @@ export const HospitalDetailPage: React.FC = () => {
 
       {/* Edit Hospital Modal */}
       {showEditModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="w-full max-w-lg rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
+          <div className="w-full max-w-lg rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-gray-200 pb-3">
               <h3 className="text-base font-bold text-white">Edit Hospital Information</h3>
-              <button onClick={() => setShowEditModal(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setShowEditModal(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
 
             <form onSubmit={handleUpdateHospital} className="space-y-3">
               <div>
-                <label className="text-xs font-semibold text-slate-400">Hospital Name</label>
+                <label className="text-xs font-semibold text-gray-500">Hospital Name</label>
                 <input
                   type="text"
                   required
                   value={editFormData.name}
                   onChange={(e) => setEditFormData({ ...editFormData, name: e.target.value })}
-                  className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  className="w-full mt-1 p-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-900 focus:outline-none focus:border-teal-500"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-slate-400">Branch Campus Name</label>
+                <label className="text-xs font-semibold text-gray-500">Branch Campus Name</label>
                 <input
                   type="text"
                   required
                   value={editFormData.branch_name}
                   onChange={(e) => setEditFormData({ ...editFormData, branch_name: e.target.value })}
-                  className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  className="w-full mt-1 p-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-900 focus:outline-none focus:border-teal-500"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-slate-400">Address</label>
+                <label className="text-xs font-semibold text-gray-500">Address</label>
                 <input
                   type="text"
                   required
                   value={editFormData.address}
                   onChange={(e) => setEditFormData({ ...editFormData, address: e.target.value })}
-                  className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  className="w-full mt-1 p-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-900 focus:outline-none focus:border-teal-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-xs font-semibold text-slate-400">Contact Phone</label>
+                  <label className="text-xs font-semibold text-gray-500">Contact Phone</label>
                   <input
                     type="text"
                     required
                     value={editFormData.contact_phone}
                     onChange={(e) => setEditFormData({ ...editFormData, contact_phone: e.target.value })}
-                    className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                    className="w-full mt-1 p-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-900 focus:outline-none focus:border-teal-500"
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-semibold text-slate-400">Emergency Status</label>
+                  <label className="text-xs font-semibold text-gray-500">Emergency Status</label>
                   <select
                     value={editFormData.emergency_status}
                     onChange={(e) => setEditFormData({ ...editFormData, emergency_status: e.target.value })}
-                    className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                    className="w-full mt-1 p-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-900 focus:outline-none focus:border-teal-500"
                   >
                     <option value="NORMAL">NORMAL</option>
                     <option value="DIVERT">DIVERT</option>
@@ -782,13 +782,13 @@ export const HospitalDetailPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowEditModal(false)}
-                  className="flex-1 rounded-xl border border-slate-700 bg-slate-800 py-2.5 text-xs font-bold text-slate-300 hover:text-white transition"
+                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
+                  className="flex-1 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
                 >
                   Save Changes
                 </button>
@@ -800,58 +800,58 @@ export const HospitalDetailPage: React.FC = () => {
 
       {/* Add Department Modal */}
       {showAddDeptModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
+          <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-gray-200 pb-3">
               <h3 className="text-base font-bold text-white">Add Department</h3>
-              <button onClick={() => setShowAddDeptModal(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setShowAddDeptModal(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
 
             <form onSubmit={handleAddDepartment} className="space-y-3">
               <div>
-                <label className="text-xs font-semibold text-slate-400">Department Name</label>
+                <label className="text-xs font-semibold text-gray-500">Department Name</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Pediatric Intensive Care"
                   value={deptFormData.name}
                   onChange={(e) => setDeptFormData({ ...deptFormData, name: e.target.value })}
-                  className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  className="w-full mt-1 p-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-900 focus:outline-none focus:border-teal-500"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-slate-400">Department Code</label>
+                <label className="text-xs font-semibold text-gray-500">Department Code</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. PICU"
                   value={deptFormData.code}
                   onChange={(e) => setDeptFormData({ ...deptFormData, code: e.target.value.toUpperCase() })}
-                  className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  className="w-full mt-1 p-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-900 focus:outline-none focus:border-teal-500"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-slate-400">Floor Location</label>
+                <label className="text-xs font-semibold text-gray-500">Floor Location</label>
                 <input
                   type="text"
                   value={deptFormData.floor}
                   onChange={(e) => setDeptFormData({ ...deptFormData, floor: e.target.value })}
-                  className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  className="w-full mt-1 p-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-900 focus:outline-none focus:border-teal-500"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-slate-400">Head of Department</label>
+                <label className="text-xs font-semibold text-gray-500">Head of Department</label>
                 <input
                   type="text"
                   placeholder="Dr. Physician Name"
                   value={deptFormData.head_doctor_name}
                   onChange={(e) => setDeptFormData({ ...deptFormData, head_doctor_name: e.target.value })}
-                  className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  className="w-full mt-1 p-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-900 focus:outline-none focus:border-teal-500"
                 />
               </div>
 
@@ -859,13 +859,13 @@ export const HospitalDetailPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowAddDeptModal(false)}
-                  className="flex-1 rounded-xl border border-slate-700 bg-slate-800 py-2.5 text-xs font-bold text-slate-300 hover:text-white transition"
+                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
+                  className="flex-1 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
                 >
                   Create Department
                 </button>
@@ -877,34 +877,34 @@ export const HospitalDetailPage: React.FC = () => {
 
       {/* Resource Update Modal */}
       {selectedResource && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
+          <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-gray-200 pb-3">
               <h3 className="text-base font-bold text-white">Update {selectedResource.name}</h3>
-              <button onClick={() => setSelectedResource(null)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setSelectedResource(null)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
 
             <form onSubmit={handleUpdateResource} className="space-y-3">
               <div>
-                <label className="text-xs font-semibold text-slate-400">Available Quantity (Max: {selectedResource.quantity})</label>
+                <label className="text-xs font-semibold text-gray-500">Available Quantity (Max: {selectedResource.quantity})</label>
                 <input
                   type="number"
                   min="0"
                   max={selectedResource.quantity}
                   value={resourceAvailQty}
                   onChange={(e) => setResourceAvailQty(Number(e.target.value))}
-                  className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  className="w-full mt-1 p-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-900 focus:outline-none focus:border-teal-500"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-slate-400">Resource Status</label>
+                <label className="text-xs font-semibold text-gray-500">Resource Status</label>
                 <select
                   value={resourceStatus}
                   onChange={(e) => setResourceStatus(e.target.value)}
-                  className="w-full mt-1 p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-teal-500"
+                  className="w-full mt-1 p-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-900 focus:outline-none focus:border-teal-500"
                 >
                   <option value="AVAILABLE">AVAILABLE</option>
                   <option value="IN_USE">IN_USE</option>
@@ -917,13 +917,13 @@ export const HospitalDetailPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setSelectedResource(null)}
-                  className="flex-1 rounded-xl border border-slate-700 bg-slate-800 py-2.5 text-xs font-bold text-slate-300 hover:text-white transition"
+                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
+                  className="flex-1 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
                 >
                   Save Resource
                 </button>

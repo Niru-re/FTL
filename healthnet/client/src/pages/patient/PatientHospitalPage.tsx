@@ -26,7 +26,7 @@ export const PatientHospitalPage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center py-20 text-slate-500 text-xs font-semibold">
+      <div className="flex items-center justify-center py-20 text-gray-400 text-xs font-semibold">
         <div className="animate-spin w-5 h-5 border-2 border-orange-500 border-t-transparent rounded-full mr-2" />
         Loading facility guidelines...
       </div>
@@ -41,11 +41,11 @@ export const PatientHospitalPage: React.FC = () => {
     <div className="space-y-6 animate-fade-in">
       {/* Header */}
       <div className="bg-white p-5 rounded-3xl border border-slate-200 shadow-xs">
-        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Campus Location</span>
+        <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500">Campus Location</span>
         <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
           Hospital & Campus Guide
         </h1>
-        <p className="text-xs text-slate-500 mt-0.5">
+        <p className="text-xs text-gray-400 mt-0.5">
           Campus address, department directions, visitor guidelines, and liaison contacts.
         </p>
       </div>
@@ -59,13 +59,13 @@ export const PatientHospitalPage: React.FC = () => {
             </div>
             <div>
               <h2 className="text-base font-bold text-slate-900">{info.hospital_name}</h2>
-              <p className="text-xs text-slate-500">{info.branch_name}</p>
+              <p className="text-xs text-gray-400">{info.branch_name}</p>
             </div>
           </div>
 
           <div className="space-y-3 text-xs text-slate-700">
             <div className="flex items-start gap-2.5">
-              <MapPin className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+              <MapPin className="w-4 h-4 text-gray-500 shrink-0 mt-0.5" />
               <div>
                 <span className="font-semibold text-slate-900">Campus Address:</span>
                 <p className="text-slate-600 mt-0.5">{info.address}</p>
@@ -73,7 +73,7 @@ export const PatientHospitalPage: React.FC = () => {
             </div>
 
             <div className="flex items-start gap-2.5">
-              <Phone className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+              <Phone className="w-4 h-4 text-gray-500 shrink-0 mt-0.5" />
               <div>
                 <span className="font-semibold text-slate-900">Patient Liaison Contact:</span>
                 <p className="text-slate-600 mt-0.5">{info.general_phone}</p>
@@ -81,7 +81,7 @@ export const PatientHospitalPage: React.FC = () => {
             </div>
 
             <div className="flex items-start gap-2.5">
-              <Clock className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+              <Clock className="w-4 h-4 text-gray-500 shrink-0 mt-0.5" />
               <div>
                 <span className="font-semibold text-slate-900">Visiting Hours:</span>
                 <p className="text-slate-600 mt-0.5">{info.visiting_hours}</p>
@@ -116,7 +116,7 @@ export const PatientHospitalPage: React.FC = () => {
               href={`https://maps.google.com/?q=${info.lat},${info.lng}`}
               target="_blank"
               rel="noreferrer"
-              className="font-bold text-orange-600 hover:text-orange-700 inline-flex items-center gap-1"
+              className="font-bold text-orange-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-700 inline-flex items-center gap-1"
             >
               Get Directions <Navigation className="w-3 h-3" />
             </a>

@@ -163,7 +163,7 @@ export const AdminDashboard: React.FC = () => {
           </div>
           <button
             onClick={() => navigate('/admin/simulation')}
-            className="px-3.5 py-1.5 rounded-xl bg-rose-500 hover:bg-rose-600 text-white text-xs font-bold transition shadow-sm self-end md:self-center"
+            className="px-3.5 py-1.5 rounded-xl bg-rose-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-600 text-white text-xs font-bold transition shadow-sm self-end md:self-center"
           >
             Open Incident Command
           </button>
@@ -208,14 +208,14 @@ export const AdminDashboard: React.FC = () => {
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => setIsCompareOpen(true)}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white hover:bg-gray-50 text-orange-500 text-xs font-bold border border-gray-200 transition"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-50 text-orange-500 text-xs font-bold border border-gray-200 transition"
             >
               <GitCompare className="w-4 h-4" />
               <span>Compare</span>
             </button>
             <button
               onClick={openEmergencyModal}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-rose-500 hover:bg-rose-600 text-white text-xs font-bold shadow-sm transition active:scale-95"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-rose-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-600 text-white text-xs font-bold shadow-sm transition active:scale-95"
             >
               <Plus className="w-4 h-4" />
               <span>Intake Case</span>
@@ -223,7 +223,7 @@ export const AdminDashboard: React.FC = () => {
             <button
               onClick={loadData}
               disabled={isLoading}
-              className="p-2 rounded-xl bg-white hover:bg-gray-50 text-gray-400 transition border border-gray-200"
+              className="p-2 rounded-xl bg-white bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-50 text-gray-400 transition border border-gray-200"
             >
               <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin text-orange-500' : ''}`} />
             </button>
@@ -232,7 +232,7 @@ export const AdminDashboard: React.FC = () => {
       </div>
 
       {/* KPI Row */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-2.5">
         <StatCard title="Total Hospitals"    value={networkSummary?.total_hospitals ?? 13}         subValue="Connected"          icon={Building2} variant="orange"  />
         <StatCard title="Total Branches"     value={networkSummary?.total_branches ?? 12}          subValue="Regional Campuses"  icon={GitBranch} variant="sky"     />
         <StatCard title="Total Beds"         value={networkSummary?.total_beds ?? 569}             subValue="Network Capacity"   icon={BedDouble} variant="teal"    />
@@ -310,14 +310,14 @@ export const AdminDashboard: React.FC = () => {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsCompareOpen(true)}
-              className="text-xs font-bold text-orange-500 hover:text-orange-600 transition flex items-center gap-1 bg-orange-50 border border-orange-200 px-3 py-1 rounded-lg"
+              className="text-xs font-bold text-orange-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-600 transition flex items-center gap-1 bg-orange-50 border border-orange-200 px-3 py-1 rounded-lg"
             >
               <GitCompare className="w-3.5 h-3.5" />
               Compare Facilities
             </button>
             <button
               onClick={() => navigate('/admin/icu')}
-              className="text-xs font-bold text-teal-600 hover:text-teal-700 transition flex items-center gap-1"
+              className="text-xs font-bold text-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-teal-700 transition flex items-center gap-1"
             >
               <span>View ICU Units</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -352,11 +352,11 @@ export const AdminDashboard: React.FC = () => {
                   pressureLevel === 'WATCH'    ? 'bg-sky-50   text-sky-600   border-sky-200'    :
                                                  'bg-emerald-50 text-emerald-600 border-emerald-200';
                 return (
-                  <tr key={hosp.id} className="hover:bg-orange-50/40 transition">
+                  <tr key={hosp.id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-50/40 transition">
                     <td className="px-4 py-3.5 font-bold text-gray-900">
                       <button
                         onClick={() => navigate(`/admin/hospitals/${hosp.id}`)}
-                        className="hover:text-orange-500 transition text-left"
+                        className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-500 transition text-left"
                       >
                         {hosp.name}
                       </button>
@@ -430,7 +430,7 @@ export const AdminDashboard: React.FC = () => {
           </div>
           <button
             onClick={() => navigate('/admin/ai-intelligence')}
-            className="w-full py-2 rounded-xl bg-orange-50 hover:bg-orange-100 text-orange-600 text-xs font-bold transition flex items-center justify-center gap-1 border border-orange-200"
+            className="w-full py-2 rounded-xl bg-orange-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-100 text-orange-600 text-xs font-bold transition flex items-center justify-center gap-1 border border-orange-200"
           >
             <span>Open AI Capacity Intelligence</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -457,12 +457,12 @@ export const AdminDashboard: React.FC = () => {
                 <div
                   key={h.id}
                   onClick={() => navigate(`/admin/hospitals/${h.id}`)}
-                  className="flex items-center justify-between p-3 rounded-xl bg-gray-50 border border-gray-200 hover:border-orange-200 hover:bg-orange-50/50 transition cursor-pointer group"
+                  className="flex items-center justify-between p-3 rounded-xl bg-gray-50 border border-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-orange-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-50/50 transition cursor-pointer group"
                 >
                   <div className="flex items-center gap-3">
                     <span className="font-mono font-black text-sm text-gray-400 w-4">{index + 1}.</span>
                     <div>
-                      <div className="text-xs font-bold text-gray-800 group-hover:text-orange-600 transition">{h.name}</div>
+                      <div className="text-xs font-bold text-gray-800 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-600 transition">{h.name}</div>
                       <div className="text-[10px] text-gray-400">
                         {h.available_icu_beds || 0} Avail ICU &bull; {h.available_beds || 0} Beds Free
                       </div>
@@ -480,7 +480,7 @@ export const AdminDashboard: React.FC = () => {
           </div>
           <button
             onClick={() => navigate('/admin/hospitals')}
-            className="w-full py-2 rounded-xl bg-gray-50 hover:bg-gray-100 text-gray-600 text-xs font-bold transition flex items-center justify-center gap-1 border border-gray-200"
+            className="w-full py-2 rounded-xl bg-gray-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-100 text-gray-600 text-xs font-bold transition flex items-center justify-center gap-1 border border-gray-200"
           >
             <span>View All Facility Rankings</span>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -523,7 +523,7 @@ export const AdminDashboard: React.FC = () => {
           </div>
           <button
             onClick={() => navigate('/admin/audit')}
-            className="w-full py-2 rounded-xl bg-gray-50 hover:bg-gray-100 text-gray-600 text-xs font-bold transition flex items-center justify-center gap-1 border border-gray-200"
+            className="w-full py-2 rounded-xl bg-gray-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-100 text-gray-600 text-xs font-bold transition flex items-center justify-center gap-1 border border-gray-200"
           >
             <span>View Full Audit Timeline</span>
             <ChevronRight className="w-3.5 h-3.5" />

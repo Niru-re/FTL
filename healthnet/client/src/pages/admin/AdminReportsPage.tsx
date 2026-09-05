@@ -79,7 +79,7 @@ export const AdminReportsPage: React.FC = () => {
   return (
     <div className="space-y-6 pb-12">
       {/* Header Banner */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-900/80 p-6 rounded-2xl border border-slate-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gray-100/80 p-6 rounded-2xl border border-gray-200">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-sky-500/10 text-sky-400 border border-sky-500/20">
@@ -89,18 +89,18 @@ export const AdminReportsPage: React.FC = () => {
               PROTOTYPE OPERATIONAL REPORT
             </span>
           </div>
-          <h1 className="text-2xl font-black text-white tracking-tight flex items-center gap-3">
+          <h1 className="text-2xl font-black text-gray-900 tracking-tight flex items-center gap-3">
             <FileText className="w-7 h-7 text-sky-400" />
             Executive Reports & Utilization Center
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-gray-500 mt-1">
             Consolidated operational reports across beds, ICU units, emergency demand, ambulances, and clinical equipment.
           </p>
         </div>
 
         <button
           onClick={exportCSV}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold shadow-lg shadow-sky-600/20 transition-all self-start md:self-auto"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sky-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-500 text-white text-xs font-bold shadow-lg shadow-sky-600/20 transition-all self-start md:self-auto"
         >
           <Download className="w-4 h-4" />
           Export CSV Report
@@ -110,8 +110,8 @@ export const AdminReportsPage: React.FC = () => {
       {/* Report Controls: Select Report Type & Time Period (Section 23 & 24) */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Report Selector */}
-        <div className="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-wrap gap-2 items-center">
-          <span className="text-xs font-bold text-slate-400 mr-2 uppercase">Report:</span>
+        <div className="lg:col-span-2 bg-gray-100 border border-gray-200 rounded-xl p-4 flex flex-wrap gap-2 items-center">
+          <span className="text-xs font-bold text-gray-500 mr-2 uppercase">Report:</span>
           {[
             { id: 'HOSPITAL_CAPACITY', label: 'Hospital Capacity' },
             { id: 'ICU_UTILIZATION', label: 'ICU Utilization' },
@@ -126,7 +126,7 @@ export const AdminReportsPage: React.FC = () => {
               className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                 reportType === r.id
                   ? 'bg-sky-600 text-white shadow-md'
-                  : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
+                  : 'bg-gray-50 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 border border-gray-200'
               }`}
             >
               {r.label}
@@ -135,8 +135,8 @@ export const AdminReportsPage: React.FC = () => {
         </div>
 
         {/* Time Period Selector (Section 24) */}
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 flex items-center justify-between">
-          <span className="text-xs font-bold text-slate-400 uppercase flex items-center gap-1.5">
+        <div className="bg-gray-100 border border-gray-200 rounded-xl p-4 flex items-center justify-between">
+          <span className="text-xs font-bold text-gray-500 uppercase flex items-center gap-1.5">
             <Calendar className="w-4 h-4 text-sky-400" />
             Window:
           </span>
@@ -147,8 +147,8 @@ export const AdminReportsPage: React.FC = () => {
                 onClick={() => setTimeRange(t)}
                 className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
                   timeRange === t
-                    ? 'bg-slate-800 text-sky-400 border border-sky-500/40'
-                    : 'text-slate-400 hover:text-slate-200'
+                    ? 'bg-gray-200 text-sky-400 border border-sky-500/40'
+                    : 'text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-700'
                 }`}
               >
                 {t}
@@ -159,19 +159,19 @@ export const AdminReportsPage: React.FC = () => {
       </div>
 
       {/* Generated Report Table */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl">
-        <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/40">
+      <div className="bg-gray-100 border border-gray-200 rounded-2xl overflow-hidden shadow-2xl">
+        <div className="p-4 border-b border-gray-200 flex items-center justify-between bg-gray-50/40">
           <div className="text-xs font-bold text-white uppercase tracking-wide">
             {reportType.replace('_', ' ')} • WINDOW: {timeRange} • {hospitals.length} HOSPITALS MONITORED
           </div>
-          <div className="text-[10px] text-slate-500">
+          <div className="text-[10px] text-gray-400">
             PROTOTYPE REPORT • SIMULATED METRICS
           </div>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-300">
-            <thead className="bg-slate-950/80 text-slate-400 font-bold border-b border-slate-800 uppercase text-[10px] tracking-wider">
+          <table className="w-full text-left text-xs text-gray-600">
+            <thead className="bg-gray-50/80 text-gray-500 font-bold border-b border-gray-200 uppercase text-[10px] tracking-wider">
               <tr>
                 <th className="px-5 py-3">Hospital Entity</th>
                 <th className="px-4 py-3">Branch / Campus</th>
@@ -184,10 +184,10 @@ export const AdminReportsPage: React.FC = () => {
                 <th className="px-4 py-3 text-right">Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60">
+            <tbody className="divide-y divide-gray-200/60">
               {loading ? (
                 <tr>
-                  <td colSpan={9} className="text-center py-12 text-slate-400">
+                  <td colSpan={9} className="text-center py-12 text-gray-500">
                     <RefreshCw className="w-6 h-6 animate-spin mx-auto mb-2 text-sky-400" />
                     Generating operational report...
                   </td>
@@ -196,11 +196,11 @@ export const AdminReportsPage: React.FC = () => {
                 hospitals.map((h) => {
                   const occ = h.icu_occupancy_rate || 0;
                   return (
-                    <tr key={h.id} className="hover:bg-slate-800/40 transition-colors">
+                    <tr key={h.id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 transition-colors">
                       <td className="px-5 py-3.5 font-bold text-white">
                         {h.name}
                       </td>
-                      <td className="px-4 py-3.5 text-slate-400">
+                      <td className="px-4 py-3.5 text-gray-500">
                         {h.branch_name || 'Campus'} ({h.code})
                       </td>
                       <td className="px-3 py-3.5 text-center font-mono font-semibold text-white">
@@ -217,16 +217,16 @@ export const AdminReportsPage: React.FC = () => {
                       </td>
                       <td className="px-4 py-3.5">
                         <div className="flex items-center gap-2">
-                          <div className="w-16 h-2 rounded-full bg-slate-800 overflow-hidden">
+                          <div className="w-16 h-2 rounded-full bg-gray-200 overflow-hidden">
                             <div
                               className={`h-full ${occ >= 85 ? 'bg-rose-500' : occ >= 70 ? 'bg-amber-500' : 'bg-emerald-500'}`}
                               style={{ width: `${Math.min(100, occ)}%` }}
                             />
                           </div>
-                          <span className="font-mono font-semibold text-slate-200">{Math.round(occ)}%</span>
+                          <span className="font-mono font-semibold text-gray-700">{Math.round(occ)}%</span>
                         </div>
                       </td>
-                      <td className="px-4 py-3.5 font-mono text-slate-300">
+                      <td className="px-4 py-3.5 font-mono text-gray-600">
                         {h.ventilators_available || 0} / {h.ventilators_total || 0}
                       </td>
                       <td className="px-4 py-3.5 text-right">

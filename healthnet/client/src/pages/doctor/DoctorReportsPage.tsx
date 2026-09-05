@@ -39,7 +39,7 @@ export const DoctorReportsPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-200 pb-5">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <FileSpreadsheet className="h-4 w-4 text-sky-400" />
@@ -48,13 +48,13 @@ export const DoctorReportsPage: React.FC = () => {
           <h1 className="text-2xl font-black tracking-tight text-white">
             Clinical Quality & Census Reports
           </h1>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-gray-500 mt-0.5">
             Physician service metrics, deterioration incident analytics, and antimicrobial stewardship
           </p>
         </div>
         <button
           onClick={() => { setIsLoading(true); fetchReportsData(); }}
-          className="flex items-center gap-2 rounded-xl bg-slate-800 hover:bg-slate-700 px-3.5 py-2 text-xs font-bold text-slate-300 transition border border-slate-700 self-start md:self-auto"
+          className="flex items-center gap-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300 self-start md:self-auto"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
           <span>Refresh Analytics</span>
@@ -70,66 +70,66 @@ export const DoctorReportsPage: React.FC = () => {
 
       {/* Reports Catalog */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 space-y-4 shadow-xl backdrop-blur-sm">
+        <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-4 shadow-xl backdrop-blur-sm">
           <div className="flex items-center gap-3">
             <div className="p-3 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400">
               <Users className="h-5 w-5" />
             </div>
             <div>
               <h3 className="text-sm font-bold text-white">ICU Inpatient Census Report</h3>
-              <p className="text-xs text-slate-400">Active patient load & acuity classification</p>
+              <p className="text-xs text-gray-500">Active patient load & acuity classification</p>
             </div>
           </div>
-          <p className="text-xs text-slate-300">
+          <p className="text-xs text-gray-600">
             Total Patients: <strong className="text-white font-mono">{patients.length}</strong> &bull; Critical: <strong className="text-rose-400 font-mono">{summary?.critical_patients || 0}</strong>
           </p>
           <button
             onClick={() => handleExport('ICU Inpatient Census Report')}
-            className="w-full flex items-center justify-center gap-2 rounded-xl bg-slate-800 hover:bg-slate-700 py-2 text-xs font-bold text-slate-200 transition border border-slate-700"
+            className="w-full flex items-center justify-center gap-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 py-2 text-xs font-bold text-gray-700 transition border border-gray-300"
           >
             <Download className="h-3.5 w-3.5" />
             <span>Export Census CSV</span>
           </button>
         </div>
 
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 space-y-4 shadow-xl backdrop-blur-sm">
+        <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-4 shadow-xl backdrop-blur-sm">
           <div className="flex items-center gap-3">
             <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400">
               <ShieldAlert className="h-5 w-5" />
             </div>
             <div>
               <h3 className="text-sm font-bold text-white">Deterioration Audit Summary</h3>
-              <p className="text-xs text-slate-400">NEWS2 score trends & physiological triggers</p>
+              <p className="text-xs text-gray-500">NEWS2 score trends & physiological triggers</p>
             </div>
           </div>
-          <p className="text-xs text-slate-300">
+          <p className="text-xs text-gray-600">
             Active Alerts: <strong className="text-rose-400 font-mono">{summary?.active_alerts || 0}</strong> &bull; Model Disclaimers Verified
           </p>
           <button
             onClick={() => handleExport('Deterioration Audit Summary')}
-            className="w-full flex items-center justify-center gap-2 rounded-xl bg-slate-800 hover:bg-slate-700 py-2 text-xs font-bold text-slate-200 transition border border-slate-700"
+            className="w-full flex items-center justify-center gap-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 py-2 text-xs font-bold text-gray-700 transition border border-gray-300"
           >
             <Download className="h-3.5 w-3.5" />
             <span>Export Audit PDF</span>
           </button>
         </div>
 
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 space-y-4 shadow-xl backdrop-blur-sm">
+        <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-4 shadow-xl backdrop-blur-sm">
           <div className="flex items-center gap-3">
             <div className="p-3 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-400">
               <FileText className="h-5 w-5" />
             </div>
             <div>
               <h3 className="text-sm font-bold text-white">Physician Orders Log</h3>
-              <p className="text-xs text-slate-400">Active labs, procedures, and consults</p>
+              <p className="text-xs text-gray-500">Active labs, procedures, and consults</p>
             </div>
           </div>
-          <p className="text-xs text-slate-300">
+          <p className="text-xs text-gray-600">
             Service: <strong className="text-teal-300">Dr. Arjun Sharma (Critical Care)</strong>
           </p>
           <button
             onClick={() => handleExport('Physician Orders Log')}
-            className="w-full flex items-center justify-center gap-2 rounded-xl bg-slate-800 hover:bg-slate-700 py-2 text-xs font-bold text-slate-200 transition border border-slate-700"
+            className="w-full flex items-center justify-center gap-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 py-2 text-xs font-bold text-gray-700 transition border border-gray-300"
           >
             <Download className="h-3.5 w-3.5" />
             <span>Export Orders Log</span>

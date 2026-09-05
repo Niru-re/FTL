@@ -89,10 +89,10 @@ export const BedsPage: React.FC = () => {
   return (
     <div className="space-y-6 pb-12">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-200 pb-5">
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight flex items-center gap-2">
               <BedDouble className="h-6 w-6 text-teal-400" />
               <span>City-Wide Bed Command Matrix</span>
             </h1>
@@ -100,14 +100,14 @@ export const BedsPage: React.FC = () => {
               {beds.length} Tracked Beds
             </span>
           </div>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-gray-500 mt-1">
             Real-time multi-hospital bed orchestrator with valid clinical workflow transitions.
           </p>
         </div>
 
         <button
           onClick={fetchBedsAndHospitals}
-          className="flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900 px-3.5 py-2 text-xs font-semibold text-slate-300 hover:text-white transition self-start sm:self-auto"
+          className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-gray-100 px-3.5 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 transition self-start sm:self-auto"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
           <span>Refresh Matrix</span>
@@ -119,74 +119,74 @@ export const BedsPage: React.FC = () => {
         <div
           onClick={() => setSelectedStatus(selectedStatus === 'AVAILABLE' ? 'ALL' : 'AVAILABLE')}
           className={`rounded-2xl border p-3.5 transition cursor-pointer ${
-            selectedStatus === 'AVAILABLE' ? 'border-emerald-500 bg-emerald-500/15' : 'border-slate-800 bg-slate-900/70 hover:border-slate-700'
+            selectedStatus === 'AVAILABLE' ? 'border-emerald-500 bg-emerald-500/15' : 'border-gray-200 bg-gray-100/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300'
           }`}
         >
-          <span className="text-[10px] uppercase font-bold text-slate-400 block">Available</span>
+          <span className="text-[10px] uppercase font-bold text-gray-500 block">Available</span>
           <span className="text-xl font-bold text-emerald-400">{availableCount}</span>
         </div>
 
         <div
           onClick={() => setSelectedStatus(selectedStatus === 'OCCUPIED' ? 'ALL' : 'OCCUPIED')}
           className={`rounded-2xl border p-3.5 transition cursor-pointer ${
-            selectedStatus === 'OCCUPIED' ? 'border-rose-500 bg-rose-500/15' : 'border-slate-800 bg-slate-900/70 hover:border-slate-700'
+            selectedStatus === 'OCCUPIED' ? 'border-rose-500 bg-rose-500/15' : 'border-gray-200 bg-gray-100/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300'
           }`}
         >
-          <span className="text-[10px] uppercase font-bold text-slate-400 block">Occupied</span>
+          <span className="text-[10px] uppercase font-bold text-gray-500 block">Occupied</span>
           <span className="text-xl font-bold text-rose-400">{occupiedCount}</span>
         </div>
 
         <div
           onClick={() => setSelectedStatus(selectedStatus === 'RESERVED' ? 'ALL' : 'RESERVED')}
           className={`rounded-2xl border p-3.5 transition cursor-pointer ${
-            selectedStatus === 'RESERVED' ? 'border-sky-500 bg-sky-500/15' : 'border-slate-800 bg-slate-900/70 hover:border-slate-700'
+            selectedStatus === 'RESERVED' ? 'border-sky-500 bg-sky-500/15' : 'border-gray-200 bg-gray-100/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300'
           }`}
         >
-          <span className="text-[10px] uppercase font-bold text-slate-400 block">Reserved</span>
+          <span className="text-[10px] uppercase font-bold text-gray-500 block">Reserved</span>
           <span className="text-xl font-bold text-sky-400">{reservedCount}</span>
         </div>
 
         <div
           onClick={() => setSelectedStatus(selectedStatus === 'CLEANING' ? 'ALL' : 'CLEANING')}
           className={`rounded-2xl border p-3.5 transition cursor-pointer ${
-            selectedStatus === 'CLEANING' ? 'border-amber-500 bg-amber-500/15' : 'border-slate-800 bg-slate-900/70 hover:border-slate-700'
+            selectedStatus === 'CLEANING' ? 'border-amber-500 bg-amber-500/15' : 'border-gray-200 bg-gray-100/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300'
           }`}
         >
-          <span className="text-[10px] uppercase font-bold text-slate-400 block">Cleaning</span>
+          <span className="text-[10px] uppercase font-bold text-gray-500 block">Cleaning</span>
           <span className="text-xl font-bold text-amber-400">{cleaningCount}</span>
         </div>
 
         <div
           onClick={() => setSelectedStatus(selectedStatus === 'MAINTENANCE' ? 'ALL' : 'MAINTENANCE')}
           className={`rounded-2xl border p-3.5 transition cursor-pointer ${
-            selectedStatus === 'MAINTENANCE' ? 'border-orange-500 bg-orange-500/15' : 'border-slate-800 bg-slate-900/70 hover:border-slate-700'
+            selectedStatus === 'MAINTENANCE' ? 'border-orange-500 bg-orange-500/15' : 'border-gray-200 bg-gray-100/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300'
           }`}
         >
-          <span className="text-[10px] uppercase font-bold text-slate-400 block">Maintenance</span>
+          <span className="text-[10px] uppercase font-bold text-gray-500 block">Maintenance</span>
           <span className="text-xl font-bold text-orange-400">{maintenanceCount}</span>
         </div>
 
         <div
           onClick={() => setSelectedStatus(selectedStatus === 'OUT_OF_SERVICE' ? 'ALL' : 'OUT_OF_SERVICE')}
           className={`rounded-2xl border p-3.5 transition cursor-pointer ${
-            selectedStatus === 'OUT_OF_SERVICE' ? 'border-slate-500 bg-slate-700/50' : 'border-slate-800 bg-slate-900/70 hover:border-slate-700'
+            selectedStatus === 'OUT_OF_SERVICE' ? 'border-slate-500 bg-gray-300/50' : 'border-gray-200 bg-gray-100/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300'
           }`}
         >
-          <span className="text-[10px] uppercase font-bold text-slate-400 block">Out of Service</span>
-          <span className="text-xl font-bold text-slate-400">{outOfServiceCount}</span>
+          <span className="text-[10px] uppercase font-bold text-gray-500 block">Out of Service</span>
+          <span className="text-xl font-bold text-gray-500">{outOfServiceCount}</span>
         </div>
       </div>
 
       {/* Filter Bar */}
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-3 rounded-2xl border border-gray-200 bg-gray-100/60 p-4">
         <div className="relative flex-1 w-full max-w-md">
-          <Search className="h-4 w-4 text-slate-500 absolute left-3 top-2.5" />
+          <Search className="h-4 w-4 text-gray-400 absolute left-3 top-2.5" />
           <input
             type="text"
             placeholder="Search bed code, patient name, MRN, or hospital..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full rounded-xl border border-slate-800 bg-slate-950 pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:border-teal-500 focus:outline-none"
+            className="w-full rounded-xl border border-gray-200 bg-gray-50 pl-9 pr-3 py-2 text-xs text-gray-900 placeholder-slate-500 focus:border-teal-500 focus:outline-none"
           />
         </div>
 
@@ -195,7 +195,7 @@ export const BedsPage: React.FC = () => {
           <select
             value={selectedHospitalId}
             onChange={(e) => { setSelectedHospitalId(e.target.value); setSelectedDeptId('ALL'); }}
-            className="rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-slate-300 focus:border-teal-500 focus:outline-none"
+            className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-600 focus:border-teal-500 focus:outline-none"
           >
             <option value="ALL">All Hospitals</option>
             {hospitals.map(h => (
@@ -207,7 +207,7 @@ export const BedsPage: React.FC = () => {
           <select
             value={selectedDeptId}
             onChange={(e) => setSelectedDeptId(e.target.value)}
-            className="rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-slate-300 focus:border-teal-500 focus:outline-none"
+            className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-600 focus:border-teal-500 focus:outline-none"
           >
             <option value="ALL">All Departments</option>
             {departments.map(d => (
@@ -219,7 +219,7 @@ export const BedsPage: React.FC = () => {
           <select
             value={selectedType}
             onChange={(e) => setSelectedType(e.target.value)}
-            className="rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-slate-300 focus:border-teal-500 focus:outline-none"
+            className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-600 focus:border-teal-500 focus:outline-none"
           >
             <option value="ALL">All Bed Types</option>
             <option value="ICU">ICU</option>
@@ -233,7 +233,7 @@ export const BedsPage: React.FC = () => {
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-slate-300 focus:border-teal-500 focus:outline-none"
+            className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-600 focus:border-teal-500 focus:outline-none"
           >
             <option value="ALL">All Statuses</option>
             <option value="AVAILABLE">AVAILABLE (Green)</option>
@@ -255,28 +255,28 @@ export const BedsPage: React.FC = () => {
           return (
             <div
               key={bed.id}
-              className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 hover:border-slate-700 transition flex flex-col justify-between space-y-3"
+              className="rounded-2xl border border-gray-200 bg-gray-100/70 p-4 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition flex flex-col justify-between space-y-3"
             >
               <div className="space-y-2.5">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-sm font-bold text-white tracking-wide">{bed.code}</span>
+                  <span className="font-mono text-sm font-bold text-gray-900 tracking-wide">{bed.code}</span>
                   <StatusBadge type="bed" status={bed.status} />
                 </div>
 
                 <div>
-                  <h4 className="text-xs font-semibold text-slate-300 truncate">{bed.department_name || bed.bed_type}</h4>
-                  <p className="text-[11px] text-slate-500 truncate">{bed.hospital_name}</p>
+                  <h4 className="text-xs font-semibold text-gray-600 truncate">{bed.department_name || bed.bed_type}</h4>
+                  <p className="text-[11px] text-gray-400 truncate">{bed.hospital_name}</p>
                 </div>
 
                 {/* Equipment Tags */}
                 <div className="flex items-center gap-1.5 text-[10px] font-semibold">
                   <span className={`px-2 py-0.5 rounded-md border ${
-                    hasVent ? 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20' : 'bg-slate-950 text-slate-500 border-slate-800'
+                    hasVent ? 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20' : 'bg-gray-50 text-gray-400 border-gray-200'
                   }`}>
                     Ventilator: {hasVent ? 'YES' : 'NO'}
                   </span>
                   <span className={`px-2 py-0.5 rounded-md border ${
-                    hasMonitor ? 'bg-purple-500/10 text-purple-400 border-purple-500/20' : 'bg-slate-950 text-slate-500 border-slate-800'
+                    hasMonitor ? 'bg-purple-500/10 text-purple-400 border-purple-500/20' : 'bg-gray-50 text-gray-400 border-gray-200'
                   }`}>
                     Monitor: {hasMonitor ? 'YES' : 'NO'}
                   </span>
@@ -284,13 +284,13 @@ export const BedsPage: React.FC = () => {
 
                 {/* Patient or Available status info */}
                 {bed.status === 'OCCUPIED' && bed.patient_name ? (
-                  <div className="rounded-xl bg-slate-950/60 p-2.5 border border-slate-800/80">
-                    <span className="text-[10px] uppercase font-bold text-slate-500 block">Current Inpatient</span>
-                    <span className="text-xs font-bold text-slate-200 block truncate">{bed.patient_name}</span>
-                    {bed.patient_mrn && <span className="text-[10px] text-slate-400 font-mono">{bed.patient_mrn}</span>}
+                  <div className="rounded-xl bg-gray-50/60 p-2.5 border border-gray-200/80">
+                    <span className="text-[10px] uppercase font-bold text-gray-400 block">Current Inpatient</span>
+                    <span className="text-xs font-bold text-gray-700 block truncate">{bed.patient_name}</span>
+                    {bed.patient_mrn && <span className="text-[10px] text-gray-500 font-mono">{bed.patient_mrn}</span>}
                   </div>
                 ) : (
-                  <div className="rounded-xl bg-slate-950/30 p-2.5 border border-slate-800/40 text-center">
+                  <div className="rounded-xl bg-gray-50/30 p-2.5 border border-gray-200/40 text-center">
                     <span className="text-[11px] font-semibold text-emerald-400">
                       {bed.status === 'AVAILABLE' ? 'Available for Admission' : bed.status}
                     </span>
@@ -299,16 +299,16 @@ export const BedsPage: React.FC = () => {
               </div>
 
               {/* Action Buttons: [View] [Change] */}
-              <div className="border-t border-slate-800/80 pt-2.5 flex items-center gap-2">
+              <div className="border-t border-gray-200/80 pt-2.5 flex items-center gap-2">
                 <button
                   onClick={() => setViewBedDetail(bed)}
-                  className="flex-1 rounded-xl border border-slate-700 hover:bg-slate-800 py-1.5 text-xs font-bold text-slate-300 transition text-center"
+                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 py-1.5 text-xs font-bold text-gray-600 transition text-center"
                 >
                   View
                 </button>
                 <button
                   onClick={() => setActiveBedForStatus(bed)}
-                  className="flex-1 rounded-xl bg-teal-600 hover:bg-teal-500 py-1.5 text-xs font-bold text-white transition text-center"
+                  className="flex-1 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-1.5 text-xs font-bold text-white transition text-center"
                 >
                   Change
                 </button>
@@ -329,62 +329,62 @@ export const BedsPage: React.FC = () => {
 
       {/* Bed View Detail Modal */}
       {viewBedDetail && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
+          <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-gray-200 pb-3">
               <span className="text-base font-bold text-white flex items-center gap-2">
                 <BedDouble className="h-5 w-5 text-teal-400" />
                 <span>Bed {viewBedDetail.code}</span>
               </span>
-              <button onClick={() => setViewBedDetail(null)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setViewBedDetail(null)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
 
-            <div className="space-y-2.5 text-xs text-slate-300">
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Hospital:</span>
+            <div className="space-y-2.5 text-xs text-gray-600">
+              <div className="flex justify-between py-1 border-b border-gray-200/60">
+                <span className="text-gray-500">Hospital:</span>
                 <span className="font-semibold text-white">{viewBedDetail.hospital_name}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Department:</span>
+              <div className="flex justify-between py-1 border-b border-gray-200/60">
+                <span className="text-gray-500">Department:</span>
                 <span className="font-semibold text-white">{viewBedDetail.department_name}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Bed Type:</span>
+              <div className="flex justify-between py-1 border-b border-gray-200/60">
+                <span className="text-gray-500">Bed Type:</span>
                 <span className="font-semibold text-white">{viewBedDetail.bed_type}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Status:</span>
+              <div className="flex justify-between py-1 border-b border-gray-200/60">
+                <span className="text-gray-500">Status:</span>
                 <StatusBadge status={viewBedDetail.status} type="bed" />
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Patient:</span>
+              <div className="flex justify-between py-1 border-b border-gray-200/60">
+                <span className="text-gray-500">Patient:</span>
                 <span className="font-semibold text-white">{viewBedDetail.patient_name || 'None (Available)'}</span>
               </div>
               {viewBedDetail.patient_mrn && (
-                <div className="flex justify-between py-1 border-b border-slate-800/60">
-                  <span className="text-slate-400">MRN:</span>
+                <div className="flex justify-between py-1 border-b border-gray-200/60">
+                  <span className="text-gray-500">MRN:</span>
                   <span className="font-mono text-teal-400">{viewBedDetail.patient_mrn}</span>
                 </div>
               )}
               {viewBedDetail.patient_diagnosis && (
-                <div className="flex justify-between py-1 border-b border-slate-800/60">
-                  <span className="text-slate-400">Diagnosis:</span>
-                  <span className="font-semibold text-slate-200">{viewBedDetail.patient_diagnosis}</span>
+                <div className="flex justify-between py-1 border-b border-gray-200/60">
+                  <span className="text-gray-500">Diagnosis:</span>
+                  <span className="font-semibold text-gray-700">{viewBedDetail.patient_diagnosis}</span>
                 </div>
               )}
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Assigned Doctor:</span>
+              <div className="flex justify-between py-1 border-b border-gray-200/60">
+                <span className="text-gray-500">Assigned Doctor:</span>
                 <span className="font-semibold text-white">{viewBedDetail.doctor_name || 'On Duty Physician'}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Assigned Nurse:</span>
+              <div className="flex justify-between py-1 border-b border-gray-200/60">
+                <span className="text-gray-500">Assigned Nurse:</span>
                 <span className="font-semibold text-white">{viewBedDetail.nurse_name || 'Charge Nurse'}</span>
               </div>
               <div className="py-1">
-                <span className="text-slate-400 block mb-1">Equipment Attached:</span>
-                <span className="font-mono text-teal-300 bg-slate-950 px-2 py-1 rounded block border border-slate-800">
+                <span className="text-gray-500 block mb-1">Equipment Attached:</span>
+                <span className="font-mono text-teal-300 bg-gray-50 px-2 py-1 rounded block border border-gray-200">
                   {viewBedDetail.equipment || 'Standard Physiological Port'}
                 </span>
               </div>
@@ -393,7 +393,7 @@ export const BedsPage: React.FC = () => {
             <div className="flex items-center gap-3 pt-2">
               <button
                 onClick={() => setViewBedDetail(null)}
-                className="flex-1 rounded-xl border border-slate-700 bg-slate-800 py-2.5 text-xs font-bold text-slate-300 hover:text-white transition"
+                className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
               >
                 Close
               </button>
@@ -403,7 +403,7 @@ export const BedsPage: React.FC = () => {
                   setViewBedDetail(null);
                   setActiveBedForStatus(b);
                 }}
-                className="flex-1 rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
+                className="flex-1 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
               >
                 Change Status
               </button>

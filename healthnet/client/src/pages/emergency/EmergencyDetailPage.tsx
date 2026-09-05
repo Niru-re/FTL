@@ -115,7 +115,7 @@ export const EmergencyDetailPage: React.FC = () => {
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="flex flex-col items-center gap-3">
           <RefreshCw className="h-8 w-8 text-rose-400 animate-spin" />
-          <p className="text-xs text-slate-400">Loading Emergency Mission Control...</p>
+          <p className="text-xs text-gray-500">Loading Emergency Mission Control...</p>
         </div>
       </div>
     );
@@ -157,11 +157,11 @@ export const EmergencyDetailPage: React.FC = () => {
       )}
 
       {/* Top Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-200 pb-4">
         <div className="flex items-center gap-3">
           <button
             onClick={() => navigate('/admin/emergency')}
-            className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition"
+            className="p-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-600 transition"
           >
             <ArrowLeft className="h-4 w-4" />
           </button>
@@ -171,12 +171,12 @@ export const EmergencyDetailPage: React.FC = () => {
                 {emergencyCase.case_number}
               </span>
               <h1 className="text-xl font-black text-white">{emergencyCase.patient_name}</h1>
-              <span className="text-xs text-slate-400">
+              <span className="text-xs text-gray-500">
                 {emergencyCase.patient_age}y &bull; {emergencyCase.patient_gender} &bull; {emergencyCase.emergency_type}
               </span>
             </div>
-            <p className="text-xs text-slate-400 mt-0.5">
-              Pickup: <span className="text-slate-300 font-medium">{emergencyCase.pickup_address}</span>
+            <p className="text-xs text-gray-500 mt-0.5">
+              Pickup: <span className="text-gray-600 font-medium">{emergencyCase.pickup_address}</span>
             </p>
           </div>
         </div>
@@ -193,7 +193,7 @@ export const EmergencyDetailPage: React.FC = () => {
           </span>
           <button
             onClick={() => { setIsLoading(true); fetchEmergencyData(); }}
-            className="flex items-center gap-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 px-3 py-1.5 text-xs font-bold text-slate-300 transition"
+            className="flex items-center gap-1.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3 py-1.5 text-xs font-bold text-gray-600 transition"
           >
             <RefreshCw className="h-3.5 w-3.5" />
             <span>Sync</span>
@@ -202,7 +202,7 @@ export const EmergencyDetailPage: React.FC = () => {
       </div>
 
       {/* Progress Timeline Step Bar */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 shadow-xl backdrop-blur-sm">
+      <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-4 shadow-xl backdrop-blur-sm">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
           {stages.map((stg, i) => {
             const isCompleted = currentStageIdx > i;
@@ -216,7 +216,7 @@ export const EmergencyDetailPage: React.FC = () => {
                     ? 'bg-emerald-950/40 border-emerald-500/30 text-emerald-300'
                     : isCurrent
                     ? 'bg-rose-950/40 border-rose-500 text-rose-200 ring-2 ring-rose-500/20'
-                    : 'bg-slate-950/40 border-slate-800 text-slate-500'
+                    : 'bg-gray-50/40 border-gray-200 text-gray-400'
                 }`}
               >
                 <div className="flex items-center justify-center gap-1 text-[10px] font-mono font-bold uppercase">
@@ -246,8 +246,8 @@ export const EmergencyDetailPage: React.FC = () => {
 
           {/* Assigned Ambulance Telemetry Panel */}
           {amb && (
-            <div className="rounded-2xl border border-sky-500/30 bg-slate-900/80 p-5 space-y-4 shadow-xl backdrop-blur-sm">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+            <div className="rounded-2xl border border-sky-500/30 bg-gray-100/80 p-5 space-y-4 shadow-xl backdrop-blur-sm">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-gray-200 pb-3">
                 <div className="flex items-center gap-3">
                   <div className="p-3 rounded-xl bg-sky-500/20 border border-sky-500/30 text-sky-400">
                     <Siren className="h-6 w-6 animate-pulse" />
@@ -255,13 +255,13 @@ export const EmergencyDetailPage: React.FC = () => {
                   <div>
                     <span className="text-[10px] font-bold text-sky-400 uppercase tracking-wider">Assigned Transit Unit</span>
                     <h3 className="text-base font-black text-white">{amb.code} &bull; {amb.vehicle_number}</h3>
-                    <span className="text-xs text-slate-400">Paramedic: <strong className="text-slate-200">{amb.paramedic_name}</strong> &bull; Driver: {amb.driver_name}</span>
+                    <span className="text-xs text-gray-500">Paramedic: <strong className="text-gray-700">{amb.paramedic_name}</strong> &bull; Driver: {amb.driver_name}</span>
                   </div>
                 </div>
 
                 <div className="text-right">
                   <span className="text-3xl font-black text-sky-400 font-mono block">
-                    {amb.eta_minutes} <small className="text-xs text-slate-400">MIN</small>
+                    {amb.eta_minutes} <small className="text-xs text-gray-500">MIN</small>
                   </span>
                   <span className="text-[10px] font-bold text-sky-300 bg-sky-950 px-2 py-0.5 rounded uppercase border border-sky-500/30">
                     {amb.status}
@@ -273,7 +273,7 @@ export const EmergencyDetailPage: React.FC = () => {
               <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
                 <div className="flex items-center gap-2">
                   <Navigation className="h-4 w-4 text-emerald-400" />
-                  <span className="text-xs text-slate-300">
+                  <span className="text-xs text-gray-600">
                     Speed: <strong className="font-mono text-white">{amb.speed_kmh} km/h</strong> &bull; Destination: <strong className="text-white">{emergencyCase.assigned_hospital_name}</strong>
                   </span>
                 </div>
@@ -285,7 +285,7 @@ export const EmergencyDetailPage: React.FC = () => {
                         type="button"
                         disabled={actionLoading}
                         onClick={handleStepSimulation}
-                        className="flex items-center gap-1.5 rounded-xl bg-sky-600/20 hover:bg-sky-600/30 border border-sky-500/30 px-3 py-1.5 text-xs font-bold text-sky-300 transition"
+                        className="flex items-center gap-1.5 rounded-xl bg-sky-600/20 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-600/30 border border-sky-500/30 px-3 py-1.5 text-xs font-bold text-sky-300 transition"
                       >
                         <FastForward className="h-3.5 w-3.5" />
                         <span>Step Movement (-2m)</span>
@@ -294,7 +294,7 @@ export const EmergencyDetailPage: React.FC = () => {
                         type="button"
                         disabled={actionLoading}
                         onClick={handleTriggerArrival}
-                        className="flex items-center gap-1.5 rounded-xl bg-amber-600/20 hover:bg-amber-600/30 border border-amber-500/30 px-3 py-1.5 text-xs font-bold text-amber-300 transition"
+                        className="flex items-center gap-1.5 rounded-xl bg-amber-600/20 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-amber-600/30 border border-amber-500/30 px-3 py-1.5 text-xs font-bold text-amber-300 transition"
                       >
                         <CheckCircle2 className="h-3.5 w-3.5" />
                         <span>Trigger Arrival</span>
@@ -307,7 +307,7 @@ export const EmergencyDetailPage: React.FC = () => {
                       type="button"
                       disabled={actionLoading}
                       onClick={handleReturnAmbulance}
-                      className="flex items-center gap-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 px-3 py-1.5 text-xs font-bold text-slate-300 transition border border-slate-700"
+                      className="flex items-center gap-1.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3 py-1.5 text-xs font-bold text-gray-600 transition border border-gray-300"
                     >
                       <RefreshCw className="h-3.5 w-3.5" />
                       <span>Return to Fleet</span>
@@ -319,38 +319,38 @@ export const EmergencyDetailPage: React.FC = () => {
           )}
 
           {/* Patient Baseline Vitals & Condition */}
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 space-y-3 shadow-xl backdrop-blur-sm">
+          <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-3 shadow-xl backdrop-blur-sm">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
                 <HeartPulse className="h-4 w-4 text-rose-400" />
                 <span>Emergency Intake Clinical Vitals</span>
               </span>
-              <span className="text-[10px] font-mono text-slate-400">Baseline Triage Telemetry</span>
+              <span className="text-[10px] font-mono text-gray-500">Baseline Triage Telemetry</span>
             </div>
 
-            <p className="text-xs text-slate-300 leading-relaxed bg-slate-950/60 p-3 rounded-xl border border-slate-800">
+            <p className="text-xs text-gray-600 leading-relaxed bg-gray-50/60 p-3 rounded-xl border border-gray-200">
               <strong className="text-white">Condition: </strong>{emergencyCase.condition_summary}
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 pt-1">
-              <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs">
-                <span className="text-[9px] text-slate-500 uppercase font-bold block">Heart Rate</span>
+              <div className="p-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs">
+                <span className="text-[9px] text-gray-400 uppercase font-bold block">Heart Rate</span>
                 <span className="font-mono text-sm font-black text-rose-400">{emergencyCase.vitals_heart_rate} bpm</span>
               </div>
-              <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs">
-                <span className="text-[9px] text-slate-500 uppercase font-bold block">Blood Pressure</span>
+              <div className="p-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs">
+                <span className="text-[9px] text-gray-400 uppercase font-bold block">Blood Pressure</span>
                 <span className="font-mono text-sm font-black text-white">{emergencyCase.vitals_systolic_bp}/{emergencyCase.vitals_diastolic_bp}</span>
               </div>
-              <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs">
-                <span className="text-[9px] text-slate-500 uppercase font-bold block">SpO2 Oxygen</span>
+              <div className="p-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs">
+                <span className="text-[9px] text-gray-400 uppercase font-bold block">SpO2 Oxygen</span>
                 <span className="font-mono text-sm font-black text-sky-400">{emergencyCase.vitals_spo2}%</span>
               </div>
-              <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs">
-                <span className="text-[9px] text-slate-500 uppercase font-bold block">Respiration</span>
+              <div className="p-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs">
+                <span className="text-[9px] text-gray-400 uppercase font-bold block">Respiration</span>
                 <span className="font-mono text-sm font-black text-white">{emergencyCase.vitals_respiratory_rate}/min</span>
               </div>
-              <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs">
-                <span className="text-[9px] text-slate-500 uppercase font-bold block">Temperature</span>
+              <div className="p-2.5 rounded-xl bg-gray-50 border border-gray-200 text-xs">
+                <span className="text-[9px] text-gray-400 uppercase font-bold block">Temperature</span>
                 <span className="font-mono text-sm font-black text-white">{emergencyCase.vitals_temperature}&deg;C</span>
               </div>
             </div>
@@ -373,11 +373,11 @@ export const EmergencyDetailPage: React.FC = () => {
 
             <div>
               <h3 className="text-base font-black text-white">{emergencyCase.assigned_hospital_name || 'Hospital Selected'}</h3>
-              <p className="text-xs text-slate-400">{bestMatch?.address || 'Downtown Campus'}</p>
+              <p className="text-xs text-gray-500">{bestMatch?.address || 'Downtown Campus'}</p>
             </div>
 
             {/* Reserved Bed Status */}
-            <div className="p-3.5 rounded-xl bg-slate-950/80 border border-teal-500/30 space-y-1">
+            <div className="p-3.5 rounded-xl bg-gray-50/80 border border-teal-500/30 space-y-1">
               <span className="text-[10px] font-bold text-teal-400 uppercase block">Locked Inpatient Bed</span>
               <div className="flex items-center justify-between">
                 <span className="font-mono text-base font-black text-white">{emergencyCase.assigned_bed_code || 'Bed Assigned'}</span>
@@ -397,7 +397,7 @@ export const EmergencyDetailPage: React.FC = () => {
                 type="button"
                 disabled={actionLoading}
                 onClick={handleConfirmPatientReceived}
-                className="w-full flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 py-3 text-xs font-black text-white transition shadow-lg shadow-emerald-600/30"
+                className="w-full flex items-center justify-center gap-2 rounded-xl bg-emerald-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-emerald-500 py-3 text-xs font-black text-white transition shadow-lg shadow-emerald-600/30"
               >
                 <CheckSquare className="h-4 w-4" />
                 <span>CONFIRM PATIENT RECEIVED & ADMIT</span>
@@ -406,27 +406,27 @@ export const EmergencyDetailPage: React.FC = () => {
               <div className="p-3 rounded-xl bg-emerald-950/80 border border-emerald-500/40 text-center space-y-1">
                 <CheckCircle2 className="h-5 w-5 text-emerald-400 mx-auto" />
                 <span className="text-xs font-bold text-emerald-200 block">Patient Successfully Received & Admitted</span>
-                <p className="text-[10px] text-slate-400">Bed transitioned to OCCUPIED. Hospital capacity updated.</p>
+                <p className="text-[10px] text-gray-500">Bed transitioned to OCCUPIED. Hospital capacity updated.</p>
               </div>
             )}
           </div>
 
           {/* Audit Timeline */}
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 space-y-3 shadow-xl backdrop-blur-sm">
+          <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-3 shadow-xl backdrop-blur-sm">
             <span className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
               <Clock className="h-4 w-4 text-sky-400" />
               <span>Mission Event Log</span>
             </span>
 
-            <div className="relative pl-4 border-l border-slate-800 space-y-3.5 max-h-72 overflow-y-auto pr-1">
+            <div className="relative pl-4 border-l border-gray-200 space-y-3.5 max-h-72 overflow-y-auto pr-1">
               {emergencyCase.timeline_events.map((evt) => (
                 <div key={evt.id} className="relative group text-xs space-y-0.5">
                   <div className="absolute -left-[21px] top-1 h-2.5 w-2.5 rounded-full bg-sky-400 border-2 border-slate-900" />
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-white leading-tight">{evt.title}</span>
-                    <span className="text-[9px] font-mono text-slate-500">{formatTime(evt.timestamp)}</span>
+                    <span className="text-[9px] font-mono text-gray-400">{formatTime(evt.timestamp)}</span>
                   </div>
-                  <p className="text-[11px] text-slate-400 leading-snug">{evt.description}</p>
+                  <p className="text-[11px] text-gray-500 leading-snug">{evt.description}</p>
                 </div>
               ))}
             </div>

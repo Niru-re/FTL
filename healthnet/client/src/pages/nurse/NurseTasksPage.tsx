@@ -88,7 +88,7 @@ export const NurseTasksPage: React.FC = () => {
           <h1 className="text-2xl font-black tracking-tight text-white mt-1">
             Nursing Worklist & Tasks
           </h1>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-gray-500">
             Daily clinical schedule, vital intervals, medication rounds, and handovers
           </p>
         </div>
@@ -97,14 +97,14 @@ export const NurseTasksPage: React.FC = () => {
           <button
             onClick={fetchTasks}
             disabled={loading}
-            className="flex items-center gap-2 rounded-xl border border-slate-700/80 bg-slate-800/80 hover:bg-slate-700 px-3.5 py-2 text-xs font-semibold text-slate-200 transition shadow-sm"
+            className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin text-purple-400' : ''}`} />
             <span>Refresh</span>
           </button>
           <button
             onClick={() => setShowAddModal(true)}
-            className="flex items-center gap-2 rounded-xl bg-purple-600 hover:bg-purple-500 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-purple-900/40 transition"
+            className="flex items-center gap-2 rounded-xl bg-purple-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-purple-500 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-purple-900/40 transition"
           >
             <Plus className="h-4 w-4" />
             <span>Add Nursing Task</span>
@@ -113,15 +113,15 @@ export const NurseTasksPage: React.FC = () => {
       </div>
 
       {/* Filter Toolbar */}
-      <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-4 backdrop-blur-md shadow-xl flex items-center justify-between">
+      <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-4 backdrop-blur-md shadow-xl flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="text-xs font-semibold text-slate-400 flex items-center gap-1">
+          <span className="text-xs font-semibold text-gray-500 flex items-center gap-1">
             <Filter className="h-3.5 w-3.5" /> Status:
           </span>
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="bg-slate-950/70 border border-slate-800 text-xs text-slate-200 rounded-xl px-3 py-2 focus:outline-none focus:border-purple-500"
+            className="bg-gray-50/70 border border-gray-200 text-xs text-gray-700 rounded-xl px-3 py-2 focus:outline-none focus:border-purple-500"
           >
             <option value="ALL">All Tasks</option>
             <option value="PENDING">Pending Only</option>
@@ -131,22 +131,22 @@ export const NurseTasksPage: React.FC = () => {
       </div>
 
       {/* Tasks List */}
-      <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 overflow-hidden shadow-xl">
-        <div className="divide-y divide-slate-800/60">
+      <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 overflow-hidden shadow-xl">
+        <div className="divide-y divide-gray-200/60">
           {loading ? (
-            <div className="py-12 text-center text-slate-400 text-xs">
+            <div className="py-12 text-center text-gray-500 text-xs">
               Loading nursing tasks...
             </div>
           ) : tasks.length === 0 ? (
-            <div className="py-12 text-center text-slate-400 text-xs">
+            <div className="py-12 text-center text-gray-500 text-xs">
               No tasks found for the selected status.
             </div>
           ) : (
             tasks.map((task) => (
               <div
                 key={task.id}
-                className={`p-4 flex items-center justify-between gap-4 transition hover:bg-slate-800/30 ${
-                  task.is_completed ? 'opacity-60 bg-slate-950/20' : ''
+                className={`p-4 flex items-center justify-between gap-4 transition bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/30 ${
+                  task.is_completed ? 'opacity-60 bg-gray-50/20' : ''
                 }`}
               >
                 <div className="flex items-start gap-3.5">
@@ -155,7 +155,7 @@ export const NurseTasksPage: React.FC = () => {
                     className={`mt-0.5 h-5 w-5 rounded-lg border flex items-center justify-center transition flex-shrink-0 ${
                       task.is_completed
                         ? 'bg-purple-600 border-purple-500 text-white'
-                        : 'border-slate-700 bg-slate-950 hover:border-purple-500'
+                        : 'border-gray-300 bg-gray-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-purple-500'
                     }`}
                   >
                     {task.is_completed && <CheckCircle2 className="h-3.5 w-3.5" />}
@@ -174,8 +174,8 @@ export const NurseTasksPage: React.FC = () => {
                       )}
                     </div>
                     <p
-                      className={`text-xs text-slate-200 ${
-                        task.is_completed ? 'line-through text-slate-500' : ''
+                      className={`text-xs text-gray-700 ${
+                        task.is_completed ? 'line-through text-gray-400' : ''
                       }`}
                     >
                       {task.description}
@@ -184,8 +184,8 @@ export const NurseTasksPage: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-4 flex-shrink-0 text-right">
-                  <div className="text-xs text-slate-400 font-mono flex items-center gap-1.5">
-                    <Clock className="h-3.5 w-3.5 text-slate-500" />
+                  <div className="text-xs text-gray-500 font-mono flex items-center gap-1.5">
+                    <Clock className="h-3.5 w-3.5 text-gray-400" />
                     <span>Due: {task.due_time}</span>
                   </div>
 
@@ -193,8 +193,8 @@ export const NurseTasksPage: React.FC = () => {
                     onClick={() => handleToggleTask(task)}
                     className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
                       task.is_completed
-                        ? 'bg-slate-800 text-slate-400 hover:text-white'
-                        : 'bg-purple-600 hover:bg-purple-500 text-white shadow-sm'
+                        ? 'bg-gray-200 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white'
+                        : 'bg-purple-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-purple-500 text-white shadow-sm'
                     }`}
                   >
                     {task.is_completed ? 'Reopen' : 'Complete'}
@@ -208,27 +208,27 @@ export const NurseTasksPage: React.FC = () => {
 
       {/* Add Task Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
+          <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-gray-200 pb-3">
               <h3 className="text-base font-bold text-white flex items-center gap-2">
                 <ClipboardList className="h-5 w-5 text-purple-400" />
                 <span>Add Nursing Care Task</span>
               </h3>
-              <button onClick={() => setShowAddModal(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setShowAddModal(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
                 <X className="h-5 w-5" />
               </button>
             </div>
 
             <form onSubmit={handleCreateTask} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-semibold text-gray-600 mb-1.5">
                   Select Inpatient
                 </label>
                 <select
                   value={taskPatientId || ''}
                   onChange={(e) => setTaskPatientId(Number(e.target.value))}
-                  className="w-full bg-slate-950 border border-slate-800 text-xs text-white rounded-xl p-2.5 focus:outline-none focus:border-purple-500"
+                  className="w-full bg-gray-50 border border-gray-200 text-xs text-gray-900 rounded-xl p-2.5 focus:outline-none focus:border-purple-500"
                 >
                   {patients.map((p) => (
                     <option key={p.id} value={p.id}>
@@ -239,13 +239,13 @@ export const NurseTasksPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-semibold text-gray-600 mb-1.5">
                   Task Category
                 </label>
                 <select
                   value={taskType}
                   onChange={(e) => setTaskType(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 text-xs text-white rounded-xl p-2.5 focus:outline-none focus:border-purple-500"
+                  className="w-full bg-gray-50 border border-gray-200 text-xs text-gray-900 rounded-xl p-2.5 focus:outline-none focus:border-purple-500"
                 >
                   <option value="VITALS">Record Vitals</option>
                   <option value="MEDICATION">Medication Administration</option>
@@ -257,7 +257,7 @@ export const NurseTasksPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-semibold text-gray-600 mb-1.5">
                   Task Description
                 </label>
                 <input
@@ -266,12 +266,12 @@ export const NurseTasksPage: React.FC = () => {
                   placeholder="e.g. Check arterial line dressing and titrate Levophed..."
                   value={taskDesc}
                   onChange={(e) => setTaskDesc(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 text-xs text-white rounded-xl p-2.5 focus:outline-none focus:border-purple-500"
+                  className="w-full bg-gray-50 border border-gray-200 text-xs text-gray-900 rounded-xl p-2.5 focus:outline-none focus:border-purple-500"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-semibold text-gray-600 mb-1.5">
                   Scheduled Due Time
                 </label>
                 <input
@@ -280,7 +280,7 @@ export const NurseTasksPage: React.FC = () => {
                   placeholder="e.g. 16:30"
                   value={dueTime}
                   onChange={(e) => setDueTime(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 text-xs text-white rounded-xl p-2.5 focus:outline-none focus:border-purple-500"
+                  className="w-full bg-gray-50 border border-gray-200 text-xs text-gray-900 rounded-xl p-2.5 focus:outline-none focus:border-purple-500"
                 />
               </div>
 
@@ -288,14 +288,14 @@ export const NurseTasksPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowAddModal(false)}
-                  className="rounded-xl border border-slate-700 bg-slate-800 px-4 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-700 transition"
+                  className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submitting || !taskDesc.trim()}
-                  className="rounded-xl bg-purple-600 hover:bg-purple-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-purple-900/40 transition disabled:opacity-50"
+                  className="rounded-xl bg-purple-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-purple-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-purple-900/40 transition disabled:opacity-50"
                 >
                   {submitting ? 'Adding...' : 'Create Task'}
                 </button>

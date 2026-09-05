@@ -58,11 +58,11 @@ export const PatientRequestsPage: React.FC = () => {
     <div className="space-y-6 animate-fade-in">
       {/* Header */}
       <div className="bg-white p-5 rounded-3xl border border-slate-200 shadow-xs">
-        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Communication Desk</span>
+        <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500">Communication Desk</span>
         <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
           Requests & Inquiries
         </h1>
-        <p className="text-xs text-slate-500 mt-0.5">
+        <p className="text-xs text-gray-400 mt-0.5">
           Ask for a status update, request bedside nurse assistance, or submit non-emergency questions to your care team.
         </p>
       </div>
@@ -128,7 +128,7 @@ export const PatientRequestsPage: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting || !message.trim()}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white font-bold text-xs rounded-xl shadow-xs transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-orange-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-600 disabled:opacity-50 text-white font-bold text-xs rounded-xl shadow-xs transition-colors cursor-pointer"
             >
               <Send className="w-3.5 h-3.5" />
               {isSubmitting ? 'Sending...' : 'Send to Care Team'}
@@ -139,15 +139,15 @@ export const PatientRequestsPage: React.FC = () => {
 
       {/* Existing Requests Stream */}
       <div className="space-y-4">
-        <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider px-1">
+        <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider px-1">
           Recent Requests & Care Team Responses ({requests.length})
         </h3>
 
         {isLoading ? (
-          <div className="py-10 text-center text-xs text-slate-400">Loading requests...</div>
+          <div className="py-10 text-center text-xs text-gray-500">Loading requests...</div>
         ) : requests.length === 0 ? (
-          <div className="bg-white rounded-3xl border border-slate-200 p-8 text-center text-slate-500">
-            <MessageSquare className="w-7 h-7 text-slate-400 mx-auto mb-2" />
+          <div className="bg-white rounded-3xl border border-slate-200 p-8 text-center text-gray-400">
+            <MessageSquare className="w-7 h-7 text-gray-500 mx-auto mb-2" />
             <p className="text-xs font-bold text-slate-800">No requests submitted yet</p>
           </div>
         ) : (
@@ -176,7 +176,7 @@ export const PatientRequestsPage: React.FC = () => {
                   >
                     {req.status}
                   </span>
-                  <span className="text-[11px] text-slate-400">
+                  <span className="text-[11px] text-gray-500">
                     {new Date(req.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>

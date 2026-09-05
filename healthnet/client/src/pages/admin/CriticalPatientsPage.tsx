@@ -45,7 +45,7 @@ export const CriticalPatientsPage: React.FC = () => {
   return (
     <div className="space-y-6 pb-12">
       {/* Page Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-900/80 p-6 rounded-2xl border border-slate-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gray-100/80 p-6 rounded-2xl border border-gray-200">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/10 text-rose-400 border border-rose-500/20 flex items-center gap-1">
@@ -56,11 +56,11 @@ export const CriticalPatientsPage: React.FC = () => {
               NON-CLINICAL ADMINISTRATIVE VIEW
             </span>
           </div>
-          <h1 className="text-2xl font-black text-white tracking-tight flex items-center gap-3">
+          <h1 className="text-2xl font-black text-gray-900 tracking-tight flex items-center gap-3">
             <ShieldAlert className="w-7 h-7 text-rose-500" />
             Metropolitan Critical Patient Watchlist
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-gray-500 mt-1">
             Network-wide high-acuity and rapid deterioration patients for administrative resource and ICU bed allocation.
           </p>
         </div>
@@ -68,7 +68,7 @@ export const CriticalPatientsPage: React.FC = () => {
         <button
           onClick={fetchCritical}
           disabled={loading}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition-colors self-start md:self-auto"
+          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-700 text-xs font-semibold border border-gray-300 transition-colors self-start md:self-auto"
         >
           <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin text-rose-400' : ''}`} />
           Refresh Watchlist
@@ -77,53 +77,53 @@ export const CriticalPatientsPage: React.FC = () => {
 
       {/* Summary KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="p-4 rounded-xl bg-slate-900 border border-slate-800">
-          <div className="text-xs text-slate-400 font-semibold uppercase">Total Critical Inpatients</div>
+        <div className="p-4 rounded-xl bg-gray-100 border border-gray-200">
+          <div className="text-xs text-gray-500 font-semibold uppercase">Total Critical Inpatients</div>
           <div className="text-2xl font-black text-rose-400 mt-1">
             {criticalPatients.filter(p => p.risk_level === 'CRITICAL').length}
           </div>
-          <div className="text-[10px] text-slate-500 mt-0.5">Requiring intensive 1:1 care & monitoring</div>
+          <div className="text-[10px] text-gray-400 mt-0.5">Requiring intensive 1:1 care & monitoring</div>
         </div>
 
-        <div className="p-4 rounded-xl bg-slate-900 border border-slate-800">
-          <div className="text-xs text-slate-400 font-semibold uppercase">Rapid Deterioration Alert</div>
+        <div className="p-4 rounded-xl bg-gray-100 border border-gray-200">
+          <div className="text-xs text-gray-500 font-semibold uppercase">Rapid Deterioration Alert</div>
           <div className="text-2xl font-black text-amber-400 mt-1">
             {criticalPatients.filter(p => p.velocity_direction === 'RAPIDLY RISING' || p.velocity_direction === 'RISING').length}
           </div>
-          <div className="text-[10px] text-slate-500 mt-0.5">Positive risk velocity within last 15 min</div>
+          <div className="text-[10px] text-gray-400 mt-0.5">Positive risk velocity within last 15 min</div>
         </div>
 
-        <div className="p-4 rounded-xl bg-slate-900 border border-slate-800">
-          <div className="text-xs text-slate-400 font-semibold uppercase">ICU Bed Utilization</div>
+        <div className="p-4 rounded-xl bg-gray-100 border border-gray-200">
+          <div className="text-xs text-gray-500 font-semibold uppercase">ICU Bed Utilization</div>
           <div className="text-2xl font-black text-sky-400 mt-1">
             {criticalPatients.filter(p => p.bed_code?.includes('ICU')).length} Beds
           </div>
-          <div className="text-[10px] text-slate-500 mt-0.5">Critical patients assigned to ICU beds</div>
+          <div className="text-[10px] text-gray-400 mt-0.5">Critical patients assigned to ICU beds</div>
         </div>
       </div>
 
       {/* Search Toolbar */}
-      <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800 flex items-center justify-between">
+      <div className="bg-gray-100/60 p-4 rounded-xl border border-gray-200 flex items-center justify-between">
         <div className="relative w-full sm:w-80">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by Patient MRN, Name, Bed, or Doctor..."
-            className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-rose-500"
+            className="w-full bg-gray-50 border border-gray-200 rounded-xl pl-9 pr-3 py-1.5 text-xs text-gray-900 placeholder-slate-500 focus:outline-none focus:border-rose-500"
           />
         </div>
-        <div className="text-xs text-slate-400">
+        <div className="text-xs text-gray-500">
           Showing <span className="font-bold text-white">{filtered.length}</span> patients
         </div>
       </div>
 
       {/* Table */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl">
+      <div className="bg-gray-100 border border-gray-200 rounded-2xl overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-300">
-            <thead className="bg-slate-950/80 text-slate-400 font-bold border-b border-slate-800 uppercase text-[10px] tracking-wider">
+          <table className="w-full text-left text-xs text-gray-600">
+            <thead className="bg-gray-50/80 text-gray-500 font-bold border-b border-gray-200 uppercase text-[10px] tracking-wider">
               <tr>
                 <th className="px-5 py-3">Patient MRN & Identifier</th>
                 <th className="px-4 py-3">Location & Bed</th>
@@ -134,17 +134,17 @@ export const CriticalPatientsPage: React.FC = () => {
                 <th className="px-4 py-3 text-right">Risk Tier</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60">
+            <tbody className="divide-y divide-gray-200/60">
               {loading ? (
                 <tr>
-                  <td colSpan={7} className="text-center py-12 text-slate-400">
+                  <td colSpan={7} className="text-center py-12 text-gray-500">
                     <RefreshCw className="w-6 h-6 animate-spin mx-auto mb-2 text-rose-500" />
                     Loading metropolitan critical patient watchlist...
                   </td>
                 </tr>
               ) : filtered.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="text-center py-12 text-slate-400">
+                  <td colSpan={7} className="text-center py-12 text-gray-500">
                     No critical patients currently flagged across the network.
                   </td>
                 </tr>
@@ -154,25 +154,25 @@ export const CriticalPatientsPage: React.FC = () => {
                   const isRising = p.velocity_direction === 'RAPIDLY RISING' || p.velocity_direction === 'RISING';
 
                   return (
-                    <tr key={p.patient_id} className="hover:bg-slate-800/40 transition-colors">
+                    <tr key={p.patient_id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 transition-colors">
                       <td className="px-5 py-3.5">
                         <div className="font-bold text-white">{p.patient_name}</div>
-                        <div className="font-mono text-[10px] text-slate-400">{p.mrn}</div>
+                        <div className="font-mono text-[10px] text-gray-500">{p.mrn}</div>
                       </td>
                       <td className="px-4 py-3.5">
-                        <div className="font-semibold text-slate-200 flex items-center gap-1.5">
+                        <div className="font-semibold text-gray-700 flex items-center gap-1.5">
                           <BedDouble className="w-3.5 h-3.5 text-sky-400" />
                           {p.bed_code || 'Unassigned Bed'}
                         </div>
-                        <div className="text-[10px] text-slate-500">{p.department_name || 'Inpatient'}</div>
+                        <div className="text-[10px] text-gray-400">{p.department_name || 'Inpatient'}</div>
                       </td>
-                      <td className="px-4 py-3.5 text-slate-300">
+                      <td className="px-4 py-3.5 text-gray-600">
                         <div className="flex items-center gap-1.5">
                           <Stethoscope className="w-3.5 h-3.5 text-emerald-400" />
                           <span>{p.doctor_name || 'Duty Hospitalist'}</span>
                         </div>
                       </td>
-                      <td className="px-4 py-3.5 text-slate-300">
+                      <td className="px-4 py-3.5 text-gray-600">
                         <div className="flex items-center gap-1.5">
                           <User className="w-3.5 h-3.5 text-indigo-400" />
                           <span>{p.nurse_name || 'Staff Nurse'}</span>
@@ -190,13 +190,13 @@ export const CriticalPatientsPage: React.FC = () => {
                           ) : p.velocity_direction === 'FALLING' ? (
                             <ArrowDownRight className="w-4 h-4 text-emerald-400" />
                           ) : (
-                            <Minus className="w-4 h-4 text-slate-400" />
+                            <Minus className="w-4 h-4 text-gray-500" />
                           )}
-                          <span className={isRising ? 'text-rose-400' : 'text-slate-300'}>
+                          <span className={isRising ? 'text-rose-400' : 'text-gray-600'}>
                             {p.risk_velocity > 0 ? `+${p.risk_velocity}` : p.risk_velocity} / 15m ({p.velocity_direction})
                           </span>
                         </div>
-                        <div className="text-[9px] text-slate-500">
+                        <div className="text-[9px] text-gray-400">
                           Driver: {p.primary_factor_driver || 'Multi-vital'}
                         </div>
                       </td>

@@ -54,18 +54,18 @@ export const AlertsPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-white flex items-center gap-2">
+          <h1 className="text-2xl font-black text-gray-900 flex items-center gap-2">
             <Bell className="h-6 w-6 text-amber-400" />
             <span>Central Network Alerts</span>
           </h1>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-gray-500">
             Real-time feed of physiological alarms, bed shortages, emergency arrivals, and hospital diverted traffic.
           </p>
         </div>
 
         <button
           onClick={fetchAlerts}
-          className="flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900 px-3 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-800 self-start"
+          className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-gray-100 px-3 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 self-start"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
           <span>Refresh</span>
@@ -73,14 +73,14 @@ export const AlertsPage: React.FC = () => {
       </div>
 
       {/* Filter Bar */}
-      <div className="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/60 p-4 glass-panel">
+      <div className="flex items-center justify-between rounded-2xl border border-gray-200 bg-gray-100/60 p-4 glass-panel">
         <div className="flex items-center gap-2">
-          <Filter className="h-4 w-4 text-slate-400" />
-          <span className="text-xs text-slate-400">Severity:</span>
+          <Filter className="h-4 w-4 text-gray-500" />
+          <span className="text-xs text-gray-500">Severity:</span>
           <select
             value={severityFilter}
             onChange={(e) => setSeverityFilter(e.target.value)}
-            className="rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-white focus:border-teal-500 focus:outline-none font-bold"
+            className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-900 focus:border-teal-500 focus:outline-none font-bold"
           >
             <option value="ALL">All Severities</option>
             <option value="CRITICAL">CRITICAL</option>
@@ -97,7 +97,7 @@ export const AlertsPage: React.FC = () => {
           <div
             key={al.id}
             className={`rounded-2xl border p-5 glass-panel transition flex items-start justify-between gap-4 ${
-              al.is_read ? 'border-slate-800/60 bg-slate-950/40 opacity-70' : 'border-slate-800 bg-slate-900/80 shadow-md'
+              al.is_read ? 'border-gray-200/60 bg-gray-50/40 opacity-70' : 'border-gray-200 bg-gray-100/80 shadow-md'
             }`}
           >
             <div className="flex items-start gap-3">
@@ -112,13 +112,13 @@ export const AlertsPage: React.FC = () => {
                   <h3 className="text-sm font-bold text-white">{al.title}</h3>
                   <StatusBadge type="alert" status={al.severity} />
                   {al.is_read && (
-                    <span className="text-[10px] text-slate-500 font-medium">Acknowledged</span>
+                    <span className="text-[10px] text-gray-400 font-medium">Acknowledged</span>
                   )}
                 </div>
-                <p className="text-xs text-slate-300 leading-relaxed max-w-2xl">{al.message}</p>
-                <div className="flex items-center gap-3 text-[10px] text-slate-500 pt-1">
-                  <span>Type: <strong className="text-slate-400">{al.alert_type}</strong></span>
-                  <span>Target: <strong className="text-slate-400">{al.target_role}</strong></span>
+                <p className="text-xs text-gray-600 leading-relaxed max-w-2xl">{al.message}</p>
+                <div className="flex items-center gap-3 text-[10px] text-gray-400 pt-1">
+                  <span>Type: <strong className="text-gray-500">{al.alert_type}</strong></span>
+                  <span>Target: <strong className="text-gray-500">{al.target_role}</strong></span>
                   <span>Timestamp: {formatDate(al.created_at)} {formatTime(al.created_at)}</span>
                 </div>
               </div>
@@ -127,7 +127,7 @@ export const AlertsPage: React.FC = () => {
             {!al.is_read && (
               <button
                 onClick={() => handleMarkRead(al.id)}
-                className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 hover:bg-teal-600 hover:border-teal-500 hover:text-white transition flex-shrink-0"
+                className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border border-gray-300 bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-teal-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition flex-shrink-0"
               >
                 <CheckCircle2 className="h-4 w-4 text-teal-400" />
                 <span>Acknowledge</span>

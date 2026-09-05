@@ -139,11 +139,11 @@ export const ECGWaveform: React.FC<ECGWaveformProps> = ({
   }, [heartRate, color, isPlaying]);
 
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-950 p-4 shadow-xl overflow-hidden">
+    <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 shadow-xl overflow-hidden">
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
-          <Activity className={`h-4 w-4 ${isPlaying ? 'text-emerald-400 animate-pulse' : 'text-slate-500'}`} />
-          <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+          <Activity className={`h-4 w-4 ${isPlaying ? 'text-emerald-400 animate-pulse' : 'text-gray-400'}`} />
+          <span className="text-xs font-bold text-gray-600 uppercase tracking-wider">
             Live Telemetry &bull; {currentLead}
           </span>
           <span className="rounded bg-emerald-500/10 px-1.5 py-0.5 text-[9px] font-mono text-emerald-400 border border-emerald-500/20">
@@ -152,14 +152,14 @@ export const ECGWaveform: React.FC<ECGWaveformProps> = ({
         </div>
         <div className="flex items-center gap-3">
           <span className="font-mono text-sm font-bold text-emerald-400 flex items-center gap-1">
-            <span>{heartRate}</span> <span className="text-[10px] text-slate-500">BPM</span>
+            <span>{heartRate}</span> <span className="text-[10px] text-gray-400">BPM</span>
           </span>
           {showControls && (
             <div className="flex items-center gap-1.5">
               <select
                 value={currentLead}
                 onChange={(e) => setCurrentLead(e.target.value)}
-                className="rounded bg-slate-900 px-2 py-0.5 text-[10px] font-semibold text-slate-300 border border-slate-700 outline-none"
+                className="rounded bg-gray-100 px-2 py-0.5 text-[10px] font-semibold text-gray-600 border border-gray-300 outline-none"
               >
                 <option value="Lead II">Lead II</option>
                 <option value="Lead V1">Lead V1</option>
@@ -169,14 +169,14 @@ export const ECGWaveform: React.FC<ECGWaveformProps> = ({
               <button
                 type="button"
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="flex items-center gap-1 rounded bg-slate-800 px-2 py-0.5 text-[10px] font-bold text-slate-300 hover:bg-slate-700 transition border border-slate-700"
+                className="flex items-center gap-1 rounded bg-gray-200 px-2 py-0.5 text-[10px] font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 transition border border-gray-300"
               >
                 {isPlaying ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
                 <span>{isPlaying ? 'Freeze' : 'Resume'}</span>
               </button>
             </div>
           )}
-          <span className="rounded bg-slate-800 px-2 py-0.5 text-[10px] font-semibold text-slate-400 border border-slate-700">
+          <span className="rounded bg-gray-200 px-2 py-0.5 text-[10px] font-semibold text-gray-500 border border-gray-300">
             25mm/s &bull; 10mm/mV
           </span>
         </div>
@@ -191,7 +191,7 @@ export const ECGWaveform: React.FC<ECGWaveformProps> = ({
         />
       </div>
 
-      <p className="mt-2 text-[10px] text-slate-500 text-center italic">
+      <p className="mt-2 text-[10px] text-gray-400 text-center italic">
         * Simulated ECG waveform visualization for prototype demonstration — not connected to physical patient telemetry hardware.
       </p>
     </div>

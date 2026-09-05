@@ -82,7 +82,7 @@ export const NurseHandoverPage: React.FC = () => {
           <h1 className="text-2xl font-black tracking-tight text-white mt-1">
             Nurse Shift Handover Station
           </h1>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-gray-500">
             Clinical handover protocol, inpatient census transfer, and shift sign-off
           </p>
         </div>
@@ -91,14 +91,14 @@ export const NurseHandoverPage: React.FC = () => {
           <button
             onClick={fetchHandoverData}
             disabled={loading}
-            className="flex items-center gap-2 rounded-xl border border-slate-700/80 bg-slate-800/80 hover:bg-slate-700 px-3.5 py-2 text-xs font-semibold text-slate-200 transition shadow-sm"
+            className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin text-amber-400' : ''}`} />
             <span>Refresh</span>
           </button>
           <button
             onClick={() => setShowCreateModal(true)}
-            className="flex items-center gap-2 rounded-xl bg-amber-600 hover:bg-amber-500 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-amber-900/40 transition"
+            className="flex items-center gap-2 rounded-xl bg-amber-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-amber-500 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-amber-900/40 transition"
           >
             <Plus className="h-4 w-4" />
             <span>CREATE SHIFT HANDOVER</span>
@@ -120,16 +120,16 @@ export const NurseHandoverPage: React.FC = () => {
       )}
 
       {/* Current Inpatient Census Snapshot */}
-      <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-5 backdrop-blur-md shadow-xl space-y-4">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+      <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-5 backdrop-blur-md shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-gray-200 pb-3">
           <div>
             <h2 className="text-sm font-bold text-white flex items-center gap-2">
               <User className="h-4 w-4 text-teal-400" />
               <span>Active Ward Patient Transfer Matrix ({patients.length})</span>
             </h2>
-            <p className="text-[11px] text-slate-400">Current status and risk overview for shift transfer</p>
+            <p className="text-[11px] text-gray-500">Current status and risk overview for shift transfer</p>
           </div>
-          <span className="text-xs font-mono text-slate-400 bg-slate-950 px-2.5 py-1 rounded border border-slate-800">
+          <span className="text-xs font-mono text-gray-500 bg-gray-50 px-2.5 py-1 rounded border border-gray-200">
             Dept: Medical ICU
           </span>
         </div>
@@ -137,7 +137,7 @@ export const NurseHandoverPage: React.FC = () => {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-slate-800 bg-slate-950/50 text-[11px] font-bold uppercase text-slate-400">
+              <tr className="border-b border-gray-200 bg-gray-50/50 text-[11px] font-bold uppercase text-gray-500">
                 <th className="py-3 pl-2">Patient</th>
                 <th className="py-3">Bed</th>
                 <th className="py-3">Diagnosis</th>
@@ -146,17 +146,17 @@ export const NurseHandoverPage: React.FC = () => {
                 <th className="py-3">Attending Doctor</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60">
+            <tbody className="divide-y divide-gray-200/60">
               {patients.slice(0, 8).map((p) => (
-                <tr key={p.id} className="hover:bg-slate-800/40 transition">
+                <tr key={p.id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 transition">
                   <td className="py-3 pl-2 font-bold text-white">
                     {p.full_name}
-                    <span className="block text-[10px] font-mono text-slate-400 font-normal">{p.mrn}</span>
+                    <span className="block text-[10px] font-mono text-gray-500 font-normal">{p.mrn}</span>
                   </td>
                   <td className="py-3 font-mono font-bold text-teal-300">
                     {p.bed_code || 'Unassigned'}
                   </td>
-                  <td className="py-3 text-slate-300 max-w-[200px] truncate">{p.diagnosis}</td>
+                  <td className="py-3 text-gray-600 max-w-[200px] truncate">{p.diagnosis}</td>
                   <td className="py-3">
                     <span
                       className={`text-[9px] font-black uppercase px-2 py-0.5 rounded-full border ${
@@ -176,10 +176,10 @@ export const NurseHandoverPage: React.FC = () => {
                         SpO2: {p.latest_vitals.spo2}% • HR: {p.latest_vitals.heart_rate} • BP: {p.latest_vitals.systolic_bp}/{p.latest_vitals.diastolic_bp}
                       </span>
                     ) : (
-                      <span className="text-slate-500 italic">No vitals logged</span>
+                      <span className="text-gray-400 italic">No vitals logged</span>
                     )}
                   </td>
-                  <td className="py-3 text-slate-300">{p.assigned_doctor_name || 'Dr. Ananya Mehta'}</td>
+                  <td className="py-3 text-gray-600">{p.assigned_doctor_name || 'Dr. Ananya Mehta'}</td>
                 </tr>
               ))}
             </tbody>
@@ -196,16 +196,16 @@ export const NurseHandoverPage: React.FC = () => {
 
         <div className="space-y-3">
           {handovers.length === 0 ? (
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-8 text-center text-slate-400 text-xs">
+            <div className="rounded-2xl border border-gray-200 bg-gray-100/40 p-8 text-center text-gray-500 text-xs">
               No historical shift handovers found.
             </div>
           ) : (
             handovers.map((h) => (
               <div
                 key={h.id}
-                className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-5 shadow-xl space-y-3"
+                className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-5 shadow-xl space-y-3"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-200 pb-3">
                   <div className="flex items-center gap-2">
                     <span className="text-xs font-bold text-amber-400 font-mono uppercase bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
                       {h.shift}
@@ -214,21 +214,21 @@ export const NurseHandoverPage: React.FC = () => {
                       Outgoing: <strong className="text-teal-300">{h.outgoing_nurse_name}</strong> &rarr; Incoming: <strong className="text-sky-300">{h.incoming_nurse_name}</strong>
                     </span>
                   </div>
-                  <span className="text-xs text-slate-400 font-mono">
+                  <span className="text-xs text-gray-500 font-mono">
                     {new Date(h.timestamp).toLocaleString()}
                   </span>
                 </div>
 
                 <div className="space-y-2 text-xs">
                   <div>
-                    <p className="text-[11px] font-bold text-slate-400 uppercase">General Shift Notes</p>
-                    <p className="text-slate-200 mt-0.5 leading-relaxed">{h.general_notes}</p>
+                    <p className="text-[11px] font-bold text-gray-500 uppercase">General Shift Notes</p>
+                    <p className="text-gray-700 mt-0.5 leading-relaxed">{h.general_notes}</p>
                   </div>
 
                   {h.pending_tasks_summary && (
-                    <div className="bg-slate-950/60 p-3 rounded-xl border border-slate-800">
+                    <div className="bg-gray-50/60 p-3 rounded-xl border border-gray-200">
                       <p className="text-[10px] font-bold text-purple-400 uppercase">Pending Care Tasks</p>
-                      <p className="text-slate-300 mt-0.5">{h.pending_tasks_summary}</p>
+                      <p className="text-gray-600 mt-0.5">{h.pending_tasks_summary}</p>
                     </div>
                   )}
 
@@ -247,14 +247,14 @@ export const NurseHandoverPage: React.FC = () => {
 
       {/* Create Handover Modal */}
       {showCreateModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="w-full max-w-lg rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
+          <div className="w-full max-w-lg rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-gray-200 pb-3">
               <h3 className="text-base font-bold text-white flex items-center gap-2">
                 <ArrowRightLeft className="h-5 w-5 text-amber-400" />
                 <span>Create Shift Handover Record</span>
               </h3>
-              <button onClick={() => setShowCreateModal(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setShowCreateModal(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -262,7 +262,7 @@ export const NurseHandoverPage: React.FC = () => {
             <form onSubmit={handleCreateHandover} className="space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                  <label className="block text-xs font-semibold text-gray-600 mb-1.5">
                     Incoming Nurse Name
                   </label>
                   <input
@@ -270,18 +270,18 @@ export const NurseHandoverPage: React.FC = () => {
                     required
                     value={incomingNurseName}
                     onChange={(e) => setIncomingNurseName(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 text-xs text-white rounded-xl p-2.5 focus:outline-none focus:border-amber-500"
+                    className="w-full bg-gray-50 border border-gray-200 text-xs text-gray-900 rounded-xl p-2.5 focus:outline-none focus:border-amber-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                  <label className="block text-xs font-semibold text-gray-600 mb-1.5">
                     Shift Change
                   </label>
                   <select
                     value={shift}
                     onChange={(e) => setShift(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 text-xs text-white rounded-xl p-2.5 focus:outline-none focus:border-amber-500"
+                    className="w-full bg-gray-50 border border-gray-200 text-xs text-gray-900 rounded-xl p-2.5 focus:outline-none focus:border-amber-500"
                   >
                     <option value="MORNING_TO_EVENING">Morning &rarr; Evening</option>
                     <option value="EVENING_TO_NIGHT">Evening &rarr; Night</option>
@@ -291,7 +291,7 @@ export const NurseHandoverPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-semibold text-gray-600 mb-1.5">
                   General Ward Notes & Census
                 </label>
                 <textarea
@@ -300,12 +300,12 @@ export const NurseHandoverPage: React.FC = () => {
                   placeholder="Summarize ward census, intubated patients, incoming admissions, bed availability..."
                   value={generalNotes}
                   onChange={(e) => setGeneralNotes(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-xs text-gray-900 placeholder-slate-500 focus:outline-none focus:border-amber-500"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-semibold text-gray-600 mb-1.5">
                   Pending Tasks Summary (Optional)
                 </label>
                 <input
@@ -313,12 +313,12 @@ export const NurseHandoverPage: React.FC = () => {
                   placeholder="e.g. Q2H vitals for Bed 03, antibiotic IV due at 17:00..."
                   value={pendingTasksSummary}
                   onChange={(e) => setPendingTasksSummary(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 text-xs text-white rounded-xl p-2.5 focus:outline-none focus:border-amber-500"
+                  className="w-full bg-gray-50 border border-gray-200 text-xs text-gray-900 rounded-xl p-2.5 focus:outline-none focus:border-amber-500"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-semibold text-gray-600 mb-1.5">
                   Critical Observations & High Risk Flags (Optional)
                 </label>
                 <input
@@ -326,7 +326,7 @@ export const NurseHandoverPage: React.FC = () => {
                   placeholder="e.g. Watch PT-1042 for SpO2 desaturation; Arterial line flush required..."
                   value={criticalObservations}
                   onChange={(e) => setCriticalObservations(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 text-xs text-white rounded-xl p-2.5 focus:outline-none focus:border-amber-500"
+                  className="w-full bg-gray-50 border border-gray-200 text-xs text-gray-900 rounded-xl p-2.5 focus:outline-none focus:border-amber-500"
                 />
               </div>
 
@@ -334,14 +334,14 @@ export const NurseHandoverPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowCreateModal(false)}
-                  className="rounded-xl border border-slate-700 bg-slate-800 px-4 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-700 transition"
+                  className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submitting || !generalNotes.trim()}
-                  className="rounded-xl bg-amber-600 hover:bg-amber-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-amber-900/40 transition disabled:opacity-50"
+                  className="rounded-xl bg-amber-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-amber-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-amber-900/40 transition disabled:opacity-50"
                 >
                   {submitting ? 'Saving...' : 'Save & Transfer Handover'}
                 </button>

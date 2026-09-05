@@ -54,7 +54,7 @@ export const EmergencyMap: React.FC<EmergencyMapProps> = ({
 
   return (
     <div
-      className="relative w-full rounded-2xl border border-slate-800 bg-slate-950 overflow-hidden shadow-2xl select-none"
+      className="relative w-full rounded-2xl border border-gray-200 bg-gray-50 overflow-hidden shadow-2xl select-none"
       style={{ height }}
     >
       {/* Background City Grid Styling */}
@@ -110,7 +110,7 @@ export const EmergencyMap: React.FC<EmergencyMapProps> = ({
       </svg>
 
       {/* Watermark / Simulated Label */}
-      <div className="absolute top-3 left-3 z-20 flex items-center gap-2 rounded-xl bg-slate-900/80 border border-slate-800 px-3 py-1.5 backdrop-blur-md">
+      <div className="absolute top-3 left-3 z-20 flex items-center gap-2 rounded-xl bg-gray-100/80 border border-gray-200 px-3 py-1.5 backdrop-blur-md">
         <Navigation className="h-3.5 w-3.5 text-sky-400" />
         <span className="text-[10px] font-bold text-sky-300 uppercase tracking-wider">
           Simulated GPS Network Map
@@ -129,19 +129,19 @@ export const EmergencyMap: React.FC<EmergencyMapProps> = ({
             <MapPin className="h-4 w-4" />
           </div>
         </div>
-        <div className="absolute top-full mt-1 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-bold px-2 py-0.5 rounded bg-slate-900/90 text-rose-300 border border-rose-500/30">
+        <div className="absolute top-full mt-1 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-bold px-2 py-0.5 rounded bg-gray-100/90 text-rose-300 border border-rose-500/30">
           Emergency Incident
         </div>
 
         {/* Pickup Popup */}
         {activePopup === 'pickup' && (
-          <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-40 w-48 rounded-xl bg-slate-900 border border-slate-800 p-3 shadow-2xl text-xs space-y-1">
-            <div className="font-bold text-white flex items-center gap-1">
+          <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-40 w-48 rounded-xl bg-gray-100 border border-gray-200 p-3 shadow-2xl text-xs space-y-1">
+            <div className="font-bold text-gray-900 flex items-center gap-1">
               <MapPin className="h-3 w-3 text-rose-400" />
               <span>Incident Location</span>
             </div>
-            <p className="text-[11px] text-slate-300">{pickupAddress}</p>
-            <span className="text-[9px] font-mono text-slate-500 block">{pickupLat.toFixed(4)}, {pickupLng.toFixed(4)}</span>
+            <p className="text-[11px] text-gray-600">{pickupAddress}</p>
+            <span className="text-[9px] font-mono text-gray-400 block">{pickupLat.toFixed(4)}, {pickupLng.toFixed(4)}</span>
           </div>
         )}
       </div>
@@ -162,13 +162,13 @@ export const EmergencyMap: React.FC<EmergencyMapProps> = ({
               isSelected
                 ? 'bg-emerald-600 text-white border-emerald-400 scale-110 shadow-emerald-600/30 ring-4 ring-emerald-500/20'
                 : h.is_eligible
-                ? 'bg-slate-900/90 text-sky-400 border-sky-500/30 hover:border-sky-400'
-                : 'bg-slate-900/60 text-slate-500 border-slate-800 opacity-60'
+                ? 'bg-gray-100/90 text-sky-400 border-sky-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-sky-400'
+                : 'bg-gray-100/60 text-gray-400 border-gray-200 opacity-60'
             }`}>
               <Building2 className="h-4 w-4" />
             </div>
 
-            <div className="absolute top-full mt-1 left-1/2 -translate-x-1/2 whitespace-nowrap flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-white">
+            <div className="absolute top-full mt-1 left-1/2 -translate-x-1/2 whitespace-nowrap flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded bg-gray-100/90 border border-gray-200 text-gray-900">
               <span>{h.hospital_name.split(' ')[0]}</span>
               {h.suitability_score > 0 && (
                 <span className={`px-1 rounded text-[9px] font-mono ${isSelected ? 'bg-emerald-500 text-slate-950' : 'text-sky-300'}`}>
@@ -179,18 +179,18 @@ export const EmergencyMap: React.FC<EmergencyMapProps> = ({
 
             {/* Hospital Popup */}
             {activePopup === `hosp-${h.hospital_id}` && (
-              <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-40 w-56 rounded-xl bg-slate-900 border border-slate-800 p-3 shadow-2xl text-xs space-y-2">
+              <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-40 w-56 rounded-xl bg-gray-100 border border-gray-200 p-3 shadow-2xl text-xs space-y-2">
                 <div className="flex items-start justify-between">
-                  <div className="font-bold text-white leading-tight">{h.hospital_name}</div>
+                  <div className="font-bold text-gray-900 leading-tight">{h.hospital_name}</div>
                   <span className="font-mono text-[10px] font-bold text-emerald-400">{h.suitability_score}%</span>
                 </div>
-                <div className="text-[11px] text-slate-400 flex items-center justify-between">
-                  <span>ETA: <strong className="text-white">{h.eta_minutes} mins</strong></span>
-                  <span>Dist: <strong className="text-white">{h.distance_km} km</strong></span>
+                <div className="text-[11px] text-gray-500 flex items-center justify-between">
+                  <span>ETA: <strong className="text-gray-900">{h.eta_minutes} mins</strong></span>
+                  <span>Dist: <strong className="text-gray-900">{h.distance_km} km</strong></span>
                 </div>
-                <div className="grid grid-cols-2 gap-1 pt-1 border-t border-slate-800 text-[10px]">
-                  <div className="text-slate-300">ICU Beds: <strong className="text-emerald-400">{h.icu_available} avail</strong></div>
-                  <div className="text-slate-300">Vents: <strong className="text-sky-400">{h.ventilators_available}</strong></div>
+                <div className="grid grid-cols-2 gap-1 pt-1 border-t border-gray-200 text-[10px]">
+                  <div className="text-gray-600">ICU Beds: <strong className="text-emerald-400">{h.icu_available} avail</strong></div>
+                  <div className="text-gray-600">Vents: <strong className="text-sky-400">{h.ventilators_available}</strong></div>
                 </div>
               </div>
             )}
@@ -213,24 +213,24 @@ export const EmergencyMap: React.FC<EmergencyMapProps> = ({
             <div className={`relative p-2 rounded-full border shadow-xl flex items-center justify-center ${
               isAssigned
                 ? 'bg-sky-600 text-white border-sky-300 animate-bounce'
-                : 'bg-slate-900 text-sky-400 border-sky-500/40'
+                : 'bg-gray-100 text-sky-400 border-sky-500/40'
             }`}>
               <Siren className="h-3.5 w-3.5" />
             </div>
 
-            <div className="absolute top-full mt-1 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-slate-900/90 text-sky-300 border border-sky-500/30">
+            <div className="absolute top-full mt-1 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-gray-100/90 text-sky-300 border border-sky-500/30">
               {amb.code} {amb.eta_minutes ? `(${amb.eta_minutes}m)` : ''}
             </div>
 
             {/* Ambulance Popup */}
             {activePopup === `amb-${amb.id}` && (
-              <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-40 w-48 rounded-xl bg-slate-900 border border-slate-800 p-3 shadow-2xl text-xs space-y-1.5">
-                <div className="flex items-center justify-between font-bold text-white">
+              <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-40 w-48 rounded-xl bg-gray-100 border border-gray-200 p-3 shadow-2xl text-xs space-y-1.5">
+                <div className="flex items-center justify-between font-bold text-gray-900">
                   <span>{amb.code}</span>
                   <span className="text-[9px] px-1.5 py-0.2 rounded bg-sky-950 text-sky-300 uppercase">{amb.status}</span>
                 </div>
-                <div className="text-[11px] text-slate-300">Paramedic: {amb.paramedic_name}</div>
-                <div className="text-[11px] text-slate-400">Vehicle: {amb.vehicle_number}</div>
+                <div className="text-[11px] text-gray-600">Paramedic: {amb.paramedic_name}</div>
+                <div className="text-[11px] text-gray-500">Vehicle: {amb.vehicle_number}</div>
                 {amb.eta_minutes !== undefined && (
                   <div className="text-[11px] font-bold text-emerald-400">Transit ETA: {amb.eta_minutes} mins</div>
                 )}
@@ -241,7 +241,7 @@ export const EmergencyMap: React.FC<EmergencyMapProps> = ({
       })}
 
       {/* Map Legend */}
-      <div className="absolute bottom-3 right-3 z-20 flex items-center gap-3 rounded-xl bg-slate-900/90 border border-slate-800 px-3 py-1.5 backdrop-blur-md text-[10px] text-slate-300">
+      <div className="absolute bottom-3 right-3 z-20 flex items-center gap-3 rounded-xl bg-gray-100/90 border border-gray-200 px-3 py-1.5 backdrop-blur-md text-[10px] text-gray-600">
         <div className="flex items-center gap-1">
           <span className="h-2 w-2 rounded-full bg-rose-500" />
           <span>Incident</span>

@@ -60,7 +60,7 @@ export const CityNetworkMap: React.FC<CityNetworkMapProps> = ({
       case 'DIVERT':
         return { bg: 'bg-rose-500', text: 'text-rose-400', border: 'border-rose-500/50', ring: 'ring-rose-500/20' };
       case 'CLOSED':
-        return { bg: 'bg-slate-500', text: 'text-slate-400', border: 'border-slate-500/50', ring: 'ring-slate-500/20' };
+        return { bg: 'bg-slate-500', text: 'text-gray-500', border: 'border-slate-500/50', ring: 'ring-slate-500/20' };
       default:
         return { bg: 'bg-sky-500', text: 'text-sky-400', border: 'border-sky-500/50', ring: 'ring-sky-500/20' };
     }
@@ -68,7 +68,7 @@ export const CityNetworkMap: React.FC<CityNetworkMapProps> = ({
 
   return (
     <div
-      className="relative w-full rounded-2xl border border-slate-800 bg-slate-950 overflow-hidden shadow-2xl select-none"
+      className="relative w-full rounded-2xl border border-gray-200 bg-gray-50 overflow-hidden shadow-2xl select-none"
       style={{ height }}
     >
       {/* Background Cartographic Grid Styling */}
@@ -85,21 +85,21 @@ export const CityNetworkMap: React.FC<CityNetworkMapProps> = ({
       </svg>
 
       {/* Map Header Overlay */}
-      <div className="absolute top-4 left-4 z-10 flex items-center gap-3 bg-slate-900/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-slate-800 shadow-lg">
+      <div className="absolute top-4 left-4 z-10 flex items-center gap-3 bg-gray-100/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-gray-200 shadow-lg">
         <Compass className="w-4 h-4 text-sky-400 animate-spin" style={{ animationDuration: '24s' }} />
         <div>
-          <div className="text-xs font-semibold text-white tracking-wide flex items-center gap-2">
+          <div className="text-xs font-semibold text-gray-900 tracking-wide flex items-center gap-2">
             METROPOLITAN CAREBRIDGE GRID
             <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
           </div>
-          <div className="text-[10px] text-slate-400">
+          <div className="text-[10px] text-gray-500">
             {hospitals.length} Hospitals • {ambulances.length} Ambulances • {emergencies.length} Emergencies
           </div>
         </div>
       </div>
 
       {/* Map Legend */}
-      <div className="absolute top-4 right-4 z-10 hidden sm:flex items-center gap-3 bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-800 text-[10px] text-slate-300">
+      <div className="absolute top-4 right-4 z-10 hidden sm:flex items-center gap-3 bg-gray-100/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-gray-200 text-[10px] text-gray-600">
         <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-emerald-500" /> NORMAL</span>
         <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-amber-500" /> SURGE</span>
         <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-rose-500" /> DIVERT</span>
@@ -128,16 +128,16 @@ export const CityNetworkMap: React.FC<CityNetworkMapProps> = ({
             )}
 
             {/* Marker Icon */}
-            <div className={`relative flex items-center justify-center w-8 h-8 rounded-xl bg-slate-900 border ${statusTheme.border} shadow-lg hover:scale-110 transition-transform ${statusTheme.ring}`}>
+            <div className={`relative flex items-center justify-center w-8 h-8 rounded-xl bg-gray-100 border ${statusTheme.border} shadow-lg bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:scale-110 transition-transform ${statusTheme.ring}`}>
               <Building2 className={`w-4 h-4 ${statusTheme.text}`} />
               {/* ICU Load Pill */}
-              <span className={`absolute -top-2 -right-2 px-1 py-0.2 rounded-full text-[9px] font-bold ${statusTheme.bg} text-white`}>
+              <span className={`absolute -top-2 -right-2 px-1 py-0.2 rounded-full text-[9px] font-bold ${statusTheme.bg} text-gray-900`}>
                 {Math.round(occRate)}%
               </span>
             </div>
 
             {/* Tooltip / Label */}
-            <div className="absolute left-1/2 top-full -translate-x-1/2 mt-1 px-2 py-0.5 rounded bg-slate-900/95 border border-slate-800 text-[10px] font-medium text-slate-200 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl z-30">
+            <div className="absolute left-1/2 top-full -translate-x-1/2 mt-1 px-2 py-0.5 rounded bg-gray-100/95 border border-gray-200 text-[10px] font-medium text-gray-700 whitespace-nowrap opacity-0 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:opacity-100 transition-opacity pointer-events-none shadow-xl z-30">
               {hosp.name} ({hosp.code})
             </div>
           </div>
@@ -162,7 +162,7 @@ export const CityNetworkMap: React.FC<CityNetworkMapProps> = ({
             {isInTransit && (
               <span className="absolute -inset-2 rounded-full bg-sky-400 opacity-40 animate-ping" />
             )}
-            <div className="relative flex items-center justify-center w-7 h-7 rounded-full bg-sky-950 border border-sky-500/80 shadow-md hover:scale-125 transition-transform text-sky-400">
+            <div className="relative flex items-center justify-center w-7 h-7 rounded-full bg-sky-950 border border-sky-500/80 shadow-md bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:scale-125 transition-transform text-sky-400">
               <Siren className="w-3.5 h-3.5 animate-pulse" />
               {amb.eta_minutes !== undefined && amb.eta_minutes > 0 && (
                 <span className="absolute -bottom-2 px-1 rounded bg-sky-600 text-white text-[8px] font-bold">
@@ -171,7 +171,7 @@ export const CityNetworkMap: React.FC<CityNetworkMapProps> = ({
               )}
             </div>
 
-            <div className="absolute left-1/2 top-full -translate-x-1/2 mt-1 px-2 py-0.5 rounded bg-slate-900/95 border border-slate-800 text-[10px] font-medium text-slate-200 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl z-30">
+            <div className="absolute left-1/2 top-full -translate-x-1/2 mt-1 px-2 py-0.5 rounded bg-gray-100/95 border border-gray-200 text-[10px] font-medium text-gray-700 whitespace-nowrap opacity-0 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:opacity-100 transition-opacity pointer-events-none shadow-xl z-30">
               {amb.code} ({amb.status})
             </div>
           </div>
@@ -180,7 +180,7 @@ export const CityNetworkMap: React.FC<CityNetworkMapProps> = ({
 
       {/* Entity Details Popup Card */}
       {selectedEntity && (
-        <div className="absolute bottom-4 left-4 right-4 sm:right-auto sm:w-80 z-30 bg-slate-900/95 backdrop-blur-md rounded-xl border border-slate-800 p-4 shadow-2xl animate-in fade-in duration-200">
+        <div className="absolute bottom-4 left-4 right-4 sm:right-auto sm:w-80 z-30 bg-gray-100/95 backdrop-blur-md rounded-xl border border-gray-200 p-4 shadow-2xl animate-in fade-in duration-200">
           <div className="flex items-start justify-between mb-2">
             <div className="flex items-center gap-2">
               {selectedEntity.type === 'hospital' ? (
@@ -191,37 +191,37 @@ export const CityNetworkMap: React.FC<CityNetworkMapProps> = ({
                 <AlertTriangle className="w-5 h-5 text-rose-400" />
               )}
               <div>
-                <h4 className="text-xs font-bold text-white">
+                <h4 className="text-xs font-bold text-gray-900">
                   {selectedEntity.type === 'hospital' ? selectedEntity.data.name : selectedEntity.data.code}
                 </h4>
-                <p className="text-[10px] text-slate-400">
+                <p className="text-[10px] text-gray-500">
                   {selectedEntity.type === 'hospital' ? selectedEntity.data.branch_name : `Paramedic: ${selectedEntity.data.paramedic_name || 'Assigned'}`}
                 </p>
               </div>
             </div>
             <button
               onClick={() => setSelectedEntity(null)}
-              className="text-slate-400 hover:text-white p-1"
+              className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 p-1"
             >
               <X className="w-4 h-4" />
             </button>
           </div>
 
           {selectedEntity.type === 'hospital' && (
-            <div className="space-y-2 text-[11px] text-slate-300">
-              <div className="flex justify-between py-1 border-b border-slate-800">
+            <div className="space-y-2 text-[11px] text-gray-600">
+              <div className="flex justify-between py-1 border-b border-gray-200">
                 <span>Emergency Status:</span>
                 <span className={`font-semibold ${getStatusColor(selectedEntity.data.emergency_status).text}`}>
                   {selectedEntity.data.emergency_status}
                 </span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800">
+              <div className="flex justify-between py-1 border-b border-gray-200">
                 <span>ICU Occupancy:</span>
-                <span className="font-semibold text-white">
+                <span className="font-semibold text-gray-900">
                   {selectedEntity.data.occupied_icu_beds || 0} / {selectedEntity.data.icu_capacity || 0} ({selectedEntity.data.icu_occupancy_rate || 0}%)
                 </span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800">
+              <div className="flex justify-between py-1 border-b border-gray-200">
                 <span>Available Beds:</span>
                 <span className="font-semibold text-emerald-400">
                   {selectedEntity.data.available_beds || 0}
@@ -229,7 +229,7 @@ export const CityNetworkMap: React.FC<CityNetworkMapProps> = ({
               </div>
               <div className="flex justify-between py-1">
                 <span>Ventilators:</span>
-                <span className="font-semibold text-white">
+                <span className="font-semibold text-gray-900">
                   {selectedEntity.data.ventilators_available || 0} / {selectedEntity.data.ventilators_total || 0}
                 </span>
               </div>
@@ -237,18 +237,18 @@ export const CityNetworkMap: React.FC<CityNetworkMapProps> = ({
           )}
 
           {selectedEntity.type === 'ambulance' && (
-            <div className="space-y-2 text-[11px] text-slate-300">
-              <div className="flex justify-between py-1 border-b border-slate-800">
+            <div className="space-y-2 text-[11px] text-gray-600">
+              <div className="flex justify-between py-1 border-b border-gray-200">
                 <span>Operational Status:</span>
                 <span className="font-semibold text-sky-400">{selectedEntity.data.status}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800">
+              <div className="flex justify-between py-1 border-b border-gray-200">
                 <span>Plate Number:</span>
-                <span className="font-mono text-white">{selectedEntity.data.plate_number}</span>
+                <span className="font-mono text-gray-900">{selectedEntity.data.plate_number}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800">
+              <div className="flex justify-between py-1 border-b border-gray-200">
                 <span>Current Patient:</span>
-                <span className="font-semibold text-white">{selectedEntity.data.current_patient_name || 'None'}</span>
+                <span className="font-semibold text-gray-900">{selectedEntity.data.current_patient_name || 'None'}</span>
               </div>
               <div className="flex justify-between py-1">
                 <span>Simulated ETA:</span>

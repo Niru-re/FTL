@@ -53,21 +53,21 @@ export const VitalsEntryModal: React.FC<VitalsEntryModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-      <div className="relative w-full max-w-lg rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl p-6 glass-panel">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
+      <div className="relative w-full max-w-lg rounded-2xl border border-gray-200 bg-gray-100 shadow-2xl p-6 glass-panel">
+        <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-4">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-500/15 text-teal-400 border border-teal-500/30">
               <HeartPulse className="h-5 w-5 animate-pulse" />
             </div>
             <div>
               <h3 className="text-base font-bold text-white">Record Patient Vitals</h3>
-              <p className="text-xs text-slate-400">{patient.full_name} ({patient.mrn}) &bull; Bed {patient.bed_code || 'N/A'}</p>
+              <p className="text-xs text-gray-500">{patient.full_name} ({patient.mrn}) &bull; Bed {patient.bed_code || 'N/A'}</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white"
+            className="rounded-lg p-1.5 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white"
           >
             <X className="h-5 w-5" />
           </button>
@@ -76,7 +76,7 @@ export const VitalsEntryModal: React.FC<VitalsEntryModalProps> = ({
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-300">Heart Rate (bpm)</label>
+              <label className="text-xs font-semibold text-gray-600">Heart Rate (bpm)</label>
               <input
                 type="number"
                 required
@@ -84,12 +84,12 @@ export const VitalsEntryModal: React.FC<VitalsEntryModalProps> = ({
                 max={220}
                 value={heartRate}
                 onChange={(e) => setHeartRate(Number(e.target.value))}
-                className="w-full rounded-lg border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-white font-mono focus:border-teal-500 focus:outline-none"
+                className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-900 font-mono focus:border-teal-500 focus:outline-none"
               />
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-300">Blood Pressure (mmHg)</label>
+              <label className="text-xs font-semibold text-gray-600">Blood Pressure (mmHg)</label>
               <div className="flex items-center gap-1.5">
                 <input
                   type="number"
@@ -97,22 +97,22 @@ export const VitalsEntryModal: React.FC<VitalsEntryModalProps> = ({
                   placeholder="Sys"
                   value={systolicBp}
                   onChange={(e) => setSystolicBp(Number(e.target.value))}
-                  className="w-full rounded-lg border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-white font-mono focus:border-teal-500 focus:outline-none"
+                  className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-900 font-mono focus:border-teal-500 focus:outline-none"
                 />
-                <span className="text-slate-500">/</span>
+                <span className="text-gray-400">/</span>
                 <input
                   type="number"
                   required
                   placeholder="Dia"
                   value={diastolicBp}
                   onChange={(e) => setDiastolicBp(Number(e.target.value))}
-                  className="w-full rounded-lg border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-white font-mono focus:border-teal-500 focus:outline-none"
+                  className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-900 font-mono focus:border-teal-500 focus:outline-none"
                 />
               </div>
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-300">SpO2 Oxygen Saturation (%)</label>
+              <label className="text-xs font-semibold text-gray-600">SpO2 Oxygen Saturation (%)</label>
               <input
                 type="number"
                 step="0.1"
@@ -121,12 +121,12 @@ export const VitalsEntryModal: React.FC<VitalsEntryModalProps> = ({
                 max={100}
                 value={spo2}
                 onChange={(e) => setSpo2(Number(e.target.value))}
-                className="w-full rounded-lg border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-teal-400 font-mono font-bold focus:border-teal-500 focus:outline-none"
+                className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-teal-400 font-mono font-bold focus:border-teal-500 focus:outline-none"
               />
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-300">Respiratory Rate (/min)</label>
+              <label className="text-xs font-semibold text-gray-600">Respiratory Rate (/min)</label>
               <input
                 type="number"
                 required
@@ -134,12 +134,12 @@ export const VitalsEntryModal: React.FC<VitalsEntryModalProps> = ({
                 max={60}
                 value={respiratoryRate}
                 onChange={(e) => setRespiratoryRate(Number(e.target.value))}
-                className="w-full rounded-lg border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-white font-mono focus:border-teal-500 focus:outline-none"
+                className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-900 font-mono focus:border-teal-500 focus:outline-none"
               />
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-300">Body Temperature (°C)</label>
+              <label className="text-xs font-semibold text-gray-600">Body Temperature (°C)</label>
               <input
                 type="number"
                 step="0.1"
@@ -148,29 +148,29 @@ export const VitalsEntryModal: React.FC<VitalsEntryModalProps> = ({
                 max={44}
                 value={temperature}
                 onChange={(e) => setTemperature(Number(e.target.value))}
-                className="w-full rounded-lg border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-white font-mono focus:border-teal-500 focus:outline-none"
+                className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-900 font-mono focus:border-teal-500 focus:outline-none"
               />
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-300">Pain Score (0 - 10)</label>
+              <label className="text-xs font-semibold text-gray-600">Pain Score (0 - 10)</label>
               <input
                 type="number"
                 min={0}
                 max={10}
                 value={painScore}
                 onChange={(e) => setPainScore(Number(e.target.value))}
-                className="w-full rounded-lg border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-white font-mono focus:border-teal-500 focus:outline-none"
+                className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-900 font-mono focus:border-teal-500 focus:outline-none"
               />
             </div>
           </div>
 
           <div className="space-y-1">
-            <label className="text-xs font-semibold text-slate-300">Consciousness Level (AVPU)</label>
+            <label className="text-xs font-semibold text-gray-600">Consciousness Level (AVPU)</label>
             <select
               value={consciousness}
               onChange={(e) => setConsciousness(e.target.value)}
-              className="w-full rounded-lg border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-white focus:border-teal-500 focus:outline-none"
+              className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-900 focus:border-teal-500 focus:outline-none"
             >
               <option value="ALERT">Alert (Fully conscious and oriented)</option>
               <option value="VOICE">Voice (Responds to verbal stimuli)</option>
@@ -179,18 +179,18 @@ export const VitalsEntryModal: React.FC<VitalsEntryModalProps> = ({
             </select>
           </div>
 
-          <div className="flex justify-end gap-3 pt-4 border-t border-slate-800">
+          <div className="flex justify-end gap-3 pt-4 border-t border-gray-200">
             <button
               type="button"
               onClick={onClose}
-              className="rounded-xl border border-slate-800 px-4 py-2 text-xs font-semibold text-slate-400 hover:bg-slate-800"
+              className="rounded-xl border border-gray-200 px-4 py-2 text-xs font-semibold text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex items-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold px-6 py-2 shadow-lg shadow-teal-600/20 transition disabled:opacity-50"
+              className="flex items-center gap-2 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 text-white text-xs font-bold px-6 py-2 shadow-lg shadow-teal-600/20 transition disabled:opacity-50"
             >
               <Check className="h-4 w-4" />
               {isSubmitting ? 'Recording Vitals...' : 'Save Vitals Entry'}

@@ -90,11 +90,11 @@ export const AdminAICapacityPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Top Banner & Status (Section 29 & 41) */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+      <div className="bg-gray-100 border border-gray-200 rounded-2xl p-6 shadow-xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-3 mb-1">
-              <h1 className="text-2xl font-black text-white flex items-center gap-2">
+              <h1 className="text-2xl font-black text-gray-900 flex items-center gap-2">
                 <Cpu className="h-6 w-6 text-teal-400" />
                 Metropolitan Capacity & Resource Intelligence
               </h1>
@@ -103,7 +103,7 @@ export const AdminAICapacityPage: React.FC = () => {
                 AI ENGINE ONLINE • PROTOTYPE MODE
               </span>
             </div>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-gray-500">
               Short-term 6h–48h capacity forecasting, ICU exhaustion prediction, and multi-hospital load balancing.
             </p>
           </div>
@@ -111,7 +111,7 @@ export const AdminAICapacityPage: React.FC = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={loadData}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-bold transition active:scale-95"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-600 border border-gray-300 text-xs font-bold transition active:scale-95"
             >
               <RefreshCw className={`h-4 w-4 text-teal-400 ${isLoading ? 'animate-spin' : ''}`} />
               Refresh Forecasts
@@ -120,7 +120,7 @@ export const AdminAICapacityPage: React.FC = () => {
         </div>
 
         {/* Banner safety label */}
-        <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-500">
+        <div className="mt-4 pt-3 border-t border-gray-200/80 flex items-center justify-between text-[11px] font-mono text-gray-400">
           <span>MODEL: PrototypeCapacityModel v1.0 • CONFIDENCE: 0.81</span>
           <span className="text-amber-400 font-bold uppercase tracking-wider">
             PROTOTYPE OPERATIONAL FORECAST • SIMULATED DATA
@@ -136,7 +136,7 @@ export const AdminAICapacityPage: React.FC = () => {
               <Flame className="h-4 w-4 animate-bounce" />
               Mass Casualty & Surge Demand Simulator
             </div>
-            <p className="text-xs text-slate-300 mt-0.5">
+            <p className="text-xs text-gray-600 mt-0.5">
               Demonstrate city-wide disaster response: injects 12 concurrent trauma casualties, fills ICU beds, and evaluates AI capacity warnings.
             </p>
           </div>
@@ -145,7 +145,7 @@ export const AdminAICapacityPage: React.FC = () => {
             <button
               onClick={triggerMassCasualty}
               disabled={isSimulating}
-              className="px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-black uppercase tracking-wider shadow-lg shadow-rose-900/40 active:scale-95 transition flex items-center gap-2 disabled:opacity-50"
+              className="px-4 py-2.5 rounded-xl bg-rose-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-500 text-white text-xs font-black uppercase tracking-wider shadow-lg shadow-rose-900/40 active:scale-95 transition flex items-center gap-2 disabled:opacity-50"
             >
               <Flame className="h-4 w-4" />
               {isSimulating ? 'Simulating Event...' : 'Trigger Mass Casualty Event (12 Cases)'}
@@ -154,7 +154,7 @@ export const AdminAICapacityPage: React.FC = () => {
             <button
               onClick={resetSimulation}
               disabled={isSimulating}
-              className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-bold uppercase tracking-wider active:scale-95 transition"
+              className="px-4 py-2.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-600 border border-gray-300 text-xs font-bold uppercase tracking-wider active:scale-95 transition"
             >
               Reset Capacity State
             </button>
@@ -162,7 +162,7 @@ export const AdminAICapacityPage: React.FC = () => {
         </div>
 
         {simMessage && (
-          <div className="mt-3 p-2.5 rounded-xl bg-slate-950/80 border border-rose-500/30 text-xs text-rose-300 font-mono flex items-center gap-2">
+          <div className="mt-3 p-2.5 rounded-xl bg-gray-50/80 border border-rose-500/30 text-xs text-rose-300 font-mono flex items-center gap-2">
             <AlertTriangle className="h-4 w-4 shrink-0 text-amber-400" />
             {simMessage}
           </div>
@@ -171,96 +171,96 @@ export const AdminAICapacityPage: React.FC = () => {
 
       {/* Network Capacity KPI Row (Section 22) */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl">
-          <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+        <div className="bg-gray-100 border border-gray-200 p-5 rounded-2xl">
+          <div className="text-[11px] font-bold text-gray-500 uppercase tracking-wider flex items-center justify-between">
             <span>ICU Capacity</span>
             <Activity className="h-4 w-4 text-rose-400" />
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-3xl font-black text-white">{netCap.current_icu_occupancy || 68}%</span>
+            <span className="text-3xl font-black text-gray-900">{netCap.current_icu_occupancy || 68}%</span>
             <span className="text-xs font-bold text-rose-400">→ {netCap.projected_24h_icu_occupancy || 79}% (24h)</span>
           </div>
-          <div className="mt-3 w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+          <div className="mt-3 w-full bg-gray-200 h-2 rounded-full overflow-hidden">
             <div
               className="bg-rose-500 h-full rounded-full transition-all duration-500"
               style={{ width: `${netCap.current_icu_occupancy || 68}%` }}
             />
           </div>
-          <div className="mt-2 text-[10px] text-slate-500 font-mono">
+          <div className="mt-2 text-[10px] text-gray-400 font-mono">
             {netCap.available_icu || 0} of {netCap.icu_total || 0} ICU beds currently open
           </div>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl">
-          <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+        <div className="bg-gray-100 border border-gray-200 p-5 rounded-2xl">
+          <div className="text-[11px] font-bold text-gray-500 uppercase tracking-wider flex items-center justify-between">
             <span>Capacity Pressure Score</span>
             <BarChart3 className="h-4 w-4 text-amber-400" />
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-3xl font-black text-amber-300">{netCap.capacity_pressure_score || 58}/100</span>
+            <span className="text-3xl font-black text-gray-900">{netCap.capacity_pressure_score || 58}/100</span>
             <span className="text-xs font-bold text-amber-400">MODERATE-HIGH</span>
           </div>
-          <div className="mt-3 w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+          <div className="mt-3 w-full bg-gray-200 h-2 rounded-full overflow-hidden">
             <div
               className="bg-amber-500 h-full rounded-full transition-all duration-500"
               style={{ width: `${netCap.capacity_pressure_score || 58}%` }}
             />
           </div>
-          <div className="mt-2 text-[10px] text-slate-500 font-mono">
+          <div className="mt-2 text-[10px] text-gray-400 font-mono">
             {netCap.hospitals_under_pressure_count || 0} hospitals above 80% load
           </div>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl">
-          <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+        <div className="bg-gray-100 border border-gray-200 p-5 rounded-2xl">
+          <div className="text-[11px] font-bold text-gray-500 uppercase tracking-wider flex items-center justify-between">
             <span>Ventilator Reserves</span>
             <Wind className="h-4 w-4 text-teal-400" />
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-3xl font-black text-white">{netCap.available_ventilators || 0}</span>
+            <span className="text-3xl font-black text-gray-900">{netCap.available_ventilators || 0}</span>
             <span className="text-xs font-bold text-teal-400">/ {netCap.total_ventilators || 0} total</span>
           </div>
-          <div className="mt-3 w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+          <div className="mt-3 w-full bg-gray-200 h-2 rounded-full overflow-hidden">
             <div
               className="bg-teal-500 h-full rounded-full transition-all duration-500"
               style={{ width: `${((netCap.available_ventilators || 1) / Math.max(1, netCap.total_ventilators || 1)) * 100}%` }}
             />
           </div>
-          <div className="mt-2 text-[10px] text-slate-500 font-mono">
+          <div className="mt-2 text-[10px] text-gray-400 font-mono">
             Projected 24h demand: {Math.max(0, (netCap.available_ventilators || 10) - 5)} available
           </div>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl">
-          <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+        <div className="bg-gray-100 border border-gray-200 p-5 rounded-2xl">
+          <div className="text-[11px] font-bold text-gray-500 uppercase tracking-wider flex items-center justify-between">
             <span>Inpatient Bed Headroom</span>
             <BedDouble className="h-4 w-4 text-sky-400" />
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-3xl font-black text-white">{netCap.available_beds || 0}</span>
-            <span className="text-xs font-bold text-slate-400">/ {netCap.total_beds || 0}</span>
+            <span className="text-3xl font-black text-gray-900">{netCap.available_beds || 0}</span>
+            <span className="text-xs font-bold text-gray-500">/ {netCap.total_beds || 0}</span>
           </div>
-          <div className="mt-3 w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+          <div className="mt-3 w-full bg-gray-200 h-2 rounded-full overflow-hidden">
             <div
               className="bg-sky-500 h-full rounded-full transition-all duration-500"
               style={{ width: `${((netCap.available_beds || 1) / Math.max(1, netCap.total_beds || 1)) * 100}%` }}
             />
           </div>
-          <div className="mt-2 text-[10px] text-slate-500 font-mono">
+          <div className="mt-2 text-[10px] text-gray-400 font-mono">
             Active emergencies in transit: {netCap.active_emergencies || 0}
           </div>
         </div>
       </div>
 
       {/* Network Capacity Table (Section 20) */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
-        <div className="p-5 border-b border-slate-800 flex items-center justify-between">
+      <div className="bg-gray-100 border border-gray-200 rounded-2xl overflow-hidden shadow-xl">
+        <div className="p-5 border-b border-gray-200 flex items-center justify-between">
           <div>
             <h2 className="text-base font-black text-white flex items-center gap-2">
               <Hospital className="h-5 w-5 text-teal-400" />
               Connected Hospital Capacity Projections (24h Forecast)
             </h2>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-gray-500 mt-0.5">
               Ranked comparison of current ICU saturation against projected pressure.
             </p>
           </div>
@@ -268,7 +268,7 @@ export const AdminAICapacityPage: React.FC = () => {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-950/80 text-slate-400 font-bold uppercase tracking-wider border-b border-slate-800">
+            <thead className="bg-gray-50/80 text-gray-500 font-bold uppercase tracking-wider border-b border-gray-200">
               <tr>
                 <th className="py-3 px-4">Hospital & Campus</th>
                 <th className="py-3 px-4 text-center">Current ICU</th>
@@ -279,18 +279,18 @@ export const AdminAICapacityPage: React.FC = () => {
                 <th className="py-3 px-4 text-right">Capacity Outlook</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 font-medium">
+            <tbody className="divide-y divide-gray-200/60 font-medium">
               {hospitals.map((h) => {
                 const m = h.current_metrics || {};
                 const fc = h.forecast_24h || {};
                 return (
-                  <tr key={h.hospital_id} className="hover:bg-slate-800/40 transition">
+                  <tr key={h.hospital_id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 transition">
                     <td className="py-3.5 px-4">
-                      <div className="font-bold text-white text-sm">{h.hospital_name}</div>
-                      <div className="text-[10px] text-slate-400">{h.branch_name}</div>
+                      <div className="font-bold text-gray-900 text-sm">{h.hospital_name}</div>
+                      <div className="text-[10px] text-gray-500">{h.branch_name}</div>
                     </td>
 
-                    <td className="py-3.5 px-4 text-center font-mono font-bold text-slate-200">
+                    <td className="py-3.5 px-4 text-center font-mono font-bold text-gray-700">
                       {m.icu_occupancy_pct || 65}%
                     </td>
 
@@ -300,16 +300,16 @@ export const AdminAICapacityPage: React.FC = () => {
 
                     <td className="py-3.5 px-4 text-center font-mono">
                       <span className="text-emerald-400 font-bold">{m.available_icu || 0}</span>
-                      <span className="text-slate-500"> → </span>
-                      <span className={fc.projected_available_icu <= 1 ? 'text-rose-400 font-bold' : 'text-slate-300'}>
+                      <span className="text-gray-400"> → </span>
+                      <span className={fc.projected_available_icu <= 1 ? 'text-rose-400 font-bold' : 'text-gray-600'}>
                         {fc.projected_available_icu ?? 0}
                       </span>
                     </td>
 
                     <td className="py-3.5 px-4 text-center font-mono">
                       <span className="text-teal-400">{m.available_ventilators || 0}</span>
-                      <span className="text-slate-500"> → </span>
-                      <span className="text-slate-300">{fc.projected_ventilators ?? 0}</span>
+                      <span className="text-gray-400"> → </span>
+                      <span className="text-gray-600">{fc.projected_ventilators ?? 0}</span>
                     </td>
 
                     <td className="py-3.5 px-4 text-center">
@@ -337,7 +337,7 @@ export const AdminAICapacityPage: React.FC = () => {
 
       {/* Operational Recommendations Grid (Section 23) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl">
+        <div className="bg-gray-100 border border-gray-200 p-5 rounded-2xl">
           <h3 className="text-sm font-black text-white flex items-center gap-2 mb-3">
             <CheckCircle2 className="h-4 w-4 text-teal-400" />
             AI Operational Recommendations
@@ -348,7 +348,7 @@ export const AdminAICapacityPage: React.FC = () => {
               'Distribute incoming ambulance intake evenly across Metro campuses.',
               'Prepare auxiliary ventilators for respiratory surge.'
             ]).map((rec: string, i: number) => (
-              <div key={i} className="p-3 rounded-xl bg-slate-950 border border-slate-800/80 text-xs text-slate-300 flex items-start gap-2.5">
+              <div key={i} className="p-3 rounded-xl bg-gray-50 border border-gray-200/80 text-xs text-gray-600 flex items-start gap-2.5">
                 <ChevronRight className="h-4 w-4 text-teal-400 shrink-0 mt-0.5" />
                 <span>{rec}</span>
               </div>
@@ -357,14 +357,14 @@ export const AdminAICapacityPage: React.FC = () => {
         </div>
 
         {/* Shortage Warnings & Alarms */}
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl">
+        <div className="bg-gray-100 border border-gray-200 p-5 rounded-2xl">
           <h3 className="text-sm font-black text-white flex items-center gap-2 mb-3">
             <AlertTriangle className="h-4 w-4 text-amber-400" />
             Active Capacity & Shortage Warnings
           </h3>
           <div className="space-y-2">
             {(networkData?.shortage_warnings || []).length === 0 ? (
-              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-500 text-center">
+              <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-400 text-center">
                 ✓ No immediate bed or ventilator shortages projected in current 24h cycle.
               </div>
             ) : (
@@ -372,7 +372,7 @@ export const AdminAICapacityPage: React.FC = () => {
                 <div key={i} className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-xs text-rose-300 flex items-start justify-between">
                   <div>
                     <div className="font-bold">{w.hospital_name}</div>
-                    <div className="text-[11px] text-slate-300 mt-0.5">{w.warning}</div>
+                    <div className="text-[11px] text-gray-600 mt-0.5">{w.warning}</div>
                   </div>
                   <span className="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 text-[10px] font-mono font-bold">
                     {w.severity}

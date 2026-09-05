@@ -125,10 +125,10 @@ export const SimulationControlPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-slate-900/90 border border-slate-800 p-6 rounded-2xl">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-gray-100/90 border border-gray-200 p-6 rounded-2xl">
         <div>
           <div className="flex items-center gap-3 mb-1">
-            <h1 className="text-2xl font-black tracking-tight text-white flex items-center gap-2">
+            <h1 className="text-2xl font-black tracking-tight text-gray-900 flex items-center gap-2">
               <Sliders className="h-6 w-6 text-teal-400" />
               Real-Time Simulation Control Center
             </h1>
@@ -136,7 +136,7 @@ export const SimulationControlPage: React.FC = () => {
               DEMO ENVIRONMENT • SIMULATED DATA
             </span>
           </div>
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-gray-500">
             Hackathon demonstration orchestrator: drive vital deterioration profiles, ambulance telemetry, and full-chain automated scenarios over WebSockets.
           </p>
         </div>
@@ -146,7 +146,7 @@ export const SimulationControlPage: React.FC = () => {
           <button
             onClick={handleStartFullDemo}
             disabled={demoRunning}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-teal-900/30 transition active:scale-95 disabled:opacity-50"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:from-teal-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:to-cyan-500 text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-teal-900/30 transition active:scale-95 disabled:opacity-50"
           >
             <Sparkles className="h-4 w-4" />
             {demoRunning ? "Running Demo..." : "Start Full Emergency Demo"}
@@ -154,7 +154,7 @@ export const SimulationControlPage: React.FC = () => {
 
           <button
             onClick={handleResetDemo}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold uppercase tracking-wider transition active:scale-95"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-700 border border-gray-300 text-xs font-bold uppercase tracking-wider transition active:scale-95"
           >
             <RotateCcw className="h-4 w-4 text-amber-400" />
             Reset Demo State
@@ -163,19 +163,19 @@ export const SimulationControlPage: React.FC = () => {
       </div>
 
       {actionMessage && (
-        <div className="flex items-center justify-between p-3.5 bg-slate-800/80 border border-slate-700 rounded-xl text-xs text-slate-200 animate-fadeIn">
+        <div className="flex items-center justify-between p-3.5 bg-gray-200/80 border border-gray-300 rounded-xl text-xs text-gray-700 animate-fadeIn">
           <div className="flex items-center gap-2 font-mono">
             <Radio className="h-4 w-4 text-teal-400 animate-pulse" />
             <span>{actionMessage}</span>
           </div>
-          <button onClick={() => setActionMessage(null)} className="text-slate-400 hover:text-white text-xs">Dismiss</button>
+          <button onClick={() => setActionMessage(null)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white text-xs">Dismiss</button>
         </div>
       )}
 
       {/* Grid: 3 Interactive Pillars */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Pillar 1: Patient Vitals Degradation Simulator */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between shadow-xl">
+        <div className="bg-gray-100 border border-gray-200 rounded-2xl p-6 flex flex-col justify-between shadow-xl">
           <div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
@@ -187,17 +187,17 @@ export const SimulationControlPage: React.FC = () => {
               </span>
             </div>
 
-            <p className="text-xs text-slate-400 mb-4">
+            <p className="text-xs text-gray-500 mb-4">
               Stream realistic physiological vital signs to assigned Doctor and Nurse panels without page reloads.
             </p>
 
             <div className="space-y-3 mb-6">
               <div>
-                <label className="block text-xs text-slate-400 font-semibold mb-1">Target Patient</label>
+                <label className="block text-xs text-gray-500 font-semibold mb-1">Target Patient</label>
                 <select
                   value={selectedPatientId || ''}
                   onChange={(e) => setSelectedPatientId(Number(e.target.value))}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-teal-500"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-teal-500"
                 >
                   {patients.map(p => (
                     <option key={p.id} value={p.id}>
@@ -208,11 +208,11 @@ export const SimulationControlPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs text-slate-400 font-semibold mb-1">Physiological Scenario Profile</label>
+                <label className="block text-xs text-gray-500 font-semibold mb-1">Physiological Scenario Profile</label>
                 <select
                   value={selectedProfile}
                   onChange={(e) => setSelectedProfile(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-teal-500"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-teal-500"
                 >
                   <option value="DETERIORATING">🔴 DETERIORATING (SpO2 drops, HR & RR climb &rarr; Critical Alert)</option>
                   <option value="RECOVERING">🟢 RECOVERING (SpO2 rises, HR stabilizes)</option>
@@ -227,7 +227,7 @@ export const SimulationControlPage: React.FC = () => {
             <div className="flex gap-2">
               <button
                 onClick={handleStartPatientSim}
-                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold uppercase tracking-wider transition active:scale-95 shadow-md shadow-rose-950/40"
+                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-rose-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-500 text-white text-xs font-bold uppercase tracking-wider transition active:scale-95 shadow-md shadow-rose-950/40"
               >
                 <Play className="h-3.5 w-3.5" />
                 Start Simulation
@@ -235,7 +235,7 @@ export const SimulationControlPage: React.FC = () => {
 
               <button
                 onClick={() => handleStopPatientSim()}
-                className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold uppercase tracking-wider transition active:scale-95"
+                className="px-4 py-2.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-600 text-xs font-bold uppercase tracking-wider transition active:scale-95"
               >
                 <Square className="h-3.5 w-3.5 text-rose-400" />
                 Stop
@@ -243,17 +243,17 @@ export const SimulationControlPage: React.FC = () => {
             </div>
 
             {activeSimCount > 0 && (
-              <div className="p-3 bg-slate-950 border border-slate-800 rounded-xl">
+              <div className="p-3 bg-gray-50 border border-gray-200 rounded-xl">
                 <div className="text-[11px] font-bold text-teal-400 mb-1 flex items-center gap-1.5">
                   <Radio className="h-3 w-3 animate-ping" />
                   Active Vitals Streams ({activeSimCount})
                 </div>
                 {Object.entries(simulationStatus.active_patient_simulations || {}).map(([pId, sim]: [string, any]) => (
-                  <div key={pId} className="flex items-center justify-between text-xs text-slate-300 py-1">
+                  <div key={pId} className="flex items-center justify-between text-xs text-gray-600 py-1">
                     <span>Patient #{pId}: <strong className="text-amber-400">{sim.profile}</strong></span>
                     <button
                       onClick={() => handleStopPatientSim(Number(pId))}
-                      className="text-[10px] text-rose-400 hover:text-rose-300 underline"
+                      className="text-[10px] text-rose-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-rose-300 underline"
                     >
                       Halt
                     </button>
@@ -265,7 +265,7 @@ export const SimulationControlPage: React.FC = () => {
         </div>
 
         {/* Pillar 2: Ambulance Fleet GPS Transit Stepper */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between shadow-xl">
+        <div className="bg-gray-100 border border-gray-200 rounded-2xl p-6 flex flex-col justify-between shadow-xl">
           <div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
@@ -277,17 +277,17 @@ export const SimulationControlPage: React.FC = () => {
               </span>
             </div>
 
-            <p className="text-xs text-slate-400 mb-4">
+            <p className="text-xs text-gray-500 mb-4">
               Simulate real-time GPS telemetry, stepping coordinates and decrementing transit ETA countdown towards hospital bays.
             </p>
 
             <div className="space-y-3 mb-6">
               <div>
-                <label className="block text-xs text-slate-400 font-semibold mb-1">Select Transit Unit</label>
+                <label className="block text-xs text-gray-500 font-semibold mb-1">Select Transit Unit</label>
                 <select
                   value={selectedAmbulanceId || ''}
                   onChange={(e) => setSelectedAmbulanceId(Number(e.target.value))}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-teal-500"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs text-gray-900 focus:outline-none focus:border-teal-500"
                 >
                   {ambulances.map(a => (
                     <option key={a.id} value={a.id}>
@@ -311,7 +311,7 @@ export const SimulationControlPage: React.FC = () => {
                   setActionMessage(`Step error: ${e.message || e}`);
                 }
               }}
-              className="w-full py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold uppercase tracking-wider transition active:scale-95 shadow-md shadow-cyan-950/40"
+              className="w-full py-2.5 rounded-xl bg-cyan-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-cyan-500 text-white text-xs font-bold uppercase tracking-wider transition active:scale-95 shadow-md shadow-cyan-950/40"
             >
               Step Movement (-2m ETA)
             </button>
@@ -327,7 +327,7 @@ export const SimulationControlPage: React.FC = () => {
                   setActionMessage(`Arrival error: ${e.message || e}`);
                 }
               }}
-              className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-slate-700 text-xs font-bold uppercase tracking-wider transition active:scale-95"
+              className="w-full py-2.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-emerald-300 border border-gray-300 text-xs font-bold uppercase tracking-wider transition active:scale-95"
             >
               Trigger Immediate Arrival (ETA 0m)
             </button>
@@ -335,7 +335,7 @@ export const SimulationControlPage: React.FC = () => {
         </div>
 
         {/* Pillar 3: Full Scenario Runner & Status */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between shadow-xl">
+        <div className="bg-gray-100 border border-gray-200 rounded-2xl p-6 flex flex-col justify-between shadow-xl">
           <div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
@@ -347,11 +347,11 @@ export const SimulationControlPage: React.FC = () => {
               </span>
             </div>
 
-            <p className="text-xs text-slate-400 mb-3">
+            <p className="text-xs text-gray-500 mb-3">
               Executes the complete end-to-end lifecycle across all connected panels:
             </p>
 
-            <div className="space-y-1.5 text-[11px] text-slate-400 bg-slate-950 p-3 rounded-xl border border-slate-800 mb-4">
+            <div className="space-y-1.5 text-[11px] text-gray-500 bg-gray-50 p-3 rounded-xl border border-gray-200 mb-4">
               <div>1. Emergency Intake Registered</div>
               <div>2. 5-Pillar Hospital Routing Ranked</div>
               <div>3. ICU Bed Locked (AVAILABLE &rarr; RESERVED)</div>
@@ -377,7 +377,7 @@ export const SimulationControlPage: React.FC = () => {
           <button
             onClick={handleStartFullDemo}
             disabled={demoRunning}
-            className="w-full py-3 rounded-xl bg-gradient-to-r from-teal-600 via-emerald-600 to-teal-500 hover:opacity-90 text-white text-xs font-black uppercase tracking-wider shadow-lg shadow-teal-950/40 transition active:scale-95 disabled:opacity-50"
+            className="w-full py-3 rounded-xl bg-gradient-to-r from-teal-600 via-emerald-600 to-teal-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:opacity-90 text-white text-xs font-black uppercase tracking-wider shadow-lg shadow-teal-950/40 transition active:scale-95 disabled:opacity-50"
           >
             {demoRunning ? "Executing..." : "Start Full Emergency Demo"}
           </button>
@@ -385,14 +385,14 @@ export const SimulationControlPage: React.FC = () => {
       </div>
 
       {/* 28. Network Simulation Scenarios Center (Phase 8 Section 28) */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+      <div className="bg-gray-100 border border-gray-200 rounded-2xl p-6 shadow-xl space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-200 pb-3">
           <div>
             <h2 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
               <Zap className="h-4 w-4 text-amber-400" />
               Metropolitan Network Simulation Scenarios
             </h2>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-gray-500 mt-0.5">
               Trigger operational stress-testing scenarios to evaluate systemic response, capacity re-routing, and automated alerting.
             </p>
           </div>
@@ -408,70 +408,70 @@ export const SimulationControlPage: React.FC = () => {
               title: 'Normal Operation',
               badge: 'BASELINE',
               desc: 'Restores all hospitals to NORMAL, clears surge beds, and sets ambulances to available.',
-              color: 'text-emerald-400 border-emerald-500/30 hover:bg-emerald-950/20'
+              color: 'text-emerald-400 border-emerald-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-emerald-950/20'
             },
             {
               id: 'ICU_SURGE',
               title: 'ICU Saturation Surge',
               badge: 'CAPACITY',
               desc: 'Simulates acute ICU admissions. Spikes occupancy >85%, locking available ICU beds and firing alarms.',
-              color: 'text-rose-400 border-rose-500/30 hover:bg-rose-950/20'
+              color: 'text-rose-400 border-rose-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-950/20'
             },
             {
               id: 'EMERGENCY_SURGE',
               title: 'Emergency Surge',
               badge: 'DISPATCH',
               desc: 'Spikes ER intake volume, dispatching ambulances and elevating hospital emergency load scores.',
-              color: 'text-amber-400 border-amber-500/30 hover:bg-amber-950/20'
+              color: 'text-amber-400 border-amber-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-amber-950/20'
             },
             {
               id: 'VENTILATOR_SHORTAGE',
               title: 'Ventilator Shortage',
               badge: 'RESOURCES',
               desc: 'Drops ventilator reserves below city-wide safety thresholds, triggering mutual-aid equipment alerts.',
-              color: 'text-indigo-400 border-indigo-500/30 hover:bg-indigo-950/20'
+              color: 'text-indigo-400 border-indigo-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-indigo-950/20'
             },
             {
               id: 'AMBULANCE_SURGE',
               title: 'Ambulance Fleet Surge',
               badge: 'FLEET',
               desc: 'Puts available ambulances in transit, depleting street-level EMS readiness.',
-              color: 'text-cyan-400 border-cyan-500/30 hover:bg-cyan-950/20'
+              color: 'text-cyan-400 border-cyan-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-cyan-950/20'
             },
             {
               id: 'MASS_CASUALTY',
               title: 'Mass Casualty Disaster',
               badge: 'DISASTER',
               desc: 'Injects 12 concurrent multi-trauma casualties, activating city incident command and diversion routing.',
-              color: 'text-rose-500 border-rose-500/40 hover:bg-rose-950/30'
+              color: 'text-rose-500 border-rose-500/40 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-950/30'
             },
             {
               id: 'HOSPITAL_DIVERT',
               title: 'Hospital Divert Status',
               badge: 'ROUTING',
               desc: 'Places primary hospital on DIVERT. Emergency routing algorithm bypasses facility for incoming cases.',
-              color: 'text-amber-400 border-amber-500/30 hover:bg-amber-950/20'
+              color: 'text-amber-400 border-amber-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-amber-950/20'
             },
             {
               id: 'HOSPITAL_CLOSURE',
               title: 'Hospital Closure',
               badge: 'SAFETY',
               desc: 'Sets hospital to CLOSED due to simulated power/infrastructure failure.',
-              color: 'text-slate-400 border-slate-500/30 hover:bg-slate-950/20'
+              color: 'text-gray-500 border-slate-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-50/20'
             }
           ].map((scen) => (
             <div
               key={scen.id}
-              className={`p-4 rounded-xl bg-slate-950 border transition-all flex flex-col justify-between ${scen.color}`}
+              className={`p-4 rounded-xl bg-gray-50 border transition-all flex flex-col justify-between ${scen.color}`}
             >
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-xs font-bold text-white">{scen.title}</h3>
-                  <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-slate-800 text-slate-300">
+                  <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-200 text-gray-600">
                     {scen.badge}
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-400 mb-4 leading-relaxed">
+                <p className="text-[11px] text-gray-500 mb-4 leading-relaxed">
                   {scen.desc}
                 </p>
               </div>
@@ -486,7 +486,7 @@ export const SimulationControlPage: React.FC = () => {
                     setActionMessage(`Scenario error: ${e.message || e}`);
                   }
                 }}
-                className="w-full py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition active:scale-95 border border-slate-700"
+                className="w-full py-2 rounded-lg bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-white text-xs font-bold transition active:scale-95 border border-gray-300"
               >
                 Execute Scenario
               </button>
@@ -496,8 +496,8 @@ export const SimulationControlPage: React.FC = () => {
       </div>
 
       {/* 29 & 30. MASS CASUALTY COMMAND VIEW (Phase 8 Section 29 & 30) */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-5">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+      <div className="bg-gray-100 border border-gray-200 rounded-2xl p-6 shadow-xl space-y-5">
+        <div className="flex items-center justify-between border-b border-gray-200 pb-3">
           <div className="flex items-center gap-2">
             <ShieldAlert className="h-5 w-5 text-rose-500" />
             <h2 className="text-sm font-bold text-white uppercase tracking-wider">
@@ -511,41 +511,41 @@ export const SimulationControlPage: React.FC = () => {
 
         {/* Casualty Triage KPIs */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-          <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-center">
-            <div className="text-[10px] text-slate-400 uppercase font-semibold">Incoming Casualties</div>
+          <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-center">
+            <div className="text-[10px] text-gray-500 uppercase font-semibold">Incoming Casualties</div>
             <div className="text-xl font-bold text-rose-400 mt-0.5">12</div>
-            <div className="text-[9px] text-slate-500">Trauma Level 1 & 2</div>
+            <div className="text-[9px] text-gray-400">Trauma Level 1 & 2</div>
           </div>
-          <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-center">
-            <div className="text-[10px] text-slate-400 uppercase font-semibold">Available ICU Beds</div>
+          <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-center">
+            <div className="text-[10px] text-gray-500 uppercase font-semibold">Available ICU Beds</div>
             <div className="text-xl font-bold text-emerald-400 mt-0.5">18</div>
-            <div className="text-[9px] text-slate-500">Across 13 hospitals</div>
+            <div className="text-[9px] text-gray-400">Across 13 hospitals</div>
           </div>
-          <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-center">
-            <div className="text-[10px] text-slate-400 uppercase font-semibold">Available ER Beds</div>
+          <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-center">
+            <div className="text-[10px] text-gray-500 uppercase font-semibold">Available ER Beds</div>
             <div className="text-xl font-bold text-sky-400 mt-0.5">34</div>
-            <div className="text-[9px] text-slate-500">Immediate bays</div>
+            <div className="text-[9px] text-gray-400">Immediate bays</div>
           </div>
-          <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-center">
-            <div className="text-[10px] text-slate-400 uppercase font-semibold">Ambulances Dispatched</div>
+          <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-center">
+            <div className="text-[10px] text-gray-500 uppercase font-semibold">Ambulances Dispatched</div>
             <div className="text-xl font-bold text-amber-400 mt-0.5">8</div>
-            <div className="text-[9px] text-slate-500">On transit grid</div>
+            <div className="text-[9px] text-gray-400">On transit grid</div>
           </div>
-          <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-center">
-            <div className="text-[10px] text-slate-400 uppercase font-semibold">Capacity Pressure</div>
+          <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-center">
+            <div className="text-[10px] text-gray-500 uppercase font-semibold">Capacity Pressure</div>
             <div className="text-xl font-bold text-rose-400 mt-0.5">88.4 / 100</div>
-            <div className="text-[9px] text-slate-500">SURGE ELEVATED</div>
+            <div className="text-[9px] text-gray-400">SURGE ELEVATED</div>
           </div>
-          <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-center">
-            <div className="text-[10px] text-slate-400 uppercase font-semibold">Incident Status</div>
+          <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-center">
+            <div className="text-[10px] text-gray-500 uppercase font-semibold">Incident Status</div>
             <div className="text-xl font-bold text-amber-400 mt-0.5">SURGE</div>
-            <div className="text-[9px] text-slate-500">Mutual Aid Active</div>
+            <div className="text-[9px] text-gray-400">Mutual Aid Active</div>
           </div>
         </div>
 
         {/* 30. Network Hospital Distribution (Green / Orange / Red) */}
         <div>
-          <h3 className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">
+          <h3 className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-3">
             Hospital Casualty Reception Allocation (Capacity Triaged)
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -563,7 +563,7 @@ export const SimulationControlPage: React.FC = () => {
                   </div>
                   <div className="text-[10px] font-semibold">{h.status}</div>
                 </div>
-                <div className="text-[9px] text-slate-400 mt-3 pt-2 border-t border-slate-800/60">
+                <div className="text-[9px] text-gray-500 mt-3 pt-2 border-t border-gray-200/60">
                   Visualization only • Emergency routing handles dispatch
                 </div>
               </div>
@@ -573,21 +573,21 @@ export const SimulationControlPage: React.FC = () => {
       </div>
 
       {/* Real-time WebSocket Event Stream Monitor */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+      <div className="bg-gray-100 border border-gray-200 rounded-2xl p-6 shadow-xl">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <h2 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
               <Radio className="h-4 w-4 text-teal-400" />
               Live WebSocket Event Bus Stream
             </h2>
-            <span className="text-[11px] text-slate-400">
+            <span className="text-[11px] text-gray-500">
               Connection: <strong className="text-emerald-400 font-mono">{connectionState}</strong>
             </span>
           </div>
 
           <button
             onClick={() => setLiveEvents([])}
-            className="text-xs text-slate-400 hover:text-white"
+            className="text-xs text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white"
           >
             Clear Stream
           </button>
@@ -595,18 +595,18 @@ export const SimulationControlPage: React.FC = () => {
 
         <div className="space-y-2 max-h-72 overflow-y-auto custom-scrollbar font-mono text-xs">
           {liveEvents.length === 0 ? (
-            <div className="text-center py-8 text-slate-500 italic">
+            <div className="text-center py-8 text-gray-400 italic">
               Awaiting real-time WebSocket events on city network bus...
             </div>
           ) : (
             liveEvents.map((item) => (
-              <div key={item.id} className="p-2.5 rounded-lg bg-slate-950 border border-slate-800 flex items-center justify-between gap-4">
+              <div key={item.id} className="p-2.5 rounded-lg bg-gray-50 border border-gray-200 flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-slate-500 text-[10px]">{item.timestamp}</span>
+                  <span className="text-gray-400 text-[10px]">{item.timestamp}</span>
                   <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-teal-500/10 text-teal-300 border border-teal-500/20">
                     {item.event}
                   </span>
-                  <span className="text-slate-300 text-xs truncate max-w-xl">
+                  <span className="text-gray-600 text-xs truncate max-w-xl">
                     {typeof item.data === 'object' ? JSON.stringify(item.data) : String(item.data)}
                   </span>
                 </div>

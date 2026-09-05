@@ -119,21 +119,21 @@ export const AmbulancesPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-white flex items-center gap-2">
+          <h1 className="text-2xl font-black text-gray-900 flex items-center gap-2">
             <AmbulanceIcon className="h-6 w-6 text-sky-400" />
             <span>Emergency Ambulance Fleet Tracking</span>
           </h1>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-gray-500">
             Real-time simulated GPS telemetry, live ETA countdown, and route tracking for city emergency transport units.
           </p>
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="flex rounded-xl border border-slate-800 bg-slate-900 p-1">
+          <div className="flex rounded-xl border border-gray-200 bg-gray-100 p-1">
             <button
               onClick={() => setViewMode('CARDS')}
               className={`px-3 py-1 text-xs font-bold rounded-lg transition ${
-                viewMode === 'CARDS' ? 'bg-sky-600 text-white shadow' : 'text-slate-400 hover:text-white'
+                viewMode === 'CARDS' ? 'bg-sky-600 text-white shadow' : 'text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white'
               }`}
             >
               Fleet Grid
@@ -141,7 +141,7 @@ export const AmbulancesPage: React.FC = () => {
             <button
               onClick={() => setViewMode('MAP')}
               className={`px-3 py-1 text-xs font-bold rounded-lg transition ${
-                viewMode === 'MAP' ? 'bg-sky-600 text-white shadow' : 'text-slate-400 hover:text-white'
+                viewMode === 'MAP' ? 'bg-sky-600 text-white shadow' : 'text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white'
               }`}
             >
               Map View
@@ -150,7 +150,7 @@ export const AmbulancesPage: React.FC = () => {
 
           <button
             onClick={fetchFleet}
-            className="flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900 px-3 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-800"
+            className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-gray-100 px-3 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
             <span>Refresh</span>
@@ -159,24 +159,24 @@ export const AmbulancesPage: React.FC = () => {
       </div>
 
       {/* Filter Bar */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-4 backdrop-blur-sm">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 rounded-2xl border border-gray-200 bg-gray-100/60 p-4 backdrop-blur-sm">
         <div className="relative w-full sm:w-80">
-          <Search className="h-4 w-4 text-slate-500 absolute left-3 top-2.5" />
+          <Search className="h-4 w-4 text-gray-400 absolute left-3 top-2.5" />
           <input
             type="text"
             placeholder="Search ambulance code, driver, hospital..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full rounded-xl border border-slate-800 bg-slate-950 pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:border-sky-500 focus:outline-none"
+            className="w-full rounded-xl border border-gray-200 bg-gray-50 pl-9 pr-3 py-2 text-xs text-gray-900 placeholder-slate-500 focus:border-sky-500 focus:outline-none"
           />
         </div>
 
         <div className="flex items-center gap-2 w-full sm:w-auto">
-          <Filter className="h-4 w-4 text-slate-400" />
+          <Filter className="h-4 w-4 text-gray-500" />
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-white focus:border-sky-500 focus:outline-none"
+            className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-900 focus:border-sky-500 focus:outline-none"
           >
             <option value="ALL">All Ambulance Statuses</option>
             <option value="AVAILABLE">AVAILABLE</option>
@@ -205,8 +205,8 @@ export const AmbulancesPage: React.FC = () => {
             return (
               <div
                 key={amb.id}
-                className={`rounded-2xl border p-5 backdrop-blur-sm space-y-4 transition hover:border-sky-500/50 ${
-                  isEnRoute ? 'border-sky-500/40 bg-sky-950/20 shadow-lg shadow-sky-500/10' : 'border-slate-800 bg-slate-900/80'
+                className={`rounded-2xl border p-5 backdrop-blur-sm space-y-4 transition bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-sky-500/50 ${
+                  isEnRoute ? 'border-sky-500/40 bg-sky-950/20 shadow-lg shadow-sky-500/10' : 'border-gray-200 bg-gray-100/80'
                 }`}
               >
                 <div className="flex items-start justify-between gap-2">
@@ -217,18 +217,18 @@ export const AmbulancesPage: React.FC = () => {
                     <div>
                       <div className="flex items-center gap-2">
                         <span className="font-mono text-sm font-extrabold text-white">{amb.code}</span>
-                        <span className="text-[10px] text-slate-500 font-mono">{amb.vehicle_number}</span>
+                        <span className="text-[10px] text-gray-400 font-mono">{amb.vehicle_number}</span>
                       </div>
-                      <p className="text-xs text-slate-400">Driver: {amb.driver_name}</p>
+                      <p className="text-xs text-gray-500">Driver: {amb.driver_name}</p>
                     </div>
                   </div>
                   <StatusBadge type="ambulance" status={amb.status} />
                 </div>
 
                 {/* Destination & ETA if active */}
-                <div className="rounded-xl border border-slate-800/80 bg-slate-950/60 p-3 space-y-2 text-xs">
+                <div className="rounded-xl border border-gray-200/80 bg-gray-50/60 p-3 space-y-2 text-xs">
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-400">Destination:</span>
+                    <span className="text-gray-500">Destination:</span>
                     <span className="font-bold text-white truncate max-w-[180px]">
                       {amb.destination_hospital_name || 'Station Standby'}
                     </span>
@@ -236,20 +236,20 @@ export const AmbulancesPage: React.FC = () => {
 
                   {amb.current_patient_name && (
                     <div className="flex items-center justify-between">
-                      <span className="text-slate-400">Patient:</span>
+                      <span className="text-gray-500">Patient:</span>
                       <span className="font-semibold text-rose-300">{amb.current_patient_name}</span>
                     </div>
                   )}
 
                   {amb.assigned_bed_code && (
                     <div className="flex items-center justify-between">
-                      <span className="text-slate-400">Allocated Bed:</span>
+                      <span className="text-gray-500">Allocated Bed:</span>
                       <span className="font-mono text-teal-400 font-bold">{amb.assigned_bed_code}</span>
                     </div>
                   )}
 
-                  <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between">
-                    <span className="text-slate-400 flex items-center gap-1">
+                  <div className="pt-2 border-t border-gray-200/80 flex items-center justify-between">
+                    <span className="text-gray-500 flex items-center gap-1">
                       <Clock className="h-3.5 w-3.5 text-sky-400" />
                       Estimated ETA:
                     </span>
@@ -261,17 +261,17 @@ export const AmbulancesPage: React.FC = () => {
 
                 {/* Simulation Action Controls */}
                 {isEnRoute && (
-                  <div className="flex items-center gap-2 pt-1 border-t border-slate-800/60">
+                  <div className="flex items-center gap-2 pt-1 border-t border-gray-200/60">
                     <button
                       onClick={() => handleStepSim(amb.id)}
-                      className="flex-1 flex items-center justify-center gap-1.5 rounded-lg bg-sky-600/20 hover:bg-sky-600/30 border border-sky-500/30 py-1.5 text-[11px] font-bold text-sky-300 transition"
+                      className="flex-1 flex items-center justify-center gap-1.5 rounded-lg bg-sky-600/20 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-600/30 border border-sky-500/30 py-1.5 text-[11px] font-bold text-sky-300 transition"
                     >
                       <FastForward className="h-3 w-3" />
                       <span>Step (-2m)</span>
                     </button>
                     <button
                       onClick={() => handleArrive(amb.id)}
-                      className="flex-1 flex items-center justify-center gap-1.5 rounded-lg bg-amber-600/20 hover:bg-amber-600/30 border border-amber-500/30 py-1.5 text-[11px] font-bold text-amber-300 transition"
+                      className="flex-1 flex items-center justify-center gap-1.5 rounded-lg bg-amber-600/20 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-amber-600/30 border border-amber-500/30 py-1.5 text-[11px] font-bold text-amber-300 transition"
                     >
                       <CheckCircle2 className="h-3 w-3" />
                       <span>Arrive</span>
@@ -282,7 +282,7 @@ export const AmbulancesPage: React.FC = () => {
                 {(amb.status === 'ARRIVED' || amb.status === 'TRANSPORTING') && (
                   <button
                     onClick={() => handleReturn(amb.id)}
-                    className="w-full flex items-center justify-center gap-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 py-1.5 text-[11px] font-bold text-slate-300 transition border border-slate-700"
+                    className="w-full flex items-center justify-center gap-1.5 rounded-lg bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 py-1.5 text-[11px] font-bold text-gray-600 transition border border-gray-300"
                   >
                     <RefreshCw className="h-3 w-3" />
                     <span>Return Ambulance to Available</span>
@@ -290,10 +290,10 @@ export const AmbulancesPage: React.FC = () => {
                 )}
 
                 {/* Paramedic & Contact */}
-                <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1">
-                  <span>Paramedic: <strong className="text-slate-300">{amb.paramedic_name}</strong></span>
-                  <div className="flex items-center gap-1 font-mono text-slate-400">
-                    <Phone className="h-3 w-3 text-slate-500" />
+                <div className="flex items-center justify-between text-[11px] text-gray-500 pt-1">
+                  <span>Paramedic: <strong className="text-gray-600">{amb.paramedic_name}</strong></span>
+                  <div className="flex items-center gap-1 font-mono text-gray-500">
+                    <Phone className="h-3 w-3 text-gray-400" />
                     <span>{amb.phone}</span>
                   </div>
                 </div>

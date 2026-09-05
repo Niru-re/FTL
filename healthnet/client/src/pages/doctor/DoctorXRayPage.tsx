@@ -113,7 +113,7 @@ const ResultCard: React.FC<{ result: XRayPredictionResult; imageUrl: string | nu
 const HistoryRow: React.FC<{ scan: XRayAnalysisRecord }> = ({ scan }) => {
   const isPneumonia = scan.prediction === 'PNEUMONIA';
   return (
-    <tr className="border-b border-gray-100 hover:bg-orange-50/40 transition">
+    <tr className="border-b border-gray-100 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-50/40 transition">
       <td className="py-3 px-4">
         <div className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide ${
           isPneumonia ? 'bg-rose-50 text-rose-600 border border-rose-200' : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
@@ -139,7 +139,7 @@ const HistoryRow: React.FC<{ scan: XRayAnalysisRecord }> = ({ scan }) => {
       <td className="py-3 px-4">
         {scan.image_url ? (
           <a href={`${API_BASE}${scan.image_url}`} target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-1 text-[11px] text-orange-500 hover:text-orange-600 font-medium">
+            className="flex items-center gap-1 text-[11px] text-orange-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-600 font-medium">
             <FileImage className="h-3 w-3" />{scan.original_filename || 'View'}
           </a>
         ) : <span className="text-[11px] text-gray-400 italic">No image</span>}
@@ -237,7 +237,7 @@ export const DoctorXRayPage: React.FC = () => {
               className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition ${
                 activeTab === tab
                   ? 'bg-orange-500 text-white shadow-sm'
-                  : 'text-gray-500 hover:text-gray-800'
+                  : 'text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-800'
               }`}>
               {tab === 'scan'
                 ? <span className="flex items-center gap-1.5"><Zap className="h-3 w-3" />New Scan</span>
@@ -261,7 +261,7 @@ export const DoctorXRayPage: React.FC = () => {
               onDrop={onDrop}
               onClick={() => !file && fileInputRef.current?.click()}
               className={`relative rounded-2xl border-2 border-dashed transition-all cursor-pointer ${
-                isDragging ? 'border-orange-400 bg-orange-50 scale-[1.01]' : 'border-gray-300 hover:border-orange-300 bg-white'
+                isDragging ? 'border-orange-400 bg-orange-50 scale-[1.01]' : 'border-gray-300 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-orange-300 bg-white'
               }`}
               style={{ minHeight: 220 }}
             >
@@ -274,7 +274,7 @@ export const DoctorXRayPage: React.FC = () => {
                 <div className="relative p-4">
                   <button
                     onClick={e => { e.stopPropagation(); clearFile(); }}
-                    className="absolute top-3 right-3 z-10 flex items-center justify-center h-7 w-7 rounded-full bg-white border border-gray-200 text-gray-400 hover:text-rose-500 hover:border-rose-200 transition shadow-sm"
+                    className="absolute top-3 right-3 z-10 flex items-center justify-center h-7 w-7 rounded-full bg-white border border-gray-200 text-gray-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-rose-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-rose-200 transition shadow-sm"
                   >
                     <X className="h-4 w-4" />
                   </button>
@@ -312,7 +312,7 @@ export const DoctorXRayPage: React.FC = () => {
                     <div className="text-[10px] text-gray-400">{selectedPatient.mrn}</div>
                   </div>
                   <button onClick={() => { setSelectedPatientId(null); setPatientSearch(''); }}
-                    className="text-gray-400 hover:text-rose-500 transition">
+                    className="text-gray-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-rose-500 transition">
                     <X className="h-4 w-4" />
                   </button>
                 </div>
@@ -330,7 +330,7 @@ export const DoctorXRayPage: React.FC = () => {
                     <div className="absolute top-full mt-1 left-0 right-0 z-20 rounded-xl border border-gray-200 bg-white shadow-lg max-h-48 overflow-y-auto">
                       {filteredPatients.slice(0, 10).map(p => (
                         <button key={p.id} onClick={() => { setSelectedPatientId(p.id); setPatientSearch(''); }}
-                          className="w-full text-left px-4 py-2.5 hover:bg-orange-50 transition border-b border-gray-100 last:border-0">
+                          className="w-full text-left px-4 py-2.5 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-50 transition border-b border-gray-100 last:border-0">
                           <div className="text-xs font-semibold text-gray-800">{p.full_name}</div>
                           <div className="text-[10px] text-gray-400">{p.mrn} &middot; {p.status}</div>
                         </button>
@@ -365,7 +365,7 @@ export const DoctorXRayPage: React.FC = () => {
               className={`w-full flex items-center justify-center gap-2.5 py-4 rounded-2xl font-black text-sm uppercase tracking-widest transition-all shadow-sm ${
                 !file || isAnalyzing
                   ? 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200'
-                  : 'bg-orange-500 hover:bg-orange-600 text-white cursor-pointer'
+                  : 'bg-orange-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-600 text-white cursor-pointer'
               }`}
             >
               {isAnalyzing
@@ -424,7 +424,7 @@ export const DoctorXRayPage: React.FC = () => {
             </div>
             <button
               onClick={() => { setHistoryLoading(true); xrayAPI.getXRayHistory(null, 50).then(setHistory).finally(() => setHistoryLoading(false)); }}
-              className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-orange-500 transition"
+              className="flex items-center gap-1.5 text-xs text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-500 transition"
             >
               <RefreshCw className="h-3.5 w-3.5" />Refresh
             </button>

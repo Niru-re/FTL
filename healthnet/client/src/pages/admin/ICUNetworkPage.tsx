@@ -57,7 +57,7 @@ export const ICUNetworkPage: React.FC = () => {
   return (
     <div className="space-y-6 pb-12">
       {/* Header Banner */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-900/80 p-6 rounded-2xl border border-slate-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gray-100/80 p-6 rounded-2xl border border-gray-200">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-sky-500/10 text-sky-400 border border-sky-500/20">
@@ -67,11 +67,11 @@ export const ICUNetworkPage: React.FC = () => {
               PROTOTYPE OPERATIONAL VIEW
             </span>
           </div>
-          <h1 className="text-2xl font-black text-white tracking-tight flex items-center gap-3">
+          <h1 className="text-2xl font-black text-gray-900 tracking-tight flex items-center gap-3">
             <BedDouble className="w-7 h-7 text-sky-400" />
             ICU Network & Bed Allocation Center
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-gray-500 mt-1">
             City-wide intensive care units, high-dependency telemetry, and real-time bed capacity states.
           </p>
         </div>
@@ -79,7 +79,7 @@ export const ICUNetworkPage: React.FC = () => {
         <button
           onClick={fetchData}
           disabled={loading}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition-colors self-start md:self-auto"
+          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-700 text-xs font-semibold border border-gray-300 transition-colors self-start md:self-auto"
         >
           <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin text-sky-400' : ''}`} />
           Refresh ICU Units
@@ -87,7 +87,7 @@ export const ICUNetworkPage: React.FC = () => {
       </div>
 
       {/* Aggregate Segmented Bed Capacity Breakdown (Section 8) */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+      <div className="bg-gray-100 border border-gray-200 rounded-2xl p-6 shadow-xl space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Layers className="w-5 h-5 text-sky-400" />
@@ -95,13 +95,13 @@ export const ICUNetworkPage: React.FC = () => {
               METROPOLITAN ICU BED SEGMENTATION ({totalBeds} TOTAL BEDS)
             </h2>
           </div>
-          <div className="text-xs text-slate-400">
+          <div className="text-xs text-gray-500">
             Overall Occupancy: <span className="font-bold text-white">{totalBeds > 0 ? Math.round((occupiedBeds / totalBeds) * 100) : 0}%</span>
           </div>
         </div>
 
         {/* Stacked Capacity Bar */}
-        <div className="w-full h-5 rounded-xl bg-slate-950 overflow-hidden flex p-0.5 gap-0.5 border border-slate-800">
+        <div className="w-full h-5 rounded-xl bg-gray-50 overflow-hidden flex p-0.5 gap-0.5 border border-gray-200">
           <div
             title={`Occupied: ${occupiedBeds}`}
             className="h-full bg-rose-500 rounded-l-lg transition-all"
@@ -131,49 +131,49 @@ export const ICUNetworkPage: React.FC = () => {
 
         {/* Segment Legend Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 pt-2">
-          <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 text-center">
-            <div className="text-[10px] text-slate-400 uppercase font-semibold">Available</div>
+          <div className="p-3 rounded-xl bg-gray-50/70 border border-gray-200 text-center">
+            <div className="text-[10px] text-gray-500 uppercase font-semibold">Available</div>
             <div className="text-xl font-bold text-emerald-400 mt-0.5">{availableBeds}</div>
-            <div className="text-[9px] text-slate-500">Ready for intake</div>
+            <div className="text-[9px] text-gray-400">Ready for intake</div>
           </div>
-          <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 text-center">
-            <div className="text-[10px] text-slate-400 uppercase font-semibold">Occupied</div>
+          <div className="p-3 rounded-xl bg-gray-50/70 border border-gray-200 text-center">
+            <div className="text-[10px] text-gray-500 uppercase font-semibold">Occupied</div>
             <div className="text-xl font-bold text-rose-400 mt-0.5">{occupiedBeds}</div>
-            <div className="text-[9px] text-slate-500">Active inpatients</div>
+            <div className="text-[9px] text-gray-400">Active inpatients</div>
           </div>
-          <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 text-center">
-            <div className="text-[10px] text-slate-400 uppercase font-semibold">Reserved</div>
+          <div className="p-3 rounded-xl bg-gray-50/70 border border-gray-200 text-center">
+            <div className="text-[10px] text-gray-500 uppercase font-semibold">Reserved</div>
             <div className="text-xl font-bold text-amber-400 mt-0.5">{reservedBeds}</div>
-            <div className="text-[9px] text-slate-500">Inbound transit</div>
+            <div className="text-[9px] text-gray-400">Inbound transit</div>
           </div>
-          <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 text-center">
-            <div className="text-[10px] text-slate-400 uppercase font-semibold">Cleaning</div>
+          <div className="p-3 rounded-xl bg-gray-50/70 border border-gray-200 text-center">
+            <div className="text-[10px] text-gray-500 uppercase font-semibold">Cleaning</div>
             <div className="text-xl font-bold text-indigo-400 mt-0.5">{cleaningBeds}</div>
-            <div className="text-[9px] text-slate-500">Sanitation turnover</div>
+            <div className="text-[9px] text-gray-400">Sanitation turnover</div>
           </div>
-          <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 text-center">
-            <div className="text-[10px] text-slate-400 uppercase font-semibold">Maintenance</div>
-            <div className="text-xl font-bold text-slate-300 mt-0.5">{maintenanceBeds}</div>
-            <div className="text-[9px] text-slate-500">Service repairs</div>
+          <div className="p-3 rounded-xl bg-gray-50/70 border border-gray-200 text-center">
+            <div className="text-[10px] text-gray-500 uppercase font-semibold">Maintenance</div>
+            <div className="text-xl font-bold text-gray-600 mt-0.5">{maintenanceBeds}</div>
+            <div className="text-[9px] text-gray-400">Service repairs</div>
           </div>
-          <div className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 text-center">
-            <div className="text-[10px] text-slate-400 uppercase font-semibold">Total ICU</div>
+          <div className="p-3 rounded-xl bg-gray-50/70 border border-gray-200 text-center">
+            <div className="text-[10px] text-gray-500 uppercase font-semibold">Total ICU</div>
             <div className="text-xl font-bold text-white mt-0.5">{totalBeds}</div>
-            <div className="text-[9px] text-slate-500">Connected network</div>
+            <div className="text-[9px] text-gray-400">Connected network</div>
           </div>
         </div>
       </div>
 
       {/* Filter Toolbar */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-gray-100/60 p-4 rounded-xl border border-gray-200">
         <div className="relative w-full sm:w-72">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search ICU unit or hospital..."
-            className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-500"
+            className="w-full bg-gray-50 border border-gray-200 rounded-xl pl-9 pr-3 py-1.5 text-xs text-gray-900 placeholder-slate-500 focus:outline-none focus:border-sky-500"
           />
         </div>
 
@@ -182,7 +182,7 @@ export const ICUNetworkPage: React.FC = () => {
           <select
             value={selectedHospital}
             onChange={(e) => setSelectedHospital(e.target.value)}
-            className="bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-sky-500"
+            className="bg-gray-50 border border-gray-200 rounded-xl px-3 py-1.5 text-xs text-gray-600 focus:outline-none focus:border-sky-500"
           >
             <option value="ALL">All Connected Hospitals</option>
             {hospitals.map(h => (
@@ -194,7 +194,7 @@ export const ICUNetworkPage: React.FC = () => {
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-sky-500"
+            className="bg-gray-50 border border-gray-200 rounded-xl px-3 py-1.5 text-xs text-gray-600 focus:outline-none focus:border-sky-500"
           >
             <option value="ALL">All Pressure Levels</option>
             <option value="CRITICAL">Critical (≥85% or 0 Avail)</option>
@@ -206,10 +206,10 @@ export const ICUNetworkPage: React.FC = () => {
       </div>
 
       {/* ICU Table Matrix */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl">
+      <div className="bg-gray-100 border border-gray-200 rounded-2xl overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-300">
-            <thead className="bg-slate-950/80 text-slate-400 font-bold border-b border-slate-800 uppercase text-[10px] tracking-wider">
+          <table className="w-full text-left text-xs text-gray-600">
+            <thead className="bg-gray-50/80 text-gray-500 font-bold border-b border-gray-200 uppercase text-[10px] tracking-wider">
               <tr>
                 <th className="px-5 py-3">ICU Unit / Department</th>
                 <th className="px-4 py-3">Hospital & Campus</th>
@@ -222,17 +222,17 @@ export const ICUNetworkPage: React.FC = () => {
                 <th className="px-4 py-3 text-right">Pressure Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60">
+            <tbody className="divide-y divide-gray-200/60">
               {loading ? (
                 <tr>
-                  <td colSpan={9} className="text-center py-12 text-slate-400">
+                  <td colSpan={9} className="text-center py-12 text-gray-500">
                     <RefreshCw className="w-6 h-6 animate-spin mx-auto mb-2 text-sky-400" />
                     Loading network intensive care units...
                   </td>
                 </tr>
               ) : filteredIcus.length === 0 ? (
                 <tr>
-                  <td colSpan={9} className="text-center py-12 text-slate-400">
+                  <td colSpan={9} className="text-center py-12 text-gray-500">
                     No matching ICU units found.
                   </td>
                 </tr>
@@ -246,14 +246,14 @@ export const ICUNetworkPage: React.FC = () => {
                     'bg-emerald-500/10 text-emerald-400 border-emerald-500/30';
 
                   return (
-                    <tr key={u.id} className="hover:bg-slate-800/40 transition-colors">
+                    <tr key={u.id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 transition-colors">
                       <td className="px-5 py-3.5 font-bold text-white flex items-center gap-2">
                         <BedDouble className="w-4 h-4 text-sky-400 shrink-0" />
                         {u.icu_name}
                       </td>
                       <td className="px-4 py-3.5">
-                        <div className="font-semibold text-slate-200">{u.hospital_name}</div>
-                        <div className="text-[10px] text-slate-500">{u.branch_name} ({u.hospital_code})</div>
+                        <div className="font-semibold text-gray-700">{u.hospital_name}</div>
+                        <div className="text-[10px] text-gray-400">{u.branch_name} ({u.hospital_code})</div>
                       </td>
                       <td className="px-3 py-3.5 text-center font-mono font-semibold text-white">
                         {u.total_beds}
@@ -272,13 +272,13 @@ export const ICUNetworkPage: React.FC = () => {
                       </td>
                       <td className="px-4 py-3.5">
                         <div className="flex items-center gap-2">
-                          <div className="w-20 h-2 rounded-full bg-slate-800 overflow-hidden">
+                          <div className="w-20 h-2 rounded-full bg-gray-200 overflow-hidden">
                             <div
                               className={`h-full ${occ >= 85 ? 'bg-rose-500' : occ >= 70 ? 'bg-amber-500' : 'bg-emerald-500'}`}
                               style={{ width: `${Math.min(100, occ)}%` }}
                             />
                           </div>
-                          <span className="font-mono font-semibold text-slate-200">{Math.round(occ)}%</span>
+                          <span className="font-mono font-semibold text-gray-700">{Math.round(occ)}%</span>
                         </div>
                       </td>
                       <td className="px-4 py-3.5 text-right">

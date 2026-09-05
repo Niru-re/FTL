@@ -57,7 +57,7 @@ export const DoctorAlertsPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-200 pb-5">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <Bell className="h-4 w-4 text-rose-400" />
@@ -66,13 +66,13 @@ export const DoctorAlertsPage: React.FC = () => {
           <h1 className="text-2xl font-black tracking-tight text-white">
             Clinical Alerts & Escalations
           </h1>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-gray-500 mt-0.5">
             Real-time telemetry threshold triggers, critical lab values, and incoming triage alerts
           </p>
         </div>
         <button
           onClick={() => { setIsLoading(true); fetchAlerts(); }}
-          className="flex items-center gap-2 rounded-xl bg-slate-800 hover:bg-slate-700 px-3.5 py-2 text-xs font-bold text-slate-300 transition border border-slate-700 self-start md:self-auto"
+          className="flex items-center gap-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300 self-start md:self-auto"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
           <span>Refresh Alerts</span>
@@ -87,15 +87,15 @@ export const DoctorAlertsPage: React.FC = () => {
       )}
 
       {/* Filter Toolbar */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 flex flex-wrap items-center justify-between gap-4 shadow-xl backdrop-blur-sm">
+      <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-4 flex flex-wrap items-center justify-between gap-4 shadow-xl backdrop-blur-sm">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider mr-2">Severity:</span>
+          <span className="text-xs font-bold text-gray-500 uppercase tracking-wider mr-2">Severity:</span>
           {['ALL', 'CRITICAL', 'HIGH', 'MEDIUM', 'LOW'].map((s) => (
             <button
               key={s}
               onClick={() => setFilterSeverity(s)}
               className={`px-3 py-1 text-xs font-bold rounded-lg transition uppercase ${
-                filterSeverity === s ? 'bg-sky-600 text-white' : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
+                filterSeverity === s ? 'bg-sky-600 text-gray-900' : 'bg-gray-50 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 border border-gray-200'
               }`}
             >
               {s}
@@ -104,16 +104,16 @@ export const DoctorAlertsPage: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider mr-2">Status:</span>
+          <span className="text-xs font-bold text-gray-500 uppercase tracking-wider mr-2">Status:</span>
           <button
             onClick={() => setFilterStatus('ALL')}
-            className={`px-3 py-1 text-xs font-bold rounded-lg transition ${filterStatus === 'ALL' ? 'bg-slate-700 text-white' : 'bg-slate-950 text-slate-400'}`}
+            className={`px-3 py-1 text-xs font-bold rounded-lg transition ${filterStatus === 'ALL' ? 'bg-gray-300 text-gray-900' : 'bg-gray-50 text-gray-500'}`}
           >
             All
           </button>
           <button
             onClick={() => setFilterStatus('UNREAD')}
-            className={`px-3 py-1 text-xs font-bold rounded-lg transition ${filterStatus === 'UNREAD' ? 'bg-rose-600 text-white' : 'bg-slate-950 text-slate-400'}`}
+            className={`px-3 py-1 text-xs font-bold rounded-lg transition ${filterStatus === 'UNREAD' ? 'bg-rose-600 text-gray-900' : 'bg-gray-50 text-gray-500'}`}
           >
             Active Only
           </button>
@@ -121,9 +121,9 @@ export const DoctorAlertsPage: React.FC = () => {
       </div>
 
       {/* Alerts Feed */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/60 shadow-xl backdrop-blur-sm overflow-hidden divide-y divide-slate-800/80">
+      <div className="rounded-2xl border border-gray-200 bg-gray-100/60 shadow-xl backdrop-blur-sm overflow-hidden divide-y divide-gray-200/80">
         {filteredAlerts.length === 0 ? (
-          <div className="p-12 text-center text-slate-400">
+          <div className="p-12 text-center text-gray-500">
             <CheckCircle2 className="h-8 w-8 mx-auto text-emerald-400 mb-2" />
             <p className="text-xs">No alerts currently match the filter criteria.</p>
           </div>
@@ -132,7 +132,7 @@ export const DoctorAlertsPage: React.FC = () => {
             <div
               key={alt.id}
               className={`p-4 flex flex-col md:flex-row md:items-center justify-between gap-4 transition ${
-                !alt.is_read ? 'bg-slate-950/60' : 'bg-slate-900/20 opacity-75'
+                !alt.is_read ? 'bg-gray-50/60' : 'bg-gray-100/20 opacity-75'
               }`}
             >
               <div className="flex items-start gap-3.5">
@@ -152,9 +152,9 @@ export const DoctorAlertsPage: React.FC = () => {
                       {alt.severity}
                     </span>
                     <h3 className="text-sm font-bold text-white">{alt.title}</h3>
-                    <span className="text-[10px] font-mono text-slate-400">{formatTime(alt.created_at)}</span>
+                    <span className="text-[10px] font-mono text-gray-500">{formatTime(alt.created_at)}</span>
                   </div>
-                  <p className="text-xs text-slate-300 mt-1 leading-relaxed">{alt.message}</p>
+                  <p className="text-xs text-gray-600 mt-1 leading-relaxed">{alt.message}</p>
                 </div>
               </div>
 
@@ -162,7 +162,7 @@ export const DoctorAlertsPage: React.FC = () => {
                 {alt.patient_id && (
                   <button
                     onClick={() => navigate(`/doctor/patients/${alt.patient_id}`)}
-                    className="flex items-center gap-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 px-3.5 py-2 text-xs font-bold text-sky-300 transition border border-slate-700"
+                    className="flex items-center gap-1.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-bold text-sky-300 transition border border-gray-300"
                   >
                     <Eye className="h-3.5 w-3.5" />
                     <span>Open Patient</span>
@@ -171,7 +171,7 @@ export const DoctorAlertsPage: React.FC = () => {
                 {!alt.is_read ? (
                   <button
                     onClick={() => handleAcknowledge(alt.id)}
-                    className="flex items-center gap-1.5 rounded-xl bg-sky-600 hover:bg-sky-500 px-3.5 py-2 text-xs font-bold text-white transition"
+                    className="flex items-center gap-1.5 rounded-xl bg-sky-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-500 px-3.5 py-2 text-xs font-bold text-white transition"
                   >
                     <Check className="h-3.5 w-3.5" />
                     <span>Acknowledge</span>

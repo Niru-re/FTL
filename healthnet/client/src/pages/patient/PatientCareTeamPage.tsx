@@ -28,7 +28,7 @@ export const PatientCareTeamPage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center py-20 text-slate-500 text-xs font-semibold">
+      <div className="flex items-center justify-center py-20 text-gray-400 text-xs font-semibold">
         <div className="animate-spin w-5 h-5 border-2 border-orange-500 border-t-transparent rounded-full mr-2" />
         Loading care team...
       </div>
@@ -50,18 +50,18 @@ export const PatientCareTeamPage: React.FC = () => {
       {/* Page Header */}
       <div className="bg-white p-5 rounded-3xl border border-slate-200 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Clinical Care Team</span>
+          <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500">Clinical Care Team</span>
           <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
             Who is taking care of me?
           </h1>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <p className="text-xs text-gray-400 mt-0.5">
             Your assigned physicians and nurses are on duty to support your care and recovery.
           </p>
         </div>
 
         <Link
           to="/patient/requests"
-          className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs rounded-xl shadow-xs transition-colors"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-orange-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-600 text-white font-bold text-xs rounded-xl shadow-xs transition-colors"
         >
           <MessageSquare className="w-4 h-4" />
           Message Care Team
@@ -97,7 +97,7 @@ export const PatientCareTeamPage: React.FC = () => {
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-orange-600">Lead Physician</span>
                   <h3 className="text-base font-bold text-slate-900">{careTeam.doctor?.name || 'Dr. Arjun Sharma'}</h3>
-                  <p className="text-xs text-slate-500">{careTeam.doctor?.specialization || 'Critical Care Medicine'}</p>
+                  <p className="text-xs text-gray-400">{careTeam.doctor?.specialization || 'Critical Care Medicine'}</p>
                 </div>
               </div>
               <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
@@ -107,27 +107,27 @@ export const PatientCareTeamPage: React.FC = () => {
 
             <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2 text-xs text-slate-600">
               <div className="flex justify-between">
-                <span className="text-slate-400">Department:</span>
+                <span className="text-gray-500">Department:</span>
                 <span className="font-semibold text-slate-800">{careTeam.department_name}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Shift Schedule:</span>
+                <span className="text-gray-500">Shift Schedule:</span>
                 <span className="font-semibold text-slate-800">{careTeam.doctor?.shift || 'Morning Shift'}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Clinical Focus:</span>
+                <span className="text-gray-500">Clinical Focus:</span>
                 <span className="font-semibold text-slate-800">Respiratory Management & ICU Care</span>
               </div>
             </div>
 
-            <p className="text-xs text-slate-500 leading-relaxed">
+            <p className="text-xs text-gray-400 leading-relaxed">
               Dr. Sharma directs diagnostic evaluations, rounds twice daily, orders treatments, and oversees the overall clinical treatment plan.
             </p>
           </div>
 
           <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
-            <span className="text-slate-400">Direct questions?</span>
-            <Link to="/patient/requests" className="font-bold text-orange-600 hover:text-orange-700">
+            <span className="text-gray-500">Direct questions?</span>
+            <Link to="/patient/requests" className="font-bold text-orange-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-700">
               Ask Doctor →
             </Link>
           </div>
@@ -144,7 +144,7 @@ export const PatientCareTeamPage: React.FC = () => {
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600">Primary Nurse</span>
                   <h3 className="text-base font-bold text-slate-900">{careTeam.nurse?.name || 'Nurse Elena Rostova'}</h3>
-                  <p className="text-xs text-slate-500">{careTeam.nurse?.specialization || 'ICU Critical Care'}</p>
+                  <p className="text-xs text-gray-400">{careTeam.nurse?.specialization || 'ICU Critical Care'}</p>
                 </div>
               </div>
               <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
@@ -154,27 +154,27 @@ export const PatientCareTeamPage: React.FC = () => {
 
             <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2 text-xs text-slate-600">
               <div className="flex justify-between">
-                <span className="text-slate-400">Department:</span>
+                <span className="text-gray-500">Department:</span>
                 <span className="font-semibold text-slate-800">{careTeam.department_name}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Shift Schedule:</span>
+                <span className="text-gray-500">Shift Schedule:</span>
                 <span className="font-semibold text-slate-800">{careTeam.nurse?.shift || 'Morning Shift'}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Bedside Care:</span>
+                <span className="text-gray-500">Bedside Care:</span>
                 <span className="font-semibold text-slate-800">Direct Vitals, Medication & Comfort</span>
               </div>
             </div>
 
-            <p className="text-xs text-slate-500 leading-relaxed">
+            <p className="text-xs text-gray-400 leading-relaxed">
               Nurse Elena administers scheduled medications, continuously tracks telemetry vitals, assists with nutrition, and communicates bedside updates.
             </p>
           </div>
 
           <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
-            <span className="text-slate-400">Need assistance?</span>
-            <Link to="/patient/requests" className="font-bold text-orange-600 hover:text-orange-700">
+            <span className="text-gray-500">Need assistance?</span>
+            <Link to="/patient/requests" className="font-bold text-orange-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-700">
               Request Nurse Assistance →
             </Link>
           </div>

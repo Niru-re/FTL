@@ -187,7 +187,7 @@ export const DoctorPatientDetailPage: React.FC = () => {
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="flex flex-col items-center gap-3">
           <RefreshCw className="h-8 w-8 text-sky-400 animate-spin" />
-          <p className="text-xs text-slate-400">Loading Clinical Command Center...</p>
+          <p className="text-xs text-gray-500">Loading Clinical Command Center...</p>
         </div>
       </div>
     );
@@ -210,7 +210,7 @@ export const DoctorPatientDetailPage: React.FC = () => {
       <div className="flex items-center justify-between">
         <button
           onClick={() => navigate('/doctor/patients')}
-          className="flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition"
+          className="flex items-center gap-2 text-xs font-semibold text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
         >
           <ArrowLeft className="h-4 w-4" />
           <span>Back to Inpatient Census</span>
@@ -219,7 +219,7 @@ export const DoctorPatientDetailPage: React.FC = () => {
         <div className="flex items-center gap-2">
           <button
             onClick={() => { setIsLoading(true); fetchPatientData(); }}
-            className="flex items-center gap-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 px-3 py-1.5 text-xs font-bold text-slate-300 transition"
+            className="flex items-center gap-1.5 rounded-lg bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3 py-1.5 text-xs font-bold text-gray-600 transition"
           >
             <RefreshCw className="h-3 w-3" />
             <span>Sync</span>
@@ -228,7 +228,7 @@ export const DoctorPatientDetailPage: React.FC = () => {
       </div>
 
       {/* STICKY CLINICAL COMMAND HEADER */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/90 p-5 shadow-2xl backdrop-blur-md space-y-4">
+      <div className="rounded-2xl border border-gray-200 bg-gray-100/90 p-5 shadow-2xl backdrop-blur-md space-y-4">
         {/* Top Header Row */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="flex flex-wrap items-center gap-3">
@@ -237,13 +237,13 @@ export const DoctorPatientDetailPage: React.FC = () => {
             <span className="font-mono text-xs font-bold text-sky-400 bg-sky-950 px-2.5 py-1 rounded-lg border border-sky-500/30">
               {patient.mrn}
             </span>
-            <span className="text-xs text-slate-400 font-medium">
+            <span className="text-xs text-gray-500 font-medium">
               {patient.age}y &bull; {patient.gender} &bull; Blood {patient.blood_group}
             </span>
-            <span className="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-lg font-mono">
+            <span className="text-xs bg-gray-200 text-gray-600 px-2.5 py-1 rounded-lg font-mono">
               Bed: <strong className="text-sky-300">{patient.bed_code || 'Unassigned'}</strong>
             </span>
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-gray-500">
               {patient.department_name}
             </span>
           </div>
@@ -252,35 +252,35 @@ export const DoctorPatientDetailPage: React.FC = () => {
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => setShowNoteModal(true)}
-              className="flex items-center gap-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 px-3 py-2 text-xs font-bold text-white transition border border-slate-700"
+              className="flex items-center gap-1.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3 py-2 text-xs font-bold text-white transition border border-gray-300"
             >
               <Plus className="h-3.5 w-3.5 text-sky-400" />
               <span>Add Note</span>
             </button>
             <button
               onClick={() => setShowOrderModal(true)}
-              className="flex items-center gap-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 px-3 py-2 text-xs font-bold text-white transition border border-slate-700"
+              className="flex items-center gap-1.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3 py-2 text-xs font-bold text-white transition border border-gray-300"
             >
               <Plus className="h-3.5 w-3.5 text-indigo-400" />
               <span>New Order</span>
             </button>
             <button
               onClick={() => setShowMedModal(true)}
-              className="flex items-center gap-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 px-3 py-2 text-xs font-bold text-white transition border border-slate-700"
+              className="flex items-center gap-1.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3 py-2 text-xs font-bold text-white transition border border-gray-300"
             >
               <Pill className="h-3.5 w-3.5 text-teal-400" />
               <span>Prescribe</span>
             </button>
             <button
               onClick={() => setShowTransferModal(true)}
-              className="flex items-center gap-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 px-3 py-2 text-xs font-bold text-amber-300 transition border border-slate-700"
+              className="flex items-center gap-1.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3 py-2 text-xs font-bold text-amber-300 transition border border-gray-300"
             >
               <ArrowRightLeft className="h-3.5 w-3.5" />
               <span>Transfer</span>
             </button>
             <button
               onClick={() => setShowDischargeModal(true)}
-              className="flex items-center gap-1.5 rounded-xl bg-rose-600 hover:bg-rose-500 px-3 py-2 text-xs font-bold text-white transition"
+              className="flex items-center gap-1.5 rounded-xl bg-rose-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-500 px-3 py-2 text-xs font-bold text-white transition"
             >
               <LogOut className="h-3.5 w-3.5" />
               <span>Discharge</span>
@@ -289,14 +289,14 @@ export const DoctorPatientDetailPage: React.FC = () => {
         </div>
 
         {/* Diagnosis and Allergy Banner */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-3 border-t border-slate-800/80">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-3 border-t border-gray-200/80">
           <div className="space-y-1">
             <div className="text-xs">
-              <span className="text-slate-400 font-semibold">Primary Diagnosis: </span>
+              <span className="text-gray-500 font-semibold">Primary Diagnosis: </span>
               <span className="text-white font-bold">{patient.diagnosis}</span>
             </div>
-            <div className="text-xs text-slate-400">
-              Admitted {formatDate(patient.admission_date)} &bull; Attending: <strong className="text-slate-200">{patient.assigned_doctor_name}</strong> &bull; Bedside Nurse: <strong className="text-slate-200">{patient.assigned_nurse_name}</strong>
+            <div className="text-xs text-gray-500">
+              Admitted {formatDate(patient.admission_date)} &bull; Attending: <strong className="text-gray-700">{patient.assigned_doctor_name}</strong> &bull; Bedside Nurse: <strong className="text-gray-700">{patient.assigned_nurse_name}</strong>
             </div>
           </div>
 
@@ -311,7 +311,7 @@ export const DoctorPatientDetailPage: React.FC = () => {
                 </span>
               ))
             ) : (
-              <span className="text-xs text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded">None Documented</span>
+              <span className="text-xs text-gray-500 bg-gray-200/80 px-2 py-0.5 rounded">None Documented</span>
             )}
           </div>
         </div>
@@ -319,24 +319,24 @@ export const DoctorPatientDetailPage: React.FC = () => {
         {/* Live Vitals Snapshot Strip */}
         {latestV && (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5 pt-2">
-            <div className={`p-2.5 rounded-xl border ${latestV.spo2 < 90 ? 'bg-rose-950/40 border-rose-500/40 text-rose-300' : 'bg-slate-950/60 border-slate-800 text-slate-200'}`}>
-              <span className="text-[10px] text-slate-500 uppercase font-bold block">SpO2 Oxygen</span>
+            <div className={`p-2.5 rounded-xl border ${latestV.spo2 < 90 ? 'bg-rose-950/40 border-rose-500/40 text-rose-300' : 'bg-gray-50/60 border-gray-200 text-gray-700'}`}>
+              <span className="text-[10px] text-gray-400 uppercase font-bold block">SpO2 Oxygen</span>
               <span className="font-mono text-base font-black">{latestV.spo2}%</span>
             </div>
-            <div className={`p-2.5 rounded-xl border ${latestV.heart_rate > 120 || latestV.heart_rate < 50 ? 'bg-rose-950/40 border-rose-500/40 text-rose-300' : 'bg-slate-950/60 border-slate-800 text-slate-200'}`}>
-              <span className="text-[10px] text-slate-500 uppercase font-bold block">Heart Rate</span>
+            <div className={`p-2.5 rounded-xl border ${latestV.heart_rate > 120 || latestV.heart_rate < 50 ? 'bg-rose-950/40 border-rose-500/40 text-rose-300' : 'bg-gray-50/60 border-gray-200 text-gray-700'}`}>
+              <span className="text-[10px] text-gray-400 uppercase font-bold block">Heart Rate</span>
               <span className="font-mono text-base font-black">{latestV.heart_rate} <small className="text-[10px]">BPM</small></span>
             </div>
-            <div className="p-2.5 rounded-xl border bg-slate-950/60 border-slate-800 text-slate-200">
-              <span className="text-[10px] text-slate-500 uppercase font-bold block">Blood Pressure</span>
+            <div className="p-2.5 rounded-xl border bg-gray-50/60 border-gray-200 text-gray-700">
+              <span className="text-[10px] text-gray-400 uppercase font-bold block">Blood Pressure</span>
               <span className="font-mono text-base font-black">{latestV.systolic_bp}/{latestV.diastolic_bp}</span>
             </div>
-            <div className={`p-2.5 rounded-xl border ${latestV.respiratory_rate >= 28 ? 'bg-rose-950/40 border-rose-500/40 text-rose-300' : 'bg-slate-950/60 border-slate-800 text-slate-200'}`}>
-              <span className="text-[10px] text-slate-500 uppercase font-bold block">Respiration</span>
+            <div className={`p-2.5 rounded-xl border ${latestV.respiratory_rate >= 28 ? 'bg-rose-950/40 border-rose-500/40 text-rose-300' : 'bg-gray-50/60 border-gray-200 text-gray-700'}`}>
+              <span className="text-[10px] text-gray-400 uppercase font-bold block">Respiration</span>
               <span className="font-mono text-base font-black">{latestV.respiratory_rate} <small className="text-[10px]">/min</small></span>
             </div>
-            <div className="p-2.5 rounded-xl border bg-slate-950/60 border-slate-800 text-slate-200">
-              <span className="text-[10px] text-slate-500 uppercase font-bold block">Temperature</span>
+            <div className="p-2.5 rounded-xl border bg-gray-50/60 border-gray-200 text-gray-700">
+              <span className="text-[10px] text-gray-400 uppercase font-bold block">Temperature</span>
               <span className="font-mono text-base font-black">{latestV.temperature}&deg;C</span>
             </div>
             <div className="p-2.5 rounded-xl border bg-sky-950/30 border-sky-500/30 text-sky-300">
@@ -348,7 +348,7 @@ export const DoctorPatientDetailPage: React.FC = () => {
       </div>
 
       {/* 10 TABBED NAVIGATION */}
-      <div className="flex items-center gap-1.5 overflow-x-auto pb-2 border-b border-slate-800 scrollbar-none">
+      <div className="flex items-center gap-1.5 overflow-x-auto pb-2 border-b border-gray-200 scrollbar-none">
         {[
           { key: 'overview', label: 'Overview', icon: Eye },
           { key: 'monitoring', label: 'Monitoring & ECG', icon: Activity, badge: 'Live' },
@@ -371,13 +371,13 @@ export const DoctorPatientDetailPage: React.FC = () => {
               className={`flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-bold whitespace-nowrap transition ${
                 isActive
                   ? 'bg-sky-600 text-white shadow-md shadow-sky-600/20'
-                  : 'text-slate-400 hover:bg-slate-850 hover:text-slate-200'
+                  : 'text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-slate-850 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-700'
               }`}
             >
               <Icon className="h-3.5 w-3.5" />
               <span>{tab.label}</span>
               {tab.badge && (
-                <span className={`text-[9px] px-1.5 py-0.2 rounded font-mono ${isActive ? 'bg-white/20 text-white' : 'bg-sky-500/20 text-sky-300'}`}>
+                <span className={`text-[9px] px-1.5 py-0.2 rounded font-mono ${isActive ? 'bg-white/20 text-gray-900' : 'bg-sky-500/20 text-sky-300'}`}>
                   {tab.badge}
                 </span>
               )}
@@ -397,30 +397,30 @@ export const DoctorPatientDetailPage: React.FC = () => {
               <ECGWaveform heartRate={latestV?.heart_rate || 78} height={120} />
 
               {/* Latest Clinical Note & Plan */}
-              <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 space-y-3 shadow-xl backdrop-blur-sm">
+              <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-3 shadow-xl backdrop-blur-sm">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <FileText className="h-4 w-4 text-sky-400" />
                     <h3 className="text-xs font-bold uppercase tracking-wider text-white">Latest Physician Assessment</h3>
                   </div>
-                  <button onClick={() => setActiveTab('notes')} className="text-xs text-sky-400 hover:underline">
+                  <button onClick={() => setActiveTab('notes')} className="text-xs text-sky-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:underline">
                     View All ({patient.clinical_notes.length})
                   </button>
                 </div>
                 {patient.clinical_notes.length > 0 ? (
                   <div className="space-y-2">
-                    <p className="text-xs text-slate-200 leading-relaxed bg-slate-950/60 p-3.5 rounded-xl border border-slate-800">
+                    <p className="text-xs text-gray-700 leading-relaxed bg-gray-50/60 p-3.5 rounded-xl border border-gray-200">
                       {patient.clinical_notes[0].content}
                     </p>
                     {patient.clinical_notes[0].plan && (
                       <div className="p-3.5 rounded-xl bg-sky-950/20 border border-sky-500/20">
                         <span className="text-[10px] font-bold uppercase tracking-wider text-sky-400 block mb-1">Active Treatment Plan:</span>
-                        <p className="text-xs text-slate-300 whitespace-pre-line font-mono">{patient.clinical_notes[0].plan}</p>
+                        <p className="text-xs text-gray-600 whitespace-pre-line font-mono">{patient.clinical_notes[0].plan}</p>
                       </div>
                     )}
                   </div>
                 ) : (
-                  <p className="text-xs text-slate-500 italic">No physician progress notes recorded yet.</p>
+                  <p className="text-xs text-gray-400 italic">No physician progress notes recorded yet.</p>
                 )}
               </div>
             </div>
@@ -444,12 +444,12 @@ export const DoctorPatientDetailPage: React.FC = () => {
                   </div>
                   <div className="text-center py-2">
                     <div className="text-3xl font-black text-white font-mono">{risk.risk_score}%</div>
-                    <span className="text-[11px] text-slate-400">Composite Deterioration Index</span>
+                    <span className="text-[11px] text-gray-500">Composite Deterioration Index</span>
                   </div>
                   <div className="space-y-1.5 border-t border-sky-500/20 pt-3">
-                    <span className="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Top Physiological Drivers:</span>
+                    <span className="text-[10px] font-bold uppercase text-gray-500 tracking-wider">Top Physiological Drivers:</span>
                     {risk.contributing_factors.slice(0, 3).map((f, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-xs text-slate-200">
+                      <div key={idx} className="flex items-center gap-2 text-xs text-gray-700">
                         <span className="h-1.5 w-1.5 rounded-full bg-sky-400 flex-shrink-0" />
                         <span className="line-clamp-1">{f}</span>
                       </div>
@@ -457,7 +457,7 @@ export const DoctorPatientDetailPage: React.FC = () => {
                   </div>
                   <button
                     onClick={() => setActiveTab('risk')}
-                    className="w-full text-center py-1.5 text-xs font-bold text-sky-400 hover:text-sky-300 bg-sky-950/60 rounded-lg border border-sky-500/30 transition mt-2"
+                    className="w-full text-center py-1.5 text-xs font-bold text-sky-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-sky-300 bg-sky-950/60 rounded-lg border border-sky-500/30 transition mt-2"
                   >
                     View Full Factor Decomposition &rarr;
                   </button>
@@ -465,24 +465,24 @@ export const DoctorPatientDetailPage: React.FC = () => {
               )}
 
               {/* Active Orders Quick Card */}
-              <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 space-y-3 shadow-xl backdrop-blur-sm">
+              <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-3 shadow-xl backdrop-blur-sm">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
                     <Clock className="h-4 w-4 text-indigo-400" />
                     <span>Active Orders</span>
                   </span>
-                  <button onClick={() => setActiveTab('orders')} className="text-xs text-sky-400 hover:underline">
+                  <button onClick={() => setActiveTab('orders')} className="text-xs text-sky-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:underline">
                     Manage
                   </button>
                 </div>
                 <div className="space-y-2">
                   {patient.doctor_orders.slice(0, 3).map((ord) => (
-                    <div key={ord.id} className="p-2.5 rounded-lg bg-slate-950/60 border border-slate-800 text-xs flex items-center justify-between gap-2">
+                    <div key={ord.id} className="p-2.5 rounded-lg bg-gray-50/60 border border-gray-200 text-xs flex items-center justify-between gap-2">
                       <div>
                         <div className="font-bold text-white">{ord.order_type}: {ord.description}</div>
-                        <span className="text-[10px] text-slate-400">{formatTime(ord.timestamp)}</span>
+                        <span className="text-[10px] text-gray-500">{formatTime(ord.timestamp)}</span>
                       </div>
-                      <span className={`text-[9px] font-bold px-1.5 py-0.2 rounded uppercase ${ord.priority === 'STAT' ? 'bg-rose-500/20 text-rose-300' : 'bg-slate-800 text-slate-300'}`}>
+                      <span className={`text-[9px] font-bold px-1.5 py-0.2 rounded uppercase ${ord.priority === 'STAT' ? 'bg-rose-500/20 text-rose-300' : 'bg-gray-200 text-gray-600'}`}>
                         {ord.priority}
                       </span>
                     </div>
@@ -500,14 +500,14 @@ export const DoctorPatientDetailPage: React.FC = () => {
           <ECGWaveform heartRate={latestV?.heart_rate || 78} height={140} />
 
           {/* Time range selector */}
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 flex items-center justify-between">
-            <span className="text-xs font-bold uppercase text-slate-300 tracking-wider">Multi-Parameter Vital Trends</span>
-            <div className="flex items-center gap-1.5 bg-slate-950 p-1 rounded-xl border border-slate-800">
+          <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-4 flex items-center justify-between">
+            <span className="text-xs font-bold uppercase text-gray-600 tracking-wider">Multi-Parameter Vital Trends</span>
+            <div className="flex items-center gap-1.5 bg-gray-50 p-1 rounded-xl border border-gray-200">
               {['1h', '6h', '12h', '24h', 'all'].map((r) => (
                 <button
                   key={r}
                   onClick={() => setVitalRange(r)}
-                  className={`px-3 py-1 text-xs font-bold rounded-lg transition uppercase ${vitalRange === r ? 'bg-sky-600 text-white' : 'text-slate-400 hover:text-white'}`}
+                  className={`px-3 py-1 text-xs font-bold rounded-lg transition uppercase ${vitalRange === r ? 'bg-sky-600 text-white' : 'text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white'}`}
                 >
                   {r}
                 </button>
@@ -518,10 +518,10 @@ export const DoctorPatientDetailPage: React.FC = () => {
           {/* Recharts Vital Graphs Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Heart Rate & SpO2 Area Graph */}
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 space-y-3 shadow-xl">
+            <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-3 shadow-xl">
               <div className="flex items-center justify-between">
                 <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-400">Cardiac & Oxygenation Trend</h3>
-                <span className="text-[10px] text-slate-400 font-mono">HR (BPM) &bull; SpO2 (%)</span>
+                <span className="text-[10px] text-gray-500 font-mono">HR (BPM) &bull; SpO2 (%)</span>
               </div>
               <div className="h-64 w-full">
                 <ResponsiveContainer width="100%" height="100%">
@@ -539,10 +539,10 @@ export const DoctorPatientDetailPage: React.FC = () => {
             </div>
 
             {/* Blood Pressure & Respiratory Rate */}
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 space-y-3 shadow-xl">
+            <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-3 shadow-xl">
               <div className="flex items-center justify-between">
                 <h3 className="text-xs font-bold uppercase tracking-wider text-indigo-400">Hemodynamics & Respiration Trend</h3>
-                <span className="text-[10px] text-slate-400 font-mono">BP (mmHg) &bull; RR (/min)</span>
+                <span className="text-[10px] text-gray-500 font-mono">BP (mmHg) &bull; RR (/min)</span>
               </div>
               <div className="h-64 w-full">
                 <ResponsiveContainer width="100%" height="100%">
@@ -574,7 +574,7 @@ export const DoctorPatientDetailPage: React.FC = () => {
                   <Sparkles className="h-5 w-5 text-sky-400" />
                   <h2 className="text-lg font-black text-white">Prototype AI Deterioration Engine</h2>
                 </div>
-                <p className="text-xs text-slate-300 mt-0.5">Continuous physiological risk modeling & factor attribution</p>
+                <p className="text-xs text-gray-600 mt-0.5">Continuous physiological risk modeling & factor attribution</p>
               </div>
               <span className="text-[10px] font-mono text-sky-300 bg-sky-900/60 border border-sky-500/30 px-3 py-1 rounded-full">
                 {risk.disclaimer}
@@ -583,8 +583,8 @@ export const DoctorPatientDetailPage: React.FC = () => {
 
             {/* Score & Progression */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="rounded-2xl bg-slate-950/80 border border-slate-800 p-6 text-center space-y-2 flex flex-col items-center justify-center">
-                <span className="text-xs uppercase font-bold text-slate-400 tracking-wider">Composite Risk Index</span>
+              <div className="rounded-2xl bg-gray-50/80 border border-gray-200 p-6 text-center space-y-2 flex flex-col items-center justify-center">
+                <span className="text-xs uppercase font-bold text-gray-500 tracking-wider">Composite Risk Index</span>
                 <div className="text-5xl font-black text-white font-mono">{risk.risk_score}%</div>
                 <span className={`text-xs font-bold px-3 py-1 rounded-full uppercase ${
                   risk.risk_level === 'CRITICAL' ? 'bg-rose-500 text-white' :
@@ -592,18 +592,18 @@ export const DoctorPatientDetailPage: React.FC = () => {
                 }`}>
                   {risk.risk_level}
                 </span>
-                <p className="text-[11px] text-slate-400 mt-2">{risk.explanation}</p>
+                <p className="text-[11px] text-gray-500 mt-2">{risk.explanation}</p>
               </div>
 
               {/* 4-Point Trend Line */}
-              <div className="md:col-span-2 rounded-2xl bg-slate-950/80 border border-slate-800 p-6 space-y-3">
-                <span className="text-xs uppercase font-bold text-slate-300 tracking-wider block">
+              <div className="md:col-span-2 rounded-2xl bg-gray-50/80 border border-gray-200 p-6 space-y-3">
+                <span className="text-xs uppercase font-bold text-gray-600 tracking-wider block">
                   Historical Risk Progression (4-Point Trend)
                 </span>
                 <div className="grid grid-cols-4 gap-3 pt-4">
                   {risk.trend.map((score, i) => (
-                    <div key={i} className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-center">
-                      <span className="text-[10px] text-slate-500 font-mono block">T - {(3 - i) * 2}H</span>
+                    <div key={i} className="p-3 rounded-xl bg-gray-100 border border-gray-200 text-center">
+                      <span className="text-[10px] text-gray-400 font-mono block">T - {(3 - i) * 2}H</span>
                       <span className="text-lg font-black font-mono text-sky-400">{score}%</span>
                     </div>
                   ))}
@@ -612,18 +612,18 @@ export const DoctorPatientDetailPage: React.FC = () => {
             </div>
 
             {/* Factor Contribution Breakdown */}
-            <div className="rounded-2xl bg-slate-950/80 border border-slate-800 p-6 space-y-4">
+            <div className="rounded-2xl bg-gray-50/80 border border-gray-200 p-6 space-y-4">
               <h3 className="text-xs uppercase font-bold text-white tracking-wider">
                 Contributing Factor Breakdown (% Attribution)
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {Object.entries(risk.factors).map(([key, val]) => (
-                  <div key={key} className="space-y-1.5 p-3 rounded-xl bg-slate-900 border border-slate-800/80">
+                  <div key={key} className="space-y-1.5 p-3 rounded-xl bg-gray-100 border border-gray-200/80">
                     <div className="flex justify-between text-xs">
-                      <span className="font-semibold text-slate-300">{risk.factor_labels[key] || key}</span>
+                      <span className="font-semibold text-gray-600">{risk.factor_labels[key] || key}</span>
                       <span className="font-mono text-sky-400 font-bold">{val.toFixed(1)}%</span>
                     </div>
-                    <div className="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                    <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
                       <div
                         className={`h-2 rounded-full ${val > 25 ? 'bg-rose-500' : val > 15 ? 'bg-amber-500' : 'bg-sky-500'}`}
                         style={{ width: `${Math.min(100, val * 2.5)}%` }}
@@ -640,7 +640,7 @@ export const DoctorPatientDetailPage: React.FC = () => {
       {/* 4. MEDICAL HISTORY TAB */}
       {activeTab === 'history' && (
         <div className="space-y-6">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 space-y-6 shadow-xl backdrop-blur-sm">
+          <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-6 space-y-6 shadow-xl backdrop-blur-sm">
             <h2 className="text-base font-bold text-white flex items-center gap-2">
               <History className="h-5 w-5 text-sky-400" />
               <span>Comprehensive Medical & Surgical History</span>
@@ -648,11 +648,11 @@ export const DoctorPatientDetailPage: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Chronic Conditions */}
-              <div className="space-y-3 p-4 rounded-xl bg-slate-950/60 border border-slate-800">
+              <div className="space-y-3 p-4 rounded-xl bg-gray-50/60 border border-gray-200">
                 <span className="text-xs font-bold uppercase text-sky-300 tracking-wider block">Documented Chronic Conditions</span>
-                <ul className="space-y-2 text-xs text-slate-200">
+                <ul className="space-y-2 text-xs text-gray-700">
                   {patient.medical_history.map((item: any, i: number) => (
-                    <li key={i} className="flex items-center gap-2 p-2 rounded-lg bg-slate-900 border border-slate-800/80">
+                    <li key={i} className="flex items-center gap-2 p-2 rounded-lg bg-gray-100 border border-gray-200/80">
                       <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
                       <span>{typeof item === 'string' ? item : item.condition || JSON.stringify(item)}</span>
                     </li>
@@ -661,16 +661,16 @@ export const DoctorPatientDetailPage: React.FC = () => {
               </div>
 
               {/* Past Admissions & Procedures */}
-              <div className="space-y-3 p-4 rounded-xl bg-slate-950/60 border border-slate-800">
+              <div className="space-y-3 p-4 rounded-xl bg-gray-50/60 border border-gray-200">
                 <span className="text-xs font-bold uppercase text-teal-300 tracking-wider block">Prior Inpatient Admissions</span>
-                <div className="space-y-2 text-xs text-slate-200">
-                  <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 space-y-1">
+                <div className="space-y-2 text-xs text-gray-700">
+                  <div className="p-2.5 rounded-lg bg-gray-100 border border-gray-200 space-y-1">
                     <div className="font-bold text-white">2024-03-12 &bull; Acute Exacerbation Bronchitis</div>
-                    <p className="text-[11px] text-slate-400">CareBridge Central Hospital &bull; Inpatient recovery completed</p>
+                    <p className="text-[11px] text-gray-500">CareBridge Central Hospital &bull; Inpatient recovery completed</p>
                   </div>
-                  <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 space-y-1">
+                  <div className="p-2.5 rounded-lg bg-gray-100 border border-gray-200 space-y-1">
                     <div className="font-bold text-white">2022-11-04 &bull; Arthroscopy Elective</div>
-                    <p className="text-[11px] text-slate-400">CareBridge North Hospital &bull; Uneventful surgical recovery</p>
+                    <p className="text-[11px] text-gray-500">CareBridge North Hospital &bull; Uneventful surgical recovery</p>
                   </div>
                 </div>
               </div>
@@ -682,18 +682,18 @@ export const DoctorPatientDetailPage: React.FC = () => {
       {/* 5. LAB REPORTS TAB */}
       {activeTab === 'labs' && (
         <div className="space-y-4">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 shadow-xl backdrop-blur-sm space-y-4">
+          <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 shadow-xl backdrop-blur-sm space-y-4">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-base font-bold text-white flex items-center gap-2">
                   <FlaskConical className="h-4 w-4 text-sky-400" />
                   <span>Clinical Laboratory Reports</span>
                 </h2>
-                <p className="text-xs text-slate-400 mt-0.5">Biomarkers, arterial blood gas, hematology, and metabolic panels</p>
+                <p className="text-xs text-gray-500 mt-0.5">Biomarkers, arterial blood gas, hematology, and metabolic panels</p>
               </div>
               <button
                 onClick={() => setShowLabModal(true)}
-                className="flex items-center gap-1.5 rounded-xl bg-sky-600 hover:bg-sky-500 px-3.5 py-2 text-xs font-bold text-white transition"
+                className="flex items-center gap-1.5 rounded-xl bg-sky-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-500 px-3.5 py-2 text-xs font-bold text-white transition"
               >
                 <Plus className="h-3.5 w-3.5" />
                 <span>Add Lab Result</span>
@@ -703,7 +703,7 @@ export const DoctorPatientDetailPage: React.FC = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
                 <thead>
-                  <tr className="border-b border-slate-800 text-[10px] uppercase font-bold text-slate-400">
+                  <tr className="border-b border-gray-200 text-[10px] uppercase font-bold text-gray-500">
                     <th className="pb-3">Test Name</th>
                     <th className="pb-3">Category</th>
                     <th className="pb-3">Result Value</th>
@@ -712,15 +712,15 @@ export const DoctorPatientDetailPage: React.FC = () => {
                     <th className="pb-3">Reported Time</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/80">
+                <tbody className="divide-y divide-gray-200/80">
                   {patient.lab_results.map((l) => (
-                    <tr key={l.id} className="hover:bg-slate-850/40 transition">
+                    <tr key={l.id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-slate-850/40 transition">
                       <td className="py-3 font-bold text-white">{l.test_name}</td>
-                      <td className="py-3 text-slate-400">{l.category}</td>
+                      <td className="py-3 text-gray-500">{l.category}</td>
                       <td className="py-3 font-mono font-bold text-sky-300">
-                        {l.value} <span className="text-[10px] text-slate-500">{l.unit}</span>
+                        {l.value} <span className="text-[10px] text-gray-400">{l.unit}</span>
                       </td>
-                      <td className="py-3 text-slate-400 font-mono">{l.reference_range}</td>
+                      <td className="py-3 text-gray-500 font-mono">{l.reference_range}</td>
                       <td className="py-3">
                         <span className={`text-[9px] font-bold px-2 py-0.5 rounded uppercase ${
                           l.status === 'CRITICAL' ? 'bg-rose-500 text-white' :
@@ -731,7 +731,7 @@ export const DoctorPatientDetailPage: React.FC = () => {
                           {l.status}
                         </span>
                       </td>
-                      <td className="py-3 text-slate-400 font-mono">{formatTime(l.timestamp)}</td>
+                      <td className="py-3 text-gray-500 font-mono">{formatTime(l.timestamp)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -744,18 +744,18 @@ export const DoctorPatientDetailPage: React.FC = () => {
       {/* 6. MEDICATIONS TAB */}
       {activeTab === 'medications' && (
         <div className="space-y-4">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 shadow-xl backdrop-blur-sm space-y-4">
+          <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 shadow-xl backdrop-blur-sm space-y-4">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-base font-bold text-white flex items-center gap-2">
                   <Pill className="h-4 w-4 text-teal-400" />
                   <span>Inpatient Medication Orders & Continuous Infusions</span>
                 </h2>
-                <p className="text-xs text-slate-400 mt-0.5">Active prescriptions, antimicrobial therapy, and pressors</p>
+                <p className="text-xs text-gray-500 mt-0.5">Active prescriptions, antimicrobial therapy, and pressors</p>
               </div>
               <button
                 onClick={() => setShowMedModal(true)}
-                className="flex items-center gap-1.5 rounded-xl bg-teal-600 hover:bg-teal-500 px-3.5 py-2 text-xs font-bold text-white transition"
+                className="flex items-center gap-1.5 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 px-3.5 py-2 text-xs font-bold text-white transition"
               >
                 <Plus className="h-3.5 w-3.5" />
                 <span>Prescribe Medication</span>
@@ -766,29 +766,29 @@ export const DoctorPatientDetailPage: React.FC = () => {
               {patient.medications.map((m) => (
                 <div
                   key={m.id}
-                  className={`p-4 rounded-xl border ${m.status === 'DISCONTINUED' ? 'bg-slate-950/40 border-slate-800 opacity-60' : 'bg-slate-950 border-slate-800'} space-y-2`}
+                  className={`p-4 rounded-xl border ${m.status === 'DISCONTINUED' ? 'bg-gray-50/40 border-gray-200 opacity-60' : 'bg-gray-50 border-gray-200'} space-y-2`}
                 >
                   <div className="flex items-start justify-between">
                     <div>
                       <h4 className="text-sm font-bold text-white">{m.drug_name}</h4>
-                      <p className="text-xs text-slate-400 mt-0.5">
-                        {m.dosage} &bull; Route: <strong className="text-slate-200">{m.route}</strong> &bull; Freq: {m.frequency}
+                      <p className="text-xs text-gray-500 mt-0.5">
+                        {m.dosage} &bull; Route: <strong className="text-gray-700">{m.route}</strong> &bull; Freq: {m.frequency}
                       </p>
                     </div>
                     <span className={`text-[9px] font-bold px-2 py-0.5 rounded uppercase ${
                       m.status === 'ACTIVE' ? 'bg-teal-500/20 text-teal-300 border border-teal-500/30' :
-                      m.status === 'PENDING' ? 'bg-amber-500/20 text-amber-300' : 'bg-slate-800 text-slate-400'
+                      m.status === 'PENDING' ? 'bg-amber-500/20 text-amber-300' : 'bg-gray-200 text-gray-500'
                     }`}>
                       {m.status}
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between pt-2 border-t border-slate-800/80 text-[11px] text-slate-400">
+                  <div className="flex items-center justify-between pt-2 border-t border-gray-200/80 text-[11px] text-gray-500">
                     <span>Started: {formatDate(m.start_date)}</span>
                     {m.status !== 'DISCONTINUED' && (
                       <button
                         onClick={() => handleDiscontinueMed(m.id)}
-                        className="text-[10px] font-bold text-rose-400 hover:underline"
+                        className="text-[10px] font-bold text-rose-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:underline"
                       >
                         Discontinue
                       </button>
@@ -804,18 +804,18 @@ export const DoctorPatientDetailPage: React.FC = () => {
       {/* 7. CLINICAL NOTES TAB */}
       {activeTab === 'notes' && (
         <div className="space-y-4">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 shadow-xl backdrop-blur-sm space-y-4">
+          <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 shadow-xl backdrop-blur-sm space-y-4">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-base font-bold text-white flex items-center gap-2">
                   <FileText className="h-4 w-4 text-sky-400" />
                   <span>Physician Clinical Notes</span>
                 </h2>
-                <p className="text-xs text-slate-400 mt-0.5">Progress notes, SOAP assessments, procedures, and discharge summaries</p>
+                <p className="text-xs text-gray-500 mt-0.5">Progress notes, SOAP assessments, procedures, and discharge summaries</p>
               </div>
               <button
                 onClick={() => setShowNoteModal(true)}
-                className="flex items-center gap-1.5 rounded-xl bg-sky-600 hover:bg-sky-500 px-3.5 py-2 text-xs font-bold text-white transition"
+                className="flex items-center gap-1.5 rounded-xl bg-sky-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-500 px-3.5 py-2 text-xs font-bold text-white transition"
               >
                 <Plus className="h-3.5 w-3.5" />
                 <span>Add Note</span>
@@ -824,7 +824,7 @@ export const DoctorPatientDetailPage: React.FC = () => {
 
             <div className="space-y-4">
               {patient.clinical_notes.map((n) => (
-                <div key={n.id} className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2.5">
+                <div key={n.id} className="p-4 rounded-xl bg-gray-50 border border-gray-200 space-y-2.5">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <span className="text-[10px] font-bold uppercase bg-sky-950 border border-sky-500/30 text-sky-300 px-2 py-0.5 rounded">
@@ -832,17 +832,17 @@ export const DoctorPatientDetailPage: React.FC = () => {
                       </span>
                       <span className="text-xs font-bold text-white">{n.doctor_name}</span>
                     </div>
-                    <span className="text-xs text-slate-400 font-mono">{formatTime(n.timestamp)}</span>
+                    <span className="text-xs text-gray-500 font-mono">{formatTime(n.timestamp)}</span>
                   </div>
 
-                  <p className="text-xs text-slate-200 leading-relaxed whitespace-pre-line bg-slate-900/60 p-3 rounded-lg border border-slate-800/80">
+                  <p className="text-xs text-gray-700 leading-relaxed whitespace-pre-line bg-gray-100/60 p-3 rounded-lg border border-gray-200/80">
                     {n.content}
                   </p>
 
                   {n.plan && (
                     <div className="p-3 rounded-lg bg-sky-950/20 border border-sky-500/20">
                       <span className="text-[10px] font-bold uppercase text-sky-400 block mb-1">Physician Plan:</span>
-                      <p className="text-xs text-slate-300 whitespace-pre-line font-mono">{n.plan}</p>
+                      <p className="text-xs text-gray-600 whitespace-pre-line font-mono">{n.plan}</p>
                     </div>
                   )}
                 </div>
@@ -855,21 +855,21 @@ export const DoctorPatientDetailPage: React.FC = () => {
       {/* 8. NURSING CARE NOTES TAB */}
       {activeTab === 'nursing' && (
         <div className="space-y-4">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 shadow-xl backdrop-blur-sm space-y-4">
+          <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 shadow-xl backdrop-blur-sm space-y-4">
             <h2 className="text-base font-bold text-white flex items-center gap-2">
               <Stethoscope className="h-4 w-4 text-teal-400" />
               <span>Bedside Nursing Shift Notes</span>
             </h2>
-            <p className="text-xs text-slate-400">Continuous observations logged by floor & ICU nurses</p>
+            <p className="text-xs text-gray-500">Continuous observations logged by floor & ICU nurses</p>
 
             <div className="space-y-3">
               {patient.nursing_notes.map((nn) => (
-                <div key={nn.id} className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-1.5">
+                <div key={nn.id} className="p-4 rounded-xl bg-gray-50 border border-gray-200 space-y-1.5">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold text-teal-300">{nn.nurse_name || 'Staff Nurse'}</span>
-                    <span className="text-xs text-slate-400 font-mono">{formatTime(nn.timestamp)}</span>
+                    <span className="text-xs text-gray-500 font-mono">{formatTime(nn.timestamp)}</span>
                   </div>
-                  <p className="text-xs text-slate-200 leading-relaxed">{nn.content}</p>
+                  <p className="text-xs text-gray-700 leading-relaxed">{nn.content}</p>
                 </div>
               ))}
             </div>
@@ -880,18 +880,18 @@ export const DoctorPatientDetailPage: React.FC = () => {
       {/* 9. DOCTOR ORDERS TAB */}
       {activeTab === 'orders' && (
         <div className="space-y-4">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 shadow-xl backdrop-blur-sm space-y-4">
+          <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 shadow-xl backdrop-blur-sm space-y-4">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-base font-bold text-white flex items-center gap-2">
                   <Clock className="h-4 w-4 text-indigo-400" />
                   <span>Physician Clinical Orders</span>
                 </h2>
-                <p className="text-xs text-slate-400 mt-0.5">Labs, bedside imaging, procedures, and specialist consultations</p>
+                <p className="text-xs text-gray-500 mt-0.5">Labs, bedside imaging, procedures, and specialist consultations</p>
               </div>
               <button
                 onClick={() => setShowOrderModal(true)}
-                className="flex items-center gap-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 px-3.5 py-2 text-xs font-bold text-white transition"
+                className="flex items-center gap-1.5 rounded-xl bg-indigo-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-indigo-500 px-3.5 py-2 text-xs font-bold text-white transition"
               >
                 <Plus className="h-3.5 w-3.5" />
                 <span>Create Order</span>
@@ -900,7 +900,7 @@ export const DoctorPatientDetailPage: React.FC = () => {
 
             <div className="space-y-3">
               {patient.doctor_orders.map((ord) => (
-                <div key={ord.id} className="p-4 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between gap-4">
+                <div key={ord.id} className="p-4 rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-between gap-4">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
                       <span className="text-[10px] font-bold uppercase bg-indigo-950 border border-indigo-500/30 text-indigo-300 px-2 py-0.5 rounded">
@@ -908,13 +908,13 @@ export const DoctorPatientDetailPage: React.FC = () => {
                       </span>
                       <span className="text-xs font-bold text-white">{ord.description}</span>
                     </div>
-                    {ord.notes && <p className="text-[11px] text-slate-400">{ord.notes}</p>}
-                    <span className="text-[10px] text-slate-500 font-mono block">Ordered by {ord.doctor_name} &bull; {formatTime(ord.timestamp)}</span>
+                    {ord.notes && <p className="text-[11px] text-gray-500">{ord.notes}</p>}
+                    <span className="text-[10px] text-gray-400 font-mono block">Ordered by {ord.doctor_name} &bull; {formatTime(ord.timestamp)}</span>
                   </div>
 
                   <div className="flex items-center gap-2">
                     <span className={`text-[9px] font-bold px-2 py-0.5 rounded uppercase ${
-                      ord.priority === 'STAT' ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30' : 'bg-slate-800 text-slate-300'
+                      ord.priority === 'STAT' ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30' : 'bg-gray-200 text-gray-600'
                     }`}>
                       {ord.priority}
                     </span>
@@ -934,13 +934,13 @@ export const DoctorPatientDetailPage: React.FC = () => {
       {/* 10. TIMELINE TAB */}
       {activeTab === 'timeline' && (
         <div className="space-y-4">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 shadow-xl backdrop-blur-sm space-y-6">
+          <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-6 shadow-xl backdrop-blur-sm space-y-6">
             <h2 className="text-base font-bold text-white flex items-center gap-2">
               <History className="h-5 w-5 text-sky-400" />
               <span>Patient Clinical Event Stream</span>
             </h2>
 
-            <div className="relative pl-6 border-l border-slate-800 space-y-6">
+            <div className="relative pl-6 border-l border-gray-200 space-y-6">
               {patient.timeline_events.map((evt) => (
                 <div key={evt.id} className="relative group">
                   {/* Timeline node */}
@@ -948,14 +948,14 @@ export const DoctorPatientDetailPage: React.FC = () => {
                     evt.severity === 'CRITICAL' ? 'bg-rose-500 animate-pulse' :
                     evt.severity === 'HIGH' ? 'bg-amber-400' : 'bg-sky-400'
                   }`} />
-                  <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800/80 space-y-1">
+                  <div className="p-3.5 rounded-xl bg-gray-50 border border-gray-200/80 space-y-1">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-bold text-white">{evt.title}</span>
-                      <span className="text-[10px] font-mono text-slate-400">{formatTime(evt.timestamp)}</span>
+                      <span className="text-[10px] font-mono text-gray-500">{formatTime(evt.timestamp)}</span>
                     </div>
-                    <p className="text-xs text-slate-300 leading-relaxed">{evt.description}</p>
+                    <p className="text-xs text-gray-600 leading-relaxed">{evt.description}</p>
                     {evt.actor_name && (
-                      <span className="text-[10px] text-slate-500 block pt-1">
+                      <span className="text-[10px] text-gray-400 block pt-1">
                         Recorded by {evt.actor_name}
                       </span>
                     )}
@@ -971,24 +971,24 @@ export const DoctorPatientDetailPage: React.FC = () => {
 
       {/* Add Clinical Note Modal */}
       {showNoteModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="w-full max-w-lg rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
+          <div className="w-full max-w-lg rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-gray-200 pb-3">
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <FileText className="h-4 w-4 text-sky-400" />
                 <span>Add Clinical Note</span>
               </h3>
-              <button onClick={() => setShowNoteModal(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setShowNoteModal(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
             <form onSubmit={handleAddNote} className="space-y-3">
               <div>
-                <label className="text-[11px] font-bold text-slate-400 uppercase">Note Type</label>
+                <label className="text-[11px] font-bold text-gray-500 uppercase">Note Type</label>
                 <select
                   value={noteForm.note_type}
                   onChange={(e) => setNoteForm({ ...noteForm, note_type: e.target.value })}
-                  className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2 text-xs text-white"
+                  className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2 text-xs text-gray-900"
                 >
                   <option value="PROGRESS">Progress Note</option>
                   <option value="OBSERVATION">Observation Note</option>
@@ -999,37 +999,37 @@ export const DoctorPatientDetailPage: React.FC = () => {
                 </select>
               </div>
               <div>
-                <label className="text-[11px] font-bold text-slate-400 uppercase">Clinical Narrative</label>
+                <label className="text-[11px] font-bold text-gray-500 uppercase">Clinical Narrative</label>
                 <textarea
                   rows={4}
                   required
                   placeholder="Enter detailed clinical impressions, examination findings..."
                   value={noteForm.content}
                   onChange={(e) => setNoteForm({ ...noteForm, content: e.target.value })}
-                  className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2.5 text-xs text-white"
+                  className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2.5 text-xs text-gray-900"
                 />
               </div>
               <div>
-                <label className="text-[11px] font-bold text-slate-400 uppercase">Treatment Plan (Optional)</label>
+                <label className="text-[11px] font-bold text-gray-500 uppercase">Treatment Plan (Optional)</label>
                 <textarea
                   rows={2}
                   placeholder="1. Continue IV fluids..."
                   value={noteForm.plan}
                   onChange={(e) => setNoteForm({ ...noteForm, plan: e.target.value })}
-                  className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2.5 text-xs text-white"
+                  className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2.5 text-xs text-gray-900"
                 />
               </div>
               <div className="flex justify-end gap-2 pt-2">
                 <button
                   type="button"
                   onClick={() => setShowNoteModal(false)}
-                  className="rounded-xl bg-slate-800 px-4 py-2 text-xs font-bold text-slate-300"
+                  className="rounded-xl bg-gray-200 px-4 py-2 text-xs font-bold text-gray-600"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="rounded-xl bg-sky-600 hover:bg-sky-500 px-4 py-2 text-xs font-bold text-white"
+                  className="rounded-xl bg-sky-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-500 px-4 py-2 text-xs font-bold text-white"
                 >
                   Save Note
                 </button>
@@ -1041,24 +1041,24 @@ export const DoctorPatientDetailPage: React.FC = () => {
 
       {/* New Doctor Order Modal */}
       {showOrderModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
+          <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-gray-200 pb-3">
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <Clock className="h-4 w-4 text-indigo-400" />
                 <span>Create Physician Order</span>
               </h3>
-              <button onClick={() => setShowOrderModal(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setShowOrderModal(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
             <form onSubmit={handleCreateOrder} className="space-y-3">
               <div>
-                <label className="text-[11px] font-bold text-slate-400 uppercase">Order Type</label>
+                <label className="text-[11px] font-bold text-gray-500 uppercase">Order Type</label>
                 <select
                   value={orderForm.order_type}
                   onChange={(e) => setOrderForm({ ...orderForm, order_type: e.target.value })}
-                  className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2 text-xs text-white"
+                  className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2 text-xs text-gray-900"
                 >
                   <option value="LAB">Laboratory Diagnostic</option>
                   <option value="IMAGING">Bedside / Radiology Imaging</option>
@@ -1068,22 +1068,22 @@ export const DoctorPatientDetailPage: React.FC = () => {
                 </select>
               </div>
               <div>
-                <label className="text-[11px] font-bold text-slate-400 uppercase">Order Description</label>
+                <label className="text-[11px] font-bold text-gray-500 uppercase">Order Description</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. 12-Lead ECG Stat, Portable CXR..."
                   value={orderForm.description}
                   onChange={(e) => setOrderForm({ ...orderForm, description: e.target.value })}
-                  className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2 text-xs text-white"
+                  className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2 text-xs text-gray-900"
                 />
               </div>
               <div>
-                <label className="text-[11px] font-bold text-slate-400 uppercase">Priority</label>
+                <label className="text-[11px] font-bold text-gray-500 uppercase">Priority</label>
                 <select
                   value={orderForm.priority}
                   onChange={(e) => setOrderForm({ ...orderForm, priority: e.target.value })}
-                  className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2 text-xs text-white"
+                  className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2 text-xs text-gray-900"
                 >
                   <option value="ROUTINE">Routine</option>
                   <option value="URGENT">Urgent</option>
@@ -1094,13 +1094,13 @@ export const DoctorPatientDetailPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowOrderModal(false)}
-                  className="rounded-xl bg-slate-800 px-4 py-2 text-xs font-bold text-slate-300"
+                  className="rounded-xl bg-gray-200 px-4 py-2 text-xs font-bold text-gray-600"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="rounded-xl bg-indigo-600 hover:bg-indigo-500 px-4 py-2 text-xs font-bold text-white"
+                  className="rounded-xl bg-indigo-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-indigo-500 px-4 py-2 text-xs font-bold text-white"
                 >
                   Submit Order
                 </button>
@@ -1112,47 +1112,47 @@ export const DoctorPatientDetailPage: React.FC = () => {
 
       {/* Prescribe Medication Modal */}
       {showMedModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
+          <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-gray-200 pb-3">
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <Pill className="h-4 w-4 text-teal-400" />
                 <span>Prescribe Medication</span>
               </h3>
-              <button onClick={() => setShowMedModal(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setShowMedModal(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
             <form onSubmit={handlePrescribeMed} className="space-y-3">
               <div>
-                <label className="text-[11px] font-bold text-slate-400 uppercase">Drug Name & Formulation</label>
+                <label className="text-[11px] font-bold text-gray-500 uppercase">Drug Name & Formulation</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Meropenem IV, Levophed..."
                   value={medForm.drug_name}
                   onChange={(e) => setMedForm({ ...medForm, drug_name: e.target.value })}
-                  className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2 text-xs text-white"
+                  className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2 text-xs text-gray-900"
                 />
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="text-[11px] font-bold text-slate-400 uppercase">Dosage</label>
+                  <label className="text-[11px] font-bold text-gray-500 uppercase">Dosage</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. 1000 mg"
                     value={medForm.dosage}
                     onChange={(e) => setMedForm({ ...medForm, dosage: e.target.value })}
-                    className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2 text-xs text-white"
+                    className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2 text-xs text-gray-900"
                   />
                 </div>
                 <div>
-                  <label className="text-[11px] font-bold text-slate-400 uppercase">Frequency</label>
+                  <label className="text-[11px] font-bold text-gray-500 uppercase">Frequency</label>
                   <select
                     value={medForm.frequency}
                     onChange={(e) => setMedForm({ ...medForm, frequency: e.target.value })}
-                    className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2 text-xs text-white"
+                    className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2 text-xs text-gray-900"
                   >
                     <option value="STAT">STAT</option>
                     <option value="Q6H">Q6H</option>
@@ -1164,11 +1164,11 @@ export const DoctorPatientDetailPage: React.FC = () => {
                 </div>
               </div>
               <div>
-                <label className="text-[11px] font-bold text-slate-400 uppercase">Route</label>
+                <label className="text-[11px] font-bold text-gray-500 uppercase">Route</label>
                 <select
                   value={medForm.route}
                   onChange={(e) => setMedForm({ ...medForm, route: e.target.value })}
-                  className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2 text-xs text-white"
+                  className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2 text-xs text-gray-900"
                 >
                   <option value="IV">Intravenous (IV)</option>
                   <option value="ORAL">Oral (PO)</option>
@@ -1181,13 +1181,13 @@ export const DoctorPatientDetailPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowMedModal(false)}
-                  className="rounded-xl bg-slate-800 px-4 py-2 text-xs font-bold text-slate-300"
+                  className="rounded-xl bg-gray-200 px-4 py-2 text-xs font-bold text-gray-600"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="rounded-xl bg-teal-600 hover:bg-teal-500 px-4 py-2 text-xs font-bold text-white"
+                  className="rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 px-4 py-2 text-xs font-bold text-white"
                 >
                   Sign & Prescribe
                 </button>
@@ -1199,69 +1199,69 @@ export const DoctorPatientDetailPage: React.FC = () => {
 
       {/* Add Lab Result Modal */}
       {showLabModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
+          <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-gray-200 pb-3">
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <FlaskConical className="h-4 w-4 text-sky-400" />
                 <span>Add Lab Result</span>
               </h3>
-              <button onClick={() => setShowLabModal(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setShowLabModal(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
             <form onSubmit={handleAddLab} className="space-y-3">
               <div>
-                <label className="text-[11px] font-bold text-slate-400 uppercase">Test Name</label>
+                <label className="text-[11px] font-bold text-gray-500 uppercase">Test Name</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Troponin I, Serum Lactate..."
                   value={labForm.test_name}
                   onChange={(e) => setLabForm({ ...labForm, test_name: e.target.value })}
-                  className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2 text-xs text-white"
+                  className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2 text-xs text-gray-900"
                 />
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="text-[11px] font-bold text-slate-400 uppercase">Value</label>
+                  <label className="text-[11px] font-bold text-gray-500 uppercase">Value</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. 2.4"
                     value={labForm.value}
                     onChange={(e) => setLabForm({ ...labForm, value: e.target.value })}
-                    className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2 text-xs text-white"
+                    className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2 text-xs text-gray-900"
                   />
                 </div>
                 <div>
-                  <label className="text-[11px] font-bold text-slate-400 uppercase">Unit</label>
+                  <label className="text-[11px] font-bold text-gray-500 uppercase">Unit</label>
                   <input
                     type="text"
                     placeholder="e.g. mmol/L, mg/dL"
                     value={labForm.unit}
                     onChange={(e) => setLabForm({ ...labForm, unit: e.target.value })}
-                    className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2 text-xs text-white"
+                    className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2 text-xs text-gray-900"
                   />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="text-[11px] font-bold text-slate-400 uppercase">Reference Range</label>
+                  <label className="text-[11px] font-bold text-gray-500 uppercase">Reference Range</label>
                   <input
                     type="text"
                     placeholder="0.5 - 2.0"
                     value={labForm.reference_range}
                     onChange={(e) => setLabForm({ ...labForm, reference_range: e.target.value })}
-                    className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2 text-xs text-white"
+                    className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2 text-xs text-gray-900"
                   />
                 </div>
                 <div>
-                  <label className="text-[11px] font-bold text-slate-400 uppercase">Status</label>
+                  <label className="text-[11px] font-bold text-gray-500 uppercase">Status</label>
                   <select
                     value={labForm.status}
                     onChange={(e) => setLabForm({ ...labForm, status: e.target.value })}
-                    className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2 text-xs text-white"
+                    className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2 text-xs text-gray-900"
                   >
                     <option value="NORMAL">NORMAL</option>
                     <option value="HIGH">HIGH</option>
@@ -1274,13 +1274,13 @@ export const DoctorPatientDetailPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowLabModal(false)}
-                  className="rounded-xl bg-slate-800 px-4 py-2 text-xs font-bold text-slate-300"
+                  className="rounded-xl bg-gray-200 px-4 py-2 text-xs font-bold text-gray-600"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="rounded-xl bg-sky-600 hover:bg-sky-500 px-4 py-2 text-xs font-bold text-white"
+                  className="rounded-xl bg-sky-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-500 px-4 py-2 text-xs font-bold text-white"
                 >
                   Log Result
                 </button>
@@ -1292,24 +1292,24 @@ export const DoctorPatientDetailPage: React.FC = () => {
 
       {/* Transfer Patient Modal */}
       {showTransferModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
+          <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-gray-200 pb-3">
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <ArrowRightLeft className="h-4 w-4 text-amber-400" />
                 <span>Request Department Transfer</span>
               </h3>
-              <button onClick={() => setShowTransferModal(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setShowTransferModal(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
             <form onSubmit={handleRequestTransfer} className="space-y-3">
               <div>
-                <label className="text-[11px] font-bold text-slate-400 uppercase">Target Unit / Department</label>
+                <label className="text-[11px] font-bold text-gray-500 uppercase">Target Unit / Department</label>
                 <select
                   value={transferForm.to_department_id}
                   onChange={(e) => setTransferForm({ ...transferForm, to_department_id: Number(e.target.value) })}
-                  className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2 text-xs text-white"
+                  className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2 text-xs text-gray-900"
                 >
                   <option value={1}>Medical ICU</option>
                   <option value={2}>Surgical Step-Down</option>
@@ -1318,27 +1318,27 @@ export const DoctorPatientDetailPage: React.FC = () => {
                 </select>
               </div>
               <div>
-                <label className="text-[11px] font-bold text-slate-400 uppercase">Transfer Rationale</label>
+                <label className="text-[11px] font-bold text-gray-500 uppercase">Transfer Rationale</label>
                 <textarea
                   rows={3}
                   required
                   placeholder="e.g. Clinical stabilization, stepdown care, specialized surgical monitoring..."
                   value={transferForm.reason}
                   onChange={(e) => setTransferForm({ ...transferForm, reason: e.target.value })}
-                  className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2 text-xs text-white"
+                  className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2 text-xs text-gray-900"
                 />
               </div>
               <div className="flex justify-end gap-2 pt-2">
                 <button
                   type="button"
                   onClick={() => setShowTransferModal(false)}
-                  className="rounded-xl bg-slate-800 px-4 py-2 text-xs font-bold text-slate-300"
+                  className="rounded-xl bg-gray-200 px-4 py-2 text-xs font-bold text-gray-600"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="rounded-xl bg-amber-600 hover:bg-amber-500 px-4 py-2 text-xs font-bold text-white"
+                  className="rounded-xl bg-amber-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-amber-500 px-4 py-2 text-xs font-bold text-white"
                 >
                   Submit Request
                 </button>
@@ -1350,24 +1350,24 @@ export const DoctorPatientDetailPage: React.FC = () => {
 
       {/* Discharge Patient Modal */}
       {showDischargeModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="w-full max-w-lg rounded-2xl border border-slate-800 bg-slate-900 p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
+          <div className="w-full max-w-lg rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-gray-200 pb-3">
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <LogOut className="h-4 w-4 text-rose-400" />
                 <span>Confirm Patient Discharge</span>
               </h3>
-              <button onClick={() => setShowDischargeModal(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setShowDischargeModal(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
             <form onSubmit={handleDischargePatient} className="space-y-3">
               <div>
-                <label className="text-[11px] font-bold text-slate-400 uppercase">Discharge Reason</label>
+                <label className="text-[11px] font-bold text-gray-500 uppercase">Discharge Reason</label>
                 <select
                   value={dischargeForm.reason}
                   onChange={(e) => setDischargeForm({ ...dischargeForm, reason: e.target.value })}
-                  className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2 text-xs text-white"
+                  className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2 text-xs text-gray-900"
                 >
                   <option value="RECOVERY">Clinical Recovery / Fit for Home</option>
                   <option value="HOME_CARE">Home Care / Telehealth Follow-up</option>
@@ -1375,37 +1375,37 @@ export const DoctorPatientDetailPage: React.FC = () => {
                 </select>
               </div>
               <div>
-                <label className="text-[11px] font-bold text-slate-400 uppercase">Discharge Summary</label>
+                <label className="text-[11px] font-bold text-gray-500 uppercase">Discharge Summary</label>
                 <textarea
                   rows={4}
                   required
                   placeholder="Comprehensive inpatient hospital course summary and discharge criteria met..."
                   value={dischargeForm.discharge_summary}
                   onChange={(e) => setDischargeForm({ ...dischargeForm, discharge_summary: e.target.value })}
-                  className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2.5 text-xs text-white"
+                  className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2.5 text-xs text-gray-900"
                 />
               </div>
               <div>
-                <label className="text-[11px] font-bold text-slate-400 uppercase">Discharge Instructions & Follow-up</label>
+                <label className="text-[11px] font-bold text-gray-500 uppercase">Discharge Instructions & Follow-up</label>
                 <textarea
                   rows={2}
                   placeholder="Post-discharge medication regimen, clinic follow-up in 1 week..."
                   value={dischargeForm.instructions}
                   onChange={(e) => setDischargeForm({ ...dischargeForm, instructions: e.target.value })}
-                  className="w-full mt-1 rounded-xl bg-slate-950 border border-slate-800 p-2.5 text-xs text-white"
+                  className="w-full mt-1 rounded-xl bg-gray-50 border border-gray-200 p-2.5 text-xs text-gray-900"
                 />
               </div>
               <div className="flex justify-end gap-2 pt-2">
                 <button
                   type="button"
                   onClick={() => setShowDischargeModal(false)}
-                  className="rounded-xl bg-slate-800 px-4 py-2 text-xs font-bold text-slate-300"
+                  className="rounded-xl bg-gray-200 px-4 py-2 text-xs font-bold text-gray-600"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="rounded-xl bg-rose-600 hover:bg-rose-500 px-4 py-2 text-xs font-bold text-white"
+                  className="rounded-xl bg-rose-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-500 px-4 py-2 text-xs font-bold text-white"
                 >
                   Confirm Discharge
                 </button>
@@ -1432,7 +1432,7 @@ export const DoctorPatientDetailPage: React.FC = () => {
                 }}
                 onClick={() => !xrayFile && xrayFileRef.current?.click()}
                 className={`relative rounded-2xl border-2 border-dashed transition-all cursor-pointer ${
-                  xrayDragging ? 'border-violet-500 bg-violet-500/10' : xrayFile ? 'border-teal-500/40 bg-teal-950/10' : 'border-slate-700 bg-slate-900/50 hover:border-violet-500/50'
+                  xrayDragging ? 'border-violet-500 bg-violet-500/10' : xrayFile ? 'border-teal-500/40 bg-teal-950/10' : 'border-gray-300 bg-gray-100/50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-violet-500/50'
                 }`} style={{ minHeight: 200 }}
               >
                 <input ref={xrayFileRef} type="file" accept="image/jpeg,image/jpg,image/png" className="hidden"
@@ -1440,11 +1440,11 @@ export const DoctorPatientDetailPage: React.FC = () => {
                 {xrayFile && xrayPreview ? (
                   <div className="relative p-4">
                     <button onClick={e => { e.stopPropagation(); setXrayFile(null); setXrayPreview(null); setXrayResult(null); setXrayError(null); if (xrayFileRef.current) xrayFileRef.current.value = ''; }}
-                      className="absolute top-3 right-3 z-10 flex items-center justify-center h-7 w-7 rounded-full bg-slate-800 border border-slate-700 text-slate-400 hover:text-red-400 transition">
+                      className="absolute top-3 right-3 z-10 flex items-center justify-center h-7 w-7 rounded-full bg-gray-200 border border-gray-300 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-red-400 transition">
                       <X className="h-4 w-4" />
                     </button>
-                    <img src={xrayPreview} alt="X-ray" className="rounded-xl object-contain max-h-52 w-full bg-slate-950" />
-                    <div className="mt-2 text-center text-xs text-slate-400 flex items-center justify-center gap-1">
+                    <img src={xrayPreview} alt="X-ray" className="rounded-xl object-contain max-h-52 w-full bg-gray-50" />
+                    <div className="mt-2 text-center text-xs text-gray-500 flex items-center justify-center gap-1">
                       <FileImage className="h-3.5 w-3.5 text-teal-400" />{xrayFile.name}
                     </div>
                   </div>
@@ -1453,17 +1453,17 @@ export const DoctorPatientDetailPage: React.FC = () => {
                     <div className="mb-3 flex items-center justify-center h-12 w-12 rounded-2xl bg-violet-500/15 border border-violet-500/25">
                       <Upload className="h-6 w-6 text-violet-400" />
                     </div>
-                    <p className="text-sm font-bold text-slate-200 mb-1">Drop Chest X-Ray Here</p>
-                    <p className="text-xs text-slate-500">JPEG / PNG · Max 10 MB</p>
+                    <p className="text-sm font-bold text-gray-700 mb-1">Drop Chest X-Ray Here</p>
+                    <p className="text-xs text-gray-400">JPEG / PNG · Max 10 MB</p>
                   </div>
                 )}
               </div>
 
-              <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-2">
-                <div className="text-xs font-bold text-slate-300 uppercase tracking-wider">Clinical Notes</div>
+              <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-4 space-y-2">
+                <div className="text-xs font-bold text-gray-600 uppercase tracking-wider">Clinical Notes</div>
                 <textarea value={xrayNotes} onChange={e => setXrayNotes(e.target.value)}
                   placeholder="Context, symptoms, clinical findings..." rows={2}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-violet-500/50 resize-none transition" />
+                  className="w-full px-3 py-2 rounded-xl bg-gray-200 border border-gray-300 text-xs text-gray-700 placeholder-slate-500 focus:outline-none focus:border-violet-500/50 resize-none transition" />
               </div>
 
               <button
@@ -1481,7 +1481,7 @@ export const DoctorPatientDetailPage: React.FC = () => {
                 }}
                 disabled={!xrayFile || xrayAnalyzing}
                 className={`w-full flex items-center justify-center gap-2.5 py-3.5 rounded-2xl font-black text-xs uppercase tracking-widest transition-all ${
-                  !xrayFile || xrayAnalyzing ? 'bg-slate-800 text-slate-600 cursor-not-allowed' : 'bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white shadow-lg shadow-violet-900/30 hover:scale-[1.01]'
+                  !xrayFile || xrayAnalyzing ? 'bg-gray-200 text-slate-600 cursor-not-allowed' : 'bg-gradient-to-r from-violet-600 to-purple-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:from-violet-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:to-purple-500 text-white shadow-lg shadow-violet-900/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:scale-[1.01]'
                 }`}
               >
                 {xrayAnalyzing ? <><Loader2 className="h-4 w-4 animate-spin" />Analyzing...</> : <><Brain className="h-4 w-4" />Run AI Pneumonia Screen</>}
@@ -1508,33 +1508,33 @@ export const DoctorPatientDetailPage: React.FC = () => {
                     }
                     <div>
                       <div className={`text-xl font-black ${xrayResult.prediction === 'PNEUMONIA' ? 'text-red-400' : 'text-emerald-400'}`}>{xrayResult.prediction}</div>
-                      <div className="text-[11px] text-slate-400">{xrayResult.architecture} · v{xrayResult.model_version}</div>
+                      <div className="text-[11px] text-gray-500">{xrayResult.architecture} · v{xrayResult.model_version}</div>
                     </div>
                     <div className="ml-auto text-right">
                       <div className="text-sm font-black text-white">{(xrayResult.confidence * 100).toFixed(1)}%</div>
-                      <div className="text-[10px] text-slate-500">Confidence</div>
+                      <div className="text-[10px] text-gray-400">Confidence</div>
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <div className="flex justify-between text-xs text-slate-400"><span>Normal</span><span>{(xrayResult.normal_probability*100).toFixed(1)}%</span></div>
-                    <div className="h-2 rounded-full bg-slate-800 overflow-hidden"><div className="h-full rounded-full bg-emerald-500 transition-all duration-700" style={{width:`${xrayResult.normal_probability*100}%`}} /></div>
-                    <div className="flex justify-between text-xs text-slate-400 mt-2"><span>Pneumonia</span><span>{(xrayResult.pneumonia_probability*100).toFixed(1)}%</span></div>
-                    <div className="h-2 rounded-full bg-slate-800 overflow-hidden"><div className="h-full rounded-full bg-red-500 transition-all duration-700" style={{width:`${xrayResult.pneumonia_probability*100}%`}} /></div>
+                    <div className="flex justify-between text-xs text-gray-500"><span>Normal</span><span>{(xrayResult.normal_probability*100).toFixed(1)}%</span></div>
+                    <div className="h-2 rounded-full bg-gray-200 overflow-hidden"><div className="h-full rounded-full bg-emerald-500 transition-all duration-700" style={{width:`${xrayResult.normal_probability*100}%`}} /></div>
+                    <div className="flex justify-between text-xs text-gray-500 mt-2"><span>Pneumonia</span><span>{(xrayResult.pneumonia_probability*100).toFixed(1)}%</span></div>
+                    <div className="h-2 rounded-full bg-gray-200 overflow-hidden"><div className="h-full rounded-full bg-red-500 transition-all duration-700" style={{width:`${xrayResult.pneumonia_probability*100}%`}} /></div>
                   </div>
-                  {xrayPreview && <img src={xrayPreview} alt="xray" className="rounded-xl max-h-48 w-full object-contain bg-slate-950" />}
+                  {xrayPreview && <img src={xrayPreview} alt="xray" className="rounded-xl max-h-48 w-full object-contain bg-gray-50" />}
                   <div className="rounded-lg border border-amber-500/20 bg-amber-950/20 p-3 flex gap-2">
                     <Info className="h-3.5 w-3.5 text-amber-400 flex-shrink-0 mt-0.5" />
                     <p className="text-[10px] text-amber-200/80 leading-relaxed">{xrayResult.disclaimer}</p>
                   </div>
                 </div>
               ) : (
-                <div className="rounded-2xl border border-dashed border-slate-800 h-full flex flex-col items-center justify-center py-16 text-center px-6">
+                <div className="rounded-2xl border border-dashed border-gray-200 h-full flex flex-col items-center justify-center py-16 text-center px-6">
                   <ScanLine className="h-10 w-10 text-slate-700 mb-3" />
-                  <p className="text-sm font-bold text-slate-500">AI analysis results appear here</p>
+                  <p className="text-sm font-bold text-gray-400">AI analysis results appear here</p>
                   <p className="text-xs text-slate-600 mt-1">Upload an X-ray and run the AI screen</p>
                   <div className="mt-4 grid grid-cols-2 gap-2">
                     {[{label:'86.2% Accuracy'},{label:'99.2% Recall'},{label:'EfficientNet-B0'},{label:'Sub-second'}].map(({label}) => (
-                      <div key={label} className="rounded-lg border border-slate-800 bg-slate-900/50 px-3 py-1.5 text-[11px] text-slate-500">{label}</div>
+                      <div key={label} className="rounded-lg border border-gray-200 bg-gray-100/50 px-3 py-1.5 text-[11px] text-gray-400">{label}</div>
                     ))}
                   </div>
                 </div>
@@ -1543,14 +1543,14 @@ export const DoctorPatientDetailPage: React.FC = () => {
           </div>
 
           {/* Patient Scan History */}
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/50 overflow-hidden">
-            <div className="flex items-center justify-between px-5 py-3 border-b border-slate-800">
+          <div className="rounded-2xl border border-gray-200 bg-gray-100/50 overflow-hidden">
+            <div className="flex items-center justify-between px-5 py-3 border-b border-gray-200">
               <div className="flex items-center gap-2">
                 <History className="h-4 w-4 text-violet-400" />
-                <span className="text-sm font-bold text-slate-200">Patient X-Ray History</span>
+                <span className="text-sm font-bold text-gray-700">Patient X-Ray History</span>
               </div>
               <button onClick={() => { setScansLoading(true); xrayAPI.getPatientXRays(patientId).then(setPatientScans).finally(() => setScansLoading(false)); }}
-                className="flex items-center gap-1 text-xs text-slate-400 hover:text-white transition">
+                className="flex items-center gap-1 text-xs text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition">
                 <RefreshCw className={`h-3.5 w-3.5 ${scansLoading?'animate-spin':''}`} /> Load History
               </button>
             </div>
@@ -1559,12 +1559,12 @@ export const DoctorPatientDetailPage: React.FC = () => {
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full text-xs">
-                  <thead><tr className="border-b border-slate-800">
-                    {['Result','Confidence','Image','Date','By'].map(h => <th key={h} className="py-2 px-4 text-left text-[10px] font-bold uppercase text-slate-500 tracking-wider">{h}</th>)}
+                  <thead><tr className="border-b border-gray-200">
+                    {['Result','Confidence','Image','Date','By'].map(h => <th key={h} className="py-2 px-4 text-left text-[10px] font-bold uppercase text-gray-400 tracking-wider">{h}</th>)}
                   </tr></thead>
                   <tbody>
                     {patientScans.map(scan => (
-                      <tr key={scan.id} className="border-b border-slate-800/50 hover:bg-slate-800/20">
+                      <tr key={scan.id} className="border-b border-gray-200/50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/20">
                         <td className="py-2.5 px-4">
                           <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase ${
                             scan.prediction==='PNEUMONIA' ? 'bg-red-500/15 text-red-400 border border-red-500/20' : 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20'
@@ -1572,10 +1572,10 @@ export const DoctorPatientDetailPage: React.FC = () => {
                         </td>
                         <td className="py-2.5 px-4 font-bold text-white">{(scan.confidence*100).toFixed(1)}%</td>
                         <td className="py-2.5 px-4">
-                          {scan.image_url ? <a href={`${API_BASE}${scan.image_url}`} target="_blank" rel="noopener noreferrer" className="text-sky-400 hover:text-sky-300 text-[10px] flex items-center gap-1"><FileImage className="h-3 w-3" />{scan.original_filename||'View'}</a> : <span className="text-slate-600">-</span>}
+                          {scan.image_url ? <a href={`${API_BASE}${scan.image_url}`} target="_blank" rel="noopener noreferrer" className="text-sky-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-sky-300 text-[10px] flex items-center gap-1"><FileImage className="h-3 w-3" />{scan.original_filename||'View'}</a> : <span className="text-slate-600">-</span>}
                         </td>
-                        <td className="py-2.5 px-4 text-slate-400">{new Date(scan.created_at).toLocaleDateString()}</td>
-                        <td className="py-2.5 px-4 text-slate-400">{scan.created_by}</td>
+                        <td className="py-2.5 px-4 text-gray-500">{new Date(scan.created_at).toLocaleDateString()}</td>
+                        <td className="py-2.5 px-4 text-gray-500">{scan.created_by}</td>
                       </tr>
                     ))}
                   </tbody>

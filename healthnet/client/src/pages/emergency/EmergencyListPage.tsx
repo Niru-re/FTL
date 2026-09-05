@@ -48,7 +48,7 @@ export const EmergencyListPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-200 pb-5">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <Siren className="h-4 w-4 text-rose-400 animate-pulse" />
@@ -57,7 +57,7 @@ export const EmergencyListPage: React.FC = () => {
           <h1 className="text-2xl font-black tracking-tight text-white">
             Emergency Cases & Smart Triage
           </h1>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-gray-500 mt-0.5">
             Active city-wide emergency dispatch, hospital routing matches, and transit telemetry
           </p>
         </div>
@@ -65,14 +65,14 @@ export const EmergencyListPage: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => navigate('/admin/emergency/new')}
-            className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-500 hover:to-rose-400 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-rose-600/30 transition"
+            className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-rose-600 to-rose-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:from-rose-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:to-rose-400 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-rose-600/30 transition"
           >
             <Plus className="h-4 w-4" />
             <span>New Emergency Intake</span>
           </button>
           <button
             onClick={() => { setIsLoading(true); fetchCases(); }}
-            className="flex items-center gap-2 rounded-xl bg-slate-800 hover:bg-slate-700 px-3.5 py-2 text-xs font-bold text-slate-300 transition border border-slate-700"
+            className="flex items-center gap-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
             <span>Refresh</span>
@@ -81,16 +81,16 @@ export const EmergencyListPage: React.FC = () => {
       </div>
 
       {/* Filter & Search Bar */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-4 shadow-xl backdrop-blur-sm">
+      <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-4 space-y-4 shadow-xl backdrop-blur-sm">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
           <form onSubmit={handleSearchSubmit} className="md:col-span-2 relative">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
             <input
               type="text"
               placeholder="Search case code (EMG-2026-...), patient name, bed..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-xl bg-slate-950/80 border border-slate-800 pl-10 pr-4 py-2 text-xs text-white placeholder-slate-500 focus:border-rose-500 focus:outline-none"
+              className="w-full rounded-xl bg-gray-50/80 border border-gray-200 pl-10 pr-4 py-2 text-xs text-gray-900 placeholder-slate-500 focus:border-rose-500 focus:outline-none"
             />
           </form>
 
@@ -98,7 +98,7 @@ export const EmergencyListPage: React.FC = () => {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="w-full rounded-xl bg-slate-950/80 border border-slate-800 px-3.5 py-2 text-xs text-slate-200 focus:border-rose-500 focus:outline-none font-medium cursor-pointer"
+              className="w-full rounded-xl bg-gray-50/80 border border-gray-200 px-3.5 py-2 text-xs text-gray-700 focus:border-rose-500 focus:outline-none font-medium cursor-pointer"
             >
               <option value="ALL">All Statuses</option>
               <option value="SEARCHING">Searching</option>
@@ -115,7 +115,7 @@ export const EmergencyListPage: React.FC = () => {
             <select
               value={selectedPriority}
               onChange={(e) => setSelectedPriority(e.target.value)}
-              className="w-full rounded-xl bg-slate-950/80 border border-slate-800 px-3.5 py-2 text-xs text-slate-200 focus:border-rose-500 focus:outline-none font-medium cursor-pointer"
+              className="w-full rounded-xl bg-gray-50/80 border border-gray-200 px-3.5 py-2 text-xs text-gray-700 focus:border-rose-500 focus:outline-none font-medium cursor-pointer"
             >
               <option value="ALL">All Priorities</option>
               <option value="CRITICAL">CRITICAL (Red)</option>
@@ -126,8 +126,8 @@ export const EmergencyListPage: React.FC = () => {
         </div>
 
         {/* Quick Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/60">
-          <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mr-2">Quick Status:</span>
+        <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-gray-200/60">
+          <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mr-2">Quick Status:</span>
           {['ALL', 'EN_ROUTE', 'ARRIVED', 'PATIENT_RECEIVED', 'COMPLETED'].map((st) => (
             <button
               key={st}
@@ -135,7 +135,7 @@ export const EmergencyListPage: React.FC = () => {
               className={`rounded-lg px-2.5 py-1 text-[11px] font-bold transition ${
                 selectedStatus === st
                   ? 'bg-rose-600 text-white shadow-sm'
-                  : 'bg-slate-950/60 text-slate-400 hover:text-slate-200 border border-slate-800'
+                  : 'bg-gray-50/60 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-700 border border-gray-200'
               }`}
             >
               {st}
@@ -145,21 +145,21 @@ export const EmergencyListPage: React.FC = () => {
       </div>
 
       {/* Emergency Cases List */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/60 shadow-xl backdrop-blur-sm overflow-hidden">
-        <div className="p-4 border-b border-slate-800 flex items-center justify-between">
-          <h2 className="text-xs font-bold uppercase tracking-wider text-slate-300">
+      <div className="rounded-2xl border border-gray-200 bg-gray-100/60 shadow-xl backdrop-blur-sm overflow-hidden">
+        <div className="p-4 border-b border-gray-200 flex items-center justify-between">
+          <h2 className="text-xs font-bold uppercase tracking-wider text-gray-600">
             Emergency Cases Registry ({cases.length})
           </h2>
-          <span className="text-[10px] text-slate-400 font-mono">Routing Intelligence Integrated</span>
+          <span className="text-[10px] text-gray-500 font-mono">Routing Intelligence Integrated</span>
         </div>
 
         {cases.length === 0 ? (
-          <div className="p-12 text-center text-slate-400">
+          <div className="p-12 text-center text-gray-500">
             <Siren className="h-8 w-8 mx-auto text-slate-600 mb-2" />
             <p className="text-xs">No emergency cases match the selected filter criteria.</p>
           </div>
         ) : (
-          <div className="divide-y divide-slate-800/80">
+          <div className="divide-y divide-gray-200/80">
             {cases.map((c) => {
               const isCrit = c.priority === 'CRITICAL';
               const isEnRoute = c.status === 'EN_ROUTE';
@@ -168,7 +168,7 @@ export const EmergencyListPage: React.FC = () => {
                 <div
                   key={c.id}
                   onClick={() => navigate(`/admin/emergency/${c.id}`)}
-                  className="p-4 hover:bg-slate-800/40 cursor-pointer transition flex flex-col lg:flex-row lg:items-center justify-between gap-4 group"
+                  className="p-4 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 cursor-pointer transition flex flex-col lg:flex-row lg:items-center justify-between gap-4 group"
                 >
                   {/* Left: Info */}
                   <div className="space-y-1.5 flex-1">
@@ -177,10 +177,10 @@ export const EmergencyListPage: React.FC = () => {
                       <span className="font-mono text-xs font-bold text-rose-400 bg-rose-950/80 border border-rose-500/30 px-2 py-0.5 rounded">
                         {c.case_number}
                       </span>
-                      <h3 className="text-sm font-bold text-white group-hover:text-rose-300 transition">
+                      <h3 className="text-sm font-bold text-white group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-rose-300 transition">
                         {c.patient_name}
                       </h3>
-                      <span className="text-xs text-slate-400">
+                      <span className="text-xs text-gray-500">
                         {c.patient_age}y &bull; {c.patient_gender} &bull; {c.emergency_type}
                       </span>
                       <span className={`text-[9px] font-bold px-2 py-0.5 rounded uppercase ${
@@ -190,15 +190,15 @@ export const EmergencyListPage: React.FC = () => {
                       </span>
                     </div>
 
-                    <p className="text-xs text-slate-300 line-clamp-1">
-                      <strong className="text-slate-400">Condition: </strong>{c.condition_summary}
+                    <p className="text-xs text-gray-600 line-clamp-1">
+                      <strong className="text-gray-500">Condition: </strong>{c.condition_summary}
                     </p>
 
                     {/* Routing Details */}
-                    <div className="flex flex-wrap items-center gap-3 text-[11px] text-slate-400 pt-1">
+                    <div className="flex flex-wrap items-center gap-3 text-[11px] text-gray-500 pt-1">
                       <div className="flex items-center gap-1">
                         <Building2 className="h-3.5 w-3.5 text-emerald-400" />
-                        <span>Hospital: <strong className="text-slate-200">{c.assigned_hospital_name || 'Searching...'}</strong></span>
+                        <span>Hospital: <strong className="text-gray-700">{c.assigned_hospital_name || 'Searching...'}</strong></span>
                       </div>
                       {c.assigned_bed_code && (
                         <div className="flex items-center gap-1">
@@ -212,12 +212,12 @@ export const EmergencyListPage: React.FC = () => {
                           <span>Ambulance: <strong className="text-sky-300 font-mono">{c.assigned_ambulance_code}</strong></span>
                         </div>
                       )}
-                      <span className="text-slate-500 font-mono">{formatTime(c.created_at)}</span>
+                      <span className="text-gray-400 font-mono">{formatTime(c.created_at)}</span>
                     </div>
                   </div>
 
                   {/* Right: Status & Action */}
-                  <div className="flex items-center justify-between lg:justify-end gap-3 pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-800">
+                  <div className="flex items-center justify-between lg:justify-end gap-3 pt-2 lg:pt-0 border-t lg:border-t-0 border-gray-200">
                     <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full uppercase border ${
                       c.status === 'PATIENT_RECEIVED' || c.status === 'COMPLETED'
                         ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
@@ -230,7 +230,7 @@ export const EmergencyListPage: React.FC = () => {
 
                     <button
                       onClick={(e) => { e.stopPropagation(); navigate(`/admin/emergency/${c.id}`); }}
-                      className="flex items-center gap-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 px-3.5 py-2 text-xs font-bold text-white transition border border-slate-700"
+                      className="flex items-center gap-1.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-bold text-white transition border border-gray-300"
                     >
                       <span>Mission Control</span>
                       <ChevronRight className="h-3.5 w-3.5 text-rose-400" />

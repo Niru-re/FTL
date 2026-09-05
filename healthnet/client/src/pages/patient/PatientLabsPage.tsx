@@ -29,11 +29,11 @@ export const PatientLabsPage: React.FC = () => {
       {/* Header */}
       <div className="bg-white p-5 rounded-3xl border border-slate-200 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Diagnostic Testing</span>
+          <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500">Diagnostic Testing</span>
           <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
             Laboratory Results
           </h1>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <p className="text-xs text-gray-400 mt-0.5">
             Verified clinical lab tests without speculative diagnoses or complex raw telemetry.
           </p>
         </div>
@@ -45,13 +45,13 @@ export const PatientLabsPage: React.FC = () => {
       </div>
 
       {isLoading ? (
-        <div className="flex items-center justify-center py-16 text-slate-500 text-xs font-semibold">
+        <div className="flex items-center justify-center py-16 text-gray-400 text-xs font-semibold">
           <div className="animate-spin w-5 h-5 border-2 border-orange-500 border-t-transparent rounded-full mr-2" />
           Loading laboratory tests...
         </div>
       ) : labs.length === 0 ? (
-        <div className="bg-white rounded-3xl border border-slate-200 p-10 text-center text-slate-500">
-          <FileText className="w-8 h-8 text-slate-400 mx-auto mb-2" />
+        <div className="bg-white rounded-3xl border border-slate-200 p-10 text-center text-gray-400">
+          <FileText className="w-8 h-8 text-gray-500 mx-auto mb-2" />
           <p className="text-xs font-bold text-slate-800">No laboratory results recorded</p>
         </div>
       ) : (
@@ -67,7 +67,7 @@ export const PatientLabsPage: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-slate-900">{lab.test_name}</h3>
-                  <p className="text-xs text-slate-500">Report Date: {lab.date}</p>
+                  <p className="text-xs text-gray-400">Report Date: {lab.date}</p>
                 </div>
               </div>
 

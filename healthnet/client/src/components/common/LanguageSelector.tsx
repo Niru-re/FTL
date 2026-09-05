@@ -14,7 +14,7 @@ export const LanguageSelector: React.FC<{ variant?: 'light' | 'dark' | 'compact'
 
   return (
     <div className="flex items-center gap-1 bg-slate-100/90 p-0.5 rounded-xl border border-slate-200 shadow-2xs">
-      <div className="pl-1.5 pr-0.5 text-slate-500 flex items-center">
+      <div className="pl-1.5 pr-0.5 text-gray-400 flex items-center">
         <Globe className="w-3.5 h-3.5 text-orange-500" />
       </div>
       {options.map((opt) => (
@@ -25,7 +25,7 @@ export const LanguageSelector: React.FC<{ variant?: 'light' | 'dark' | 'compact'
           className={`px-2 py-1 text-[11px] font-bold rounded-lg transition-all cursor-pointer ${
             language === opt.code
               ? 'bg-white text-orange-600 shadow-xs border border-orange-200'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
+              : 'text-slate-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-slate-900 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-slate-200/50'
           }`}
           title={opt.label}
         >

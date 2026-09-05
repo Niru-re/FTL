@@ -121,7 +121,7 @@ export const NurseVitalsPage: React.FC = () => {
         <div className="flex items-center gap-3">
           <Link
             to="/nurse/patients"
-            className="rounded-xl border border-slate-800 bg-slate-900 p-2.5 text-slate-400 hover:text-white hover:bg-slate-800 transition"
+            className="rounded-xl border border-gray-200 bg-gray-100 p-2.5 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 transition"
           >
             <ArrowLeft className="h-4 w-4" />
           </Link>
@@ -160,7 +160,7 @@ export const NurseVitalsPage: React.FC = () => {
           {selectedPatientId && (
             <Link
               to={`/nurse/patients/${selectedPatientId}`}
-              className="rounded-xl bg-slate-800 hover:bg-slate-700 px-3.5 py-1.5 text-xs text-white transition flex-shrink-0"
+              className="rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-1.5 text-xs text-white transition flex-shrink-0"
             >
               View Patient Chart
             </Link>
@@ -171,8 +171,8 @@ export const NurseVitalsPage: React.FC = () => {
       {/* Main Recording Form */}
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Patient Selection Card */}
-        <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-5 backdrop-blur-md shadow-xl space-y-4">
-          <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+        <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-5 backdrop-blur-md shadow-xl space-y-4">
+          <label className="block text-xs font-bold text-gray-600 uppercase tracking-wider">
             Select Assigned Inpatient
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -180,7 +180,7 @@ export const NurseVitalsPage: React.FC = () => {
               <select
                 value={selectedPatientId || ''}
                 onChange={(e) => setSelectedPatientId(Number(e.target.value))}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white font-semibold focus:outline-none focus:border-teal-500 transition"
+                className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-xs text-gray-900 font-semibold focus:outline-none focus:border-teal-500 transition"
               >
                 {patients.map((p) => (
                   <option key={p.id} value={p.id}>
@@ -191,10 +191,10 @@ export const NurseVitalsPage: React.FC = () => {
             </div>
 
             {selectedPatient && (
-              <div className="bg-slate-950/70 p-3 rounded-xl border border-slate-800 text-xs flex items-center justify-between">
+              <div className="bg-gray-50/70 p-3 rounded-xl border border-gray-200 text-xs flex items-center justify-between">
                 <div>
                   <p className="font-bold text-white">{selectedPatient.full_name}</p>
-                  <p className="text-[11px] text-slate-400">
+                  <p className="text-[11px] text-gray-500">
                     {selectedPatient.age}y {selectedPatient.gender} • Doctor: {selectedPatient.assigned_doctor_name || 'Unassigned'}
                   </p>
                 </div>
@@ -209,9 +209,9 @@ export const NurseVitalsPage: React.FC = () => {
         {/* Vital Parameters Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* SpO2 */}
-          <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-5 shadow-xl space-y-3">
+          <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-5 shadow-xl space-y-3">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+              <label className="text-xs font-bold text-gray-600 flex items-center gap-1.5">
                 <Activity className="h-4 w-4 text-teal-400" />
                 <span>Oxygen Saturation (SpO2)</span>
               </label>
@@ -228,17 +228,17 @@ export const NurseVitalsPage: React.FC = () => {
                 required
                 value={spo2}
                 onChange={(e) => setSpo2(Number(e.target.value))}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-lg font-black font-mono text-white focus:outline-none focus:border-teal-500"
+                className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-lg font-black font-mono text-gray-900 focus:outline-none focus:border-teal-500"
               />
-              <span className="text-xs font-bold text-slate-400">%</span>
+              <span className="text-xs font-bold text-gray-500">%</span>
             </div>
-            <p className="text-[11px] text-slate-400">Normal: &ge;94% • Warning: 90–93% • Critical: &lt;90%</p>
+            <p className="text-[11px] text-gray-500">Normal: &ge;94% • Warning: 90–93% • Critical: &lt;90%</p>
           </div>
 
           {/* Heart Rate */}
-          <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-5 shadow-xl space-y-3">
+          <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-5 shadow-xl space-y-3">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+              <label className="text-xs font-bold text-gray-600 flex items-center gap-1.5">
                 <HeartPulse className="h-4 w-4 text-rose-400" />
                 <span>Heart Rate (Pulse)</span>
               </label>
@@ -254,16 +254,16 @@ export const NurseVitalsPage: React.FC = () => {
                 required
                 value={heartRate}
                 onChange={(e) => setHeartRate(Number(e.target.value))}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-lg font-black font-mono text-white focus:outline-none focus:border-teal-500"
+                className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-lg font-black font-mono text-gray-900 focus:outline-none focus:border-teal-500"
               />
-              <span className="text-xs font-bold text-slate-400">bpm</span>
+              <span className="text-xs font-bold text-gray-500">bpm</span>
             </div>
-            <p className="text-[11px] text-slate-400">Normal: 60–100 • Warning: 101–120 • Critical: &gt;120</p>
+            <p className="text-[11px] text-gray-500">Normal: 60–100 • Warning: 101–120 • Critical: &gt;120</p>
           </div>
 
           {/* Blood Pressure */}
-          <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-5 shadow-xl space-y-3">
-            <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+          <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-5 shadow-xl space-y-3">
+            <label className="text-xs font-bold text-gray-600 flex items-center gap-1.5">
               <Activity className="h-4 w-4 text-sky-400" />
               <span>Blood Pressure (Systolic / Diastolic)</span>
             </label>
@@ -277,9 +277,9 @@ export const NurseVitalsPage: React.FC = () => {
                   placeholder="Systolic"
                   value={systolicBp}
                   onChange={(e) => setSystolicBp(Number(e.target.value))}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-lg font-black font-mono text-white focus:outline-none focus:border-teal-500"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-lg font-black font-mono text-gray-900 focus:outline-none focus:border-teal-500"
                 />
-                <span className="text-slate-500 font-bold">/</span>
+                <span className="text-gray-400 font-bold">/</span>
               </div>
               <div className="flex items-center gap-2">
                 <input
@@ -290,18 +290,18 @@ export const NurseVitalsPage: React.FC = () => {
                   placeholder="Diastolic"
                   value={diastolicBp}
                   onChange={(e) => setDiastolicBp(Number(e.target.value))}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-lg font-black font-mono text-white focus:outline-none focus:border-teal-500"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-lg font-black font-mono text-gray-900 focus:outline-none focus:border-teal-500"
                 />
-                <span className="text-xs font-bold text-slate-400">mmHg</span>
+                <span className="text-xs font-bold text-gray-500">mmHg</span>
               </div>
             </div>
-            <p className="text-[11px] text-slate-400">Standard Target: 120 / 80 mmHg</p>
+            <p className="text-[11px] text-gray-500">Standard Target: 120 / 80 mmHg</p>
           </div>
 
           {/* Respiratory Rate */}
-          <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-5 shadow-xl space-y-3">
+          <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-5 shadow-xl space-y-3">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+              <label className="text-xs font-bold text-gray-600 flex items-center gap-1.5">
                 <Activity className="h-4 w-4 text-amber-400" />
                 <span>Respiratory Rate</span>
               </label>
@@ -317,17 +317,17 @@ export const NurseVitalsPage: React.FC = () => {
                 required
                 value={respiratoryRate}
                 onChange={(e) => setRespiratoryRate(Number(e.target.value))}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-lg font-black font-mono text-white focus:outline-none focus:border-teal-500"
+                className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-lg font-black font-mono text-gray-900 focus:outline-none focus:border-teal-500"
               />
-              <span className="text-xs font-bold text-slate-400">breaths/min</span>
+              <span className="text-xs font-bold text-gray-500">breaths/min</span>
             </div>
-            <p className="text-[11px] text-slate-400">Normal: 12–20 • Warning: 21–28 • Critical: &gt;28</p>
+            <p className="text-[11px] text-gray-500">Normal: 12–20 • Warning: 21–28 • Critical: &gt;28</p>
           </div>
 
           {/* Temperature */}
-          <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-5 shadow-xl space-y-3">
+          <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-5 shadow-xl space-y-3">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+              <label className="text-xs font-bold text-gray-600 flex items-center gap-1.5">
                 <Activity className="h-4 w-4 text-rose-400" />
                 <span>Core Temperature</span>
               </label>
@@ -344,16 +344,16 @@ export const NurseVitalsPage: React.FC = () => {
                 required
                 value={temperature}
                 onChange={(e) => setTemperature(Number(e.target.value))}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-lg font-black font-mono text-white focus:outline-none focus:border-teal-500"
+                className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-lg font-black font-mono text-gray-900 focus:outline-none focus:border-teal-500"
               />
-              <span className="text-xs font-bold text-slate-400">°C</span>
+              <span className="text-xs font-bold text-gray-500">°C</span>
             </div>
-            <p className="text-[11px] text-slate-400">Normal: 36.0–37.5°C • Warning: 37.6–38.5°C • High: &gt;38.5°C</p>
+            <p className="text-[11px] text-gray-500">Normal: 36.0–37.5°C • Warning: 37.6–38.5°C • High: &gt;38.5°C</p>
           </div>
 
           {/* Consciousness & Pain */}
-          <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-5 shadow-xl space-y-3">
-            <label className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+          <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-5 shadow-xl space-y-3">
+            <label className="text-xs font-bold text-gray-600 flex items-center gap-1.5">
               <ShieldAlert className="h-4 w-4 text-purple-400" />
               <span>Consciousness Level (AVPU) & Pain</span>
             </label>
@@ -361,7 +361,7 @@ export const NurseVitalsPage: React.FC = () => {
               <select
                 value={consciousness}
                 onChange={(e) => setConsciousness(e.target.value as any)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs font-bold text-white focus:outline-none focus:border-teal-500"
+                className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-xs font-bold text-gray-900 focus:outline-none focus:border-teal-500"
               >
                 <option value="ALERT">Alert (A)</option>
                 <option value="VOICE">Voice Response (V)</option>
@@ -377,20 +377,20 @@ export const NurseVitalsPage: React.FC = () => {
                   placeholder="Pain (0-10)"
                   value={painScore}
                   onChange={(e) => setPainScore(Number(e.target.value))}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs font-bold text-white focus:outline-none focus:border-teal-500"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-xs font-bold text-gray-900 focus:outline-none focus:border-teal-500"
                 />
-                <span className="text-xs text-slate-400 font-medium">/ 10</span>
+                <span className="text-xs text-gray-500 font-medium">/ 10</span>
               </div>
             </div>
-            <p className="text-[11px] text-slate-400">AVPU scale + Numeric Pain Rating</p>
+            <p className="text-[11px] text-gray-500">AVPU scale + Numeric Pain Rating</p>
           </div>
         </div>
 
         {/* Prototype Threshold Disclaimer */}
-        <div className="p-4 rounded-xl border border-slate-800 bg-slate-950/50 text-[11px] text-slate-400 flex items-start gap-2.5">
+        <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/50 text-[11px] text-gray-500 flex items-start gap-2.5">
           <ShieldAlert className="h-4 w-4 text-amber-400 flex-shrink-0 mt-0.5" />
           <p>
-            <strong className="text-slate-300">PROTOTYPE THRESHOLDS:</strong> The threshold ranges and warnings shown are prototype demo indicators and do not constitute clinical decision support or formal medical recommendations.
+            <strong className="text-gray-600">PROTOTYPE THRESHOLDS:</strong> The threshold ranges and warnings shown are prototype demo indicators and do not constitute clinical decision support or formal medical recommendations.
           </p>
         </div>
 
@@ -398,14 +398,14 @@ export const NurseVitalsPage: React.FC = () => {
         <div className="flex items-center justify-end gap-3 pt-2">
           <Link
             to="/nurse/patients"
-            className="rounded-xl border border-slate-700 bg-slate-800 px-5 py-2.5 text-xs font-bold text-slate-300 hover:bg-slate-700 transition"
+            className="rounded-xl border border-gray-300 bg-gray-200 px-5 py-2.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 transition"
           >
             Cancel
           </Link>
           <button
             type="submit"
             disabled={submitting || !selectedPatientId}
-            className="rounded-xl bg-teal-600 hover:bg-teal-500 px-8 py-2.5 text-xs font-bold text-white shadow-lg shadow-teal-900/40 transition disabled:opacity-50 flex items-center gap-2"
+            className="rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 px-8 py-2.5 text-xs font-bold text-white shadow-lg shadow-teal-900/40 transition disabled:opacity-50 flex items-center gap-2"
           >
             <HeartPulse className="h-4 w-4" />
             <span>{submitting ? 'Recording Vitals...' : 'SAVE VITALS'}</span>

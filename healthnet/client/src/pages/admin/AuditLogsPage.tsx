@@ -38,18 +38,18 @@ export const AuditLogsPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-white flex items-center gap-2">
+          <h1 className="text-2xl font-black text-gray-900 flex items-center gap-2">
             <History className="h-6 w-6 text-purple-400" />
             <span>Governance & Clinical Audit Trail</span>
           </h1>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-gray-500">
             Immutable traceability ledger recording bed state changes, emergency routing actions, and doctor documentation.
           </p>
         </div>
 
         <button
           onClick={fetchLogs}
-          className="flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900 px-3 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-800 self-start"
+          className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-gray-100 px-3 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 self-start"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
           <span>Refresh Logs</span>
@@ -57,24 +57,24 @@ export const AuditLogsPage: React.FC = () => {
       </div>
 
       {/* Filter Bar */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 glass-panel">
+      <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-4 glass-panel">
         <div className="relative max-w-md">
-          <Search className="h-4 w-4 text-slate-500 absolute left-3 top-2.5" />
+          <Search className="h-4 w-4 text-gray-400 absolute left-3 top-2.5" />
           <input
             type="text"
             placeholder="Search action, email, details..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full rounded-xl border border-slate-800 bg-slate-950 pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:border-purple-500 focus:outline-none"
+            className="w-full rounded-xl border border-gray-200 bg-gray-50 pl-9 pr-3 py-2 text-xs text-gray-900 placeholder-slate-500 focus:border-purple-500 focus:outline-none"
           />
         </div>
       </div>
 
       {/* Logs Table */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/80 overflow-hidden glass-panel">
+      <div className="rounded-2xl border border-gray-200 bg-gray-100/80 overflow-hidden glass-panel">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-300">
-            <thead className="border-b border-slate-800 bg-slate-950/60 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+          <table className="w-full text-left text-xs text-gray-600">
+            <thead className="border-b border-gray-200 bg-gray-50/60 text-[11px] font-bold uppercase tracking-wider text-gray-500">
               <tr>
                 <th className="p-4">Timestamp</th>
                 <th className="p-4">Action</th>
@@ -83,10 +83,10 @@ export const AuditLogsPage: React.FC = () => {
                 <th className="p-4">Event Details</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 font-mono">
+            <tbody className="divide-y divide-gray-200/60 font-mono">
               {filteredLogs.map((log) => (
-                <tr key={log.id} className="hover:bg-slate-800/30 transition">
-                  <td className="p-4 text-slate-400 whitespace-nowrap">
+                <tr key={log.id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/30 transition">
+                  <td className="p-4 text-gray-500 whitespace-nowrap">
                     {formatDate(log.timestamp)} {formatTime(log.timestamp)}
                   </td>
                   <td className="p-4">
@@ -94,9 +94,9 @@ export const AuditLogsPage: React.FC = () => {
                       {log.action}
                     </span>
                   </td>
-                  <td className="p-4 text-slate-300">{log.entity_type} {log.entity_id ? `(#${log.entity_id})` : ''}</td>
+                  <td className="p-4 text-gray-600">{log.entity_type} {log.entity_id ? `(#${log.entity_id})` : ''}</td>
                   <td className="p-4 text-teal-400">{log.user_email}</td>
-                  <td className="p-4 text-slate-300 font-sans max-w-md truncate">{log.details}</td>
+                  <td className="p-4 text-gray-600 font-sans max-w-md truncate">{log.details}</td>
                 </tr>
               ))}
             </tbody>

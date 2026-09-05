@@ -98,25 +98,25 @@ export const CityMap: React.FC<CityMapProps> = ({
   const center: [number, number] = [40.7306, -73.9866];
 
   return (
-    <div className={`relative w-full rounded-2xl overflow-hidden border border-slate-800 shadow-2xl glass-panel ${className}`}>
+    <div className={`relative w-full rounded-2xl overflow-hidden border border-gray-200 shadow-2xl glass-panel ${className}`}>
       {/* Map Legend */}
-      <div className="absolute top-3 right-3 z-[1000] rounded-xl border border-slate-800 bg-slate-900/90 p-3 shadow-xl backdrop-blur-md text-xs space-y-2">
-        <span className="font-semibold text-slate-300 block border-b border-slate-800 pb-1">Hospital ICU Load</span>
+      <div className="absolute top-3 right-3 z-[1000] rounded-xl border border-gray-200 bg-gray-100/90 p-3 shadow-xl backdrop-blur-md text-xs space-y-2">
+        <span className="font-semibold text-gray-600 block border-b border-gray-200 pb-1">Hospital ICU Load</span>
         <div className="flex items-center gap-2">
           <span className="h-3 w-3 rounded-full bg-emerald-500"></span>
-          <span className="text-slate-400">&lt; 70% (Low)</span>
+          <span className="text-gray-500">&lt; 70% (Low)</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="h-3 w-3 rounded-full bg-amber-500"></span>
-          <span className="text-slate-400">70% - 89% (Medium)</span>
+          <span className="text-gray-500">70% - 89% (Medium)</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="h-3 w-3 rounded-full bg-rose-500"></span>
-          <span className="text-slate-400">&ge; 90% / Surge / Divert</span>
+          <span className="text-gray-500">&ge; 90% / Surge / Divert</span>
         </div>
-        <div className="border-t border-slate-800 pt-1.5 flex items-center gap-2">
+        <div className="border-t border-gray-200 pt-1.5 flex items-center gap-2">
           <span className="h-3 w-3 rounded bg-cyan-500"></span>
-          <span className="text-slate-400">Active Ambulance</span>
+          <span className="text-gray-500">Active Ambulance</span>
         </div>
       </div>
 
@@ -146,30 +146,30 @@ export const CityMap: React.FC<CityMapProps> = ({
             }}
           >
             <Popup>
-              <div className="p-1 space-y-2 text-slate-200">
+              <div className="p-1 space-y-2 text-gray-700">
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <h4 className="font-bold text-sm text-white">{hosp.name}</h4>
-                    <p className="text-xs text-slate-400">{hosp.branch_name}</p>
+                    <h4 className="font-bold text-sm text-gray-900">{hosp.name}</h4>
+                    <p className="text-xs text-gray-500">{hosp.branch_name}</p>
                   </div>
                   <StatusBadge type="hospital" status={hosp.emergency_status} />
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 text-xs pt-1 border-t border-slate-800">
-                  <div className="bg-slate-900 p-1.5 rounded">
-                    <span className="text-slate-400 block text-[10px]">Available ICU</span>
+                <div className="grid grid-cols-2 gap-2 text-xs pt-1 border-t border-gray-200">
+                  <div className="bg-gray-100 p-1.5 rounded">
+                    <span className="text-gray-500 block text-[10px]">Available ICU</span>
                     <span className="font-bold text-teal-400">{hosp.available_icu_beds} / {hosp.icu_capacity}</span>
                   </div>
-                  <div className="bg-slate-900 p-1.5 rounded">
-                    <span className="text-slate-400 block text-[10px]">Total Free Beds</span>
-                    <span className="font-bold text-slate-200">{hosp.available_beds} / {hosp.total_beds}</span>
+                  <div className="bg-gray-100 p-1.5 rounded">
+                    <span className="text-gray-500 block text-[10px]">Total Free Beds</span>
+                    <span className="font-bold text-gray-700">{hosp.available_beds} / {hosp.total_beds}</span>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2 pt-1">
                   <a
                     href={`/admin/hospitals/${hosp.id}`}
-                    className="flex-1 text-center bg-teal-600 hover:bg-teal-500 text-white text-xs font-semibold py-1.5 rounded-lg transition"
+                    className="flex-1 text-center bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 text-white text-xs font-semibold py-1.5 rounded-lg transition"
                   >
                     Open Facility &rarr;
                   </a>
@@ -187,15 +187,15 @@ export const CityMap: React.FC<CityMapProps> = ({
             icon={createAmbulanceIcon(amb.status)}
           >
             <Popup>
-              <div className="p-1 space-y-1.5 text-slate-200 text-xs">
+              <div className="p-1 space-y-1.5 text-gray-700 text-xs">
                 <div className="flex items-center justify-between gap-2">
                   <span className="font-bold text-cyan-400">{amb.code}</span>
                   <StatusBadge type="ambulance" status={amb.status} />
                 </div>
-                <p className="text-slate-300">Driver: {amb.driver_name}</p>
+                <p className="text-gray-600">Driver: {amb.driver_name}</p>
                 {amb.destination_hospital_name && (
-                  <p className="text-slate-400 text-[11px]">
-                    Destination: <span className="text-white font-medium">{amb.destination_hospital_name}</span>
+                  <p className="text-gray-500 text-[11px]">
+                    Destination: <span className="text-gray-900 font-medium">{amb.destination_hospital_name}</span>
                   </p>
                 )}
                 {amb.eta_minutes > 0 && (

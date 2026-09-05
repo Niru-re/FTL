@@ -91,7 +91,7 @@ export const DoctorDashboard: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header Banner */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-200 pb-5">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="h-2 w-2 rounded-full bg-sky-400 animate-pulse"></span>
@@ -100,14 +100,14 @@ export const DoctorDashboard: React.FC = () => {
           <h1 className="text-2xl font-black tracking-tight text-white flex items-center gap-2">
             Welcome, {user?.full_name || 'Dr. Arjun Sharma'}
           </h1>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-gray-500 mt-0.5">
             Specialist in Critical Care &bull; CareBridge Central Hospital &bull; Medical ICU (Downtown Campus)
           </p>
         </div>
         <div className="flex items-center gap-3">
           <button
             onClick={() => navigate('/doctor/monitoring')}
-            className="flex items-center gap-2 rounded-xl bg-sky-600/20 border border-sky-500/30 px-3.5 py-2 text-xs font-bold text-sky-300 hover:bg-sky-600/30 transition shadow-sm"
+            className="flex items-center gap-2 rounded-xl bg-sky-600/20 border border-sky-500/30 px-3.5 py-2 text-xs font-bold text-sky-300 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-600/30 transition shadow-sm"
           >
             <Radio className="h-4 w-4 text-sky-400 animate-pulse" />
             <span>ICU Telemetry Wall</span>
@@ -115,7 +115,7 @@ export const DoctorDashboard: React.FC = () => {
           <button
             onClick={() => { setIsLoading(true); fetchDoctorData(); }}
             disabled={isLoading}
-            className="flex items-center gap-2 rounded-xl bg-slate-800 hover:bg-slate-700 px-3.5 py-2 text-xs font-bold text-slate-300 transition border border-slate-700"
+            className="flex items-center gap-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
             <span>Sync Data</span>
@@ -149,14 +149,14 @@ export const DoctorDashboard: React.FC = () => {
                 <h3 className="text-sm font-bold text-white mt-0.5">
                   {incomingAmbs[0].code} &bull; {incomingAmbs[0].current_patient_name || 'Emergency Intake'}
                 </h3>
-                <p className="text-xs text-slate-300 mt-0.5">
+                <p className="text-xs text-gray-600 mt-0.5">
                   Assigned Bed: <span className="font-mono text-rose-300 font-semibold">{incomingAmbs[0].assigned_bed_code || 'Pre-assigned ICU'}</span> &bull; Paramedic: {incomingAmbs[0].paramedic_name}
                 </p>
               </div>
             </div>
             <button
               onClick={() => navigate('/doctor/incoming')}
-              className="flex items-center justify-center gap-2 rounded-xl bg-rose-600 hover:bg-rose-500 px-4 py-2 text-xs font-bold text-white transition self-start sm:self-auto"
+              className="flex items-center justify-center gap-2 rounded-xl bg-rose-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-500 px-4 py-2 text-xs font-bold text-white transition self-start sm:self-auto"
             >
               <span>View Inbound Cases</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -229,12 +229,12 @@ export const DoctorDashboard: React.FC = () => {
                     PROTOTYPE AI
                   </span>
                 </div>
-                <p className="text-xs text-slate-400 mt-0.5">Patients showing rising physiological instability and rapid risk velocity.</p>
+                <p className="text-xs text-gray-500 mt-0.5">Patients showing rising physiological instability and rapid risk velocity.</p>
               </div>
 
               <button
                 onClick={() => navigate('/doctor/ai-risk')}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-teal-600/20 hover:bg-teal-600/30 text-teal-300 border border-teal-500/30 text-xs font-bold transition self-start sm:self-auto"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-teal-600/20 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-600/30 text-teal-300 border border-teal-500/30 text-xs font-bold transition self-start sm:self-auto"
               >
                 <span>View Full AI Risk Registry</span>
                 <ChevronRight className="h-3.5 w-3.5" />
@@ -249,7 +249,7 @@ export const DoctorDashboard: React.FC = () => {
                   <div
                     key={p.id}
                     onClick={() => navigate(`/doctor/patients/${p.id}`)}
-                    className="p-3 rounded-xl bg-slate-950/70 border border-slate-800/80 hover:border-teal-500/40 cursor-pointer transition"
+                    className="p-3 rounded-xl bg-gray-50/70 border border-gray-200/80 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-teal-500/40 cursor-pointer transition"
                   >
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-xs text-teal-300 font-bold">{p.mrn}</span>
@@ -258,7 +258,7 @@ export const DoctorDashboard: React.FC = () => {
                       </span>
                     </div>
                     <div className="text-xs font-bold text-white mt-1 truncate">{p.full_name}</div>
-                    <div className="flex items-center justify-between mt-2 text-[10px] font-mono text-slate-400">
+                    <div className="flex items-center justify-between mt-2 text-[10px] font-mono text-gray-500">
                       <span>Bed: {p.bed_code || 'ICU'}</span>
                       <span className="text-amber-400 font-bold">↑ +{Math.floor(riskVal * 0.12)}% / 15m</span>
                     </div>
@@ -268,18 +268,18 @@ export const DoctorDashboard: React.FC = () => {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 backdrop-blur-sm shadow-xl">
+          <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 backdrop-blur-sm shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h2 className="text-base font-bold text-white flex items-center gap-2">
                   <Activity className="h-4 w-4 text-rose-400" />
                   <span>High Attention Patients</span>
                 </h2>
-                <p className="text-xs text-slate-400 mt-0.5">Patients ranked by dynamic physiological risk & NEWS2 score</p>
+                <p className="text-xs text-gray-500 mt-0.5">Patients ranked by dynamic physiological risk & NEWS2 score</p>
               </div>
               <button
                 onClick={() => navigate('/doctor/patients')}
-                className="text-xs font-semibold text-sky-400 hover:text-sky-300 flex items-center gap-1 transition"
+                className="text-xs font-semibold text-sky-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-sky-300 flex items-center gap-1 transition"
               >
                 <span>Full Census ({patients.length})</span>
                 <ChevronRight className="h-3.5 w-3.5" />
@@ -288,7 +288,7 @@ export const DoctorDashboard: React.FC = () => {
 
             <div className="space-y-2.5">
               {highPriorityPatients.length === 0 ? (
-                <div className="text-center py-8 text-xs text-slate-400">
+                <div className="text-center py-8 text-xs text-gray-500">
                   No high-risk or critical patients currently flagged.
                 </div>
               ) : (
@@ -296,27 +296,27 @@ export const DoctorDashboard: React.FC = () => {
                   <div
                     key={p.id}
                     onClick={() => navigate(`/doctor/patients/${p.id}`)}
-                    className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 rounded-xl border border-slate-800/80 bg-slate-950/50 hover:bg-slate-800/40 hover:border-slate-700 cursor-pointer transition gap-3 group"
+                    className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 rounded-xl border border-gray-200/80 bg-gray-50/50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 cursor-pointer transition gap-3 group"
                   >
                     <div className="flex items-start gap-3">
                       <div className={`mt-0.5 h-3 w-3 rounded-full flex-shrink-0 ${p.risk_level === 'CRITICAL' ? 'bg-rose-500 animate-pulse' : 'bg-amber-500'}`} />
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-bold text-white group-hover:text-sky-300 transition">
+                          <span className="text-xs font-bold text-white group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-sky-300 transition">
                             {p.full_name}
                           </span>
-                          <span className="text-[10px] font-mono text-slate-400 bg-slate-800 px-1.5 py-0.5 rounded">
+                          <span className="text-[10px] font-mono text-gray-500 bg-gray-200 px-1.5 py-0.5 rounded">
                             {p.mrn}
                           </span>
-                          <span className="text-[10px] text-slate-400">
+                          <span className="text-[10px] text-gray-500">
                             {p.age}y &bull; {p.gender} &bull; {p.blood_group}
                           </span>
                         </div>
-                        <p className="text-xs text-slate-300 mt-0.5 font-medium line-clamp-1">
+                        <p className="text-xs text-gray-600 mt-0.5 font-medium line-clamp-1">
                           {p.diagnosis}
                         </p>
-                        <div className="flex items-center gap-3 mt-1.5 text-[11px] text-slate-400">
-                          <span className="font-mono text-slate-300">
+                        <div className="flex items-center gap-3 mt-1.5 text-[11px] text-gray-500">
+                          <span className="font-mono text-gray-600">
                             Bed: <strong className="text-sky-300">{p.bed_code || 'Unassigned'}</strong>
                           </span>
                           <span>&bull;</span>
@@ -326,13 +326,13 @@ export const DoctorDashboard: React.FC = () => {
                     </div>
 
                     {/* Vitals & Risk Badges */}
-                    <div className="flex items-center justify-between sm:justify-end gap-3 border-t sm:border-t-0 border-slate-800/60 pt-2 sm:pt-0">
+                    <div className="flex items-center justify-between sm:justify-end gap-3 border-t sm:border-t-0 border-gray-200/60 pt-2 sm:pt-0">
                       {p.latest_vitals && (
                         <div className="flex items-center gap-2 text-xs">
-                          <span className={`font-mono px-2 py-0.5 rounded ${p.latest_vitals.spo2 < 90 ? 'bg-rose-500/20 text-rose-300 font-bold' : 'bg-slate-800 text-slate-300'}`}>
+                          <span className={`font-mono px-2 py-0.5 rounded ${p.latest_vitals.spo2 < 90 ? 'bg-rose-500/20 text-rose-300 font-bold' : 'bg-gray-200 text-gray-600'}`}>
                             SpO2 {p.latest_vitals.spo2}%
                           </span>
-                          <span className={`font-mono px-2 py-0.5 rounded ${p.latest_vitals.heart_rate > 120 ? 'bg-rose-500/20 text-rose-300 font-bold' : 'bg-slate-800 text-slate-300'}`}>
+                          <span className={`font-mono px-2 py-0.5 rounded ${p.latest_vitals.heart_rate > 120 ? 'bg-rose-500/20 text-rose-300 font-bold' : 'bg-gray-200 text-gray-600'}`}>
                             {p.latest_vitals.heart_rate} bpm
                           </span>
                         </div>
@@ -345,7 +345,7 @@ export const DoctorDashboard: React.FC = () => {
                         }`}>
                           Risk {p.risk_score}%
                         </span>
-                        <ChevronRight className="h-4 w-4 text-slate-500 group-hover:text-white transition" />
+                        <ChevronRight className="h-4 w-4 text-gray-400 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition" />
                       </div>
                     </div>
                   </div>
@@ -355,14 +355,14 @@ export const DoctorDashboard: React.FC = () => {
           </div>
 
           {/* Pending Nurse-to-Doctor Consultation Requests */}
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 backdrop-blur-sm shadow-xl">
+          <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 backdrop-blur-sm shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h2 className="text-base font-bold text-white flex items-center gap-2">
                   <Stethoscope className="h-4 w-4 text-indigo-400" />
                   <span>Pending Nurse Consultation Requests</span>
                 </h2>
-                <p className="text-xs text-slate-400 mt-0.5">Urgent nursing escalations requiring physician review</p>
+                <p className="text-xs text-gray-500 mt-0.5">Urgent nursing escalations requiring physician review</p>
               </div>
               <span className="text-[10px] font-bold text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
                 {requests.length} Pending
@@ -371,7 +371,7 @@ export const DoctorDashboard: React.FC = () => {
 
             <div className="space-y-2.5">
               {requests.length === 0 ? (
-                <div className="text-center py-6 text-xs text-slate-400">
+                <div className="text-center py-6 text-xs text-gray-500">
                   No pending nurse consult requests at this time.
                 </div>
               ) : (
@@ -386,24 +386,24 @@ export const DoctorDashboard: React.FC = () => {
                           {r.priority}
                         </span>
                         <span className="text-xs font-bold text-white">{r.patient_name || `Patient #${r.patient_id}`}</span>
-                        <span className="text-[10px] text-slate-400 font-mono">({r.patient_mrn || 'MRN-N/A'})</span>
-                        <span className="text-[10px] text-slate-400">&bull; Paged by {r.nurse_name}</span>
+                        <span className="text-[10px] text-gray-500 font-mono">({r.patient_mrn || 'MRN-N/A'})</span>
+                        <span className="text-[10px] text-gray-500">&bull; Paged by {r.nurse_name}</span>
                       </div>
-                      <p className="text-xs text-slate-300 mt-1 font-medium">{r.reason}</p>
-                      <span className="text-[10px] text-slate-400 mt-1 block">
+                      <p className="text-xs text-gray-600 mt-1 font-medium">{r.reason}</p>
+                      <span className="text-[10px] text-gray-500 mt-1 block">
                         Logged {formatTime(r.created_at)}
                       </span>
                     </div>
                     <div className="flex items-center gap-2 self-end sm:self-center flex-shrink-0">
                       <button
                         onClick={() => navigate(`/doctor/patients/${r.patient_id}`)}
-                        className="rounded-lg bg-slate-800 hover:bg-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-200 transition"
+                        className="rounded-lg bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3 py-1.5 text-xs font-semibold text-gray-700 transition"
                       >
                         Open Patient
                       </button>
                       <button
                         onClick={() => handleAcknowledgeRequest(r.id)}
-                        className="rounded-lg bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 text-xs font-bold text-white transition flex items-center gap-1"
+                        className="rounded-lg bg-indigo-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-indigo-500 px-3 py-1.5 text-xs font-bold text-white transition flex items-center gap-1"
                       >
                         <CheckCircle2 className="h-3.5 w-3.5" />
                         <span>Accept</span>
@@ -418,18 +418,18 @@ export const DoctorDashboard: React.FC = () => {
 
         {/* Right 1 Col: Live Clinical Alarms & Quick Tools */}
         <div className="space-y-4">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 backdrop-blur-sm shadow-xl">
+          <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 backdrop-blur-sm shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h2 className="text-base font-bold text-white flex items-center gap-2">
                   <Bell className="h-4 w-4 text-sky-400" />
                   <span>Clinical Alarms Feed</span>
                 </h2>
-                <p className="text-xs text-slate-400 mt-0.5">Real-time critical telemetry triggers</p>
+                <p className="text-xs text-gray-500 mt-0.5">Real-time critical telemetry triggers</p>
               </div>
               <button
                 onClick={() => navigate('/doctor/alerts')}
-                className="text-xs font-semibold text-sky-400 hover:text-sky-300"
+                className="text-xs font-semibold text-sky-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-sky-300"
               >
                 View All
               </button>
@@ -437,35 +437,35 @@ export const DoctorDashboard: React.FC = () => {
 
             <div className="space-y-2.5">
               {alerts.length === 0 ? (
-                <div className="text-center py-8 text-xs text-slate-400">
+                <div className="text-center py-8 text-xs text-gray-500">
                   No active clinical alarms in this hospital.
                 </div>
               ) : (
                 alerts.map((alt) => (
                   <div
                     key={alt.id}
-                    className="p-3 rounded-xl border border-slate-800/80 bg-slate-950/60 space-y-2"
+                    className="p-3 rounded-xl border border-gray-200/80 bg-gray-50/60 space-y-2"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex items-center gap-1.5">
                         <span className={`h-2 w-2 rounded-full ${alt.severity === 'CRITICAL' ? 'bg-rose-500 animate-pulse' : 'bg-amber-400'}`} />
                         <h4 className="text-xs font-bold text-white leading-tight">{alt.title}</h4>
                       </div>
-                      <span className="text-[9px] font-mono text-slate-400">{formatTime(alt.created_at)}</span>
+                      <span className="text-[9px] font-mono text-gray-500">{formatTime(alt.created_at)}</span>
                     </div>
-                    <p className="text-[11px] text-slate-300 leading-relaxed">{alt.message}</p>
-                    <div className="flex items-center justify-between pt-1 border-t border-slate-800/60">
+                    <p className="text-[11px] text-gray-600 leading-relaxed">{alt.message}</p>
+                    <div className="flex items-center justify-between pt-1 border-t border-gray-200/60">
                       {alt.patient_id ? (
                         <button
                           onClick={() => navigate(`/doctor/patients/${alt.patient_id}`)}
-                          className="text-[10px] font-bold text-sky-400 hover:underline"
+                          className="text-[10px] font-bold text-sky-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:underline"
                         >
                           View Patient Record &rarr;
                         </button>
                       ) : <span />}
                       <button
                         onClick={() => handleAcknowledgeAlert(alt.id)}
-                        className="text-[10px] font-semibold text-slate-400 hover:text-white bg-slate-800 px-2 py-0.5 rounded transition"
+                        className="text-[10px] font-semibold text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white bg-gray-200 px-2 py-0.5 rounded transition"
                       >
                         Acknowledge
                       </button>
@@ -482,10 +482,10 @@ export const DoctorDashboard: React.FC = () => {
               <Sparkles className="h-4 w-4 text-sky-400" />
               <h3 className="text-xs font-bold text-sky-300 uppercase tracking-wider">Clinical Guidance Protocol</h3>
             </div>
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-xs text-gray-600 leading-relaxed">
               Medical ICU parameters configured for continuous SpO2, arterial blood gas clearance, and automated NEWS2 calculation.
             </p>
-            <div className="space-y-1.5 text-[11px] text-slate-400">
+            <div className="space-y-1.5 text-[11px] text-gray-500">
               <div className="flex justify-between">
                 <span>Critical SpO2 Threshold:</span>
                 <span className="font-mono text-rose-300 font-bold">&lt; 90%</span>

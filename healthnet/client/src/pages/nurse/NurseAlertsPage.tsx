@@ -59,7 +59,7 @@ export const NurseAlertsPage: React.FC = () => {
           <h1 className="text-2xl font-black tracking-tight text-white mt-1">
             Department & Patient Alerts
           </h1>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-gray-500">
             Real-time critical alarms, telemetry deviations, and physician notifications
           </p>
         </div>
@@ -67,7 +67,7 @@ export const NurseAlertsPage: React.FC = () => {
         <button
           onClick={fetchAlerts}
           disabled={loading}
-          className="flex items-center gap-2 rounded-xl border border-slate-700/80 bg-slate-800/80 hover:bg-slate-700 px-3.5 py-2 text-xs font-semibold text-slate-200 transition shadow-sm self-start sm:self-auto"
+          className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm self-start sm:self-auto"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin text-rose-400' : ''}`} />
           <span>Refresh</span>
@@ -75,16 +75,16 @@ export const NurseAlertsPage: React.FC = () => {
       </div>
 
       {/* Filter Bar */}
-      <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-4 backdrop-blur-md shadow-xl flex items-center justify-between gap-4 flex-wrap">
+      <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-4 backdrop-blur-md shadow-xl flex items-center justify-between gap-4 flex-wrap">
         <div className="flex items-center gap-3 flex-wrap">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold text-slate-400 flex items-center gap-1">
+            <span className="text-xs font-semibold text-gray-500 flex items-center gap-1">
               <Filter className="h-3.5 w-3.5" /> Severity:
             </span>
             <select
               value={selectedSeverity}
               onChange={(e) => setSelectedSeverity(e.target.value)}
-              className="bg-slate-950/70 border border-slate-800 text-xs text-slate-200 rounded-xl px-3 py-2 focus:outline-none focus:border-rose-500"
+              className="bg-gray-50/70 border border-gray-200 text-xs text-gray-700 rounded-xl px-3 py-2 focus:outline-none focus:border-rose-500"
             >
               <option value="ALL">All Severities</option>
               <option value="CRITICAL">Critical Only</option>
@@ -95,11 +95,11 @@ export const NurseAlertsPage: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold text-slate-400">Read Status:</span>
+            <span className="text-xs font-semibold text-gray-500">Read Status:</span>
             <select
               value={selectedReadStatus}
               onChange={(e) => setSelectedReadStatus(e.target.value)}
-              className="bg-slate-950/70 border border-slate-800 text-xs text-slate-200 rounded-xl px-3 py-2 focus:outline-none focus:border-rose-500"
+              className="bg-gray-50/70 border border-gray-200 text-xs text-gray-700 rounded-xl px-3 py-2 focus:outline-none focus:border-rose-500"
             >
               <option value="ALL">All Alerts</option>
               <option value="UNREAD">Active / Unread Only</option>
@@ -108,7 +108,7 @@ export const NurseAlertsPage: React.FC = () => {
           </div>
         </div>
 
-        <span className="text-xs text-slate-400 font-mono">
+        <span className="text-xs text-gray-500 font-mono">
           Showing {filteredAlerts.length} of {alerts.length} alerts
         </span>
       </div>
@@ -116,9 +116,9 @@ export const NurseAlertsPage: React.FC = () => {
       {/* Alerts Feed */}
       <div className="space-y-3">
         {loading ? (
-          <div className="py-12 text-center text-slate-400 text-xs">Loading alerts...</div>
+          <div className="py-12 text-center text-gray-500 text-xs">Loading alerts...</div>
         ) : filteredAlerts.length === 0 ? (
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-8 text-center text-slate-400 text-xs">
+          <div className="rounded-2xl border border-gray-200 bg-gray-100/40 p-8 text-center text-gray-500 text-xs">
             No alerts found matching the selected filters.
           </div>
         ) : (
@@ -127,12 +127,12 @@ export const NurseAlertsPage: React.FC = () => {
               key={alert.id}
               className={`p-4 rounded-2xl border transition shadow-lg flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
                 alert.is_read
-                  ? 'bg-slate-950/40 border-slate-800/60 opacity-65'
+                  ? 'bg-gray-50/40 border-gray-200/60 opacity-65'
                   : alert.severity === 'CRITICAL'
                   ? 'bg-gradient-to-r from-rose-950/30 via-slate-900 to-slate-900 border-rose-500/40'
                   : alert.severity === 'HIGH'
                   ? 'bg-gradient-to-r from-amber-950/20 via-slate-900 to-slate-900 border-amber-500/30'
-                  : 'bg-slate-900/60 border-slate-800'
+                  : 'bg-gray-100/60 border-gray-200'
               }`}
             >
               <div className="flex items-start gap-3.5">
@@ -161,16 +161,16 @@ export const NurseAlertsPage: React.FC = () => {
                     >
                       {alert.severity}
                     </span>
-                    <span className="text-[10px] font-mono text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded">
+                    <span className="text-[10px] font-mono text-gray-500 bg-gray-200/80 px-2 py-0.5 rounded">
                       {alert.alert_type}
                     </span>
-                    <span className="text-xs text-slate-500 font-mono">
+                    <span className="text-xs text-gray-400 font-mono">
                       {new Date(alert.created_at).toLocaleString()}
                     </span>
                   </div>
 
                   <h3 className="text-sm font-bold text-white">{alert.title}</h3>
-                  <p className="text-xs text-slate-300 leading-relaxed max-w-2xl">{alert.message}</p>
+                  <p className="text-xs text-gray-600 leading-relaxed max-w-2xl">{alert.message}</p>
                 </div>
               </div>
 
@@ -179,7 +179,7 @@ export const NurseAlertsPage: React.FC = () => {
                 {alert.patient_id && (
                   <Link
                     to={`/nurse/patients/${alert.patient_id}`}
-                    className="rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 text-xs font-semibold transition flex items-center gap-1"
+                    className="rounded-xl border border-gray-300 bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-700 px-3 py-1.5 text-xs font-semibold transition flex items-center gap-1"
                   >
                     <span>View Patient</span>
                     <ChevronRight className="h-3 w-3" />
@@ -189,7 +189,7 @@ export const NurseAlertsPage: React.FC = () => {
                 {!alert.is_read ? (
                   <button
                     onClick={() => handleAcknowledge(alert.id)}
-                    className="rounded-xl bg-teal-600 hover:bg-teal-500 text-white px-3.5 py-1.5 text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
+                    className="rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 text-white px-3.5 py-1.5 text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
                   >
                     <CheckCircle2 className="h-3.5 w-3.5" />
                     <span>Acknowledge</span>

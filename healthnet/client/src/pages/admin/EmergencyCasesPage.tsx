@@ -61,11 +61,11 @@ export const EmergencyCasesPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-white flex items-center gap-2">
+          <h1 className="text-2xl font-black text-gray-900 flex items-center gap-2">
             <Siren className="h-6 w-6 text-rose-400" />
             <span>Emergency Intake & Dispatch Log</span>
           </h1>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-gray-500">
             Audit trail and live tracking of all emergency hospital routings, bed reservations, and patient transfers.
           </p>
         </div>
@@ -73,14 +73,14 @@ export const EmergencyCasesPage: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={fetchCases}
-            className="flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900 px-3 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-800"
+            className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-gray-100 px-3 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
             <span>Refresh</span>
           </button>
           <button
             onClick={openEmergencyModal}
-            className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-rose-600 to-amber-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-rose-600/30 hover:from-rose-500 hover:to-amber-500 transition transform active:scale-95"
+            className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-rose-600 to-amber-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-rose-600/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:from-rose-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:to-amber-500 transition transform active:scale-95"
           >
             <Plus className="h-4 w-4" />
             <span>New Emergency Intake</span>
@@ -89,24 +89,24 @@ export const EmergencyCasesPage: React.FC = () => {
       </div>
 
       {/* Filter Bar */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-4 glass-panel">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 rounded-2xl border border-gray-200 bg-gray-100/60 p-4 glass-panel">
         <div className="relative w-full sm:w-80">
-          <Search className="h-4 w-4 text-slate-500 absolute left-3 top-2.5" />
+          <Search className="h-4 w-4 text-gray-400 absolute left-3 top-2.5" />
           <input
             type="text"
             placeholder="Search by case #, patient, hospital..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full rounded-xl border border-slate-800 bg-slate-950 pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:border-teal-500 focus:outline-none"
+            className="w-full rounded-xl border border-gray-200 bg-gray-50 pl-9 pr-3 py-2 text-xs text-gray-900 placeholder-slate-500 focus:border-teal-500 focus:outline-none"
           />
         </div>
 
         <div className="flex items-center gap-2 w-full sm:w-auto">
-          <Filter className="h-4 w-4 text-slate-400" />
+          <Filter className="h-4 w-4 text-gray-500" />
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-white focus:border-teal-500 focus:outline-none"
+            className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-xs text-gray-900 focus:border-teal-500 focus:outline-none"
           >
             <option value="ALL">All Case Statuses</option>
             <option value="EN_ROUTE">EN_ROUTE</option>
@@ -122,7 +122,7 @@ export const EmergencyCasesPage: React.FC = () => {
         {filteredCases.map((c) => (
           <div
             key={c.id}
-            className="rounded-2xl border border-slate-800 bg-slate-900/80 p-5 glass-panel hover:border-slate-700 transition flex flex-col md:flex-row md:items-center justify-between gap-4"
+            className="rounded-2xl border border-gray-200 bg-gray-100/80 p-5 glass-panel bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition flex flex-col md:flex-row md:items-center justify-between gap-4"
           >
             <div className="space-y-2">
               <div className="flex flex-wrap items-center gap-2.5">
@@ -132,7 +132,7 @@ export const EmergencyCasesPage: React.FC = () => {
                 <StatusBadge type="ambulance" status={c.status} />
               </div>
 
-              <p className="text-xs text-slate-300 max-w-3xl leading-relaxed">{c.condition_summary}</p>
+              <p className="text-xs text-gray-600 max-w-3xl leading-relaxed">{c.condition_summary}</p>
 
               {/* Resource Requirements Badges */}
               <div className="flex flex-wrap items-center gap-2 pt-1">
@@ -155,20 +155,20 @@ export const EmergencyCasesPage: React.FC = () => {
             </div>
 
             {/* Destination Hospital & Bed Allocation */}
-            <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-3 min-w-[240px] space-y-1.5 text-xs">
+            <div className="rounded-xl border border-gray-200 bg-gray-50/70 p-3 min-w-[240px] space-y-1.5 text-xs">
               <div className="flex items-center justify-between">
-                <span className="text-slate-400">Assigned Hospital:</span>
+                <span className="text-gray-500">Assigned Hospital:</span>
                 <span className="font-bold text-white truncate max-w-[130px]">{c.assigned_hospital_name || 'Allocated'}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-slate-400">Reserved Bed:</span>
+                <span className="text-gray-500">Reserved Bed:</span>
                 <span className="font-mono font-bold text-teal-400">{c.assigned_bed_code || 'Bed Pre-Reserved'}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-slate-400">Ambulance:</span>
+                <span className="text-gray-500">Ambulance:</span>
                 <span className="font-mono font-bold text-cyan-400">{c.assigned_ambulance_code || 'Transport Unit'}</span>
               </div>
-              <div className="pt-1 border-t border-slate-800 flex items-center justify-between text-[10px] text-slate-500">
+              <div className="pt-1 border-t border-gray-200 flex items-center justify-between text-[10px] text-gray-400">
                 <span>Dispatched:</span>
                 <span>{formatDate(c.created_at)} {formatTime(c.created_at)}</span>
               </div>

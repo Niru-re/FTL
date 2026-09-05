@@ -8,7 +8,7 @@ interface StatusBadgeProps {
 }
 
 export const StatusBadge: React.FC<StatusBadgeProps> = ({ type, status, className = '' }) => {
-  let badgeClass = 'bg-slate-800 text-slate-300 border-slate-700';
+  let badgeClass = 'bg-gray-200 text-gray-600 border-gray-300';
   let label = status;
 
   if (type === 'bed') {
@@ -33,7 +33,7 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({ type, status, classNam
     if (status === 'CRITICAL') badgeClass = 'bg-rose-500/20 text-rose-300 border-rose-500/40 animate-pulse font-bold';
     else if (status === 'HIGH') badgeClass = 'bg-amber-500/20 text-amber-300 border-amber-500/40 font-semibold';
     else if (status === 'MEDIUM') badgeClass = 'bg-sky-500/20 text-sky-300 border-sky-500/40';
-    else badgeClass = 'bg-slate-700 text-slate-300 border-slate-600';
+    else badgeClass = 'bg-gray-300 text-gray-600 border-slate-600';
     label = status;
   } else if (type === 'icu') {
     if (status === 'CRITICAL CAPACITY' || status === 'FULL') badgeClass = 'bg-rose-500/20 text-rose-300 border-rose-500/40 font-bold';

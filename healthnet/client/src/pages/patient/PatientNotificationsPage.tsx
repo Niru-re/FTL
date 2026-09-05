@@ -40,25 +40,25 @@ export const PatientNotificationsPage: React.FC = () => {
     <div className="space-y-6 animate-fade-in">
       {/* Header */}
       <div className="bg-white p-5 rounded-3xl border border-slate-200 shadow-xs">
-        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Activity Feed</span>
+        <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500">Activity Feed</span>
         <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
           Notifications & Alerts
         </h1>
-        <p className="text-xs text-slate-500 mt-0.5">
+        <p className="text-xs text-gray-400 mt-0.5">
           Real-time notices on care team updates, released reports, doctor responses, and appointments.
         </p>
       </div>
 
       {isLoading ? (
-        <div className="flex items-center justify-center py-16 text-slate-500 text-xs font-semibold">
+        <div className="flex items-center justify-center py-16 text-gray-400 text-xs font-semibold">
           <div className="animate-spin w-5 h-5 border-2 border-orange-500 border-t-transparent rounded-full mr-2" />
           Loading notifications...
         </div>
       ) : notifs.length === 0 ? (
-        <div className="bg-white rounded-3xl border border-slate-200 p-10 text-center text-slate-500">
-          <Bell className="w-8 h-8 text-slate-400 mx-auto mb-2" />
+        <div className="bg-white rounded-3xl border border-slate-200 p-10 text-center text-gray-400">
+          <Bell className="w-8 h-8 text-gray-500 mx-auto mb-2" />
           <p className="text-xs font-bold text-slate-800">No active notifications</p>
-          <p className="text-xs text-slate-400 mt-1">You are completely up to date.</p>
+          <p className="text-xs text-gray-500 mt-1">You are completely up to date.</p>
         </div>
       ) : (
         <div className="space-y-3">
@@ -75,7 +75,7 @@ export const PatientNotificationsPage: React.FC = () => {
                 <div
                   className={`w-9 h-9 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 ${
                     notif.is_read
-                      ? 'bg-slate-100 text-slate-500'
+                      ? 'bg-slate-100 text-gray-400'
                       : 'bg-orange-500 text-white shadow-xs'
                   }`}
                 >
@@ -89,7 +89,7 @@ export const PatientNotificationsPage: React.FC = () => {
                     )}
                   </div>
                   <p className="text-xs text-slate-600 mt-1 leading-relaxed">{notif.message}</p>
-                  <p className="text-[10px] text-slate-400 mt-2">
+                  <p className="text-[10px] text-gray-500 mt-2">
                     {new Date(notif.timestamp).toLocaleString([], {
                       month: 'short',
                       day: 'numeric',
@@ -103,7 +103,7 @@ export const PatientNotificationsPage: React.FC = () => {
               {!notif.is_read && (
                 <button
                   onClick={() => handleMarkRead(notif.id)}
-                  className="shrink-0 p-1.5 rounded-lg text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 transition-colors cursor-pointer"
+                  className="shrink-0 p-1.5 rounded-lg text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-emerald-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-emerald-50 transition-colors cursor-pointer"
                   title="Mark as Read"
                 >
                   <Check className="w-4 h-4" />

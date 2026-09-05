@@ -146,7 +146,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal }) => {
           <div className="absolute left-0 right-0 mt-2 bg-white border border-gray-200 rounded-2xl shadow-lg z-50 max-h-96 overflow-y-auto p-3 space-y-3 custom-scrollbar">
             <div className="flex items-center justify-between text-[10px] text-gray-400 border-b border-gray-100 pb-1.5 px-1">
               <span className="uppercase font-semibold">Results for "{searchQuery}"</span>
-              <button onClick={() => setShowSearchResults(false)} className="text-gray-400 hover:text-gray-600">✕</button>
+              <button onClick={() => setShowSearchResults(false)} className="text-gray-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-600">✕</button>
             </div>
 
             {searchResults.hospitals?.length > 0 && (
@@ -154,7 +154,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal }) => {
                 <div className="text-[10px] uppercase font-bold text-orange-500 px-2 py-0.5">Hospitals</div>
                 {searchResults.hospitals.map((h: any) => (
                   <div key={`sh-${h.id}`} onClick={() => { setShowSearchResults(false); navigate(`/admin/hospitals/${h.id}`); }}
-                    className="px-2.5 py-1.5 rounded-lg hover:bg-orange-50 cursor-pointer flex justify-between items-center text-xs">
+                    className="px-2.5 py-1.5 rounded-lg bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-50 cursor-pointer flex justify-between items-center text-xs">
                     <span className="font-semibold text-gray-800">{h.name} ({h.code})</span>
                     <span className="text-[10px] text-gray-400">{h.status}</span>
                   </div>
@@ -167,7 +167,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal }) => {
                 <div className="text-[10px] uppercase font-bold text-emerald-600 px-2 py-0.5">Beds</div>
                 {searchResults.beds.map((b: any) => (
                   <div key={`sb-${b.id}`} onClick={() => { setShowSearchResults(false); navigate('/admin/beds'); }}
-                    className="px-2.5 py-1.5 rounded-lg hover:bg-gray-50 cursor-pointer flex justify-between items-center text-xs">
+                    className="px-2.5 py-1.5 rounded-lg bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-50 cursor-pointer flex justify-between items-center text-xs">
                     <span className="font-semibold text-gray-800">{b.code} ({b.type})</span>
                     <span className="text-[10px] text-emerald-600">{b.status}</span>
                   </div>
@@ -180,7 +180,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal }) => {
                 <div className="text-[10px] uppercase font-bold text-rose-500 px-2 py-0.5">Patients</div>
                 {searchResults.patients.map((p: any) => (
                   <div key={`sp-${p.id}`} onClick={() => { setShowSearchResults(false); navigate('/admin/patients/critical'); }}
-                    className="px-2.5 py-1.5 rounded-lg hover:bg-gray-50 cursor-pointer flex justify-between items-center text-xs">
+                    className="px-2.5 py-1.5 rounded-lg bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-50 cursor-pointer flex justify-between items-center text-xs">
                     <span className="font-semibold text-gray-800">{p.name} ({p.mrn})</span>
                     <span className="text-[10px] text-rose-500 font-semibold">{p.risk}</span>
                   </div>
@@ -193,7 +193,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal }) => {
                 <div className="text-[10px] uppercase font-bold text-amber-600 px-2 py-0.5">Ambulances</div>
                 {searchResults.ambulances.map((a: any) => (
                   <div key={`sa-${a.id}`} onClick={() => { setShowSearchResults(false); navigate('/admin/ambulances'); }}
-                    className="px-2.5 py-1.5 rounded-lg hover:bg-gray-50 cursor-pointer flex justify-between items-center text-xs">
+                    className="px-2.5 py-1.5 rounded-lg bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-50 cursor-pointer flex justify-between items-center text-xs">
                     <span className="font-semibold text-gray-800">{a.code}</span>
                     <span className="text-[10px] text-amber-600">{a.status} (ETA: {a.eta}m)</span>
                   </div>
@@ -206,7 +206,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal }) => {
                 <div className="text-[10px] uppercase font-bold text-purple-500 px-2 py-0.5">Emergencies</div>
                 {searchResults.emergencies.map((e: any) => (
                   <div key={`se-${e.id}`} onClick={() => { setShowSearchResults(false); navigate(`/admin/emergency/${e.id}`); }}
-                    className="px-2.5 py-1.5 rounded-lg hover:bg-gray-50 cursor-pointer flex justify-between items-center text-xs">
+                    className="px-2.5 py-1.5 rounded-lg bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-50 cursor-pointer flex justify-between items-center text-xs">
                     <span className="font-semibold text-gray-800">#{e.case_number} - {e.patient}</span>
                     <span className="text-[10px] text-purple-500 font-bold">{e.priority}</span>
                   </div>
@@ -225,7 +225,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal }) => {
         {onOpenEmergencyModal && (
           <button
             onClick={onOpenEmergencyModal}
-            className="flex items-center gap-2 rounded-lg bg-rose-500 hover:bg-rose-600 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all active:scale-95"
+            className="flex items-center gap-2 rounded-lg bg-rose-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-600 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all active:scale-95"
           >
             <Siren className="h-4 w-4" />
             <span className="hidden sm:inline">Emergency Intake</span>
@@ -236,7 +236,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal }) => {
         <div className="relative">
           <button
             onClick={() => { setShowAlertDropdown(!showAlertDropdown); setShowUserDropdown(false); }}
-            className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-500 hover:border-gray-300 hover:text-gray-700 transition"
+            className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-700 transition"
           >
             <Bell className="h-4 w-4" />
             {alerts.length > 0 && (
@@ -273,7 +273,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal }) => {
                           navigate('/admin/alerts');
                         }
                       }}
-                      className="p-3 hover:bg-orange-50 transition flex items-start justify-between gap-2 cursor-pointer"
+                      className="p-3 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-50 transition flex items-start justify-between gap-2 cursor-pointer"
                     >
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
@@ -289,7 +289,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal }) => {
                       <button
                         onClick={(e) => handleMarkRead(alert.id, e)}
                         title="Mark as Read"
-                        className="text-gray-300 hover:text-orange-500 p-1 flex-shrink-0 transition"
+                        className="text-gray-300 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-500 p-1 flex-shrink-0 transition"
                       >
                         <CheckCircle className="h-4 w-4" />
                       </button>
@@ -305,7 +305,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal }) => {
         <div className="relative">
           <button
             onClick={() => { setShowUserDropdown(!showUserDropdown); setShowAlertDropdown(false); }}
-            className="flex items-center gap-2.5 rounded-lg border border-gray-200 bg-white px-3 py-1.5 hover:border-gray-300 transition"
+            className="flex items-center gap-2.5 rounded-lg border border-gray-200 bg-white px-3 py-1.5 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition"
           >
             <div className="flex h-7 w-7 items-center justify-center rounded-full bg-orange-100 text-orange-600 font-bold text-xs border border-orange-200">
               {user?.full_name?.charAt(0) || 'U'}
@@ -328,7 +328,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal }) => {
               </div>
               <button
                 onClick={logout}
-                className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-rose-500 hover:bg-rose-50 transition"
+                className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-rose-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-50 transition"
               >
                 <LogOut className="h-4 w-4" />
                 <span>Sign Out</span>
