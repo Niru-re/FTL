@@ -1,0 +1,262 @@
+<USER_REQUEST>
+PHASE 10 — HEALTHNET PATIENT & FAMILY PORTAL
+
+Continue the existing HealthNet project.
+
+DO NOT rebuild the existing application.
+
+DO NOT change the Admin, Nurse, or Doctor workflows except where integration is required.
+
+Add a NEW role:
+
+PATIENT / FAMILY
+
+This should be a separate, simplified portal designed for:
+
+1. Patients
+2. Authorized family members / caregivers
+
+==================================================
+CORE PURPOSE
+==================================================
+
+The Patient & Family Portal should answer:
+
+"Where is my patient?"
+
+"What is their current status?"
+
+"Who is taking care of them?"
+
+"What has happened recently?"
+
+"What information can I safely see?"
+
+"What does my family need to do?"
+
+The portal should NOT look like the Doctor dashboard.
+
+It should be:
+
+Simple
+Calm
+Human
+Easy to understand
+Mobile-friendly
+Professional
+Low cognitive load
+
+==================================================
+IMPORTANT
+==================================================
+
+This is a prototype.
+
+Use fictional/demo patient data.
+
+Do NOT expose unnecessary clinical information.
+
+Do NOT expose internal hospital management information.
+
+Do NOT expose AI predictions as medical diagnoses.
+
+Use:
+
+DEMO DATA
+
+SIMULATED DATA
+
+where appropriate.
+
+==================================================
+1. NEW ROLE
+==================================================
+
+Add:
+
+PATIENT
+
+and/or:
+
+FAMILY
+
+role.
+
+Recommended implementation:
+
+PATIENT
+
+FAMILY_MEMBER
+
+Both use the same portal but have slightly different permissions.
+
+==================================================
+2. PATIENT LOGIN
+==================================================
+
+Create:
+
+/patient/login
+
+Simple login.
+
+Example:
+
+Patient ID:
+PT-1042
+
+Password:
+demo123
+
+OR:
+
+Family Member:
+
+Family ID
+Password
+
+For prototype purposes provide:
+
+"Demo Patient Login"
+
+and:
+
+"Demo Family Login"
+
+=========================================
+<truncated 25543 bytes>
+
+Nurse/Doctor
+
+↓
+
+Acknowledged
+
+↓
+
+Response
+
+↓
+
+Patient
+
+Verify real-time synchronization.
+
+==================================================
+68. FAMILY REVOCATION TEST
+==================================================
+
+Patient:
+
+Revokes family access.
+
+Immediately verify:
+
+Family dashboard
+
+→ Access denied.
+
+API:
+
+403
+
+WebSocket:
+
+Subscription removed.
+
+No cached sensitive data should remain visible after logout/re-authentication.
+
+==================================================
+69. NO DATA LEAK TEST
+==================================================
+
+Inspect API responses.
+
+Patient APIs must NOT accidentally return:
+
+Internal notes
+
+Other patients
+
+Hospital capacity
+
+Other staff
+
+AI reasoning
+
+Admin information
+
+Internal audit information
+
+==================================================
+70. FINAL UX QUALITY
+==================================================
+
+The Patient/Family portal should feel like:
+
+"Someone is keeping me informed."
+
+Not:
+
+"I'm using hospital management software."
+
+This distinction is extremely important.
+
+==================================================
+71. FINAL VERIFICATION
+==================================================
+
+Run:
+
+Backend
+
+Frontend
+
+Database
+
+Seed
+
+WebSocket
+
+Automated tests
+
+Build
+
+Run:
+
+npm run build
+
+npm run test:e2e
+
+pytest
+
+Fix all failures.
+
+==================================================
+FINAL REPORT
+==================================================
+
+Report:
+
+1. Patient role
+2. Family role
+3. Patient pages
+4. Family authorization
+5. API endpoints
+6. Database models
+7. Real-time events
+8. Emergency integration
+9. Discharge integration
+10. Privacy/security tests
+11. Cross-role tests
+12. Mobile tests
+13. Build result
+14. Remaining issues
+
+STOP AFTER PHASE 10.
+
+Do not implement the extraordinary feature yet.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-08-31T15:06:29+05:30.
+</ADDITIONAL_METADATA>
