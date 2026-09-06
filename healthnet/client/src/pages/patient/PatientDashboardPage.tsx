@@ -91,7 +91,7 @@ export const PatientDashboardPage: React.FC = () => {
           </div>
           <Link
             to="/patient/hospital"
-            className="shrink-0 text-xs font-bold text-amber-900 bg-white bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-amber-100 px-3 py-1.5 rounded-xl border border-amber-200 transition-colors"
+            className="shrink-0 text-xs font-bold text-amber-900 bg-white hover:bg-amber-100 px-3 py-1.5 rounded-xl border border-amber-200 transition-colors"
           >
             Track Route
           </Link>
@@ -173,7 +173,7 @@ export const PatientDashboardPage: React.FC = () => {
           <div>
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">My Dedicated Care Team</span>
-              <Link to="/patient/care-team" className="text-xs font-bold text-orange-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-700 flex items-center gap-1">
+              <Link to="/patient/care-team" className="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1">
                 View Profiles <ChevronRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -217,7 +217,7 @@ export const PatientDashboardPage: React.FC = () => {
             <span className="text-[11px] text-gray-400">Have a question for your team?</span>
             <Link
               to="/patient/requests"
-              className="text-xs font-bold text-orange-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-700"
+              className="text-xs font-bold text-orange-600 hover:text-orange-700"
             >
               Submit Request →
             </Link>
@@ -235,37 +235,37 @@ export const PatientDashboardPage: React.FC = () => {
             <div className="mt-4 grid grid-cols-2 gap-3">
               <Link
                 to="/patient/updates"
-                className="p-3.5 rounded-2xl bg-slate-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-50 border border-slate-200/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-orange-200 text-left transition-colors group"
+                className="p-3.5 rounded-2xl bg-slate-50 hover:bg-orange-50 border border-slate-200/70 hover:border-orange-200 text-left transition-colors group"
               >
                 <Clock className="w-4 h-4 text-orange-500 mb-1.5" />
-                <p className="text-xs font-bold text-slate-900 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-900">Recent Updates</p>
+                <p className="text-xs font-bold text-slate-900 group-hover:text-orange-900">Recent Updates</p>
                 <p className="text-[11px] text-gray-400 mt-0.5">{data.recent_updates_count} logged updates</p>
               </Link>
 
               <Link
                 to="/patient/appointments"
-                className="p-3.5 rounded-2xl bg-slate-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-50 border border-slate-200/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-orange-200 text-left transition-colors group"
+                className="p-3.5 rounded-2xl bg-slate-50 hover:bg-orange-50 border border-slate-200/70 hover:border-orange-200 text-left transition-colors group"
               >
                 <Calendar className="w-4 h-4 text-orange-500 mb-1.5" />
-                <p className="text-xs font-bold text-slate-900 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-900">Appointments</p>
+                <p className="text-xs font-bold text-slate-900 group-hover:text-orange-900">Appointments</p>
                 <p className="text-[11px] text-gray-400 mt-0.5">{data.upcoming_appointments_count} scheduled</p>
               </Link>
 
               <Link
                 to="/patient/documents"
-                className="p-3.5 rounded-2xl bg-slate-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-50 border border-slate-200/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-orange-200 text-left transition-colors group"
+                className="p-3.5 rounded-2xl bg-slate-50 hover:bg-orange-50 border border-slate-200/70 hover:border-orange-200 text-left transition-colors group"
               >
                 <FileText className="w-4 h-4 text-orange-500 mb-1.5" />
-                <p className="text-xs font-bold text-slate-900 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-900">Documents</p>
+                <p className="text-xs font-bold text-slate-900 group-hover:text-orange-900">Documents</p>
                 <p className="text-[11px] text-gray-400 mt-0.5">{data.available_documents_count} available</p>
               </Link>
 
               <Link
                 to="/patient/hospital"
-                className="p-3.5 rounded-2xl bg-slate-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-50 border border-slate-200/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-orange-200 text-left transition-colors group"
+                className="p-3.5 rounded-2xl bg-slate-50 hover:bg-orange-50 border border-slate-200/70 hover:border-orange-200 text-left transition-colors group"
               >
                 <MapPin className="w-4 h-4 text-orange-500 mb-1.5" />
-                <p className="text-xs font-bold text-slate-900 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-900">Hospital & Map</p>
+                <p className="text-xs font-bold text-slate-900 group-hover:text-orange-900">Hospital & Map</p>
                 <p className="text-[11px] text-gray-400 mt-0.5">Visitor hours & directions</p>
               </Link>
             </div>
@@ -273,7 +273,7 @@ export const PatientDashboardPage: React.FC = () => {
 
           <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-gray-400 text-[11px]">
             <span>Authorized Family Access Enabled</span>
-            <Link to="/patient/family" className="font-bold text-slate-700 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-slate-900">
+            <Link to="/patient/family" className="font-bold text-slate-700 hover:text-slate-900">
               Manage Access →
             </Link>
           </div>

@@ -49,7 +49,7 @@ export const AuditLogsPage: React.FC = () => {
 
         <button
           onClick={fetchLogs}
-          className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-gray-100 px-3 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 self-start"
+          className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-gray-100 px-3 py-2 text-xs font-semibold text-gray-600 hover:bg-gray-200 self-start"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
           <span>Refresh Logs</span>
@@ -85,7 +85,7 @@ export const AuditLogsPage: React.FC = () => {
             </thead>
             <tbody className="divide-y divide-gray-200/60 font-mono">
               {filteredLogs.map((log) => (
-                <tr key={log.id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/30 transition">
+                <tr key={log.id} className="hover:bg-gray-200/30 transition">
                   <td className="p-4 text-gray-500 whitespace-nowrap">
                     {formatDate(log.timestamp)} {formatTime(log.timestamp)}
                   </td>

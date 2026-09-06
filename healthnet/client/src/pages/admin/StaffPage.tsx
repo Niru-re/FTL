@@ -92,7 +92,7 @@ export const StaffPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-white flex items-center gap-2">
+          <h1 className="text-2xl font-black text-gray-900 flex items-center gap-2">
             {activeTab === 'DOCTOR' ? (
               <Stethoscope className="h-6 w-6 text-sky-400" />
             ) : (
@@ -108,14 +108,14 @@ export const StaffPage: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={fetchStaffAndHospitals}
-            className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-gray-100 px-3 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200"
+            className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-gray-100 px-3 py-2 text-xs font-semibold text-gray-600 hover:bg-gray-200"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
             <span>Refresh</span>
           </button>
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="flex items-center gap-2 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-teal-600/20 transition"
+            className="flex items-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-500 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-teal-600/20 transition"
           >
             <Plus className="h-4 w-4" />
             <span>Add {activeTab === 'DOCTOR' ? 'Doctor' : 'Nurse'}</span>
@@ -130,7 +130,7 @@ export const StaffPage: React.FC = () => {
           className={`flex items-center gap-2 px-5 py-3 text-xs font-bold border-b-2 transition ${
             activeTab === 'DOCTOR'
               ? 'border-sky-500 text-sky-400 bg-sky-500/10'
-              : 'border-transparent text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-700'
+              : 'border-transparent text-gray-500 hover:text-gray-700'
           }`}
         >
           <Stethoscope className="h-4 w-4" />
@@ -142,7 +142,7 @@ export const StaffPage: React.FC = () => {
           className={`flex items-center gap-2 px-5 py-3 text-xs font-bold border-b-2 transition ${
             activeTab === 'NURSE'
               ? 'border-teal-500 text-teal-400 bg-teal-500/10'
-              : 'border-transparent text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-700'
+              : 'border-transparent text-gray-500 hover:text-gray-700'
           }`}
         >
           <UserCheck className="h-4 w-4" />
@@ -227,11 +227,11 @@ export const StaffPage: React.FC = () => {
           return (
             <div
               key={staff.id}
-              className="rounded-2xl border border-gray-200 bg-gray-100/70 p-5 glass-panel space-y-4 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition"
+              className="rounded-2xl border border-gray-200 bg-gray-100/70 p-5 glass-panel space-y-4 hover:border-gray-300 transition"
             >
               <div className="flex items-start justify-between gap-2">
                 <div>
-                  <h3 className="text-sm font-bold text-white">{staff.name}</h3>
+                  <h3 className="text-sm font-bold text-gray-800">{staff.name}</h3>
                   <p className="text-xs text-gray-500">{staff.specialization}</p>
                   <span className="text-[10px] font-mono text-gray-400">{staff.employee_code}</span>
                 </div>
@@ -270,8 +270,8 @@ export const StaffPage: React.FC = () => {
                   onClick={() => handleToggleDuty(staff)}
                   className={`text-xs font-semibold px-3 py-1 rounded-lg border transition ${
                     isOnDuty
-                      ? 'bg-rose-500/10 text-rose-300 border-rose-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-500/20'
-                      : 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-emerald-500/20'
+                      ? 'bg-rose-500/10 text-rose-300 border-rose-500/30 hover:bg-rose-500/20'
+                      : 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30 hover:bg-emerald-500/20'
                   }`}
                 >
                   {isOnDuty ? 'Set Off Duty' : 'Set On Duty'}
@@ -286,7 +286,7 @@ export const StaffPage: React.FC = () => {
       {isAddModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
           <div className="relative w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 glass-panel space-y-4">
-            <h3 className="text-base font-bold text-white">Add New {activeTab === 'DOCTOR' ? 'Doctor' : 'Nurse'}</h3>
+            <h3 className="text-base font-bold text-gray-900">Add New {activeTab === 'DOCTOR' ? 'Doctor' : 'Nurse'}</h3>
             <form onSubmit={handleCreateStaff} className="space-y-3">
               <div className="space-y-1">
                 <label className="text-xs text-gray-600">Full Name</label>
@@ -342,13 +342,13 @@ export const StaffPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsAddModalOpen(false)}
-                  className="rounded-xl border border-gray-200 px-4 py-2 text-xs text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200"
+                  className="rounded-xl border border-gray-200 px-4 py-2 text-xs text-gray-500 hover:bg-gray-200"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 px-5 py-2 text-xs font-bold text-white"
+                  className="rounded-xl bg-teal-600 hover:bg-teal-500 px-5 py-2 text-xs font-bold text-white"
                 >
                   Save Staff Member
                 </button>

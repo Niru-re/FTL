@@ -121,7 +121,7 @@ export const NurseVitalsPage: React.FC = () => {
         <div className="flex items-center gap-3">
           <Link
             to="/nurse/patients"
-            className="rounded-xl border border-gray-200 bg-gray-100 p-2.5 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 transition"
+            className="rounded-xl border border-gray-200 bg-gray-100 p-2.5 text-gray-500 hover:text-gray-900 hover:bg-gray-200 transition"
           >
             <ArrowLeft className="h-4 w-4" />
           </Link>
@@ -132,7 +132,7 @@ export const NurseVitalsPage: React.FC = () => {
                 Bedside Telemetry & Triage
               </span>
             </div>
-            <h1 className="text-2xl font-black text-white mt-1">Record Patient Vitals</h1>
+            <h1 className="text-2xl font-black text-gray-900 mt-1">Record Patient Vitals</h1>
           </div>
         </div>
       </div>
@@ -160,7 +160,7 @@ export const NurseVitalsPage: React.FC = () => {
           {selectedPatientId && (
             <Link
               to={`/nurse/patients/${selectedPatientId}`}
-              className="rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-1.5 text-xs text-white transition flex-shrink-0"
+              className="rounded-xl bg-gray-200 hover:bg-gray-300 px-3.5 py-1.5 text-xs text-white transition flex-shrink-0"
             >
               View Patient Chart
             </Link>
@@ -193,7 +193,7 @@ export const NurseVitalsPage: React.FC = () => {
             {selectedPatient && (
               <div className="bg-gray-50/70 p-3 rounded-xl border border-gray-200 text-xs flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-white">{selectedPatient.full_name}</p>
+                  <p className="font-bold text-gray-800">{selectedPatient.full_name}</p>
                   <p className="text-[11px] text-gray-500">
                     {selectedPatient.age}y {selectedPatient.gender} • Doctor: {selectedPatient.assigned_doctor_name || 'Unassigned'}
                   </p>
@@ -398,14 +398,14 @@ export const NurseVitalsPage: React.FC = () => {
         <div className="flex items-center justify-end gap-3 pt-2">
           <Link
             to="/nurse/patients"
-            className="rounded-xl border border-gray-300 bg-gray-200 px-5 py-2.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 transition"
+            className="rounded-xl border border-gray-300 bg-gray-200 px-5 py-2.5 text-xs font-bold text-gray-600 hover:bg-gray-300 transition"
           >
             Cancel
           </Link>
           <button
             type="submit"
             disabled={submitting || !selectedPatientId}
-            className="rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 px-8 py-2.5 text-xs font-bold text-white shadow-lg shadow-teal-900/40 transition disabled:opacity-50 flex items-center gap-2"
+            className="rounded-xl bg-teal-600 hover:bg-teal-500 px-8 py-2.5 text-xs font-bold text-white shadow-lg shadow-teal-900/40 transition disabled:opacity-50 flex items-center gap-2"
           >
             <HeartPulse className="h-4 w-4" />
             <span>{submitting ? 'Recording Vitals...' : 'SAVE VITALS'}</span>

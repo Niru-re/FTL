@@ -94,7 +94,7 @@ export const NurseDoctorsPage: React.FC = () => {
               Medical Staff Roster & Availability
             </span>
           </div>
-          <h1 className="text-2xl font-black tracking-tight text-white mt-1">
+          <h1 className="text-2xl font-black tracking-tight text-gray-900 mt-1">
             On-Duty Attending Physicians
           </h1>
           <p className="text-xs text-gray-500">
@@ -105,7 +105,7 @@ export const NurseDoctorsPage: React.FC = () => {
         <button
           onClick={fetchDoctorsAndPatients}
           disabled={loading}
-          className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm self-start sm:self-auto"
+          className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 hover:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm self-start sm:self-auto"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin text-sky-400' : ''}`} />
           <span>Refresh Roster</span>
@@ -153,7 +153,7 @@ export const NurseDoctorsPage: React.FC = () => {
           filteredDoctors.map((doc) => (
             <div
               key={doc.id}
-              className="p-5 rounded-2xl border border-gray-200/80 bg-gray-100/60 shadow-xl space-y-4 flex flex-col justify-between bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition"
+              className="p-5 rounded-2xl border border-gray-200/80 bg-gray-100/60 shadow-xl space-y-4 flex flex-col justify-between hover:border-gray-300 transition"
             >
               <div>
                 <div className="flex items-start justify-between gap-3 mb-2">
@@ -207,7 +207,7 @@ export const NurseDoctorsPage: React.FC = () => {
               <div className="pt-3 border-t border-gray-200/80">
                 <button
                   onClick={() => handleOpenRequestModal(doc)}
-                  className="w-full rounded-xl bg-sky-600/20 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-600 text-sky-300 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white py-2 text-xs font-bold transition flex items-center justify-center gap-2 border border-sky-500/30 shadow-sm"
+                  className="w-full rounded-xl bg-sky-600/20 hover:bg-sky-600 text-sky-300 hover:text-white py-2 text-xs font-bold transition flex items-center justify-center gap-2 border border-sky-500/30 shadow-sm"
                 >
                   <Stethoscope className="h-3.5 w-3.5" />
                   <span>Request Bedside Evaluation</span>
@@ -224,13 +224,13 @@ export const NurseDoctorsPage: React.FC = () => {
           <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
               <div>
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
                   <Stethoscope className="h-5 w-5 text-sky-400" />
                   <span>Request Physician Consultation</span>
                 </h3>
                 <p className="text-xs text-gray-500">Target Doctor: {activeDoctor.name} ({activeDoctor.specialization})</p>
               </div>
-              <button onClick={() => setActiveDoctor(null)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <button onClick={() => setActiveDoctor(null)} className="text-gray-500 hover:text-white">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -286,14 +286,14 @@ export const NurseDoctorsPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setActiveDoctor(null)}
-                  className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 transition"
+                  className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 hover:bg-gray-300 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submitting || !reason.trim()}
-                  className="rounded-xl bg-sky-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-sky-900/40 transition disabled:opacity-50"
+                  className="rounded-xl bg-sky-600 hover:bg-sky-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-sky-900/40 transition disabled:opacity-50"
                 >
                   {submitting ? 'Submitting...' : 'Dispatch Request'}
                 </button>

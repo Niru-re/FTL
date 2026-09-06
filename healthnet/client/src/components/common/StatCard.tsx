@@ -61,8 +61,8 @@ export const StatCard: React.FC<StatCardProps> = ({
   return (
     <div
       onClick={onClick}
-      className={`relative overflow-hidden rounded-xl border ${border} bg-white p-5 shadow-card transition-all duration-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:shadow-card-md ${
-        onClick ? 'cursor-pointer bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:scale-[1.01]' : ''
+      className={`relative overflow-hidden rounded-xl border ${border} bg-white p-5 shadow-card transition-all duration-200 hover:shadow-card-md ${
+        onClick ? 'cursor-pointer hover:scale-[1.01]' : ''
       } ${className}`}
     >
       <div className="flex items-center justify-between">

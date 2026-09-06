@@ -25,7 +25,7 @@ export const SettingsPage: React.FC = () => {
   return (
     <div className="space-y-6 max-w-4xl">
       <div>
-        <h1 className="text-2xl font-black text-white flex items-center gap-2">
+        <h1 className="text-2xl font-black text-gray-900 flex items-center gap-2">
           <Settings className="h-6 w-6 text-teal-400" />
           <span>System & Simulation Settings</span>
         </h1>
@@ -46,7 +46,7 @@ export const SettingsPage: React.FC = () => {
         <div className="flex items-center gap-3 border-b border-gray-200 pb-3">
           <Radio className="h-5 w-5 text-teal-400" />
           <div>
-            <h3 className="text-sm font-bold text-white">Background Telemetry Engine</h3>
+            <h3 className="text-sm font-bold text-gray-900">Background Telemetry Engine</h3>
             <p className="text-xs text-gray-500">Controls real-time vitals fluctuation, ambulance GPS transit, and ETA countdowns.</p>
           </div>
         </div>
@@ -54,7 +54,7 @@ export const SettingsPage: React.FC = () => {
         <div className="space-y-3 text-xs text-gray-600">
           <div className="flex items-center justify-between p-3 rounded-xl bg-gray-50/60 border border-gray-200">
             <div>
-              <span className="font-semibold text-white block">Simulation Rate</span>
+              <span className="font-semibold text-gray-800 block">Simulation Rate</span>
               <span className="text-gray-400 text-[11px]">Interval: 3000ms</span>
             </div>
             <span className="rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 font-bold">
@@ -64,7 +64,7 @@ export const SettingsPage: React.FC = () => {
 
           <div className="flex items-center justify-between p-3 rounded-xl bg-gray-50/60 border border-gray-200">
             <div>
-              <span className="font-semibold text-white block">WebSocket Event Bus</span>
+              <span className="font-semibold text-gray-800 block">WebSocket Event Bus</span>
               <span className="text-gray-400 text-[11px]">Endpoint: ws://127.0.0.1:8000/ws</span>
             </div>
             <span className="rounded bg-teal-500/20 text-teal-300 border border-teal-500/30 px-2 py-0.5 font-bold">
@@ -79,7 +79,7 @@ export const SettingsPage: React.FC = () => {
         <div className="flex items-center gap-3 border-b border-gray-200 pb-3">
           <Database className="h-5 w-5 text-purple-400" />
           <div>
-            <h3 className="text-sm font-bold text-white">Database State Restoration</h3>
+            <h3 className="text-sm font-bold text-gray-900">Database State Restoration</h3>
             <p className="text-xs text-gray-500">Re-seed all 12 hospitals, 300+ beds, staff profiles, and emergency cases to default demonstration state.</p>
           </div>
         </div>
@@ -91,7 +91,7 @@ export const SettingsPage: React.FC = () => {
         <button
           onClick={handleReset}
           disabled={isResetting}
-          className="flex items-center gap-2 rounded-xl bg-purple-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-purple-500 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-purple-600/20 transition disabled:opacity-50"
+          className="flex items-center gap-2 rounded-xl bg-purple-600 hover:bg-purple-500 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-purple-600/20 transition disabled:opacity-50"
         >
           <RotateCcw className={`h-4 w-4 ${isResetting ? 'animate-spin' : ''}`} />
           <span>{isResetting ? 'Resetting Data...' : 'Reset Demo Network Data'}</span>

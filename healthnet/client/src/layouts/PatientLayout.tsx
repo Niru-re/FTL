@@ -123,7 +123,7 @@ export const PatientLayout: React.FC = () => {
             {/* Notifications Button */}
             <button
               onClick={() => navigate('/patient/notifications')}
-              className="relative p-2 rounded-xl text-slate-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-50 transition-colors"
+              className="relative p-2 rounded-xl text-slate-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
               title="Notifications"
             >
               <Bell className="w-5 h-5" />
@@ -143,7 +143,7 @@ export const PatientLayout: React.FC = () => {
               </div>
               <button
                 onClick={handleLogout}
-                className="p-1.5 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-rose-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-50 rounded-lg transition-colors ml-1"
+                className="p-1.5 text-gray-500 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors ml-1"
                 title="Log Out"
               >
                 <LogOut className="w-4 h-4" />
@@ -169,7 +169,7 @@ export const PatientLayout: React.FC = () => {
                     `flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-colors ${
                       isActive
                         ? 'bg-orange-50 text-orange-600 border border-orange-200 shadow-xs'
-                        : 'text-slate-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-slate-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900'
+                        : 'text-slate-600 hover:bg-slate-50 hover:text-gray-900'
                     }`
                   }
                 >
@@ -192,7 +192,7 @@ export const PatientLayout: React.FC = () => {
                     `flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium transition-colors ${
                       isActive
                         ? 'bg-orange-50 text-orange-600 font-semibold'
-                        : 'text-slate-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-slate-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900'
+                        : 'text-slate-600 hover:bg-slate-50 hover:text-gray-900'
                     }`
                   }
                 >
@@ -210,7 +210,7 @@ export const PatientLayout: React.FC = () => {
             <p className="text-[11px] text-slate-600 mt-1">If you have urgent questions, contact the patient liaison desk directly.</p>
             <a
               href="tel:+15550100"
-              className="mt-3 block text-xs font-bold text-white bg-orange-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-600 py-1.5 px-3 rounded-lg shadow-xs transition-colors"
+              className="mt-3 block text-xs font-bold text-white bg-orange-500 hover:bg-orange-600 py-1.5 px-3 rounded-lg shadow-xs transition-colors"
             >
               Call Main Desk
             </a>
@@ -234,7 +234,7 @@ export const PatientLayout: React.FC = () => {
                 key={item.path}
                 to={item.path}
                 className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-xl transition-colors ${
-                  isActive ? 'text-orange-600' : 'text-gray-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900'
+                  isActive ? 'text-orange-600' : 'text-gray-400 hover:text-gray-900'
                 }`}
               >
                 <Icon className={`w-5 h-5 ${isActive ? 'stroke-[2.5]' : 'stroke-2'}`} />
@@ -247,7 +247,7 @@ export const PatientLayout: React.FC = () => {
           <button
             onClick={() => setIsMoreMenuOpen(!isMoreMenuOpen)}
             className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-xl transition-colors ${
-              isMoreMenuOpen ? 'text-orange-600' : 'text-gray-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900'
+              isMoreMenuOpen ? 'text-orange-600' : 'text-gray-400 hover:text-gray-900'
             }`}
           >
             {isMoreMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -264,7 +264,7 @@ export const PatientLayout: React.FC = () => {
               <span className="text-sm font-bold text-gray-900">Care Navigation</span>
               <button
                 onClick={() => setIsMoreMenuOpen(false)}
-                className="p-1 rounded-full text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-50"
+                className="p-1 rounded-full text-gray-500 hover:bg-gray-50"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -278,7 +278,7 @@ export const PatientLayout: React.FC = () => {
                     key={item.path}
                     to={item.path}
                     onClick={() => setIsMoreMenuOpen(false)}
-                    className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-600 border border-slate-200 text-xs font-semibold text-slate-700 transition-colors"
+                    className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 hover:bg-orange-50 hover:text-orange-600 border border-slate-200 text-xs font-semibold text-slate-700 transition-colors"
                   >
                     <Icon className="w-4 h-4 text-orange-500" />
                     <span>{item.label}</span>
@@ -290,7 +290,7 @@ export const PatientLayout: React.FC = () => {
             <div className="pt-4 border-t border-slate-100">
               <button
                 onClick={handleLogout}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold text-rose-600 bg-rose-50 border border-rose-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-100 transition-colors"
+                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold text-rose-600 bg-rose-50 border border-rose-200 hover:bg-rose-100 transition-colors"
               >
                 <LogOut className="w-4 h-4" />
                 Sign Out of Patient Portal

@@ -111,7 +111,7 @@ export const AdminAICapacityPage: React.FC = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={loadData}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-600 border border-gray-300 text-xs font-bold transition active:scale-95"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-600 border border-gray-300 text-xs font-bold transition active:scale-95"
             >
               <RefreshCw className={`h-4 w-4 text-teal-400 ${isLoading ? 'animate-spin' : ''}`} />
               Refresh Forecasts
@@ -145,7 +145,7 @@ export const AdminAICapacityPage: React.FC = () => {
             <button
               onClick={triggerMassCasualty}
               disabled={isSimulating}
-              className="px-4 py-2.5 rounded-xl bg-rose-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-500 text-white text-xs font-black uppercase tracking-wider shadow-lg shadow-rose-900/40 active:scale-95 transition flex items-center gap-2 disabled:opacity-50"
+              className="px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-black uppercase tracking-wider shadow-lg shadow-rose-900/40 active:scale-95 transition flex items-center gap-2 disabled:opacity-50"
             >
               <Flame className="h-4 w-4" />
               {isSimulating ? 'Simulating Event...' : 'Trigger Mass Casualty Event (12 Cases)'}
@@ -154,7 +154,7 @@ export const AdminAICapacityPage: React.FC = () => {
             <button
               onClick={resetSimulation}
               disabled={isSimulating}
-              className="px-4 py-2.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-600 border border-gray-300 text-xs font-bold uppercase tracking-wider active:scale-95 transition"
+              className="px-4 py-2.5 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-600 border border-gray-300 text-xs font-bold uppercase tracking-wider active:scale-95 transition"
             >
               Reset Capacity State
             </button>
@@ -256,7 +256,7 @@ export const AdminAICapacityPage: React.FC = () => {
       <div className="bg-gray-100 border border-gray-200 rounded-2xl overflow-hidden shadow-xl">
         <div className="p-5 border-b border-gray-200 flex items-center justify-between">
           <div>
-            <h2 className="text-base font-black text-white flex items-center gap-2">
+            <h2 className="text-base font-black text-gray-900 flex items-center gap-2">
               <Hospital className="h-5 w-5 text-teal-400" />
               Connected Hospital Capacity Projections (24h Forecast)
             </h2>
@@ -284,7 +284,7 @@ export const AdminAICapacityPage: React.FC = () => {
                 const m = h.current_metrics || {};
                 const fc = h.forecast_24h || {};
                 return (
-                  <tr key={h.hospital_id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 transition">
+                  <tr key={h.hospital_id} className="hover:bg-gray-200/40 transition">
                     <td className="py-3.5 px-4">
                       <div className="font-bold text-gray-900 text-sm">{h.hospital_name}</div>
                       <div className="text-[10px] text-gray-500">{h.branch_name}</div>
@@ -338,7 +338,7 @@ export const AdminAICapacityPage: React.FC = () => {
       {/* Operational Recommendations Grid (Section 23) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="bg-gray-100 border border-gray-200 p-5 rounded-2xl">
-          <h3 className="text-sm font-black text-white flex items-center gap-2 mb-3">
+          <h3 className="text-sm font-black text-gray-900 flex items-center gap-2 mb-3">
             <CheckCircle2 className="h-4 w-4 text-teal-400" />
             AI Operational Recommendations
           </h3>
@@ -358,7 +358,7 @@ export const AdminAICapacityPage: React.FC = () => {
 
         {/* Shortage Warnings & Alarms */}
         <div className="bg-gray-100 border border-gray-200 p-5 rounded-2xl">
-          <h3 className="text-sm font-black text-white flex items-center gap-2 mb-3">
+          <h3 className="text-sm font-black text-gray-900 flex items-center gap-2 mb-3">
             <AlertTriangle className="h-4 w-4 text-amber-400" />
             Active Capacity & Shortage Warnings
           </h3>

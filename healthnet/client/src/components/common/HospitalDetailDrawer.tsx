@@ -63,7 +63,7 @@ export const HospitalDetailDrawer: React.FC<HospitalDetailDrawerProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg p-1.5 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 transition"
+            className="rounded-lg p-1.5 text-gray-500 hover:bg-gray-200 hover:text-gray-900 transition"
           >
             <X className="h-5 w-5" />
           </button>
@@ -86,7 +86,7 @@ export const HospitalDetailDrawer: React.FC<HospitalDetailDrawerProps> = ({
                   className={`py-1.5 text-xs font-bold rounded-lg border transition ${
                     currentStatus === st
                       ? 'bg-teal-500/20 text-teal-300 border-teal-500/40 shadow-sm'
-                      : 'bg-gray-100 border-gray-200 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-700'
+                      : 'bg-gray-100 border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700'
                   }`}
                 >
                   {st}
@@ -193,7 +193,7 @@ export const HospitalDetailDrawer: React.FC<HospitalDetailDrawerProps> = ({
             onClose();
             navigate(`/admin/beds?hospital_id=${hospital.id}`);
           }}
-          className="flex-1 flex items-center justify-center gap-2 bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 text-white text-xs font-bold py-2.5 rounded-xl shadow-lg shadow-teal-600/20 transition"
+          className="flex-1 flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold py-2.5 rounded-xl shadow-lg shadow-teal-600/20 transition"
         >
           <span>View Hospital Beds</span>
           <ArrowUpRight className="h-4 w-4" />

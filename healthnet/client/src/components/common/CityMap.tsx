@@ -169,7 +169,7 @@ export const CityMap: React.FC<CityMapProps> = ({
                 <div className="flex items-center gap-2 pt-1">
                   <a
                     href={`/admin/hospitals/${hosp.id}`}
-                    className="flex-1 text-center bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 text-white text-xs font-semibold py-1.5 rounded-lg transition"
+                    className="flex-1 text-center bg-teal-600 hover:bg-teal-500 text-white text-xs font-semibold py-1.5 rounded-lg transition"
                   >
                     Open Facility &rarr;
                   </a>

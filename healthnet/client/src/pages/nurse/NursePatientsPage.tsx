@@ -51,7 +51,7 @@ export const NursePatientsPage: React.FC = () => {
               Ward Census & Inpatient Management
             </span>
           </div>
-          <h1 className="text-2xl font-black tracking-tight text-white mt-1">
+          <h1 className="text-2xl font-black tracking-tight text-gray-900 mt-1">
             My Assigned Patients
           </h1>
           <p className="text-xs text-gray-500">
@@ -63,14 +63,14 @@ export const NursePatientsPage: React.FC = () => {
           <button
             onClick={fetchPatients}
             disabled={loading}
-            className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm"
+            className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 hover:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin text-teal-400' : ''}`} />
             <span>Refresh</span>
           </button>
           <Link
             to="/nurse/vitals"
-            className="flex items-center gap-2 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-teal-900/40 transition"
+            className="flex items-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-500 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-teal-900/40 transition"
           >
             <HeartPulse className="h-4 w-4" />
             <span>Record Vitals</span>
@@ -157,9 +157,9 @@ export const NursePatientsPage: React.FC = () => {
                 </tr>
               ) : (
                 patients.map((patient) => (
-                  <tr key={patient.id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 transition">
+                  <tr key={patient.id} className="hover:bg-gray-200/40 transition">
                     <td className="py-3.5 pl-4">
-                      <div className="font-bold text-white text-sm">{patient.full_name}</div>
+                      <div className="font-bold text-gray-800 text-sm">{patient.full_name}</div>
                       <div className="text-[11px] font-mono text-gray-500">
                         {patient.mrn} • {patient.age}y {patient.gender} • Blood: {patient.blood_group}
                       </div>
@@ -222,7 +222,7 @@ export const NursePatientsPage: React.FC = () => {
                       <div className="flex items-center justify-end gap-2">
                         <Link
                           to={`/nurse/patients/${patient.id}`}
-                          className="rounded-lg bg-teal-600/20 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-600 text-teal-300 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white px-3 py-1.5 text-xs font-bold transition flex items-center gap-1"
+                          className="rounded-lg bg-teal-600/20 hover:bg-teal-600 text-teal-300 hover:text-white px-3 py-1.5 text-xs font-bold transition flex items-center gap-1"
                         >
                           <span>Open View</span>
                           <ChevronRight className="h-3.5 w-3.5" />

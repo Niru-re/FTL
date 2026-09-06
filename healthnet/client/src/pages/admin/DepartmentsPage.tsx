@@ -114,14 +114,14 @@ export const DepartmentsPage: React.FC = () => {
         <div className="flex items-center gap-2.5">
           <button
             onClick={() => setShowAddModal(true)}
-            className="flex items-center gap-2 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 px-4 py-2 text-xs font-bold text-white transition shadow-lg shadow-teal-600/20"
+            className="flex items-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-500 px-4 py-2 text-xs font-bold text-white transition shadow-lg shadow-teal-600/20"
           >
             <Plus className="h-4 w-4" />
             <span>Add Department</span>
           </button>
           <button
             onClick={loadDepartments}
-            className="flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-gray-100 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-teal-400 transition"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-gray-100 text-gray-500 hover:text-teal-400 transition"
             title="Refresh"
           >
             <RefreshCw className="h-4 w-4" />
@@ -164,7 +164,7 @@ export const DepartmentsPage: React.FC = () => {
         {filteredDepartments.map(dept => (
           <div
             key={dept.id}
-            className="rounded-2xl border border-gray-200 bg-gray-100/70 p-5 space-y-4 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition flex flex-col justify-between"
+            className="rounded-2xl border border-gray-200 bg-gray-100/70 p-5 space-y-4 hover:border-gray-300 transition flex flex-col justify-between"
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between">
@@ -200,7 +200,7 @@ export const DepartmentsPage: React.FC = () => {
             <div className="border-t border-gray-200/80 pt-3 flex items-center gap-2">
               <button
                 onClick={() => navigate(`/admin/hospitals/${dept.hospital_id}`)}
-                className="flex-1 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 py-1.5 text-xs font-bold text-teal-400 transition text-center"
+                className="flex-1 rounded-xl bg-gray-200 hover:bg-gray-300 py-1.5 text-xs font-bold text-teal-400 transition text-center"
               >
                 View
               </button>
@@ -215,7 +215,7 @@ export const DepartmentsPage: React.FC = () => {
                     head_doctor_name: dept.head_doctor_name || ''
                   });
                 }}
-                className="flex-1 rounded-xl border border-gray-300 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 py-1.5 text-xs font-bold text-gray-600 transition text-center"
+                className="flex-1 rounded-xl border border-gray-300 hover:bg-gray-200 py-1.5 text-xs font-bold text-gray-600 transition text-center"
               >
                 Edit
               </button>
@@ -229,8 +229,8 @@ export const DepartmentsPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
           <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <h3 className="text-base font-bold text-white">Add Department</h3>
-              <button onClick={() => setShowAddModal(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <h3 className="text-base font-bold text-gray-900">Add Department</h3>
+              <button onClick={() => setShowAddModal(false)} className="text-gray-500 hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -298,13 +298,13 @@ export const DepartmentsPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowAddModal(false)}
-                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
+                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 hover:text-white transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
+                  className="flex-1 rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
                 >
                   Create
                 </button>
@@ -319,8 +319,8 @@ export const DepartmentsPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
           <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <h3 className="text-base font-bold text-white">Edit Department: {selectedDept.code}</h3>
-              <button onClick={() => setSelectedDept(null)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <h3 className="text-base font-bold text-gray-900">Edit Department: {selectedDept.code}</h3>
+              <button onClick={() => setSelectedDept(null)} className="text-gray-500 hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -361,13 +361,13 @@ export const DepartmentsPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setSelectedDept(null)}
-                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
+                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 hover:text-white transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
+                  className="flex-1 rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
                 >
                   Save Changes
                 </button>

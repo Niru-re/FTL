@@ -245,7 +245,7 @@ export const HospitalsPage: React.FC = () => {
             <button
               onClick={() => setViewMode('grid')}
               className={`p-1.5 rounded-lg text-xs font-semibold transition ${
-                viewMode === 'grid' ? 'bg-teal-600 text-white shadow' : 'text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-700'
+                viewMode === 'grid' ? 'bg-teal-600 text-white shadow' : 'text-gray-500 hover:text-gray-700'
               }}`}
               title="Grid View"
             >
@@ -254,7 +254,7 @@ export const HospitalsPage: React.FC = () => {
             <button
               onClick={() => setViewMode('table')}
               className={`p-1.5 rounded-lg text-xs font-semibold transition ${
-                viewMode === 'table' ? 'bg-teal-600 text-white shadow' : 'text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-700'
+                viewMode === 'table' ? 'bg-teal-600 text-white shadow' : 'text-gray-500 hover:text-gray-700'
               }`}
               title="Table View"
             >
@@ -264,7 +264,7 @@ export const HospitalsPage: React.FC = () => {
 
           <button
             onClick={fetchHospitals}
-            className="flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-gray-100 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-teal-400 transition"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-gray-100 text-gray-500 hover:text-teal-400 transition"
             title="Refresh Data"
           >
             <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
@@ -272,7 +272,7 @@ export const HospitalsPage: React.FC = () => {
 
           <button
             onClick={() => { resetForm(); setIsAddModalOpen(true); }}
-            className="flex items-center gap-2 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 px-4 py-2 text-xs font-bold text-white transition shadow-lg shadow-teal-600/20"
+            className="flex items-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-500 px-4 py-2 text-xs font-bold text-white transition shadow-lg shadow-teal-600/20"
           >
             <Plus className="h-4 w-4" />
             <span>Add Hospital</span>
@@ -320,7 +320,7 @@ export const HospitalsPage: React.FC = () => {
             return (
               <div
                 key={hosp.id}
-                className="rounded-2xl border border-gray-200 bg-gray-100/70 p-5 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition flex flex-col justify-between space-y-4"
+                className="rounded-2xl border border-gray-200 bg-gray-100/70 p-5 hover:border-gray-300 transition flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-3">
                   <div className="flex items-start justify-between gap-2">
@@ -392,7 +392,7 @@ export const HospitalsPage: React.FC = () => {
                 <div className="border-t border-gray-200/80 pt-3 flex items-center gap-2">
                   <button
                     onClick={() => navigate(`/admin/hospitals/${hosp.id}`)}
-                    className="flex-1 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 py-2 text-xs font-bold text-teal-400 transition flex items-center justify-center gap-1"
+                    className="flex-1 rounded-xl bg-gray-200 hover:bg-gray-300 py-2 text-xs font-bold text-teal-400 transition flex items-center justify-center gap-1"
                   >
                     <span>View</span>
                     <ExternalLink className="h-3.5 w-3.5" />
@@ -429,7 +429,7 @@ export const HospitalsPage: React.FC = () => {
                         ventilators_available: hosp.ventilators_available
                       });
                     }}
-                    className="flex-1 rounded-xl border border-gray-300 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 py-2 text-xs font-bold text-gray-600 transition flex items-center justify-center gap-1"
+                    className="flex-1 rounded-xl border border-gray-300 hover:bg-gray-200 py-2 text-xs font-bold text-gray-600 transition flex items-center justify-center gap-1"
                   >
                     <Edit3 className="h-3.5 w-3.5" />
                     <span>Edit</span>
@@ -461,7 +461,7 @@ export const HospitalsPage: React.FC = () => {
               </thead>
               <tbody className="divide-y divide-gray-200/60 text-gray-600">
                 {filteredHospitals.map(hosp => (
-                  <tr key={hosp.id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/30 transition">
+                  <tr key={hosp.id} className="hover:bg-gray-200/30 transition">
                     <td className="px-5 py-3.5">
                       <div className="font-bold text-gray-900">{hosp.name}</div>
                       <div className="text-[11px] text-gray-500">{hosp.branch_name} • <span className="font-mono text-teal-400">{hosp.code}</span></div>
@@ -486,7 +486,7 @@ export const HospitalsPage: React.FC = () => {
                       <div className="flex items-center justify-end gap-2">
                         <button
                           onClick={() => navigate(`/admin/hospitals/${hosp.id}`)}
-                          className="rounded-lg bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-2.5 py-1 text-[11px] font-bold text-teal-400 transition"
+                          className="rounded-lg bg-gray-200 hover:bg-gray-300 px-2.5 py-1 text-[11px] font-bold text-teal-400 transition"
                         >
                           View
                         </button>
@@ -522,7 +522,7 @@ export const HospitalsPage: React.FC = () => {
                               ventilators_available: hosp.ventilators_available
                             });
                           }}
-                          className="rounded-lg border border-gray-300 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 px-2.5 py-1 text-[11px] font-bold text-gray-600 transition"
+                          className="rounded-lg border border-gray-300 hover:bg-gray-200 px-2.5 py-1 text-[11px] font-bold text-gray-600 transition"
                         >
                           Edit
                         </button>
@@ -541,8 +541,8 @@ export const HospitalsPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
           <div className="w-full max-w-lg rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <h3 className="text-base font-bold text-white">Add Hospital Node</h3>
-              <button onClick={() => setIsAddModalOpen(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <h3 className="text-base font-bold text-gray-900">Add Hospital Node</h3>
+              <button onClick={() => setIsAddModalOpen(false)} className="text-gray-500 hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -788,13 +788,13 @@ export const HospitalsPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsAddModalOpen(false)}
-                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
+                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 hover:text-white transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
+                  className="flex-1 rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
                 >
                   Create Hospital
                 </button>
@@ -809,8 +809,8 @@ export const HospitalsPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
           <div className="w-full max-w-lg rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <h3 className="text-base font-bold text-white">Edit Hospital: {editingHospital.name}</h3>
-              <button onClick={() => setEditingHospital(null)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <h3 className="text-base font-bold text-gray-900">Edit Hospital: {editingHospital.name}</h3>
+              <button onClick={() => setEditingHospital(null)} className="text-gray-500 hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -904,13 +904,13 @@ export const HospitalsPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setEditingHospital(null)}
-                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
+                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 hover:text-white transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
+                  className="flex-1 rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
                 >
                   Save Changes
                 </button>

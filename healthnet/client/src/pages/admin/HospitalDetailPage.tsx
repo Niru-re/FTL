@@ -198,13 +198,13 @@ export const HospitalDetailPage: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => navigate('/admin/hospitals')}
-            className="flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-gray-100 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 transition"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-gray-100 text-gray-500 hover:text-gray-900 transition"
           >
             <ArrowLeft className="h-4 w-4" />
           </button>
           <div>
             <div className="flex items-center gap-3">
-              <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">{hospital.name}</h1>
+              <h1 className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight">{hospital.name}</h1>
               <StatusBadge status={hospital.emergency_status} type="hospital" />
             </div>
             <p className="text-xs text-gray-500 mt-0.5 flex items-center gap-2">
@@ -220,14 +220,14 @@ export const HospitalDetailPage: React.FC = () => {
         <div className="flex items-center gap-2.5">
           <button
             onClick={() => setShowEditModal(true)}
-            className="flex items-center gap-2 rounded-xl border border-gray-300 bg-gray-200/80 px-3.5 py-2 text-xs font-bold text-white bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 transition"
+            className="flex items-center gap-2 rounded-xl border border-gray-300 bg-gray-200/80 px-3.5 py-2 text-xs font-bold text-white hover:bg-gray-300 transition"
           >
             <Edit3 className="h-4 w-4 text-teal-400" />
             <span>Edit Hospital</span>
           </button>
           <button
             onClick={loadAllHospitalData}
-            className="flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-gray-100 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-teal-400 transition"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-gray-100 text-gray-500 hover:text-teal-400 transition"
             title="Refresh Data"
           >
             <RefreshCw className="h-4 w-4" />
@@ -307,7 +307,7 @@ export const HospitalDetailPage: React.FC = () => {
               className={`flex items-center gap-2 px-4 py-3 text-xs font-bold whitespace-nowrap transition-all border-b-2 ${
                 isActive
                   ? 'border-teal-400 text-teal-300 bg-teal-500/5'
-                  : 'border-transparent text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-700 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-100/40'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-100/40'
               }`}
             >
               <Icon className="h-4 w-4" />
@@ -321,7 +321,7 @@ export const HospitalDetailPage: React.FC = () => {
       {activeTab === 'overview' && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 rounded-2xl border border-gray-200 bg-gray-100/60 p-6 space-y-6">
-            <h3 className="text-base font-bold text-white flex items-center gap-2">
+            <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
               <Building2 className="h-5 w-5 text-teal-400" />
               <span>Hospital Facility Profile</span>
             </h3>
@@ -329,11 +329,11 @@ export const HospitalDetailPage: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="rounded-xl border border-gray-200 bg-gray-50/40 p-4 space-y-1">
                 <span className="text-[11px] font-semibold uppercase text-gray-500">Campus Code</span>
-                <p className="text-sm font-bold text-white font-mono">{hospital.code}</p>
+                <p className="text-sm font-bold text-gray-800 font-mono">{hospital.code}</p>
               </div>
               <div className="rounded-xl border border-gray-200 bg-gray-50/40 p-4 space-y-1">
                 <span className="text-[11px] font-semibold uppercase text-gray-500">Trauma Designation</span>
-                <p className="text-sm font-bold text-white">{hospital.trauma_level}</p>
+                <p className="text-sm font-bold text-gray-800">{hospital.trauma_level}</p>
               </div>
               <div className="rounded-xl border border-gray-200 bg-gray-50/40 p-4 space-y-1">
                 <span className="text-[11px] font-semibold uppercase text-gray-500">Emergency Dispatch Phone</span>
@@ -369,7 +369,7 @@ export const HospitalDetailPage: React.FC = () => {
           {/* Quick Actions & Geo Info */}
           <div className="space-y-6">
             <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-6 space-y-4">
-              <h4 className="text-sm font-bold text-white">Geographical Coordinates</h4>
+              <h4 className="text-sm font-bold text-gray-900">Geographical Coordinates</h4>
               <div className="rounded-xl border border-gray-200 bg-gray-50/40 p-4 space-y-2 text-xs">
                 <div className="flex justify-between">
                   <span className="text-gray-500">Latitude:</span>
@@ -388,13 +388,13 @@ export const HospitalDetailPage: React.FC = () => {
               <div className="pt-2 space-y-2">
                 <button
                   onClick={() => setActiveTab('beds')}
-                  className="w-full rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition text-center"
+                  className="w-full rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition text-center"
                 >
                   Manage Hospital Beds
                 </button>
                 <button
                   onClick={() => setActiveTab('resources')}
-                  className="w-full rounded-xl border border-gray-300 bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 py-2.5 text-xs font-bold text-gray-700 transition text-center"
+                  className="w-full rounded-xl border border-gray-300 bg-gray-200 hover:bg-gray-300 py-2.5 text-xs font-bold text-gray-700 transition text-center"
                 >
                   Manage Medical Resources
                 </button>
@@ -411,7 +411,7 @@ export const HospitalDetailPage: React.FC = () => {
             <h3 className="text-base font-bold text-white">Clinical Departments ({departments.length})</h3>
             <button
               onClick={() => setShowAddDeptModal(true)}
-              className="rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 px-3.5 py-2 text-xs font-bold text-white transition flex items-center gap-1.5"
+              className="rounded-xl bg-teal-600 hover:bg-teal-500 px-3.5 py-2 text-xs font-bold text-white transition flex items-center gap-1.5"
             >
               <span>Add Department</span>
             </button>
@@ -419,7 +419,7 @@ export const HospitalDetailPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {departments.map(dept => (
-              <div key={dept.id} className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-3 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition">
+              <div key={dept.id} className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-3 hover:border-gray-300 transition">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono font-bold text-teal-400">{dept.code}</span>
                   <StatusBadge status={dept.status} type="icu" />
@@ -434,7 +434,7 @@ export const HospitalDetailPage: React.FC = () => {
                 </div>
                 <div className="flex items-center justify-between text-xs bg-gray-50/40 p-2.5 rounded-xl">
                   <span className="text-gray-500">Capacity:</span>
-                  <span className="font-bold text-white">{dept.occupied_beds} / {dept.total_beds} Beds ({dept.occupancy_rate}%)</span>
+                  <span className="font-bold text-gray-800">{dept.occupied_beds} / {dept.total_beds} Beds ({dept.occupancy_rate}%)</span>
                 </div>
               </div>
             ))}
@@ -448,7 +448,7 @@ export const HospitalDetailPage: React.FC = () => {
           <h3 className="text-base font-bold text-white">ICU Units & Inpatient Wards ({units.length})</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {units.map(unit => (
-              <div key={unit.id} className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-4 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition">
+              <div key={unit.id} className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-4 hover:border-gray-300 transition">
                 <div className="flex items-center justify-between">
                   <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md border ${
                     unit.unit_type === 'ICU' ? 'bg-purple-500/10 text-purple-300 border-purple-500/20' : 'bg-teal-500/10 text-teal-300 border-teal-500/20'
@@ -545,10 +545,10 @@ export const HospitalDetailPage: React.FC = () => {
             {filteredBeds.map(bed => (
               <div
                 key={bed.id}
-                className="rounded-2xl border border-gray-200 bg-gray-100/60 p-4 space-y-3 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition"
+                className="rounded-2xl border border-gray-200 bg-gray-100/60 p-4 space-y-3 hover:border-gray-300 transition"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold text-white">{bed.code}</span>
+                  <span className="text-xs font-mono font-bold text-gray-800">{bed.code}</span>
                   <StatusBadge status={bed.status} type="bed" />
                 </div>
                 <p className="text-[11px] text-gray-500">{bed.department_name || bed.bed_type}</p>
@@ -567,13 +567,13 @@ export const HospitalDetailPage: React.FC = () => {
                 <div className="flex items-center gap-2 pt-1">
                   <button
                     onClick={() => setViewBedDetail(bed)}
-                    className="flex-1 rounded-lg border border-gray-300 bg-gray-200/80 py-1.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
+                    className="flex-1 rounded-lg border border-gray-300 bg-gray-200/80 py-1.5 text-xs font-bold text-gray-600 hover:text-white transition"
                   >
                     View
                   </button>
                   <button
                     onClick={() => setSelectedBed(bed)}
-                    className="flex-1 rounded-lg bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-1.5 text-xs font-bold text-white transition"
+                    className="flex-1 rounded-lg bg-teal-600 hover:bg-teal-500 py-1.5 text-xs font-bold text-white transition"
                   >
                     Change Status
                   </button>
@@ -590,7 +590,7 @@ export const HospitalDetailPage: React.FC = () => {
           <h3 className="text-base font-bold text-white">Tracked Medical Equipment & Resources ({resources.length})</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {resources.map(res => (
-              <div key={res.id} className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-3 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition">
+              <div key={res.id} className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-3 hover:border-gray-300 transition">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono font-bold text-teal-400">{res.resource_id}</span>
                   <StatusBadge status={res.status} type="hospital" />
@@ -603,7 +603,7 @@ export const HospitalDetailPage: React.FC = () => {
                 <div className="grid grid-cols-2 gap-2 bg-gray-50/40 p-3 rounded-xl text-xs">
                   <div>
                     <span className="text-[10px] text-gray-500 block">Total Quantity</span>
-                    <span className="font-bold text-white">{res.quantity}</span>
+                    <span className="font-bold text-gray-800">{res.quantity}</span>
                   </div>
                   <div>
                     <span className="text-[10px] text-gray-500 block">Available</span>
@@ -617,7 +617,7 @@ export const HospitalDetailPage: React.FC = () => {
                     setResourceAvailQty(res.available_quantity);
                     setResourceStatus(res.status);
                   }}
-                  className="w-full rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 py-2 text-xs font-bold text-teal-400 transition"
+                  className="w-full rounded-xl bg-gray-200 hover:bg-gray-300 py-2 text-xs font-bold text-teal-400 transition"
                 >
                   Update Quantity / Status
                 </button>
@@ -639,7 +639,7 @@ export const HospitalDetailPage: React.FC = () => {
                     {member.staff_type === 'DOCTOR' ? <Stethoscope className="h-5 w-5 text-sky-400" /> : <UserCheck className="h-5 w-5 text-teal-400" />}
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-white">{member.name}</h4>
+                    <h4 className="text-xs font-bold text-gray-800">{member.name}</h4>
                     <p className="text-[11px] text-gray-500">{member.specialization}</p>
                     <span className="text-[10px] font-mono text-gray-400">{member.employee_code} • {member.shift}</span>
                   </div>
@@ -665,11 +665,11 @@ export const HospitalDetailPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
           <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <span className="text-base font-bold text-white flex items-center gap-2">
+              <span className="text-base font-bold text-gray-800 flex items-center gap-2">
                 <BedDouble className="h-5 w-5 text-teal-400" />
                 <span>Bed {viewBedDetail.code} Details</span>
               </span>
-              <button onClick={() => setViewBedDetail(null)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <button onClick={() => setViewBedDetail(null)} className="text-gray-500 hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -699,7 +699,7 @@ export const HospitalDetailPage: React.FC = () => {
 
             <button
               onClick={() => setViewBedDetail(null)}
-              className="w-full rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
+              className="w-full rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
             >
               Close
             </button>
@@ -712,8 +712,8 @@ export const HospitalDetailPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
           <div className="w-full max-w-lg rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <h3 className="text-base font-bold text-white">Edit Hospital Information</h3>
-              <button onClick={() => setShowEditModal(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <h3 className="text-base font-bold text-gray-900">Edit Hospital Information</h3>
+              <button onClick={() => setShowEditModal(false)} className="text-gray-500 hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -782,13 +782,13 @@ export const HospitalDetailPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowEditModal(false)}
-                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
+                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 hover:text-white transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
+                  className="flex-1 rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
                 >
                   Save Changes
                 </button>
@@ -803,8 +803,8 @@ export const HospitalDetailPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
           <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <h3 className="text-base font-bold text-white">Add Department</h3>
-              <button onClick={() => setShowAddDeptModal(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <h3 className="text-base font-bold text-gray-900">Add Department</h3>
+              <button onClick={() => setShowAddDeptModal(false)} className="text-gray-500 hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -859,13 +859,13 @@ export const HospitalDetailPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowAddDeptModal(false)}
-                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
+                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 hover:text-white transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
+                  className="flex-1 rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
                 >
                   Create Department
                 </button>
@@ -880,8 +880,8 @@ export const HospitalDetailPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
           <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <h3 className="text-base font-bold text-white">Update {selectedResource.name}</h3>
-              <button onClick={() => setSelectedResource(null)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <h3 className="text-base font-bold text-gray-900">Update {selectedResource.name}</h3>
+              <button onClick={() => setSelectedResource(null)} className="text-gray-500 hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -917,13 +917,13 @@ export const HospitalDetailPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setSelectedResource(null)}
-                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
+                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 hover:text-white transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
+                  className="flex-1 rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
                 >
                   Save Resource
                 </button>

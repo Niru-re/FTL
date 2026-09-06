@@ -56,7 +56,7 @@ export const DoctorPatientsPage: React.FC = () => {
             <Users className="h-4 w-4 text-sky-400" />
             <span className="text-xs font-bold uppercase tracking-wider text-sky-400">Inpatient Census</span>
           </div>
-          <h1 className="text-2xl font-black tracking-tight text-white">
+          <h1 className="text-2xl font-black tracking-tight text-gray-900">
             My Assigned Patients
           </h1>
           <p className="text-xs text-gray-500 mt-0.5">
@@ -66,14 +66,14 @@ export const DoctorPatientsPage: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => navigate('/doctor/monitoring')}
-            className="flex items-center gap-2 rounded-xl bg-sky-600/20 border border-sky-500/30 px-3.5 py-2 text-xs font-bold text-sky-300 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-600/30 transition"
+            className="flex items-center gap-2 rounded-xl bg-sky-600/20 border border-sky-500/30 px-3.5 py-2 text-xs font-bold text-sky-300 hover:bg-sky-600/30 transition"
           >
             <Activity className="h-4 w-4 text-sky-400 animate-pulse" />
             <span>Open Multi-Bed Telemetry</span>
           </button>
           <button
             onClick={() => { setIsLoading(true); fetchPatients(); }}
-            className="flex items-center gap-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300"
+            className="flex items-center gap-2 rounded-xl bg-gray-200 hover:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
             <span>Refresh Census</span>
@@ -136,7 +136,7 @@ export const DoctorPatientsPage: React.FC = () => {
               className={`rounded-lg px-2.5 py-1 text-[11px] font-bold transition ${
                 selectedRisk === risk
                   ? 'bg-sky-600 text-white shadow-sm'
-                  : 'bg-gray-50/60 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-700 border border-gray-200'
+                  : 'bg-gray-50/60 text-gray-500 hover:text-gray-700 border border-gray-200'
               }`}
             >
               {risk}
@@ -165,13 +165,13 @@ export const DoctorPatientsPage: React.FC = () => {
               <div
                 key={p.id}
                 onClick={() => navigate(`/doctor/patients/${p.id}`)}
-                className="p-4 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 cursor-pointer transition flex flex-col lg:flex-row lg:items-center justify-between gap-4 group"
+                className="p-4 hover:bg-gray-200/40 cursor-pointer transition flex flex-col lg:flex-row lg:items-center justify-between gap-4 group"
               >
                 {/* Left: Demographics & Condition */}
                 <div className="space-y-1.5 flex-1">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className={`h-2.5 w-2.5 rounded-full ${p.risk_level === 'CRITICAL' ? 'bg-rose-500 animate-pulse' : p.risk_level === 'HIGH RISK' ? 'bg-amber-500' : 'bg-emerald-400'}`} />
-                    <span className="text-sm font-bold text-white group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-sky-300 transition">
+                    <span className="text-sm font-bold text-white group-hover:text-sky-300 transition">
                       {p.full_name}
                     </span>
                     <span className="font-mono text-xs text-sky-400 bg-sky-950/80 border border-sky-500/20 px-2 py-0.5 rounded">
@@ -258,7 +258,7 @@ export const DoctorPatientsPage: React.FC = () => {
                   </div>
                   <button
                     onClick={(e) => { e.stopPropagation(); navigate(`/doctor/patients/${p.id}`); }}
-                    className="flex items-center gap-1.5 rounded-xl bg-sky-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-500 px-3.5 py-2 text-xs font-bold text-white transition shadow-sm"
+                    className="flex items-center gap-1.5 rounded-xl bg-sky-600 hover:bg-sky-500 px-3.5 py-2 text-xs font-bold text-white transition shadow-sm"
                   >
                     <span>Command Center</span>
                     <ChevronRight className="h-3.5 w-3.5" />

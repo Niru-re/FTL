@@ -65,7 +65,7 @@ export const NurseMedicationsPage: React.FC = () => {
               Electronic Medication Administration Record (eMAR)
             </span>
           </div>
-          <h1 className="text-2xl font-black tracking-tight text-white mt-1">
+          <h1 className="text-2xl font-black tracking-tight text-gray-900 mt-1">
             Ward Medication Administration
           </h1>
           <p className="text-xs text-gray-500">
@@ -76,7 +76,7 @@ export const NurseMedicationsPage: React.FC = () => {
         <button
           onClick={fetchMedications}
           disabled={loading}
-          className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm self-start sm:self-auto"
+          className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 hover:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm self-start sm:self-auto"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin text-purple-400' : ''}`} />
           <span>Refresh</span>
@@ -152,9 +152,9 @@ export const NurseMedicationsPage: React.FC = () => {
                 </tr>
               ) : (
                 medications.map((med) => (
-                  <tr key={med.id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 transition">
+                  <tr key={med.id} className="hover:bg-gray-200/40 transition">
                     <td className="py-3.5 pl-4">
-                      <div className="font-bold text-white text-sm flex items-center gap-2">
+                      <div className="font-bold text-gray-800 text-sm flex items-center gap-2">
                         <Pill className="h-3.5 w-3.5 text-purple-400" />
                         <span>{med.drug_name}</span>
                       </div>
@@ -187,7 +187,7 @@ export const NurseMedicationsPage: React.FC = () => {
                             setActiveMed(med);
                             setAdminAction('ADMINISTERED');
                           }}
-                          className="rounded-lg bg-purple-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-purple-500 text-white px-3 py-1.5 text-xs font-bold transition shadow-sm"
+                          className="rounded-lg bg-purple-600 hover:bg-purple-500 text-white px-3 py-1.5 text-xs font-bold transition shadow-sm"
                         >
                           Mark Given
                         </button>
@@ -210,17 +210,17 @@ export const NurseMedicationsPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
           <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <h3 className="text-base font-bold text-white flex items-center gap-2">
+              <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
                 <Pill className="h-5 w-5 text-purple-400" />
                 <span>Verify Medication Administration</span>
               </h3>
-              <button onClick={() => setActiveMed(null)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <button onClick={() => setActiveMed(null)} className="text-gray-500 hover:text-white">
                 <X className="h-5 w-5" />
               </button>
             </div>
 
             <div className="bg-gray-50/60 p-3 rounded-xl border border-gray-200 text-xs space-y-1">
-              <p className="font-bold text-white text-sm">{activeMed.drug_name}</p>
+              <p className="font-bold text-gray-800 text-sm">{activeMed.drug_name}</p>
               <p className="text-gray-600">
                 Dose: <strong className="text-white">{activeMed.dosage}</strong> • Route:{' '}
                 <strong className="text-teal-300">{activeMed.route}</strong>
@@ -261,14 +261,14 @@ export const NurseMedicationsPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setActiveMed(null)}
-                  className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 transition"
+                  className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 hover:bg-gray-300 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="rounded-xl bg-purple-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-purple-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-purple-900/40 transition disabled:opacity-50"
+                  className="rounded-xl bg-purple-600 hover:bg-purple-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-purple-900/40 transition disabled:opacity-50"
                 >
                   {submitting ? 'Saving...' : 'Confirm Administration'}
                 </button>

@@ -161,7 +161,7 @@ export const EmergencyDetailPage: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => navigate('/admin/emergency')}
-            className="p-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-600 transition"
+            className="p-2 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-600 transition"
           >
             <ArrowLeft className="h-4 w-4" />
           </button>
@@ -170,7 +170,7 @@ export const EmergencyDetailPage: React.FC = () => {
               <span className="font-mono text-xs font-bold text-rose-400 bg-rose-950/80 border border-rose-500/30 px-2.5 py-0.5 rounded">
                 {emergencyCase.case_number}
               </span>
-              <h1 className="text-xl font-black text-white">{emergencyCase.patient_name}</h1>
+              <h1 className="text-xl font-black text-gray-900">{emergencyCase.patient_name}</h1>
               <span className="text-xs text-gray-500">
                 {emergencyCase.patient_age}y &bull; {emergencyCase.patient_gender} &bull; {emergencyCase.emergency_type}
               </span>
@@ -193,7 +193,7 @@ export const EmergencyDetailPage: React.FC = () => {
           </span>
           <button
             onClick={() => { setIsLoading(true); fetchEmergencyData(); }}
-            className="flex items-center gap-1.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3 py-1.5 text-xs font-bold text-gray-600 transition"
+            className="flex items-center gap-1.5 rounded-xl bg-gray-200 hover:bg-gray-300 px-3 py-1.5 text-xs font-bold text-gray-600 transition"
           >
             <RefreshCw className="h-3.5 w-3.5" />
             <span>Sync</span>
@@ -285,7 +285,7 @@ export const EmergencyDetailPage: React.FC = () => {
                         type="button"
                         disabled={actionLoading}
                         onClick={handleStepSimulation}
-                        className="flex items-center gap-1.5 rounded-xl bg-sky-600/20 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-600/30 border border-sky-500/30 px-3 py-1.5 text-xs font-bold text-sky-300 transition"
+                        className="flex items-center gap-1.5 rounded-xl bg-sky-600/20 hover:bg-sky-600/30 border border-sky-500/30 px-3 py-1.5 text-xs font-bold text-sky-300 transition"
                       >
                         <FastForward className="h-3.5 w-3.5" />
                         <span>Step Movement (-2m)</span>
@@ -294,7 +294,7 @@ export const EmergencyDetailPage: React.FC = () => {
                         type="button"
                         disabled={actionLoading}
                         onClick={handleTriggerArrival}
-                        className="flex items-center gap-1.5 rounded-xl bg-amber-600/20 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-amber-600/30 border border-amber-500/30 px-3 py-1.5 text-xs font-bold text-amber-300 transition"
+                        className="flex items-center gap-1.5 rounded-xl bg-amber-600/20 hover:bg-amber-600/30 border border-amber-500/30 px-3 py-1.5 text-xs font-bold text-amber-300 transition"
                       >
                         <CheckCircle2 className="h-3.5 w-3.5" />
                         <span>Trigger Arrival</span>
@@ -307,7 +307,7 @@ export const EmergencyDetailPage: React.FC = () => {
                       type="button"
                       disabled={actionLoading}
                       onClick={handleReturnAmbulance}
-                      className="flex items-center gap-1.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3 py-1.5 text-xs font-bold text-gray-600 transition border border-gray-300"
+                      className="flex items-center gap-1.5 rounded-xl bg-gray-200 hover:bg-gray-300 px-3 py-1.5 text-xs font-bold text-gray-600 transition border border-gray-300"
                     >
                       <RefreshCw className="h-3.5 w-3.5" />
                       <span>Return to Fleet</span>
@@ -321,7 +321,7 @@ export const EmergencyDetailPage: React.FC = () => {
           {/* Patient Baseline Vitals & Condition */}
           <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-3 shadow-xl backdrop-blur-sm">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+              <span className="text-xs font-bold text-gray-800 uppercase tracking-wider flex items-center gap-1.5">
                 <HeartPulse className="h-4 w-4 text-rose-400" />
                 <span>Emergency Intake Clinical Vitals</span>
               </span>
@@ -397,7 +397,7 @@ export const EmergencyDetailPage: React.FC = () => {
                 type="button"
                 disabled={actionLoading}
                 onClick={handleConfirmPatientReceived}
-                className="w-full flex items-center justify-center gap-2 rounded-xl bg-emerald-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-emerald-500 py-3 text-xs font-black text-white transition shadow-lg shadow-emerald-600/30"
+                className="w-full flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 py-3 text-xs font-black text-white transition shadow-lg shadow-emerald-600/30"
               >
                 <CheckSquare className="h-4 w-4" />
                 <span>CONFIRM PATIENT RECEIVED & ADMIT</span>
@@ -413,7 +413,7 @@ export const EmergencyDetailPage: React.FC = () => {
 
           {/* Audit Timeline */}
           <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 space-y-3 shadow-xl backdrop-blur-sm">
-            <span className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+            <span className="text-xs font-bold text-gray-800 uppercase tracking-wider flex items-center gap-1.5">
               <Clock className="h-4 w-4 text-sky-400" />
               <span>Mission Event Log</span>
             </span>

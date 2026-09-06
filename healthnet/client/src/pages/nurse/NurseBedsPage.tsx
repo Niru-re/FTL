@@ -110,7 +110,7 @@ export const NurseBedsPage: React.FC = () => {
               Ward Floor Bed Matrix
             </span>
           </div>
-          <h1 className="text-2xl font-black tracking-tight text-white mt-1">
+          <h1 className="text-2xl font-black tracking-tight text-gray-900 mt-1">
             Bed Status & Sanitization
           </h1>
           <p className="text-xs text-gray-500">
@@ -121,7 +121,7 @@ export const NurseBedsPage: React.FC = () => {
         <button
           onClick={fetchBeds}
           disabled={loading}
-          className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm self-start sm:self-auto"
+          className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 hover:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm self-start sm:self-auto"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin text-teal-400' : ''}`} />
           <span>Refresh</span>
@@ -266,7 +266,7 @@ export const NurseBedsPage: React.FC = () => {
                 {allowedTransitions.length > 0 ? (
                   <button
                     onClick={() => openTransitionModal(bed)}
-                    className="w-full py-1.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-xs font-bold text-gray-700 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition flex items-center justify-center gap-1.5 shadow-sm"
+                    className="w-full py-1.5 rounded-xl bg-gray-200 hover:bg-gray-300 text-xs font-bold text-gray-700 hover:text-white transition flex items-center justify-center gap-1.5 shadow-sm"
                   >
                     <RefreshCw className="h-3.5 w-3.5 text-teal-400" />
                     <span>Change Status</span>
@@ -286,13 +286,13 @@ export const NurseBedsPage: React.FC = () => {
           <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
               <div>
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
                   <BedDouble className="h-5 w-5 text-teal-400" />
                   <span>Update Bed Status ({activeBed.code})</span>
                 </h3>
                 <p className="text-xs text-gray-500">Permitted nurse operational transition</p>
               </div>
-              <button onClick={() => setActiveBed(null)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <button onClick={() => setActiveBed(null)} className="text-gray-500 hover:text-white">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -345,14 +345,14 @@ export const NurseBedsPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setActiveBed(null)}
-                  className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 transition"
+                  className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 hover:bg-gray-300 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-teal-900/40 transition disabled:opacity-50"
+                  className="rounded-xl bg-teal-600 hover:bg-teal-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-teal-900/40 transition disabled:opacity-50"
                 >
                   {submitting ? 'Updating...' : 'Confirm Transition'}
                 </button>

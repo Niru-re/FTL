@@ -162,7 +162,7 @@ export const EmergencyMap: React.FC<EmergencyMapProps> = ({
               isSelected
                 ? 'bg-emerald-600 text-white border-emerald-400 scale-110 shadow-emerald-600/30 ring-4 ring-emerald-500/20'
                 : h.is_eligible
-                ? 'bg-gray-100/90 text-sky-400 border-sky-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-sky-400'
+                ? 'bg-gray-100/90 text-sky-400 border-sky-500/30 hover:border-sky-400'
                 : 'bg-gray-100/60 text-gray-400 border-gray-200 opacity-60'
             }`}>
               <Building2 className="h-4 w-4" />

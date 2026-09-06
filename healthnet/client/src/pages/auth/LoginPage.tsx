@@ -157,9 +157,9 @@ export const LoginPage: React.FC = () => {
                     type="button"
                     onClick={() => handleDemo('ADMIN')}
                     disabled={isLoading}
-                    className="flex flex-col items-center justify-center p-3 rounded-xl border border-purple-200 bg-purple-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-purple-100 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-purple-300 transition group text-center disabled:opacity-50"
+                    className="flex flex-col items-center justify-center p-3 rounded-xl border border-purple-200 bg-purple-50 hover:bg-purple-100 hover:border-purple-300 transition group text-center disabled:opacity-50"
                   >
-                    <ShieldCheck className="h-5 w-5 text-purple-500 mb-1 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:scale-110 transition-transform" />
+                    <ShieldCheck className="h-5 w-5 text-purple-500 mb-1 group-hover:scale-110 transition-transform" />
                     <span className="text-xs font-bold text-gray-800">Admin</span>
                     <span className="text-[10px] text-purple-500 font-mono mt-0.5">admin@healthnet.demo</span>
                   </button>
@@ -168,9 +168,9 @@ export const LoginPage: React.FC = () => {
                     type="button"
                     onClick={() => handleDemo('DOCTOR')}
                     disabled={isLoading}
-                    className="flex flex-col items-center justify-center p-3 rounded-xl border border-blue-200 bg-blue-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-blue-100 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-blue-300 transition group text-center disabled:opacity-50"
+                    className="flex flex-col items-center justify-center p-3 rounded-xl border border-blue-200 bg-blue-50 hover:bg-blue-100 hover:border-blue-300 transition group text-center disabled:opacity-50"
                   >
-                    <Stethoscope className="h-5 w-5 text-blue-500 mb-1 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:scale-110 transition-transform" />
+                    <Stethoscope className="h-5 w-5 text-blue-500 mb-1 group-hover:scale-110 transition-transform" />
                     <span className="text-xs font-bold text-gray-800">Doctor</span>
                     <span className="text-[10px] text-blue-500 font-mono mt-0.5">doctor@healthnet.demo</span>
                   </button>
@@ -179,9 +179,9 @@ export const LoginPage: React.FC = () => {
                     type="button"
                     onClick={() => handleDemo('NURSE')}
                     disabled={isLoading}
-                    className="flex flex-col items-center justify-center p-3 rounded-xl border border-teal-200 bg-teal-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-100 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-teal-300 transition group text-center disabled:opacity-50"
+                    className="flex flex-col items-center justify-center p-3 rounded-xl border border-teal-200 bg-teal-50 hover:bg-teal-100 hover:border-teal-300 transition group text-center disabled:opacity-50"
                   >
-                    <UserCheck className="h-5 w-5 text-teal-500 mb-1 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:scale-110 transition-transform" />
+                    <UserCheck className="h-5 w-5 text-teal-500 mb-1 group-hover:scale-110 transition-transform" />
                     <span className="text-xs font-bold text-gray-800">Nurse</span>
                     <span className="text-[10px] text-teal-500 font-mono mt-0.5">nurse@healthnet.demo</span>
                   </button>
@@ -230,7 +230,7 @@ export const LoginPage: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-orange-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-600 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition active:scale-95 disabled:opacity-50"
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-orange-500 hover:bg-orange-600 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition active:scale-95 disabled:opacity-50"
                 >
                   {isLoading ? 'Signing in...' : 'Sign In'}
                   <ArrowRight className="h-4 w-4" />
@@ -249,7 +249,7 @@ export const LoginPage: React.FC = () => {
                     key={role}
                     type="button"
                     onClick={() => handleDemo(role)}
-                    className="w-full text-left p-1.5 rounded bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-white flex items-center justify-between transition"
+                    className="w-full text-left p-1.5 rounded hover:bg-white flex items-center justify-between transition"
                   >
                     <span>&bull; {role.charAt(0) + role.slice(1).toLowerCase()}: <code className={`${color} font-mono`}>{e}</code></span>
                     <code className="text-gray-600 font-mono bg-white px-1.5 py-0.5 rounded border border-gray-200">{pass}</code>

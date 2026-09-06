@@ -63,7 +63,7 @@ export const DoctorAlertsPage: React.FC = () => {
             <Bell className="h-4 w-4 text-rose-400" />
             <span className="text-xs font-bold uppercase tracking-wider text-rose-400">Clinical Alarms</span>
           </div>
-          <h1 className="text-2xl font-black tracking-tight text-white">
+          <h1 className="text-2xl font-black tracking-tight text-gray-900">
             Clinical Alerts & Escalations
           </h1>
           <p className="text-xs text-gray-500 mt-0.5">
@@ -72,7 +72,7 @@ export const DoctorAlertsPage: React.FC = () => {
         </div>
         <button
           onClick={() => { setIsLoading(true); fetchAlerts(); }}
-          className="flex items-center gap-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300 self-start md:self-auto"
+          className="flex items-center gap-2 rounded-xl bg-gray-200 hover:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300 self-start md:self-auto"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
           <span>Refresh Alerts</span>
@@ -95,7 +95,7 @@ export const DoctorAlertsPage: React.FC = () => {
               key={s}
               onClick={() => setFilterSeverity(s)}
               className={`px-3 py-1 text-xs font-bold rounded-lg transition uppercase ${
-                filterSeverity === s ? 'bg-sky-600 text-gray-900' : 'bg-gray-50 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 border border-gray-200'
+                filterSeverity === s ? 'bg-sky-600 text-gray-900' : 'bg-gray-50 text-gray-500 hover:text-gray-900 border border-gray-200'
               }`}
             >
               {s}
@@ -162,7 +162,7 @@ export const DoctorAlertsPage: React.FC = () => {
                 {alt.patient_id && (
                   <button
                     onClick={() => navigate(`/doctor/patients/${alt.patient_id}`)}
-                    className="flex items-center gap-1.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-bold text-sky-300 transition border border-gray-300"
+                    className="flex items-center gap-1.5 rounded-xl bg-gray-200 hover:bg-gray-300 px-3.5 py-2 text-xs font-bold text-sky-300 transition border border-gray-300"
                   >
                     <Eye className="h-3.5 w-3.5" />
                     <span>Open Patient</span>
@@ -171,7 +171,7 @@ export const DoctorAlertsPage: React.FC = () => {
                 {!alt.is_read ? (
                   <button
                     onClick={() => handleAcknowledge(alt.id)}
-                    className="flex items-center gap-1.5 rounded-xl bg-sky-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-500 px-3.5 py-2 text-xs font-bold text-white transition"
+                    className="flex items-center gap-1.5 rounded-xl bg-sky-600 hover:bg-sky-500 px-3.5 py-2 text-xs font-bold text-white transition"
                   >
                     <Check className="h-3.5 w-3.5" />
                     <span>Acknowledge</span>

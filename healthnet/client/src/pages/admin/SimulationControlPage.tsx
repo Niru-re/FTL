@@ -146,7 +146,7 @@ export const SimulationControlPage: React.FC = () => {
           <button
             onClick={handleStartFullDemo}
             disabled={demoRunning}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:from-teal-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:to-cyan-500 text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-teal-900/30 transition active:scale-95 disabled:opacity-50"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-teal-900/30 transition active:scale-95 disabled:opacity-50"
           >
             <Sparkles className="h-4 w-4" />
             {demoRunning ? "Running Demo..." : "Start Full Emergency Demo"}
@@ -154,7 +154,7 @@ export const SimulationControlPage: React.FC = () => {
 
           <button
             onClick={handleResetDemo}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-700 border border-gray-300 text-xs font-bold uppercase tracking-wider transition active:scale-95"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-700 border border-gray-300 text-xs font-bold uppercase tracking-wider transition active:scale-95"
           >
             <RotateCcw className="h-4 w-4 text-amber-400" />
             Reset Demo State
@@ -168,7 +168,7 @@ export const SimulationControlPage: React.FC = () => {
             <Radio className="h-4 w-4 text-teal-400 animate-pulse" />
             <span>{actionMessage}</span>
           </div>
-          <button onClick={() => setActionMessage(null)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white text-xs">Dismiss</button>
+          <button onClick={() => setActionMessage(null)} className="text-gray-500 hover:text-white text-xs">Dismiss</button>
         </div>
       )}
 
@@ -178,7 +178,7 @@ export const SimulationControlPage: React.FC = () => {
         <div className="bg-gray-100 border border-gray-200 rounded-2xl p-6 flex flex-col justify-between shadow-xl">
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+              <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider flex items-center gap-2">
                 <HeartPulse className="h-4 w-4 text-rose-400" />
                 Patient Vitals Simulator
               </h2>
@@ -227,7 +227,7 @@ export const SimulationControlPage: React.FC = () => {
             <div className="flex gap-2">
               <button
                 onClick={handleStartPatientSim}
-                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-rose-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-500 text-white text-xs font-bold uppercase tracking-wider transition active:scale-95 shadow-md shadow-rose-950/40"
+                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold uppercase tracking-wider transition active:scale-95 shadow-md shadow-rose-950/40"
               >
                 <Play className="h-3.5 w-3.5" />
                 Start Simulation
@@ -235,7 +235,7 @@ export const SimulationControlPage: React.FC = () => {
 
               <button
                 onClick={() => handleStopPatientSim()}
-                className="px-4 py-2.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-600 text-xs font-bold uppercase tracking-wider transition active:scale-95"
+                className="px-4 py-2.5 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-600 text-xs font-bold uppercase tracking-wider transition active:scale-95"
               >
                 <Square className="h-3.5 w-3.5 text-rose-400" />
                 Stop
@@ -253,7 +253,7 @@ export const SimulationControlPage: React.FC = () => {
                     <span>Patient #{pId}: <strong className="text-amber-400">{sim.profile}</strong></span>
                     <button
                       onClick={() => handleStopPatientSim(Number(pId))}
-                      className="text-[10px] text-rose-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-rose-300 underline"
+                      className="text-[10px] text-rose-400 hover:text-rose-300 underline"
                     >
                       Halt
                     </button>
@@ -268,7 +268,7 @@ export const SimulationControlPage: React.FC = () => {
         <div className="bg-gray-100 border border-gray-200 rounded-2xl p-6 flex flex-col justify-between shadow-xl">
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+              <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider flex items-center gap-2">
                 <Truck className="h-4 w-4 text-cyan-400" />
                 Ambulance Movement Simulator
               </h2>
@@ -311,7 +311,7 @@ export const SimulationControlPage: React.FC = () => {
                   setActionMessage(`Step error: ${e.message || e}`);
                 }
               }}
-              className="w-full py-2.5 rounded-xl bg-cyan-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-cyan-500 text-white text-xs font-bold uppercase tracking-wider transition active:scale-95 shadow-md shadow-cyan-950/40"
+              className="w-full py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold uppercase tracking-wider transition active:scale-95 shadow-md shadow-cyan-950/40"
             >
               Step Movement (-2m ETA)
             </button>
@@ -327,7 +327,7 @@ export const SimulationControlPage: React.FC = () => {
                   setActionMessage(`Arrival error: ${e.message || e}`);
                 }
               }}
-              className="w-full py-2.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-emerald-300 border border-gray-300 text-xs font-bold uppercase tracking-wider transition active:scale-95"
+              className="w-full py-2.5 rounded-xl bg-gray-200 hover:bg-gray-300 text-emerald-300 border border-gray-300 text-xs font-bold uppercase tracking-wider transition active:scale-95"
             >
               Trigger Immediate Arrival (ETA 0m)
             </button>
@@ -338,7 +338,7 @@ export const SimulationControlPage: React.FC = () => {
         <div className="bg-gray-100 border border-gray-200 rounded-2xl p-6 flex flex-col justify-between shadow-xl">
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+              <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider flex items-center gap-2">
                 <Sparkles className="h-4 w-4 text-teal-400" />
                 Automated 17-Step Hackathon Demo
               </h2>
@@ -377,7 +377,7 @@ export const SimulationControlPage: React.FC = () => {
           <button
             onClick={handleStartFullDemo}
             disabled={demoRunning}
-            className="w-full py-3 rounded-xl bg-gradient-to-r from-teal-600 via-emerald-600 to-teal-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:opacity-90 text-white text-xs font-black uppercase tracking-wider shadow-lg shadow-teal-950/40 transition active:scale-95 disabled:opacity-50"
+            className="w-full py-3 rounded-xl bg-gradient-to-r from-teal-600 via-emerald-600 to-teal-500 hover:opacity-90 text-white text-xs font-black uppercase tracking-wider shadow-lg shadow-teal-950/40 transition active:scale-95 disabled:opacity-50"
           >
             {demoRunning ? "Executing..." : "Start Full Emergency Demo"}
           </button>
@@ -388,7 +388,7 @@ export const SimulationControlPage: React.FC = () => {
       <div className="bg-gray-100 border border-gray-200 rounded-2xl p-6 shadow-xl space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-200 pb-3">
           <div>
-            <h2 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+            <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider flex items-center gap-2">
               <Zap className="h-4 w-4 text-amber-400" />
               Metropolitan Network Simulation Scenarios
             </h2>
@@ -408,56 +408,56 @@ export const SimulationControlPage: React.FC = () => {
               title: 'Normal Operation',
               badge: 'BASELINE',
               desc: 'Restores all hospitals to NORMAL, clears surge beds, and sets ambulances to available.',
-              color: 'text-emerald-400 border-emerald-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-emerald-950/20'
+              color: 'text-emerald-400 border-emerald-500/30 hover:bg-emerald-950/20'
             },
             {
               id: 'ICU_SURGE',
               title: 'ICU Saturation Surge',
               badge: 'CAPACITY',
               desc: 'Simulates acute ICU admissions. Spikes occupancy >85%, locking available ICU beds and firing alarms.',
-              color: 'text-rose-400 border-rose-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-950/20'
+              color: 'text-rose-400 border-rose-500/30 hover:bg-rose-950/20'
             },
             {
               id: 'EMERGENCY_SURGE',
               title: 'Emergency Surge',
               badge: 'DISPATCH',
               desc: 'Spikes ER intake volume, dispatching ambulances and elevating hospital emergency load scores.',
-              color: 'text-amber-400 border-amber-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-amber-950/20'
+              color: 'text-amber-400 border-amber-500/30 hover:bg-amber-950/20'
             },
             {
               id: 'VENTILATOR_SHORTAGE',
               title: 'Ventilator Shortage',
               badge: 'RESOURCES',
               desc: 'Drops ventilator reserves below city-wide safety thresholds, triggering mutual-aid equipment alerts.',
-              color: 'text-indigo-400 border-indigo-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-indigo-950/20'
+              color: 'text-indigo-400 border-indigo-500/30 hover:bg-indigo-950/20'
             },
             {
               id: 'AMBULANCE_SURGE',
               title: 'Ambulance Fleet Surge',
               badge: 'FLEET',
               desc: 'Puts available ambulances in transit, depleting street-level EMS readiness.',
-              color: 'text-cyan-400 border-cyan-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-cyan-950/20'
+              color: 'text-cyan-400 border-cyan-500/30 hover:bg-cyan-950/20'
             },
             {
               id: 'MASS_CASUALTY',
               title: 'Mass Casualty Disaster',
               badge: 'DISASTER',
               desc: 'Injects 12 concurrent multi-trauma casualties, activating city incident command and diversion routing.',
-              color: 'text-rose-500 border-rose-500/40 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-950/30'
+              color: 'text-rose-500 border-rose-500/40 hover:bg-rose-950/30'
             },
             {
               id: 'HOSPITAL_DIVERT',
               title: 'Hospital Divert Status',
               badge: 'ROUTING',
               desc: 'Places primary hospital on DIVERT. Emergency routing algorithm bypasses facility for incoming cases.',
-              color: 'text-amber-400 border-amber-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-amber-950/20'
+              color: 'text-amber-400 border-amber-500/30 hover:bg-amber-950/20'
             },
             {
               id: 'HOSPITAL_CLOSURE',
               title: 'Hospital Closure',
               badge: 'SAFETY',
               desc: 'Sets hospital to CLOSED due to simulated power/infrastructure failure.',
-              color: 'text-gray-500 border-slate-500/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-50/20'
+              color: 'text-gray-500 border-slate-500/30 hover:bg-gray-50/20'
             }
           ].map((scen) => (
             <div
@@ -466,7 +466,7 @@ export const SimulationControlPage: React.FC = () => {
             >
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xs font-bold text-white">{scen.title}</h3>
+                  <h3 className="text-xs font-bold text-gray-800">{scen.title}</h3>
                   <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-200 text-gray-600">
                     {scen.badge}
                   </span>
@@ -486,7 +486,7 @@ export const SimulationControlPage: React.FC = () => {
                     setActionMessage(`Scenario error: ${e.message || e}`);
                   }
                 }}
-                className="w-full py-2 rounded-lg bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-white text-xs font-bold transition active:scale-95 border border-gray-300"
+                className="w-full py-2 rounded-lg bg-gray-200 hover:bg-gray-300 text-white text-xs font-bold transition active:scale-95 border border-gray-300"
               >
                 Execute Scenario
               </button>
@@ -500,7 +500,7 @@ export const SimulationControlPage: React.FC = () => {
         <div className="flex items-center justify-between border-b border-gray-200 pb-3">
           <div className="flex items-center gap-2">
             <ShieldAlert className="h-5 w-5 text-rose-500" />
-            <h2 className="text-sm font-bold text-white uppercase tracking-wider">
+            <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider">
               Mass Casualty Command & Casualty Distribution View
             </h2>
           </div>
@@ -576,7 +576,7 @@ export const SimulationControlPage: React.FC = () => {
       <div className="bg-gray-100 border border-gray-200 rounded-2xl p-6 shadow-xl">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
-            <h2 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+            <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider flex items-center gap-2">
               <Radio className="h-4 w-4 text-teal-400" />
               Live WebSocket Event Bus Stream
             </h2>
@@ -587,7 +587,7 @@ export const SimulationControlPage: React.FC = () => {
 
           <button
             onClick={() => setLiveEvents([])}
-            className="text-xs text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white"
+            className="text-xs text-gray-500 hover:text-white"
           >
             Clear Stream
           </button>

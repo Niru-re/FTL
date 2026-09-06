@@ -84,7 +84,7 @@ export const PatientAppointmentsPage: React.FC = () => {
               <div className="shrink-0 flex items-center gap-2 pt-3 md:pt-0 border-t md:border-t-0 border-slate-100">
                 <Link
                   to="/patient/requests"
-                  className="px-3.5 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-slate-200 transition-colors"
+                  className="px-3.5 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors"
                 >
                   Reschedule / Inquire
                 </Link>

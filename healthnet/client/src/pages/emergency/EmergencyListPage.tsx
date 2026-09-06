@@ -54,7 +54,7 @@ export const EmergencyListPage: React.FC = () => {
             <Siren className="h-4 w-4 text-rose-400 animate-pulse" />
             <span className="text-xs font-bold uppercase tracking-wider text-rose-400">Emergency Operations</span>
           </div>
-          <h1 className="text-2xl font-black tracking-tight text-white">
+          <h1 className="text-2xl font-black tracking-tight text-gray-900">
             Emergency Cases & Smart Triage
           </h1>
           <p className="text-xs text-gray-500 mt-0.5">
@@ -65,14 +65,14 @@ export const EmergencyListPage: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => navigate('/admin/emergency/new')}
-            className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-rose-600 to-rose-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:from-rose-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:to-rose-400 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-rose-600/30 transition"
+            className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-500 hover:to-rose-400 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-rose-600/30 transition"
           >
             <Plus className="h-4 w-4" />
             <span>New Emergency Intake</span>
           </button>
           <button
             onClick={() => { setIsLoading(true); fetchCases(); }}
-            className="flex items-center gap-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300"
+            className="flex items-center gap-2 rounded-xl bg-gray-200 hover:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
             <span>Refresh</span>
@@ -135,7 +135,7 @@ export const EmergencyListPage: React.FC = () => {
               className={`rounded-lg px-2.5 py-1 text-[11px] font-bold transition ${
                 selectedStatus === st
                   ? 'bg-rose-600 text-white shadow-sm'
-                  : 'bg-gray-50/60 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-700 border border-gray-200'
+                  : 'bg-gray-50/60 text-gray-500 hover:text-gray-700 border border-gray-200'
               }`}
             >
               {st}
@@ -168,7 +168,7 @@ export const EmergencyListPage: React.FC = () => {
                 <div
                   key={c.id}
                   onClick={() => navigate(`/admin/emergency/${c.id}`)}
-                  className="p-4 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 cursor-pointer transition flex flex-col lg:flex-row lg:items-center justify-between gap-4 group"
+                  className="p-4 hover:bg-gray-200/40 cursor-pointer transition flex flex-col lg:flex-row lg:items-center justify-between gap-4 group"
                 >
                   {/* Left: Info */}
                   <div className="space-y-1.5 flex-1">
@@ -177,7 +177,7 @@ export const EmergencyListPage: React.FC = () => {
                       <span className="font-mono text-xs font-bold text-rose-400 bg-rose-950/80 border border-rose-500/30 px-2 py-0.5 rounded">
                         {c.case_number}
                       </span>
-                      <h3 className="text-sm font-bold text-white group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-rose-300 transition">
+                      <h3 className="text-sm font-bold text-white group-hover:text-rose-300 transition">
                         {c.patient_name}
                       </h3>
                       <span className="text-xs text-gray-500">
@@ -230,7 +230,7 @@ export const EmergencyListPage: React.FC = () => {
 
                     <button
                       onClick={(e) => { e.stopPropagation(); navigate(`/admin/emergency/${c.id}`); }}
-                      className="flex items-center gap-1.5 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-bold text-white transition border border-gray-300"
+                      className="flex items-center gap-1.5 rounded-xl bg-gray-200 hover:bg-gray-300 px-3.5 py-2 text-xs font-bold text-white transition border border-gray-300"
                     >
                       <span>Mission Control</span>
                       <ChevronRight className="h-3.5 w-3.5 text-rose-400" />

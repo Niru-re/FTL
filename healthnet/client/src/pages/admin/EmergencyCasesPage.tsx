@@ -73,14 +73,14 @@ export const EmergencyCasesPage: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={fetchCases}
-            className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-gray-100 px-3 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200"
+            className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-gray-100 px-3 py-2 text-xs font-semibold text-gray-600 hover:bg-gray-200"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
             <span>Refresh</span>
           </button>
           <button
             onClick={openEmergencyModal}
-            className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-rose-600 to-amber-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-rose-600/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:from-rose-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:to-amber-500 transition transform active:scale-95"
+            className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-rose-600 to-amber-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-rose-600/30 hover:from-rose-500 hover:to-amber-500 transition transform active:scale-95"
           >
             <Plus className="h-4 w-4" />
             <span>New Emergency Intake</span>
@@ -122,12 +122,12 @@ export const EmergencyCasesPage: React.FC = () => {
         {filteredCases.map((c) => (
           <div
             key={c.id}
-            className="rounded-2xl border border-gray-200 bg-gray-100/80 p-5 glass-panel bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition flex flex-col md:flex-row md:items-center justify-between gap-4"
+            className="rounded-2xl border border-gray-200 bg-gray-100/80 p-5 glass-panel hover:border-gray-300 transition flex flex-col md:flex-row md:items-center justify-between gap-4"
           >
             <div className="space-y-2">
               <div className="flex flex-wrap items-center gap-2.5">
                 <span className="font-mono text-sm font-extrabold text-teal-400">{c.case_number}</span>
-                <span className="text-sm font-bold text-white">{c.patient_name} ({c.patient_age}y {c.patient_gender})</span>
+                <span className="text-sm font-bold text-gray-800">{c.patient_name} ({c.patient_age}y {c.patient_gender})</span>
                 <StatusBadge type="priority" status={c.priority} />
                 <StatusBadge type="ambulance" status={c.status} />
               </div>
@@ -158,7 +158,7 @@ export const EmergencyCasesPage: React.FC = () => {
             <div className="rounded-xl border border-gray-200 bg-gray-50/70 p-3 min-w-[240px] space-y-1.5 text-xs">
               <div className="flex items-center justify-between">
                 <span className="text-gray-500">Assigned Hospital:</span>
-                <span className="font-bold text-white truncate max-w-[130px]">{c.assigned_hospital_name || 'Allocated'}</span>
+                <span className="font-bold text-gray-800 truncate max-w-[130px]">{c.assigned_hospital_name || 'Allocated'}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-gray-500">Reserved Bed:</span>

@@ -160,7 +160,7 @@ export const EmergencyIntakeModal: React.FC<EmergencyIntakeModalProps> = ({
           </div>
           <button
             onClick={resetAndClose}
-            className="rounded-lg p-1.5 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 transition"
+            className="rounded-lg p-1.5 text-gray-500 hover:bg-gray-200 hover:text-gray-900 transition"
           >
             <X className="h-5 w-5" />
           </button>
@@ -302,7 +302,7 @@ export const EmergencyIntakeModal: React.FC<EmergencyIntakeModalProps> = ({
                   Intelligent Resource Criteria Matcher
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
-                  <label className="flex items-center gap-2.5 rounded-lg border border-gray-200 bg-gray-100/80 p-2.5 cursor-pointer bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300">
+                  <label className="flex items-center gap-2.5 rounded-lg border border-gray-200 bg-gray-100/80 p-2.5 cursor-pointer hover:border-gray-300">
                     <input
                       type="checkbox"
                       checked={requiredIcu}
@@ -312,7 +312,7 @@ export const EmergencyIntakeModal: React.FC<EmergencyIntakeModalProps> = ({
                     <div className="text-xs font-semibold text-gray-900">ICU Bed Required</div>
                   </label>
 
-                  <label className="flex items-center gap-2.5 rounded-lg border border-gray-200 bg-gray-100/80 p-2.5 cursor-pointer bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300">
+                  <label className="flex items-center gap-2.5 rounded-lg border border-gray-200 bg-gray-100/80 p-2.5 cursor-pointer hover:border-gray-300">
                     <input
                       type="checkbox"
                       checked={requiredVentilator}
@@ -322,7 +322,7 @@ export const EmergencyIntakeModal: React.FC<EmergencyIntakeModalProps> = ({
                     <div className="text-xs font-semibold text-gray-900">Ventilator Required</div>
                   </label>
 
-                  <label className="flex items-center gap-2.5 rounded-lg border border-gray-200 bg-gray-100/80 p-2.5 cursor-pointer bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300">
+                  <label className="flex items-center gap-2.5 rounded-lg border border-gray-200 bg-gray-100/80 p-2.5 cursor-pointer hover:border-gray-300">
                     <input
                       type="checkbox"
                       checked={requiredOxygen}
@@ -353,14 +353,14 @@ export const EmergencyIntakeModal: React.FC<EmergencyIntakeModalProps> = ({
                 <button
                   type="button"
                   onClick={resetAndClose}
-                  className="rounded-xl border border-gray-200 bg-gray-50 px-5 py-2.5 text-xs font-semibold text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-100 transition"
+                  className="rounded-xl border border-gray-200 bg-gray-50 px-5 py-2.5 text-xs font-semibold text-gray-500 hover:bg-gray-100 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-500 px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-teal-500/20 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:from-teal-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:to-cyan-400 transition transform active:scale-95 disabled:opacity-50"
+                  className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-500 px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-teal-500/20 hover:from-teal-500 hover:to-cyan-400 transition transform active:scale-95 disabled:opacity-50"
                 >
                   {isLoading ? 'Scanning Hospitals...' : 'Find Best Hospital'}
                   <ArrowRight className="h-4 w-4" />
@@ -379,7 +379,7 @@ export const EmergencyIntakeModal: React.FC<EmergencyIntakeModalProps> = ({
                 </div>
                 <button
                   onClick={() => setStep(1)}
-                  className="text-xs text-teal-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:underline"
+                  className="text-xs text-teal-400 hover:underline"
                 >
                   &larr; Adjust Criteria
                 </button>
@@ -397,7 +397,7 @@ export const EmergencyIntakeModal: React.FC<EmergencyIntakeModalProps> = ({
                       className={`relative rounded-xl border p-4 cursor-pointer transition-all ${
                         isSelected
                           ? 'border-teal-500 bg-teal-500/10 shadow-lg shadow-teal-500/10'
-                          : 'border-gray-200 bg-gray-50/60 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300'
+                          : 'border-gray-200 bg-gray-50/60 hover:border-gray-300'
                       }`}
                     >
                       {isTopRanked && (
@@ -466,14 +466,14 @@ export const EmergencyIntakeModal: React.FC<EmergencyIntakeModalProps> = ({
                 <div className="flex gap-3">
                   <button
                     onClick={() => setStep(1)}
-                    className="rounded-xl border border-gray-200 px-4 py-2 text-xs font-semibold text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-100"
+                    className="rounded-xl border border-gray-200 px-4 py-2 text-xs font-semibold text-gray-500 hover:bg-gray-100"
                   >
                     Back
                   </button>
                   <button
                     onClick={handleReserveAndDispatch}
                     disabled={!selectedHospital || isReserving}
-                    className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-rose-600 to-amber-600 px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-rose-600/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:from-rose-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:to-amber-500 transition transform active:scale-95 disabled:opacity-50"
+                    className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-rose-600 to-amber-600 px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-rose-600/30 hover:from-rose-500 hover:to-amber-500 transition transform active:scale-95 disabled:opacity-50"
                   >
                     {isReserving ? 'Reserving Bed & Dispatching...' : 'Reserve Bed & Dispatch Ambulance'}
                     <CheckCircle2 className="h-4 w-4" />
@@ -521,7 +521,7 @@ export const EmergencyIntakeModal: React.FC<EmergencyIntakeModalProps> = ({
               <div className="pt-4 flex justify-center gap-4">
                 <button
                   onClick={resetAndClose}
-                  className="rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 text-white font-bold text-xs uppercase tracking-wider px-8 py-3 shadow-lg shadow-teal-600/20 transition"
+                  className="rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs uppercase tracking-wider px-8 py-3 shadow-lg shadow-teal-600/20 transition"
                 >
                   Return to Dashboard
                 </button>

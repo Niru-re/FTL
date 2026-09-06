@@ -169,7 +169,7 @@ export const ECGWaveform: React.FC<ECGWaveformProps> = ({
               <button
                 type="button"
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="flex items-center gap-1 rounded bg-gray-200 px-2 py-0.5 text-[10px] font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 transition border border-gray-300"
+                className="flex items-center gap-1 rounded bg-gray-200 px-2 py-0.5 text-[10px] font-bold text-gray-600 hover:bg-gray-300 transition border border-gray-300"
               >
                 {isPlaying ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
                 <span>{isPlaying ? 'Freeze' : 'Resume'}</span>

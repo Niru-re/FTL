@@ -60,7 +60,7 @@ export const AnalyticsPage: React.FC = () => {
 
         <button
           onClick={fetchAnalytics}
-          className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-gray-100 px-3 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 self-start"
+          className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-gray-100 px-3 py-2 text-xs font-semibold text-gray-600 hover:bg-gray-200 self-start"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
           <span>Refresh Charts</span>
@@ -104,7 +104,7 @@ export const AnalyticsPage: React.FC = () => {
         {/* Hospital ICU vs Ward Occupancy Bar Chart */}
         <div className="rounded-2xl border border-gray-200 bg-gray-100/80 p-5 glass-panel space-y-4">
           <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-            <h3 className="text-sm font-bold text-white flex items-center gap-2">
+            <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
               <Building2 className="h-4 w-4 text-teal-400" />
               <span>Hospital Occupancy Comparison (%)</span>
             </h3>
@@ -131,7 +131,7 @@ export const AnalyticsPage: React.FC = () => {
         {/* Hourly Admissions vs Discharges Area Chart */}
         <div className="rounded-2xl border border-gray-200 bg-gray-100/80 p-5 glass-panel space-y-4">
           <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-            <h3 className="text-sm font-bold text-white flex items-center gap-2">
+            <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
               <TrendingUp className="h-4 w-4 text-cyan-400" />
               <span>Hourly Patient Admissions & Emergency Intake</span>
             </h3>
@@ -166,7 +166,7 @@ export const AnalyticsPage: React.FC = () => {
         {/* Department Bed Utilization */}
         <div className="rounded-2xl border border-gray-200 bg-gray-100/80 p-5 glass-panel space-y-4">
           <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-            <h3 className="text-sm font-bold text-white flex items-center gap-2">
+            <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
               <BedDouble className="h-4 w-4 text-purple-400" />
               <span>Departmental Bed Distribution</span>
             </h3>
@@ -192,7 +192,7 @@ export const AnalyticsPage: React.FC = () => {
         {/* Ambulance Response Time Trends */}
         <div className="rounded-2xl border border-gray-200 bg-gray-100/80 p-5 glass-panel space-y-4">
           <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-            <h3 className="text-sm font-bold text-white flex items-center gap-2">
+            <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
               <Clock className="h-4 w-4 text-emerald-400" />
               <span>Ambulance Response Time Weekly (mins)</span>
             </h3>

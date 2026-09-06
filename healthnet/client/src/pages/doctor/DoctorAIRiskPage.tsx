@@ -86,7 +86,7 @@ export const DoctorAIRiskPage: React.FC = () => {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-gray-100/90 border border-gray-200 p-6 rounded-2xl">
         <div>
           <div className="flex items-center gap-3 mb-1">
-            <h1 className="text-2xl font-black tracking-tight text-white flex items-center gap-2">
+            <h1 className="text-2xl font-black tracking-tight text-gray-900 flex items-center gap-2">
               <ShieldAlert className="h-6 w-6 text-teal-400" />
               Inpatient Deterioration Risk Registry
             </h1>
@@ -101,7 +101,7 @@ export const DoctorAIRiskPage: React.FC = () => {
 
         <button
           onClick={loadData}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-700 border border-gray-300 text-xs font-bold uppercase tracking-wider transition active:scale-95 self-start md:self-auto"
+          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-700 border border-gray-300 text-xs font-bold uppercase tracking-wider transition active:scale-95 self-start md:self-auto"
         >
           <RefreshCw className={`h-4 w-4 text-teal-400 ${isLoading ? 'animate-spin' : ''}`} />
           Refresh Registry
@@ -129,7 +129,7 @@ export const DoctorAIRiskPage: React.FC = () => {
               className={`px-3 py-1.5 rounded-xl text-[10px] font-extrabold uppercase tracking-wider transition ${
                 filterLevel === lvl
                   ? 'bg-teal-500 text-slate-950 font-black shadow-md'
-                  : 'bg-gray-100 border border-gray-200 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900'
+                  : 'bg-gray-100 border border-gray-200 text-gray-500 hover:text-gray-900'
               }`}
             >
               {lvl}
@@ -164,7 +164,7 @@ export const DoctorAIRiskPage: React.FC = () => {
                 filtered.map((pt) => (
                   <tr
                     key={pt.patient_id}
-                    className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 transition cursor-pointer"
+                    className="hover:bg-gray-200/40 transition cursor-pointer"
                     onClick={() => navigate(`/doctor/patients/${pt.patient_id}`)}
                   >
                     <td className="py-4 px-4">
@@ -173,7 +173,7 @@ export const DoctorAIRiskPage: React.FC = () => {
                           {pt.full_name.charAt(0)}
                         </div>
                         <div>
-                          <div className="font-bold text-white text-sm bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-teal-300">{pt.full_name}</div>
+                          <div className="font-bold text-gray-800 text-sm hover:text-teal-300">{pt.full_name}</div>
                           <div className="text-[10px] text-gray-500 font-mono">{pt.mrn} • {pt.age}y {pt.gender}</div>
                         </div>
                       </div>
@@ -219,7 +219,7 @@ export const DoctorAIRiskPage: React.FC = () => {
                           e.stopPropagation();
                           navigate(`/doctor/patients/${pt.patient_id}`);
                         }}
-                        className="px-3 py-1.5 rounded-lg bg-teal-600/20 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-600/30 text-teal-300 border border-teal-500/30 text-xs font-bold tracking-wider transition"
+                        className="px-3 py-1.5 rounded-lg bg-teal-600/20 hover:bg-teal-600/30 text-teal-300 border border-teal-500/30 text-xs font-bold tracking-wider transition"
                       >
                         Inspect Command Center &rarr;
                       </button>

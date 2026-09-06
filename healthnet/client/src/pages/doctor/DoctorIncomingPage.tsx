@@ -38,7 +38,7 @@ export const DoctorIncomingPage: React.FC = () => {
             <Siren className="h-4 w-4 text-rose-400 animate-pulse" />
             <span className="text-xs font-bold uppercase tracking-wider text-rose-400">Emergency Intake</span>
           </div>
-          <h1 className="text-2xl font-black tracking-tight text-white">
+          <h1 className="text-2xl font-black tracking-tight text-gray-900">
             Incoming Emergency Cases & Ambulances
           </h1>
           <p className="text-xs text-gray-500 mt-0.5">
@@ -47,7 +47,7 @@ export const DoctorIncomingPage: React.FC = () => {
         </div>
         <button
           onClick={() => { setIsLoading(true); fetchIncoming(); }}
-          className="flex items-center gap-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300 self-start md:self-auto"
+          className="flex items-center gap-2 rounded-xl bg-gray-200 hover:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300 self-start md:self-auto"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
           <span>Refresh Transit</span>

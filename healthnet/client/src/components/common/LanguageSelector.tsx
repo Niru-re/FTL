@@ -25,7 +25,7 @@ export const LanguageSelector: React.FC<{ variant?: 'light' | 'dark' | 'compact'
           className={`px-2 py-1 text-[11px] font-bold rounded-lg transition-all cursor-pointer ${
             language === opt.code
               ? 'bg-white text-orange-600 shadow-xs border border-orange-200'
-              : 'text-slate-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-slate-900 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-slate-200/50'
+              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
           }`}
           title={opt.label}
         >

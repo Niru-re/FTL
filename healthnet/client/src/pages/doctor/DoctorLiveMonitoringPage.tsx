@@ -46,7 +46,7 @@ export const DoctorLiveMonitoringPage: React.FC = () => {
             <Radio className="h-4 w-4 text-emerald-400 animate-pulse" />
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">ICU Telemetry Wall</span>
           </div>
-          <h1 className="text-2xl font-black tracking-tight text-white">
+          <h1 className="text-2xl font-black tracking-tight text-gray-900">
             Multi-Bed Live Telemetry Monitoring
           </h1>
           <p className="text-xs text-gray-500 mt-0.5">
@@ -60,7 +60,7 @@ export const DoctorLiveMonitoringPage: React.FC = () => {
               <button
                 key={r}
                 onClick={() => setFilterRisk(r)}
-                className={`px-3 py-1 text-xs font-bold rounded-lg transition uppercase ${filterRisk === r ? 'bg-sky-600 text-white' : 'text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white'}`}
+                className={`px-3 py-1 text-xs font-bold rounded-lg transition uppercase ${filterRisk === r ? 'bg-sky-600 text-white' : 'text-gray-500 hover:text-white'}`}
               >
                 {r}
               </button>
@@ -69,7 +69,7 @@ export const DoctorLiveMonitoringPage: React.FC = () => {
 
           <button
             onClick={() => { setIsLoading(true); fetchPatients(); }}
-            className="flex items-center gap-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300"
+            className="flex items-center gap-2 rounded-xl bg-gray-200 hover:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
             <span>Sync Wall</span>
@@ -98,14 +98,14 @@ export const DoctorLiveMonitoringPage: React.FC = () => {
                   isCrit ? 'border-rose-500/50 bg-rose-950/10' :
                   isHigh ? 'border-amber-500/40 bg-amber-950/10' :
                   'border-gray-200 bg-gray-100/70'
-                } p-4 shadow-xl backdrop-blur-sm space-y-3 cursor-pointer bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-sky-500/60 transition group flex flex-col justify-between`}
+                } p-4 shadow-xl backdrop-blur-sm space-y-3 cursor-pointer hover:border-sky-500/60 transition group flex flex-col justify-between`}
               >
                 {/* Panel Header */}
                 <div className="flex items-start justify-between gap-2">
                   <div>
                     <div className="flex items-center gap-2">
                       <span className={`h-2.5 w-2.5 rounded-full ${isCrit ? 'bg-rose-500 animate-pulse' : isHigh ? 'bg-amber-400' : 'bg-emerald-400'}`} />
-                      <h3 className="text-sm font-black text-white group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-sky-300 transition">
+                      <h3 className="text-sm font-black text-white group-hover:text-sky-300 transition">
                         {p.full_name}
                       </h3>
                       <span className="font-mono text-[10px] text-gray-500 bg-gray-200 px-1.5 py-0.5 rounded">
@@ -165,7 +165,7 @@ export const DoctorLiveMonitoringPage: React.FC = () => {
                 {/* Panel Footer */}
                 <div className="flex items-center justify-between pt-2 border-t border-gray-200/80 text-[11px] text-gray-500">
                   <span className="line-clamp-1">{p.diagnosis}</span>
-                  <span className="text-sky-400 font-bold flex items-center gap-1 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:translate-x-0.5 transition flex-shrink-0">
+                  <span className="text-sky-400 font-bold flex items-center gap-1 group-hover:translate-x-0.5 transition flex-shrink-0">
                     <span>Command Center</span>
                     <ChevronRight className="h-3.5 w-3.5" />
                   </span>

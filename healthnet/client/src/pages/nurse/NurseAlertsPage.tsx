@@ -56,7 +56,7 @@ export const NurseAlertsPage: React.FC = () => {
               Clinical Alert Feed & Notifications
             </span>
           </div>
-          <h1 className="text-2xl font-black tracking-tight text-white mt-1">
+          <h1 className="text-2xl font-black tracking-tight text-gray-900 mt-1">
             Department & Patient Alerts
           </h1>
           <p className="text-xs text-gray-500">
@@ -67,7 +67,7 @@ export const NurseAlertsPage: React.FC = () => {
         <button
           onClick={fetchAlerts}
           disabled={loading}
-          className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm self-start sm:self-auto"
+          className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 hover:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm self-start sm:self-auto"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin text-rose-400' : ''}`} />
           <span>Refresh</span>
@@ -179,7 +179,7 @@ export const NurseAlertsPage: React.FC = () => {
                 {alert.patient_id && (
                   <Link
                     to={`/nurse/patients/${alert.patient_id}`}
-                    className="rounded-xl border border-gray-300 bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-700 px-3 py-1.5 text-xs font-semibold transition flex items-center gap-1"
+                    className="rounded-xl border border-gray-300 bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-1.5 text-xs font-semibold transition flex items-center gap-1"
                   >
                     <span>View Patient</span>
                     <ChevronRight className="h-3 w-3" />
@@ -189,7 +189,7 @@ export const NurseAlertsPage: React.FC = () => {
                 {!alert.is_read ? (
                   <button
                     onClick={() => handleAcknowledge(alert.id)}
-                    className="rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 text-white px-3.5 py-1.5 text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
+                    className="rounded-xl bg-teal-600 hover:bg-teal-500 text-white px-3.5 py-1.5 text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
                   >
                     <CheckCircle2 className="h-3.5 w-3.5" />
                     <span>Acknowledge</span>

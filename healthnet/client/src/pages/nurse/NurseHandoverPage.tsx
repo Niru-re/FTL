@@ -79,7 +79,7 @@ export const NurseHandoverPage: React.FC = () => {
               Shift Transition & Continuity of Care
             </span>
           </div>
-          <h1 className="text-2xl font-black tracking-tight text-white mt-1">
+          <h1 className="text-2xl font-black tracking-tight text-gray-900 mt-1">
             Nurse Shift Handover Station
           </h1>
           <p className="text-xs text-gray-500">
@@ -91,14 +91,14 @@ export const NurseHandoverPage: React.FC = () => {
           <button
             onClick={fetchHandoverData}
             disabled={loading}
-            className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm"
+            className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 hover:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin text-amber-400' : ''}`} />
             <span>Refresh</span>
           </button>
           <button
             onClick={() => setShowCreateModal(true)}
-            className="flex items-center gap-2 rounded-xl bg-amber-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-amber-500 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-amber-900/40 transition"
+            className="flex items-center gap-2 rounded-xl bg-amber-600 hover:bg-amber-500 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-amber-900/40 transition"
           >
             <Plus className="h-4 w-4" />
             <span>CREATE SHIFT HANDOVER</span>
@@ -123,7 +123,7 @@ export const NurseHandoverPage: React.FC = () => {
       <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-5 backdrop-blur-md shadow-xl space-y-4">
         <div className="flex items-center justify-between border-b border-gray-200 pb-3">
           <div>
-            <h2 className="text-sm font-bold text-white flex items-center gap-2">
+            <h2 className="text-sm font-bold text-gray-900 flex items-center gap-2">
               <User className="h-4 w-4 text-teal-400" />
               <span>Active Ward Patient Transfer Matrix ({patients.length})</span>
             </h2>
@@ -148,8 +148,8 @@ export const NurseHandoverPage: React.FC = () => {
             </thead>
             <tbody className="divide-y divide-gray-200/60">
               {patients.slice(0, 8).map((p) => (
-                <tr key={p.id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 transition">
-                  <td className="py-3 pl-2 font-bold text-white">
+                <tr key={p.id} className="hover:bg-gray-200/40 transition">
+                  <td className="py-3 pl-2 font-bold text-gray-800">
                     {p.full_name}
                     <span className="block text-[10px] font-mono text-gray-500 font-normal">{p.mrn}</span>
                   </td>
@@ -250,11 +250,11 @@ export const NurseHandoverPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
           <div className="w-full max-w-lg rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <h3 className="text-base font-bold text-white flex items-center gap-2">
+              <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
                 <ArrowRightLeft className="h-5 w-5 text-amber-400" />
                 <span>Create Shift Handover Record</span>
               </h3>
-              <button onClick={() => setShowCreateModal(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <button onClick={() => setShowCreateModal(false)} className="text-gray-500 hover:text-white">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -334,14 +334,14 @@ export const NurseHandoverPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowCreateModal(false)}
-                  className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 transition"
+                  className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 hover:bg-gray-300 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submitting || !generalNotes.trim()}
-                  className="rounded-xl bg-amber-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-amber-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-amber-900/40 transition disabled:opacity-50"
+                  className="rounded-xl bg-amber-600 hover:bg-amber-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-amber-900/40 transition disabled:opacity-50"
                 >
                   {submitting ? 'Saving...' : 'Save & Transfer Handover'}
                 </button>

@@ -76,7 +76,7 @@ export const BedStatusModal: React.FC<BedStatusModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg p-1.5 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
+            className="rounded-lg p-1.5 text-gray-500 hover:bg-gray-200 hover:text-white transition"
           >
             <X className="h-5 w-5" />
           </button>
@@ -118,7 +118,7 @@ export const BedStatusModal: React.FC<BedStatusModalProps> = ({
                   className={`flex items-start justify-between p-3 rounded-xl border cursor-pointer transition ${
                     selectedStatus === item.status
                       ? 'border-teal-500 bg-teal-500/10 shadow-sm'
-                      : 'border-gray-200 bg-gray-50/60 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300'
+                      : 'border-gray-200 bg-gray-50/60 hover:border-gray-300'
                   }`}
                 >
                   <div className="space-y-0.5">
@@ -171,7 +171,7 @@ export const BedStatusModal: React.FC<BedStatusModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
+            className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 hover:text-white transition"
           >
             Cancel
           </button>
@@ -179,7 +179,7 @@ export const BedStatusModal: React.FC<BedStatusModalProps> = ({
             type="button"
             onClick={handleUpdate}
             disabled={isUpdating}
-            className="flex-1 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition flex items-center justify-center gap-1.5"
+            className="flex-1 rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition flex items-center justify-center gap-1.5"
           >
             {isUpdating ? (
               <>

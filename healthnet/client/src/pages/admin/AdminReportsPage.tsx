@@ -100,7 +100,7 @@ export const AdminReportsPage: React.FC = () => {
 
         <button
           onClick={exportCSV}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sky-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-500 text-white text-xs font-bold shadow-lg shadow-sky-600/20 transition-all self-start md:self-auto"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold shadow-lg shadow-sky-600/20 transition-all self-start md:self-auto"
         >
           <Download className="w-4 h-4" />
           Export CSV Report
@@ -126,7 +126,7 @@ export const AdminReportsPage: React.FC = () => {
               className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                 reportType === r.id
                   ? 'bg-sky-600 text-white shadow-md'
-                  : 'bg-gray-50 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 border border-gray-200'
+                  : 'bg-gray-50 text-gray-500 hover:text-gray-900 border border-gray-200'
               }`}
             >
               {r.label}
@@ -148,7 +148,7 @@ export const AdminReportsPage: React.FC = () => {
                 className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
                   timeRange === t
                     ? 'bg-gray-200 text-sky-400 border border-sky-500/40'
-                    : 'text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-700'
+                    : 'text-gray-500 hover:text-gray-700'
                 }`}
               >
                 {t}
@@ -161,7 +161,7 @@ export const AdminReportsPage: React.FC = () => {
       {/* Generated Report Table */}
       <div className="bg-gray-100 border border-gray-200 rounded-2xl overflow-hidden shadow-2xl">
         <div className="p-4 border-b border-gray-200 flex items-center justify-between bg-gray-50/40">
-          <div className="text-xs font-bold text-white uppercase tracking-wide">
+          <div className="text-xs font-bold text-gray-800 uppercase tracking-wide">
             {reportType.replace('_', ' ')} • WINDOW: {timeRange} • {hospitals.length} HOSPITALS MONITORED
           </div>
           <div className="text-[10px] text-gray-400">
@@ -196,8 +196,8 @@ export const AdminReportsPage: React.FC = () => {
                 hospitals.map((h) => {
                   const occ = h.icu_occupancy_rate || 0;
                   return (
-                    <tr key={h.id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 transition-colors">
-                      <td className="px-5 py-3.5 font-bold text-white">
+                    <tr key={h.id} className="hover:bg-gray-200/40 transition-colors">
+                      <td className="px-5 py-3.5 font-bold text-gray-800">
                         {h.name}
                       </td>
                       <td className="px-4 py-3.5 text-gray-500">

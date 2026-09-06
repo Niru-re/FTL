@@ -116,7 +116,7 @@ export const PatientHospitalPage: React.FC = () => {
               href={`https://maps.google.com/?q=${info.lat},${info.lng}`}
               target="_blank"
               rel="noreferrer"
-              className="font-bold text-orange-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-700 inline-flex items-center gap-1"
+              className="font-bold text-orange-600 hover:text-orange-700 inline-flex items-center gap-1"
             >
               Get Directions <Navigation className="w-3 h-3" />
             </a>

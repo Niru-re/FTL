@@ -52,7 +52,7 @@ export const PatientTimelinePage: React.FC = () => {
                   idx === 0 ? 'bg-orange-500 ring-4 ring-orange-100' : 'bg-slate-300'
                 }`} />
 
-                <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4.5 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-orange-200 transition-colors">
+                <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4.5 hover:border-orange-200 transition-colors">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1.5">
                     <h3 className="text-sm font-bold text-slate-900">{item.title}</h3>
                     <span className="text-[11px] font-semibold text-orange-600 bg-orange-50 px-2 py-0.5 rounded-md self-start sm:self-auto">

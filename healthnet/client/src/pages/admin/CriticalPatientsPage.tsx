@@ -68,7 +68,7 @@ export const CriticalPatientsPage: React.FC = () => {
         <button
           onClick={fetchCritical}
           disabled={loading}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-700 text-xs font-semibold border border-gray-300 transition-colors self-start md:self-auto"
+          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs font-semibold border border-gray-300 transition-colors self-start md:self-auto"
         >
           <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin text-rose-400' : ''}`} />
           Refresh Watchlist
@@ -115,7 +115,7 @@ export const CriticalPatientsPage: React.FC = () => {
           />
         </div>
         <div className="text-xs text-gray-500">
-          Showing <span className="font-bold text-white">{filtered.length}</span> patients
+          Showing <span className="font-bold text-gray-800">{filtered.length}</span> patients
         </div>
       </div>
 
@@ -154,9 +154,9 @@ export const CriticalPatientsPage: React.FC = () => {
                   const isRising = p.velocity_direction === 'RAPIDLY RISING' || p.velocity_direction === 'RISING';
 
                   return (
-                    <tr key={p.patient_id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 transition-colors">
+                    <tr key={p.patient_id} className="hover:bg-gray-200/40 transition-colors">
                       <td className="px-5 py-3.5">
-                        <div className="font-bold text-white">{p.patient_name}</div>
+                        <div className="font-bold text-gray-800">{p.patient_name}</div>
                         <div className="font-mono text-[10px] text-gray-500">{p.mrn}</div>
                       </td>
                       <td className="px-4 py-3.5">

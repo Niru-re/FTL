@@ -128,7 +128,7 @@ export const PatientRequestsPage: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting || !message.trim()}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-orange-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-600 disabled:opacity-50 text-white font-bold text-xs rounded-xl shadow-xs transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white font-bold text-xs rounded-xl shadow-xs transition-colors cursor-pointer"
             >
               <Send className="w-3.5 h-3.5" />
               {isSubmitting ? 'Sending...' : 'Send to Care Team'}

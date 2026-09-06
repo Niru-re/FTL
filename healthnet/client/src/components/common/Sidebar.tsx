@@ -95,7 +95,7 @@ export const Sidebar: React.FC<{ className?: string }> = ({ className }) => {
                   key={idx}
                   type="button"
                   onClick={() => setPhaseModal(link.label)}
-                  className="w-full flex items-center justify-between rounded-lg px-3 py-2 text-xs font-medium text-gray-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-500 transition"
+                  className="w-full flex items-center justify-between rounded-lg px-3 py-2 text-xs font-medium text-gray-400 hover:bg-gray-50 hover:text-gray-500 transition"
                 >
                   <div className="flex items-center gap-3">
                     <Icon className="h-4 w-4 flex-shrink-0" />
@@ -117,7 +117,7 @@ export const Sidebar: React.FC<{ className?: string }> = ({ className }) => {
                   `flex items-center justify-between rounded-lg px-3 py-2 text-xs font-medium transition ${
                     isActive
                       ? 'bg-orange-50 text-orange-600 border border-orange-200/60'
-                      : 'text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900'
+                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }`
                 }
               >
@@ -184,7 +184,7 @@ export const Sidebar: React.FC<{ className?: string }> = ({ className }) => {
                 <Sparkles className="h-4 w-4 text-orange-500" />
                 <span>{phaseModal} Module</span>
               </span>
-              <button onClick={() => setPhaseModal(null)} className="text-gray-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-600">
+              <button onClick={() => setPhaseModal(null)} className="text-gray-400 hover:text-gray-600">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -193,7 +193,7 @@ export const Sidebar: React.FC<{ className?: string }> = ({ className }) => {
             </p>
             <button
               onClick={() => setPhaseModal(null)}
-              className="w-full rounded-xl bg-orange-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-600 py-2 text-xs font-bold text-white transition"
+              className="w-full rounded-xl bg-orange-500 hover:bg-orange-600 py-2 text-xs font-bold text-white transition"
             >
               Close
             </button>

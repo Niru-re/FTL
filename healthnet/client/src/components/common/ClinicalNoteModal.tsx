@@ -58,7 +58,7 @@ export const ClinicalNoteModal: React.FC<ClinicalNoteModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg p-1.5 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900"
+            className="rounded-lg p-1.5 text-gray-500 hover:bg-gray-200 hover:text-gray-900"
           >
             <X className="h-5 w-5" />
           </button>
@@ -106,14 +106,14 @@ export const ClinicalNoteModal: React.FC<ClinicalNoteModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="rounded-xl border border-gray-200 px-4 py-2 text-xs font-semibold text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200"
+              className="rounded-xl border border-gray-200 px-4 py-2 text-xs font-semibold text-gray-500 hover:bg-gray-200"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex items-center gap-2 rounded-xl bg-sky-600 bg-gray-200:hover:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-500 text-white text-xs font-bold px-6 py-2 shadow-lg shadow-sky-600/20 transition disabled:opacity-50"
+              className="flex items-center gap-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold px-6 py-2 shadow-lg shadow-sky-600/20 transition disabled:opacity-50"
             >
               <Check className="h-4 w-4" />
               {isSubmitting ? 'Saving Note...' : 'Save Clinical Note'}

@@ -61,7 +61,7 @@ export const PatientCareTeamPage: React.FC = () => {
 
         <Link
           to="/patient/requests"
-          className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-orange-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-orange-600 text-white font-bold text-xs rounded-xl shadow-xs transition-colors"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs rounded-xl shadow-xs transition-colors"
         >
           <MessageSquare className="w-4 h-4" />
           Message Care Team
@@ -127,7 +127,7 @@ export const PatientCareTeamPage: React.FC = () => {
 
           <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
             <span className="text-gray-500">Direct questions?</span>
-            <Link to="/patient/requests" className="font-bold text-orange-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-700">
+            <Link to="/patient/requests" className="font-bold text-orange-600 hover:text-orange-700">
               Ask Doctor →
             </Link>
           </div>
@@ -174,7 +174,7 @@ export const PatientCareTeamPage: React.FC = () => {
 
           <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
             <span className="text-gray-500">Need assistance?</span>
-            <Link to="/patient/requests" className="font-bold text-orange-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-orange-700">
+            <Link to="/patient/requests" className="font-bold text-orange-600 hover:text-orange-700">
               Request Nurse Assistance →
             </Link>
           </div>

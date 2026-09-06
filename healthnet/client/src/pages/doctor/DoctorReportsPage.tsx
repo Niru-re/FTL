@@ -45,7 +45,7 @@ export const DoctorReportsPage: React.FC = () => {
             <FileSpreadsheet className="h-4 w-4 text-sky-400" />
             <span className="text-xs font-bold uppercase tracking-wider text-sky-400">Clinical Analytics</span>
           </div>
-          <h1 className="text-2xl font-black tracking-tight text-white">
+          <h1 className="text-2xl font-black tracking-tight text-gray-900">
             Clinical Quality & Census Reports
           </h1>
           <p className="text-xs text-gray-500 mt-0.5">
@@ -54,7 +54,7 @@ export const DoctorReportsPage: React.FC = () => {
         </div>
         <button
           onClick={() => { setIsLoading(true); fetchReportsData(); }}
-          className="flex items-center gap-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300 self-start md:self-auto"
+          className="flex items-center gap-2 rounded-xl bg-gray-200 hover:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300 self-start md:self-auto"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
           <span>Refresh Analytics</span>
@@ -85,7 +85,7 @@ export const DoctorReportsPage: React.FC = () => {
           </p>
           <button
             onClick={() => handleExport('ICU Inpatient Census Report')}
-            className="w-full flex items-center justify-center gap-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 py-2 text-xs font-bold text-gray-700 transition border border-gray-300"
+            className="w-full flex items-center justify-center gap-2 rounded-xl bg-gray-200 hover:bg-gray-300 py-2 text-xs font-bold text-gray-700 transition border border-gray-300"
           >
             <Download className="h-3.5 w-3.5" />
             <span>Export Census CSV</span>
@@ -107,7 +107,7 @@ export const DoctorReportsPage: React.FC = () => {
           </p>
           <button
             onClick={() => handleExport('Deterioration Audit Summary')}
-            className="w-full flex items-center justify-center gap-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 py-2 text-xs font-bold text-gray-700 transition border border-gray-300"
+            className="w-full flex items-center justify-center gap-2 rounded-xl bg-gray-200 hover:bg-gray-300 py-2 text-xs font-bold text-gray-700 transition border border-gray-300"
           >
             <Download className="h-3.5 w-3.5" />
             <span>Export Audit PDF</span>
@@ -129,7 +129,7 @@ export const DoctorReportsPage: React.FC = () => {
           </p>
           <button
             onClick={() => handleExport('Physician Orders Log')}
-            className="w-full flex items-center justify-center gap-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 py-2 text-xs font-bold text-gray-700 transition border border-gray-300"
+            className="w-full flex items-center justify-center gap-2 rounded-xl bg-gray-200 hover:bg-gray-300 py-2 text-xs font-bold text-gray-700 transition border border-gray-300"
           >
             <Download className="h-3.5 w-3.5" />
             <span>Export Orders Log</span>

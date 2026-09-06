@@ -56,7 +56,7 @@ export const HospitalComparisonModal: React.FC<HospitalComparisonModalProps> = (
           </div>
           <button
             onClick={onClose}
-            className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 p-2 rounded-lg bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 transition-colors"
+            className="text-gray-500 hover:text-gray-900 p-2 rounded-lg hover:bg-gray-200 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -74,7 +74,7 @@ export const HospitalComparisonModal: React.FC<HospitalComparisonModalProps> = (
                 className={`px-3 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 ${
                   isSelected
                     ? 'bg-sky-600 text-white shadow-lg shadow-sky-600/20 border border-sky-400'
-                    : 'bg-gray-200/80 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-700 border border-gray-300/60'
+                    : 'bg-gray-200/80 text-gray-500 hover:text-gray-700 border border-gray-300/60'
                 }`}
               >
                 {isSelected && <CheckCircle2 className="w-3.5 h-3.5" />}
@@ -189,7 +189,7 @@ export const HospitalComparisonModal: React.FC<HospitalComparisonModalProps> = (
           <span>PROTOTYPE OPERATIONAL COMPARISON • SIMULATED DATA</span>
           <button
             onClick={onClose}
-            className="px-4 py-1.5 rounded-lg bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-900 font-medium transition-colors"
+            className="px-4 py-1.5 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-900 font-medium transition-colors"
           >
             Close Comparison
           </button>

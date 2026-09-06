@@ -67,7 +67,7 @@ export const VitalsEntryModal: React.FC<VitalsEntryModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg p-1.5 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white"
+            className="rounded-lg p-1.5 text-gray-500 hover:bg-gray-200 hover:text-white"
           >
             <X className="h-5 w-5" />
           </button>
@@ -183,14 +183,14 @@ export const VitalsEntryModal: React.FC<VitalsEntryModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="rounded-xl border border-gray-200 px-4 py-2 text-xs font-semibold text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200"
+              className="rounded-xl border border-gray-200 px-4 py-2 text-xs font-semibold text-gray-500 hover:bg-gray-200"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex items-center gap-2 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 text-white text-xs font-bold px-6 py-2 shadow-lg shadow-teal-600/20 transition disabled:opacity-50"
+              className="flex items-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold px-6 py-2 shadow-lg shadow-teal-600/20 transition disabled:opacity-50"
             >
               <Check className="h-4 w-4" />
               {isSubmitting ? 'Recording Vitals...' : 'Save Vitals Entry'}

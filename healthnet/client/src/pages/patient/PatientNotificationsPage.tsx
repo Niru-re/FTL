@@ -103,7 +103,7 @@ export const PatientNotificationsPage: React.FC = () => {
               {!notif.is_read && (
                 <button
                   onClick={() => handleMarkRead(notif.id)}
-                  className="shrink-0 p-1.5 rounded-lg text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-emerald-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-emerald-50 transition-colors cursor-pointer"
+                  className="shrink-0 p-1.5 rounded-lg text-gray-500 hover:text-emerald-600 hover:bg-emerald-50 transition-colors cursor-pointer"
                   title="Mark as Read"
                 >
                   <Check className="w-4 h-4" />

@@ -138,14 +138,14 @@ export const ResourcesPage: React.FC = () => {
         <div className="flex items-center gap-2.5">
           <button
             onClick={() => setShowAddModal(true)}
-            className="flex items-center gap-2 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 px-4 py-2 text-xs font-bold text-white transition shadow-lg shadow-teal-600/20"
+            className="flex items-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-500 px-4 py-2 text-xs font-bold text-white transition shadow-lg shadow-teal-600/20"
           >
             <Plus className="h-4 w-4" />
             <span>Add Resource</span>
           </button>
           <button
             onClick={loadResources}
-            className="flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-gray-100 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-teal-400 transition"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-gray-100 text-gray-500 hover:text-teal-400 transition"
             title="Refresh"
           >
             <RefreshCw className="h-4 w-4" />
@@ -176,7 +176,7 @@ export const ResourcesPage: React.FC = () => {
           </div>
           <button
             onClick={() => setSelectedTypeFilter('Ventilator')}
-            className="px-4 py-2 rounded-xl bg-rose-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-500 text-white text-xs font-bold transition shadow whitespace-nowrap self-end sm:self-auto"
+            className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition shadow whitespace-nowrap self-end sm:self-auto"
           >
             VIEW AFFECTED HOSPITALS
           </button>
@@ -186,7 +186,7 @@ export const ResourcesPage: React.FC = () => {
       {/* 9. Resource Command Center: 5 Core Resources (Section 9) */}
       <div className="bg-gray-100 border border-gray-200 rounded-2xl p-5 shadow-xl space-y-3">
         <div className="flex items-center justify-between border-b border-gray-200 pb-2">
-          <h2 className="text-xs font-bold uppercase tracking-wider text-white flex items-center gap-2">
+          <h2 className="text-xs font-bold uppercase tracking-wider text-gray-900 flex items-center gap-2">
             <Layers className="w-4 h-4 text-sky-400" />
             Network Medical Equipment Command Matrix
           </h2>
@@ -203,7 +203,7 @@ export const ResourcesPage: React.FC = () => {
           ].map((item, idx) => (
             <div key={idx} className="p-3.5 rounded-xl bg-gray-50 border border-gray-200/80">
               <div className="flex justify-between items-start mb-1">
-                <span className="font-bold text-white text-xs">{item.name}</span>
+                <span className="font-bold text-gray-800 text-xs">{item.name}</span>
                 <span className={`px-1.5 py-0.2 rounded text-[9px] font-bold ${
                   item.avail < item.thresh ? 'bg-rose-500/20 text-rose-400' : 'bg-emerald-500/20 text-emerald-400'
                 }`}>
@@ -282,7 +282,7 @@ export const ResourcesPage: React.FC = () => {
         {filteredResources.map(res => (
           <div
             key={res.id}
-            className="rounded-2xl border border-gray-200 bg-gray-100/70 p-5 space-y-4 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition flex flex-col justify-between"
+            className="rounded-2xl border border-gray-200 bg-gray-100/70 p-5 space-y-4 hover:border-gray-300 transition flex flex-col justify-between"
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between">
@@ -310,7 +310,7 @@ export const ResourcesPage: React.FC = () => {
               <div className="grid grid-cols-3 gap-2 bg-gray-50/40 p-3 rounded-xl text-center text-xs">
                 <div>
                   <span className="text-[10px] text-gray-500 block">Total</span>
-                  <span className="font-bold text-white">{res.quantity}</span>
+                  <span className="font-bold text-gray-800">{res.quantity}</span>
                 </div>
                 <div>
                   <span className="text-[10px] text-gray-500 block">Available</span>
@@ -330,7 +330,7 @@ export const ResourcesPage: React.FC = () => {
                 setEditAvailQty(res.available_quantity);
                 setEditStatus(res.status);
               }}
-              className="w-full rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 py-2 text-xs font-bold text-teal-400 transition flex items-center justify-center gap-1.5"
+              className="w-full rounded-xl bg-gray-200 hover:bg-gray-300 py-2 text-xs font-bold text-teal-400 transition flex items-center justify-center gap-1.5"
             >
               <Edit3 className="h-3.5 w-3.5" />
               <span>Update Status & Quantities</span>
@@ -344,8 +344,8 @@ export const ResourcesPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
           <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <h3 className="text-base font-bold text-white">Update Resource: {selectedResource.name}</h3>
-              <button onClick={() => setSelectedResource(null)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <h3 className="text-base font-bold text-gray-900">Update Resource: {selectedResource.name}</h3>
+              <button onClick={() => setSelectedResource(null)} className="text-gray-500 hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -395,13 +395,13 @@ export const ResourcesPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setSelectedResource(null)}
-                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
+                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 hover:text-white transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
+                  className="flex-1 rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
                 >
                   Save Changes
                 </button>
@@ -416,8 +416,8 @@ export const ResourcesPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
           <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <h3 className="text-base font-bold text-white">Add Medical Equipment</h3>
-              <button onClick={() => setShowAddModal(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <h3 className="text-base font-bold text-gray-900">Add Medical Equipment</h3>
+              <button onClick={() => setShowAddModal(false)} className="text-gray-500 hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -496,13 +496,13 @@ export const ResourcesPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowAddModal(false)}
-                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
+                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 hover:text-white transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
+                  className="flex-1 rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
                 >
                   Create Resource
                 </button>

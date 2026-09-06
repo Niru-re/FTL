@@ -78,7 +78,7 @@ export const NurseAmbulancesPage: React.FC = () => {
               Emergency Pre-Hospital Intake & Triage
             </span>
           </div>
-          <h1 className="text-2xl font-black tracking-tight text-white mt-1">
+          <h1 className="text-2xl font-black tracking-tight text-gray-900 mt-1">
             Incoming Ambulances & Ingress
           </h1>
           <p className="text-xs text-gray-500">
@@ -89,7 +89,7 @@ export const NurseAmbulancesPage: React.FC = () => {
         <button
           onClick={fetchAmbulances}
           disabled={loading}
-          className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm self-start sm:self-auto"
+          className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 hover:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm self-start sm:self-auto"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin text-rose-400' : ''}`} />
           <span>Refresh</span>
@@ -176,7 +176,7 @@ export const NurseAmbulancesPage: React.FC = () => {
                 <div className="flex items-center justify-between gap-3 pt-1">
                   <button
                     onClick={() => setActiveAmbulance(amb)}
-                    className="text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white flex items-center gap-1"
+                    className="text-xs font-semibold text-gray-600 hover:text-white flex items-center gap-1"
                   >
                     <span>View Map & Equipment</span>
                     <ChevronRight className="h-3.5 w-3.5" />
@@ -186,7 +186,7 @@ export const NurseAmbulancesPage: React.FC = () => {
                     <button
                       onClick={() => handlePrepareBed(amb.id)}
                       disabled={preparingId === amb.id}
-                      className="rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 text-white px-3.5 py-2 text-xs font-bold transition flex items-center gap-1.5 shadow-sm disabled:opacity-50"
+                      className="rounded-xl bg-teal-600 hover:bg-teal-500 text-white px-3.5 py-2 text-xs font-bold transition flex items-center gap-1.5 shadow-sm disabled:opacity-50"
                     >
                       <BedDouble className="h-3.5 w-3.5" />
                       <span>{preparingId === amb.id ? 'Prepping...' : 'PREPARE BED'}</span>
@@ -194,7 +194,7 @@ export const NurseAmbulancesPage: React.FC = () => {
 
                     <button
                       onClick={() => setShowArrivalModal(amb)}
-                      className="rounded-xl bg-rose-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-500 text-white px-3.5 py-2 text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
+                      className="rounded-xl bg-rose-600 hover:bg-rose-500 text-white px-3.5 py-2 text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
                     >
                       <CheckCircle2 className="h-3.5 w-3.5" />
                       <span>CONFIRM ARRIVAL</span>
@@ -230,9 +230,9 @@ export const NurseAmbulancesPage: React.FC = () => {
               </thead>
               <tbody className="divide-y divide-gray-200/60">
                 {ambulances.map((amb) => (
-                  <tr key={amb.id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 transition">
+                  <tr key={amb.id} className="hover:bg-gray-200/40 transition">
                     <td className="py-3.5 pl-4">
-                      <div className="font-bold text-white font-mono">{amb.code}</div>
+                      <div className="font-bold text-gray-800 font-mono">{amb.code}</div>
                       <div className="text-[10px] text-gray-500">{amb.vehicle_number}</div>
                     </td>
                     <td className="py-3.5">
@@ -269,7 +269,7 @@ export const NurseAmbulancesPage: React.FC = () => {
                     <td className="py-3.5 pr-4 text-right">
                       <button
                         onClick={() => setActiveAmbulance(amb)}
-                        className="rounded-lg bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3 py-1 text-xs font-semibold text-gray-700 transition"
+                        className="rounded-lg bg-gray-200 hover:bg-gray-300 px-3 py-1 text-xs font-semibold text-gray-700 transition"
                       >
                         Details
                       </button>
@@ -288,13 +288,13 @@ export const NurseAmbulancesPage: React.FC = () => {
           <div className="w-full max-w-lg rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
               <div>
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
                   <AmbulanceIcon className="h-5 w-5 text-rose-400" />
                   <span>Ambulance Telemetry ({activeAmbulance.code})</span>
                 </h3>
                 <p className="text-xs text-gray-500">Pre-Hospital Ingress Telemetry</p>
               </div>
-              <button onClick={() => setActiveAmbulance(null)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <button onClick={() => setActiveAmbulance(null)} className="text-gray-500 hover:text-white">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -303,7 +303,7 @@ export const NurseAmbulancesPage: React.FC = () => {
               <div className="grid grid-cols-2 gap-3 bg-gray-50/60 p-3.5 rounded-xl border border-gray-200">
                 <div>
                   <p className="text-gray-400 font-bold uppercase text-[10px]">Patient</p>
-                  <p className="font-bold text-white text-sm">
+                  <p className="font-bold text-gray-800 text-sm">
                     {activeAmbulance.current_patient_name || 'Emergency Intake'}
                   </p>
                 </div>
@@ -353,7 +353,7 @@ export const NurseAmbulancesPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setActiveAmbulance(null)}
-                className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 transition"
+                className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 hover:bg-gray-300 transition"
               >
                 Close
               </button>
@@ -367,11 +367,11 @@ export const NurseAmbulancesPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
           <div className="w-full max-w-md rounded-2xl border border-rose-500/30 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <h3 className="text-base font-bold text-white flex items-center gap-2">
+              <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-rose-400" />
                 <span>Confirm Patient Arrival</span>
               </h3>
-              <button onClick={() => setShowArrivalModal(null)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <button onClick={() => setShowArrivalModal(null)} className="text-gray-500 hover:text-white">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -399,7 +399,7 @@ export const NurseAmbulancesPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowArrivalModal(null)}
-                className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 transition"
+                className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 hover:bg-gray-300 transition"
               >
                 Cancel
               </button>
@@ -407,7 +407,7 @@ export const NurseAmbulancesPage: React.FC = () => {
                 type="button"
                 onClick={handleConfirmArrival}
                 disabled={confirmingArrival}
-                className="rounded-xl bg-rose-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-rose-950/50 transition disabled:opacity-50"
+                className="rounded-xl bg-rose-600 hover:bg-rose-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-rose-950/50 transition disabled:opacity-50"
               >
                 {confirmingArrival ? 'Confirming...' : 'Yes, Confirm Arrival'}
               </button>

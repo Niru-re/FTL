@@ -47,7 +47,7 @@ export const PatientUpdatesPage: React.FC = () => {
 
         <button
           onClick={fetchUpdates}
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition-colors self-start sm:self-auto cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition-colors self-start sm:self-auto cursor-pointer"
         >
           <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin' : ''}`} />
           Refresh
@@ -69,7 +69,7 @@ export const PatientUpdatesPage: React.FC = () => {
             className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
               filterType === tab.key
                 ? 'bg-orange-500 text-white shadow-xs'
-                : 'bg-white text-slate-600 border border-slate-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-slate-50'
+                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
             }`}
           >
             {tab.label}
@@ -94,7 +94,7 @@ export const PatientUpdatesPage: React.FC = () => {
           {filteredUpdates.map((update) => (
             <div
               key={update.id}
-              className="bg-white rounded-3xl border border-slate-200 p-5 shadow-xs bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-orange-200 transition-colors"
+              className="bg-white rounded-3xl border border-slate-200 p-5 shadow-xs hover:border-orange-200 transition-colors"
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
                 <div className="flex items-center gap-2">

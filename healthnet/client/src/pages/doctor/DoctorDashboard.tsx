@@ -97,7 +97,7 @@ export const DoctorDashboard: React.FC = () => {
             <span className="h-2 w-2 rounded-full bg-sky-400 animate-pulse"></span>
             <span className="text-xs font-bold uppercase tracking-wider text-sky-400">Clinical Operations Center</span>
           </div>
-          <h1 className="text-2xl font-black tracking-tight text-white flex items-center gap-2">
+          <h1 className="text-2xl font-black tracking-tight text-gray-900 flex items-center gap-2">
             Welcome, {user?.full_name || 'Dr. Arjun Sharma'}
           </h1>
           <p className="text-xs text-gray-500 mt-0.5">
@@ -107,7 +107,7 @@ export const DoctorDashboard: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => navigate('/doctor/monitoring')}
-            className="flex items-center gap-2 rounded-xl bg-sky-600/20 border border-sky-500/30 px-3.5 py-2 text-xs font-bold text-sky-300 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-600/30 transition shadow-sm"
+            className="flex items-center gap-2 rounded-xl bg-sky-600/20 border border-sky-500/30 px-3.5 py-2 text-xs font-bold text-sky-300 hover:bg-sky-600/30 transition shadow-sm"
           >
             <Radio className="h-4 w-4 text-sky-400 animate-pulse" />
             <span>ICU Telemetry Wall</span>
@@ -115,7 +115,7 @@ export const DoctorDashboard: React.FC = () => {
           <button
             onClick={() => { setIsLoading(true); fetchDoctorData(); }}
             disabled={isLoading}
-            className="flex items-center gap-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300"
+            className="flex items-center gap-2 rounded-xl bg-gray-200 hover:bg-gray-300 px-3.5 py-2 text-xs font-bold text-gray-600 transition border border-gray-300"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
             <span>Sync Data</span>
@@ -156,7 +156,7 @@ export const DoctorDashboard: React.FC = () => {
             </div>
             <button
               onClick={() => navigate('/doctor/incoming')}
-              className="flex items-center justify-center gap-2 rounded-xl bg-rose-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-500 px-4 py-2 text-xs font-bold text-white transition self-start sm:self-auto"
+              className="flex items-center justify-center gap-2 rounded-xl bg-rose-600 hover:bg-rose-500 px-4 py-2 text-xs font-bold text-white transition self-start sm:self-auto"
             >
               <span>View Inbound Cases</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -234,7 +234,7 @@ export const DoctorDashboard: React.FC = () => {
 
               <button
                 onClick={() => navigate('/doctor/ai-risk')}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-teal-600/20 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-600/30 text-teal-300 border border-teal-500/30 text-xs font-bold transition self-start sm:self-auto"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-teal-600/20 hover:bg-teal-600/30 text-teal-300 border border-teal-500/30 text-xs font-bold transition self-start sm:self-auto"
               >
                 <span>View Full AI Risk Registry</span>
                 <ChevronRight className="h-3.5 w-3.5" />
@@ -249,7 +249,7 @@ export const DoctorDashboard: React.FC = () => {
                   <div
                     key={p.id}
                     onClick={() => navigate(`/doctor/patients/${p.id}`)}
-                    className="p-3 rounded-xl bg-gray-50/70 border border-gray-200/80 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-teal-500/40 cursor-pointer transition"
+                    className="p-3 rounded-xl bg-gray-50/70 border border-gray-200/80 hover:border-teal-500/40 cursor-pointer transition"
                   >
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-xs text-teal-300 font-bold">{p.mrn}</span>
@@ -271,7 +271,7 @@ export const DoctorDashboard: React.FC = () => {
           <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 backdrop-blur-sm shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h2 className="text-base font-bold text-white flex items-center gap-2">
+                <h2 className="text-base font-bold text-gray-900 flex items-center gap-2">
                   <Activity className="h-4 w-4 text-rose-400" />
                   <span>High Attention Patients</span>
                 </h2>
@@ -279,7 +279,7 @@ export const DoctorDashboard: React.FC = () => {
               </div>
               <button
                 onClick={() => navigate('/doctor/patients')}
-                className="text-xs font-semibold text-sky-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-sky-300 flex items-center gap-1 transition"
+                className="text-xs font-semibold text-sky-400 hover:text-sky-300 flex items-center gap-1 transition"
               >
                 <span>Full Census ({patients.length})</span>
                 <ChevronRight className="h-3.5 w-3.5" />
@@ -296,13 +296,13 @@ export const DoctorDashboard: React.FC = () => {
                   <div
                     key={p.id}
                     onClick={() => navigate(`/doctor/patients/${p.id}`)}
-                    className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 rounded-xl border border-gray-200/80 bg-gray-50/50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 cursor-pointer transition gap-3 group"
+                    className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 rounded-xl border border-gray-200/80 bg-gray-50/50 hover:bg-gray-200/40 hover:border-gray-300 cursor-pointer transition gap-3 group"
                   >
                     <div className="flex items-start gap-3">
                       <div className={`mt-0.5 h-3 w-3 rounded-full flex-shrink-0 ${p.risk_level === 'CRITICAL' ? 'bg-rose-500 animate-pulse' : 'bg-amber-500'}`} />
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-bold text-white group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-sky-300 transition">
+                          <span className="text-xs font-bold text-white group-hover:text-sky-300 transition">
                             {p.full_name}
                           </span>
                           <span className="text-[10px] font-mono text-gray-500 bg-gray-200 px-1.5 py-0.5 rounded">
@@ -345,7 +345,7 @@ export const DoctorDashboard: React.FC = () => {
                         }`}>
                           Risk {p.risk_score}%
                         </span>
-                        <ChevronRight className="h-4 w-4 text-gray-400 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition" />
+                        <ChevronRight className="h-4 w-4 text-gray-400 group-hover:text-white transition" />
                       </div>
                     </div>
                   </div>
@@ -358,7 +358,7 @@ export const DoctorDashboard: React.FC = () => {
           <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 backdrop-blur-sm shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h2 className="text-base font-bold text-white flex items-center gap-2">
+                <h2 className="text-base font-bold text-gray-900 flex items-center gap-2">
                   <Stethoscope className="h-4 w-4 text-indigo-400" />
                   <span>Pending Nurse Consultation Requests</span>
                 </h2>
@@ -397,13 +397,13 @@ export const DoctorDashboard: React.FC = () => {
                     <div className="flex items-center gap-2 self-end sm:self-center flex-shrink-0">
                       <button
                         onClick={() => navigate(`/doctor/patients/${r.patient_id}`)}
-                        className="rounded-lg bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3 py-1.5 text-xs font-semibold text-gray-700 transition"
+                        className="rounded-lg bg-gray-200 hover:bg-gray-300 px-3 py-1.5 text-xs font-semibold text-gray-700 transition"
                       >
                         Open Patient
                       </button>
                       <button
                         onClick={() => handleAcknowledgeRequest(r.id)}
-                        className="rounded-lg bg-indigo-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-indigo-500 px-3 py-1.5 text-xs font-bold text-white transition flex items-center gap-1"
+                        className="rounded-lg bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 text-xs font-bold text-white transition flex items-center gap-1"
                       >
                         <CheckCircle2 className="h-3.5 w-3.5" />
                         <span>Accept</span>
@@ -421,7 +421,7 @@ export const DoctorDashboard: React.FC = () => {
           <div className="rounded-2xl border border-gray-200 bg-gray-100/60 p-5 backdrop-blur-sm shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h2 className="text-base font-bold text-white flex items-center gap-2">
+                <h2 className="text-base font-bold text-gray-900 flex items-center gap-2">
                   <Bell className="h-4 w-4 text-sky-400" />
                   <span>Clinical Alarms Feed</span>
                 </h2>
@@ -429,7 +429,7 @@ export const DoctorDashboard: React.FC = () => {
               </div>
               <button
                 onClick={() => navigate('/doctor/alerts')}
-                className="text-xs font-semibold text-sky-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-sky-300"
+                className="text-xs font-semibold text-sky-400 hover:text-sky-300"
               >
                 View All
               </button>
@@ -458,14 +458,14 @@ export const DoctorDashboard: React.FC = () => {
                       {alt.patient_id ? (
                         <button
                           onClick={() => navigate(`/doctor/patients/${alt.patient_id}`)}
-                          className="text-[10px] font-bold text-sky-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:underline"
+                          className="text-[10px] font-bold text-sky-400 hover:underline"
                         >
                           View Patient Record &rarr;
                         </button>
                       ) : <span />}
                       <button
                         onClick={() => handleAcknowledgeAlert(alt.id)}
-                        className="text-[10px] font-semibold text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white bg-gray-200 px-2 py-0.5 rounded transition"
+                        className="text-[10px] font-semibold text-gray-500 hover:text-white bg-gray-200 px-2 py-0.5 rounded transition"
                       >
                         Acknowledge
                       </button>

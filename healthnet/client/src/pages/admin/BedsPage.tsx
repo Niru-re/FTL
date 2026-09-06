@@ -107,7 +107,7 @@ export const BedsPage: React.FC = () => {
 
         <button
           onClick={fetchBedsAndHospitals}
-          className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-gray-100 px-3.5 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 transition self-start sm:self-auto"
+          className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-gray-100 px-3.5 py-2 text-xs font-semibold text-gray-600 hover:text-gray-900 transition self-start sm:self-auto"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
           <span>Refresh Matrix</span>
@@ -119,7 +119,7 @@ export const BedsPage: React.FC = () => {
         <div
           onClick={() => setSelectedStatus(selectedStatus === 'AVAILABLE' ? 'ALL' : 'AVAILABLE')}
           className={`rounded-2xl border p-3.5 transition cursor-pointer ${
-            selectedStatus === 'AVAILABLE' ? 'border-emerald-500 bg-emerald-500/15' : 'border-gray-200 bg-gray-100/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300'
+            selectedStatus === 'AVAILABLE' ? 'border-emerald-500 bg-emerald-500/15' : 'border-gray-200 bg-gray-100/70 hover:border-gray-300'
           }`}
         >
           <span className="text-[10px] uppercase font-bold text-gray-500 block">Available</span>
@@ -129,7 +129,7 @@ export const BedsPage: React.FC = () => {
         <div
           onClick={() => setSelectedStatus(selectedStatus === 'OCCUPIED' ? 'ALL' : 'OCCUPIED')}
           className={`rounded-2xl border p-3.5 transition cursor-pointer ${
-            selectedStatus === 'OCCUPIED' ? 'border-rose-500 bg-rose-500/15' : 'border-gray-200 bg-gray-100/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300'
+            selectedStatus === 'OCCUPIED' ? 'border-rose-500 bg-rose-500/15' : 'border-gray-200 bg-gray-100/70 hover:border-gray-300'
           }`}
         >
           <span className="text-[10px] uppercase font-bold text-gray-500 block">Occupied</span>
@@ -139,7 +139,7 @@ export const BedsPage: React.FC = () => {
         <div
           onClick={() => setSelectedStatus(selectedStatus === 'RESERVED' ? 'ALL' : 'RESERVED')}
           className={`rounded-2xl border p-3.5 transition cursor-pointer ${
-            selectedStatus === 'RESERVED' ? 'border-sky-500 bg-sky-500/15' : 'border-gray-200 bg-gray-100/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300'
+            selectedStatus === 'RESERVED' ? 'border-sky-500 bg-sky-500/15' : 'border-gray-200 bg-gray-100/70 hover:border-gray-300'
           }`}
         >
           <span className="text-[10px] uppercase font-bold text-gray-500 block">Reserved</span>
@@ -149,7 +149,7 @@ export const BedsPage: React.FC = () => {
         <div
           onClick={() => setSelectedStatus(selectedStatus === 'CLEANING' ? 'ALL' : 'CLEANING')}
           className={`rounded-2xl border p-3.5 transition cursor-pointer ${
-            selectedStatus === 'CLEANING' ? 'border-amber-500 bg-amber-500/15' : 'border-gray-200 bg-gray-100/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300'
+            selectedStatus === 'CLEANING' ? 'border-amber-500 bg-amber-500/15' : 'border-gray-200 bg-gray-100/70 hover:border-gray-300'
           }`}
         >
           <span className="text-[10px] uppercase font-bold text-gray-500 block">Cleaning</span>
@@ -159,7 +159,7 @@ export const BedsPage: React.FC = () => {
         <div
           onClick={() => setSelectedStatus(selectedStatus === 'MAINTENANCE' ? 'ALL' : 'MAINTENANCE')}
           className={`rounded-2xl border p-3.5 transition cursor-pointer ${
-            selectedStatus === 'MAINTENANCE' ? 'border-orange-500 bg-orange-500/15' : 'border-gray-200 bg-gray-100/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300'
+            selectedStatus === 'MAINTENANCE' ? 'border-orange-500 bg-orange-500/15' : 'border-gray-200 bg-gray-100/70 hover:border-gray-300'
           }`}
         >
           <span className="text-[10px] uppercase font-bold text-gray-500 block">Maintenance</span>
@@ -169,7 +169,7 @@ export const BedsPage: React.FC = () => {
         <div
           onClick={() => setSelectedStatus(selectedStatus === 'OUT_OF_SERVICE' ? 'ALL' : 'OUT_OF_SERVICE')}
           className={`rounded-2xl border p-3.5 transition cursor-pointer ${
-            selectedStatus === 'OUT_OF_SERVICE' ? 'border-slate-500 bg-gray-300/50' : 'border-gray-200 bg-gray-100/70 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300'
+            selectedStatus === 'OUT_OF_SERVICE' ? 'border-slate-500 bg-gray-300/50' : 'border-gray-200 bg-gray-100/70 hover:border-gray-300'
           }`}
         >
           <span className="text-[10px] uppercase font-bold text-gray-500 block">Out of Service</span>
@@ -255,7 +255,7 @@ export const BedsPage: React.FC = () => {
           return (
             <div
               key={bed.id}
-              className="rounded-2xl border border-gray-200 bg-gray-100/70 p-4 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition flex flex-col justify-between space-y-3"
+              className="rounded-2xl border border-gray-200 bg-gray-100/70 p-4 hover:border-gray-300 transition flex flex-col justify-between space-y-3"
             >
               <div className="space-y-2.5">
                 <div className="flex items-center justify-between">
@@ -302,13 +302,13 @@ export const BedsPage: React.FC = () => {
               <div className="border-t border-gray-200/80 pt-2.5 flex items-center gap-2">
                 <button
                   onClick={() => setViewBedDetail(bed)}
-                  className="flex-1 rounded-xl border border-gray-300 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 py-1.5 text-xs font-bold text-gray-600 transition text-center"
+                  className="flex-1 rounded-xl border border-gray-300 hover:bg-gray-200 py-1.5 text-xs font-bold text-gray-600 transition text-center"
                 >
                   View
                 </button>
                 <button
                   onClick={() => setActiveBedForStatus(bed)}
-                  className="flex-1 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-1.5 text-xs font-bold text-white transition text-center"
+                  className="flex-1 rounded-xl bg-teal-600 hover:bg-teal-500 py-1.5 text-xs font-bold text-white transition text-center"
                 >
                   Change
                 </button>
@@ -332,11 +332,11 @@ export const BedsPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
           <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <span className="text-base font-bold text-white flex items-center gap-2">
+              <span className="text-base font-bold text-gray-800 flex items-center gap-2">
                 <BedDouble className="h-5 w-5 text-teal-400" />
                 <span>Bed {viewBedDetail.code}</span>
               </span>
-              <button onClick={() => setViewBedDetail(null)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <button onClick={() => setViewBedDetail(null)} className="text-gray-500 hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -393,7 +393,7 @@ export const BedsPage: React.FC = () => {
             <div className="flex items-center gap-3 pt-2">
               <button
                 onClick={() => setViewBedDetail(null)}
-                className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition"
+                className="flex-1 rounded-xl border border-gray-300 bg-gray-200 py-2.5 text-xs font-bold text-gray-600 hover:text-white transition"
               >
                 Close
               </button>
@@ -403,7 +403,7 @@ export const BedsPage: React.FC = () => {
                   setViewBedDetail(null);
                   setActiveBedForStatus(b);
                 }}
-                className="flex-1 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
+                className="flex-1 rounded-xl bg-teal-600 hover:bg-teal-500 py-2.5 text-xs font-bold text-white transition"
               >
                 Change Status
               </button>

@@ -128,7 +128,7 @@ export const CityNetworkMap: React.FC<CityNetworkMapProps> = ({
             )}
 
             {/* Marker Icon */}
-            <div className={`relative flex items-center justify-center w-8 h-8 rounded-xl bg-gray-100 border ${statusTheme.border} shadow-lg bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:scale-110 transition-transform ${statusTheme.ring}`}>
+            <div className={`relative flex items-center justify-center w-8 h-8 rounded-xl bg-gray-100 border ${statusTheme.border} shadow-lg hover:scale-110 transition-transform ${statusTheme.ring}`}>
               <Building2 className={`w-4 h-4 ${statusTheme.text}`} />
               {/* ICU Load Pill */}
               <span className={`absolute -top-2 -right-2 px-1 py-0.2 rounded-full text-[9px] font-bold ${statusTheme.bg} text-gray-900`}>
@@ -137,7 +137,7 @@ export const CityNetworkMap: React.FC<CityNetworkMapProps> = ({
             </div>
 
             {/* Tooltip / Label */}
-            <div className="absolute left-1/2 top-full -translate-x-1/2 mt-1 px-2 py-0.5 rounded bg-gray-100/95 border border-gray-200 text-[10px] font-medium text-gray-700 whitespace-nowrap opacity-0 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:opacity-100 transition-opacity pointer-events-none shadow-xl z-30">
+            <div className="absolute left-1/2 top-full -translate-x-1/2 mt-1 px-2 py-0.5 rounded bg-gray-100/95 border border-gray-200 text-[10px] font-medium text-gray-700 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl z-30">
               {hosp.name} ({hosp.code})
             </div>
           </div>
@@ -162,7 +162,7 @@ export const CityNetworkMap: React.FC<CityNetworkMapProps> = ({
             {isInTransit && (
               <span className="absolute -inset-2 rounded-full bg-sky-400 opacity-40 animate-ping" />
             )}
-            <div className="relative flex items-center justify-center w-7 h-7 rounded-full bg-sky-950 border border-sky-500/80 shadow-md bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:scale-125 transition-transform text-sky-400">
+            <div className="relative flex items-center justify-center w-7 h-7 rounded-full bg-sky-950 border border-sky-500/80 shadow-md hover:scale-125 transition-transform text-sky-400">
               <Siren className="w-3.5 h-3.5 animate-pulse" />
               {amb.eta_minutes !== undefined && amb.eta_minutes > 0 && (
                 <span className="absolute -bottom-2 px-1 rounded bg-sky-600 text-white text-[8px] font-bold">
@@ -171,7 +171,7 @@ export const CityNetworkMap: React.FC<CityNetworkMapProps> = ({
               )}
             </div>
 
-            <div className="absolute left-1/2 top-full -translate-x-1/2 mt-1 px-2 py-0.5 rounded bg-gray-100/95 border border-gray-200 text-[10px] font-medium text-gray-700 whitespace-nowrap opacity-0 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:opacity-100 transition-opacity pointer-events-none shadow-xl z-30">
+            <div className="absolute left-1/2 top-full -translate-x-1/2 mt-1 px-2 py-0.5 rounded bg-gray-100/95 border border-gray-200 text-[10px] font-medium text-gray-700 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl z-30">
               {amb.code} ({amb.status})
             </div>
           </div>
@@ -201,7 +201,7 @@ export const CityNetworkMap: React.FC<CityNetworkMapProps> = ({
             </div>
             <button
               onClick={() => setSelectedEntity(null)}
-              className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 p-1"
+              className="text-gray-500 hover:text-gray-900 p-1"
             >
               <X className="w-4 h-4" />
             </button>

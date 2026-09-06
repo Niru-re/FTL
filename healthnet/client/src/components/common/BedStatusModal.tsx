@@ -60,7 +60,7 @@ export const BedStatusModal: React.FC<BedStatusModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg p-1.5 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900"
+            className="rounded-lg p-1.5 text-gray-500 hover:bg-gray-200 hover:text-gray-900"
           >
             <X className="h-5 w-5" />
           </button>
@@ -77,7 +77,7 @@ export const BedStatusModal: React.FC<BedStatusModalProps> = ({
                   className={`flex items-start justify-between p-3 rounded-xl border cursor-pointer transition ${
                     selectedStatus === item.status
                       ? 'border-teal-500 bg-teal-500/10 shadow-sm'
-                      : 'border-gray-200 bg-gray-50/60 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300'
+                      : 'border-gray-200 bg-gray-50/60 hover:border-gray-300'
                   }`}
                 >
                   <div className="space-y-0.5">
@@ -111,7 +111,7 @@ export const BedStatusModal: React.FC<BedStatusModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="rounded-xl border border-gray-200 px-4 py-2 text-xs font-semibold text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200"
+            className="rounded-xl border border-gray-200 px-4 py-2 text-xs font-semibold text-gray-500 hover:bg-gray-200"
           >
             Cancel
           </button>
@@ -119,7 +119,7 @@ export const BedStatusModal: React.FC<BedStatusModalProps> = ({
             type="button"
             disabled={isUpdating}
             onClick={handleUpdate}
-            className="rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 text-white text-xs font-bold px-6 py-2 shadow-lg shadow-teal-600/20 transition"
+            className="rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold px-6 py-2 shadow-lg shadow-teal-600/20 transition"
           >
             {isUpdating ? 'Updating Status...' : 'Apply Status Transition'}
           </button>

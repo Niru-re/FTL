@@ -105,7 +105,7 @@ export const NurseDashboard: React.FC = () => {
               Clinical Ward Station • ICU / Acute Unit
             </span>
           </div>
-          <h1 className="text-2xl font-black tracking-tight text-white mt-1">
+          <h1 className="text-2xl font-black tracking-tight text-gray-900 mt-1">
             Nurse Operations Command
           </h1>
           <p className="text-xs text-gray-500">
@@ -117,14 +117,14 @@ export const NurseDashboard: React.FC = () => {
           <button
             onClick={fetchDashboardData}
             disabled={loading}
-            className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm"
+            className="flex items-center gap-2 rounded-xl border border-gray-300/80 bg-gray-200/80 hover:bg-gray-300 px-3.5 py-2 text-xs font-semibold text-gray-700 transition shadow-sm"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin text-teal-400' : ''}`} />
             <span>Sync Live</span>
           </button>
           <Link
             to="/nurse/vitals"
-            className="flex items-center gap-2 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-teal-900/40 transition"
+            className="flex items-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-500 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-teal-900/40 transition"
           >
             <HeartPulse className="h-4 w-4" />
             <span>Record Vitals</span>
@@ -155,14 +155,14 @@ export const NurseDashboard: React.FC = () => {
               {aiAlerts[0].patient_id && (
                 <Link
                   to={`/nurse/patients/${aiAlerts[0].patient_id}`}
-                  className="px-3 py-1.5 rounded-lg bg-rose-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-500 text-white text-xs font-bold transition"
+                  className="px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition"
                 >
                   VIEW PATIENT
                 </Link>
               )}
               <button
                 onClick={() => handleAcknowledgeAlert(aiAlerts[0].id)}
-                className="px-3 py-1.5 rounded-lg bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-700 border border-gray-300 text-xs font-bold transition"
+                className="px-3 py-1.5 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-700 border border-gray-300 text-xs font-bold transition"
               >
                 ACKNOWLEDGE
               </button>
@@ -183,7 +183,7 @@ export const NurseDashboard: React.FC = () => {
           </div>
           <Link
             to="/nurse/beds"
-            className="rounded-lg bg-teal-600/40 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-600 px-3 py-1.5 text-xs text-white transition"
+            className="rounded-lg bg-teal-600/40 hover:bg-teal-600 px-3 py-1.5 text-xs text-white transition"
           >
             View Bed Matrix
           </Link>
@@ -296,14 +296,14 @@ export const NurseDashboard: React.FC = () => {
               <button
                 onClick={() => handlePrepareBed(incomingAmb.id)}
                 disabled={preparingBed === incomingAmb.id}
-                className="flex items-center gap-2 rounded-xl bg-rose-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-rose-500 px-4 py-2.5 text-xs font-bold text-white shadow-lg shadow-rose-950/50 transition"
+                className="flex items-center gap-2 rounded-xl bg-rose-600 hover:bg-rose-500 px-4 py-2.5 text-xs font-bold text-white shadow-lg shadow-rose-950/50 transition"
               >
                 <BedDouble className="h-4 w-4" />
                 <span>{preparingBed === incomingAmb.id ? 'Preparing...' : 'PREPARE BED'}</span>
               </button>
               <Link
                 to="/nurse/ambulances"
-                className="flex items-center gap-1.5 rounded-xl border border-gray-300 bg-gray-200/90 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 px-3.5 py-2.5 text-xs font-semibold text-gray-700 transition"
+                className="flex items-center gap-1.5 rounded-xl border border-gray-300 bg-gray-200/90 hover:bg-gray-300 px-3.5 py-2.5 text-xs font-semibold text-gray-700 transition"
               >
                 <span>Details & Map</span>
                 <ChevronRight className="h-3.5 w-3.5" />
@@ -320,7 +320,7 @@ export const NurseDashboard: React.FC = () => {
           <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-5 backdrop-blur-md shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h2 className="text-base font-bold text-white flex items-center gap-2">
+                <h2 className="text-base font-bold text-gray-900 flex items-center gap-2">
                   <Activity className="h-4 w-4 text-teal-400" />
                   <span>My Assigned Patients</span>
                 </h2>
@@ -330,7 +330,7 @@ export const NurseDashboard: React.FC = () => {
               </div>
               <Link
                 to="/nurse/patients"
-                className="text-xs font-semibold text-teal-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-teal-300 flex items-center gap-1"
+                className="text-xs font-semibold text-teal-400 hover:text-teal-300 flex items-center gap-1"
               >
                 <span>View All ({patients.length})</span>
                 <ChevronRight className="h-3.5 w-3.5" />
@@ -352,9 +352,9 @@ export const NurseDashboard: React.FC = () => {
                 </thead>
                 <tbody className="divide-y divide-gray-200/60">
                   {patients.slice(0, 6).map((patient) => (
-                    <tr key={patient.id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 transition">
+                    <tr key={patient.id} className="hover:bg-gray-200/40 transition">
                       <td className="py-3 pl-2">
-                        <div className="font-bold text-white">{patient.full_name}</div>
+                        <div className="font-bold text-gray-800">{patient.full_name}</div>
                         <div className="text-[10px] font-mono text-gray-500">
                           {patient.mrn} • {patient.age}y {patient.gender}
                         </div>
@@ -400,7 +400,7 @@ export const NurseDashboard: React.FC = () => {
                       <td className="py-3 text-right pr-2">
                         <Link
                           to={`/nurse/patients/${patient.id}`}
-                          className="rounded-lg bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-600 px-2.5 py-1 text-[11px] font-semibold text-gray-700 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white transition inline-flex items-center gap-1"
+                          className="rounded-lg bg-gray-200 hover:bg-teal-600 px-2.5 py-1 text-[11px] font-semibold text-gray-700 hover:text-white transition inline-flex items-center gap-1"
                         >
                           <span>Manage</span>
                           <ChevronRight className="h-3 w-3" />
@@ -417,37 +417,37 @@ export const NurseDashboard: React.FC = () => {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <Link
               to="/nurse/beds"
-              className="rounded-xl border border-gray-200 bg-gray-100/50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/80 p-4 transition text-center group"
+              className="rounded-xl border border-gray-200 bg-gray-100/50 hover:bg-gray-200/80 p-4 transition text-center group"
             >
-              <BedDouble className="h-5 w-5 text-teal-400 mx-auto mb-2 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:scale-110 transition" />
-              <span className="text-xs font-bold text-white block">Bed Matrix</span>
+              <BedDouble className="h-5 w-5 text-teal-400 mx-auto mb-2 group-hover:scale-110 transition" />
+              <span className="text-xs font-bold text-gray-800 block">Bed Matrix</span>
               <span className="text-[10px] text-gray-500">Occupancy & Cleaning</span>
             </Link>
 
             <Link
               to="/nurse/medications"
-              className="rounded-xl border border-gray-200 bg-gray-100/50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/80 p-4 transition text-center group"
+              className="rounded-xl border border-gray-200 bg-gray-100/50 hover:bg-gray-200/80 p-4 transition text-center group"
             >
-              <Pill className="h-5 w-5 text-purple-400 mx-auto mb-2 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:scale-110 transition" />
-              <span className="text-xs font-bold text-white block">Medications</span>
+              <Pill className="h-5 w-5 text-purple-400 mx-auto mb-2 group-hover:scale-110 transition" />
+              <span className="text-xs font-bold text-gray-800 block">Medications</span>
               <span className="text-[10px] text-gray-500">Administration Log</span>
             </Link>
 
             <Link
               to="/nurse/doctors"
-              className="rounded-xl border border-gray-200 bg-gray-100/50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/80 p-4 transition text-center group"
+              className="rounded-xl border border-gray-200 bg-gray-100/50 hover:bg-gray-200/80 p-4 transition text-center group"
             >
-              <Stethoscope className="h-5 w-5 text-sky-400 mx-auto mb-2 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:scale-110 transition" />
-              <span className="text-xs font-bold text-white block">On-Duty Doctors</span>
+              <Stethoscope className="h-5 w-5 text-sky-400 mx-auto mb-2 group-hover:scale-110 transition" />
+              <span className="text-xs font-bold text-gray-800 block">On-Duty Doctors</span>
               <span className="text-[10px] text-gray-500">Request Evaluation</span>
             </Link>
 
             <Link
               to="/nurse/handover"
-              className="rounded-xl border border-gray-200 bg-gray-100/50 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/80 p-4 transition text-center group"
+              className="rounded-xl border border-gray-200 bg-gray-100/50 hover:bg-gray-200/80 p-4 transition text-center group"
             >
-              <Clock className="h-5 w-5 text-amber-400 mx-auto mb-2 group-bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:scale-110 transition" />
-              <span className="text-xs font-bold text-white block">Shift Handover</span>
+              <Clock className="h-5 w-5 text-amber-400 mx-auto mb-2 group-hover:scale-110 transition" />
+              <span className="text-xs font-bold text-gray-800 block">Shift Handover</span>
               <span className="text-[10px] text-gray-500">Transfer Records</span>
             </Link>
           </div>
@@ -458,11 +458,11 @@ export const NurseDashboard: React.FC = () => {
           {/* Nursing Tasks */}
           <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-5 backdrop-blur-md shadow-xl space-y-4">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <h2 className="text-sm font-bold text-white flex items-center gap-2">
+              <h2 className="text-sm font-bold text-gray-900 flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-purple-400" />
                 <span>Pending Nursing Tasks ({tasks.length})</span>
               </h2>
-              <Link to="/nurse/tasks" className="text-xs font-semibold text-purple-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-purple-300">
+              <Link to="/nurse/tasks" className="text-xs font-semibold text-purple-400 hover:text-purple-300">
                 View All
               </Link>
             </div>
@@ -474,7 +474,7 @@ export const NurseDashboard: React.FC = () => {
                 tasks.slice(0, 5).map((task) => (
                   <div
                     key={task.id}
-                    className="flex items-start justify-between gap-3 p-3 rounded-xl bg-gray-50/60 border border-gray-200/80 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 transition"
+                    className="flex items-start justify-between gap-3 p-3 rounded-xl bg-gray-50/60 border border-gray-200/80 hover:border-gray-300 transition"
                   >
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
@@ -494,7 +494,7 @@ export const NurseDashboard: React.FC = () => {
 
                     <button
                       onClick={() => handleCompleteTask(task.id)}
-                      className="rounded-lg bg-purple-600/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-purple-600 text-purple-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white px-2.5 py-1 text-[11px] font-bold transition flex-shrink-0"
+                      className="rounded-lg bg-purple-600/30 hover:bg-purple-600 text-purple-200 hover:text-white px-2.5 py-1 text-[11px] font-bold transition flex-shrink-0"
                     >
                       Complete
                     </button>
@@ -507,11 +507,11 @@ export const NurseDashboard: React.FC = () => {
           {/* Department Alerts */}
           <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-5 backdrop-blur-md shadow-xl space-y-4">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <h2 className="text-sm font-bold text-white flex items-center gap-2">
+              <h2 className="text-sm font-bold text-gray-900 flex items-center gap-2">
                 <Bell className="h-4 w-4 text-rose-400" />
                 <span>Critical Alerts ({alerts.filter((a) => !a.is_read).length})</span>
               </h2>
-              <Link to="/nurse/alerts" className="text-xs font-semibold text-rose-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-rose-300">
+              <Link to="/nurse/alerts" className="text-xs font-semibold text-rose-400 hover:text-rose-300">
                 View All
               </Link>
             </div>
@@ -551,7 +551,7 @@ export const NurseDashboard: React.FC = () => {
                       {!alert.is_read && (
                         <button
                           onClick={() => handleAcknowledgeAlert(alert.id)}
-                          className="text-[10px] font-bold text-teal-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-teal-300"
+                          className="text-[10px] font-bold text-teal-400 hover:text-teal-300"
                         >
                           Acknowledge
                         </button>

@@ -79,7 +79,7 @@ export const ICUNetworkPage: React.FC = () => {
         <button
           onClick={fetchData}
           disabled={loading}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 text-gray-700 text-xs font-semibold border border-gray-300 transition-colors self-start md:self-auto"
+          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs font-semibold border border-gray-300 transition-colors self-start md:self-auto"
         >
           <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin text-sky-400' : ''}`} />
           Refresh ICU Units
@@ -91,7 +91,7 @@ export const ICUNetworkPage: React.FC = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Layers className="w-5 h-5 text-sky-400" />
-            <h2 className="text-sm font-bold text-white tracking-wide">
+            <h2 className="text-sm font-bold text-gray-800 tracking-wide">
               METROPOLITAN ICU BED SEGMENTATION ({totalBeds} TOTAL BEDS)
             </h2>
           </div>
@@ -158,7 +158,7 @@ export const ICUNetworkPage: React.FC = () => {
           </div>
           <div className="p-3 rounded-xl bg-gray-50/70 border border-gray-200 text-center">
             <div className="text-[10px] text-gray-500 uppercase font-semibold">Total ICU</div>
-            <div className="text-xl font-bold text-white mt-0.5">{totalBeds}</div>
+            <div className="text-xl font-bold text-gray-800 mt-0.5">{totalBeds}</div>
             <div className="text-[9px] text-gray-400">Connected network</div>
           </div>
         </div>
@@ -246,7 +246,7 @@ export const ICUNetworkPage: React.FC = () => {
                     'bg-emerald-500/10 text-emerald-400 border-emerald-500/30';
 
                   return (
-                    <tr key={u.id} className="bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200/40 transition-colors">
+                    <tr key={u.id} className="hover:bg-gray-200/40 transition-colors">
                       <td className="px-5 py-3.5 font-bold text-white flex items-center gap-2">
                         <BedDouble className="w-4 h-4 text-sky-400 shrink-0" />
                         {u.icu_name}

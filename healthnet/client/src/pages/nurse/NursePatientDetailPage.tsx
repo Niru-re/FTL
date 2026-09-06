@@ -133,7 +133,7 @@ export const NursePatientDetailPage: React.FC = () => {
         <div className="flex items-center gap-3">
           <Link
             to="/nurse/patients"
-            className="rounded-xl border border-gray-200 bg-gray-100 p-2.5 text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-900 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-200 transition"
+            className="rounded-xl border border-gray-200 bg-gray-100 p-2.5 text-gray-500 hover:text-gray-900 hover:bg-gray-200 transition"
           >
             <ArrowLeft className="h-4 w-4" />
           </Link>
@@ -143,14 +143,14 @@ export const NursePatientDetailPage: React.FC = () => {
               <span className="text-gray-400">•</span>
               <span className="text-xs text-gray-500">{patient.department_name}</span>
             </div>
-            <h1 className="text-2xl font-black text-white">{patient.full_name}</h1>
+            <h1 className="text-2xl font-black text-gray-900">{patient.full_name}</h1>
           </div>
         </div>
 
         <div className="flex items-center gap-2.5 flex-wrap">
           <button
             onClick={() => setShowDoctorModal(true)}
-            className="flex items-center gap-2 rounded-xl border border-sky-500/30 bg-sky-950/40 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-900/50 px-3.5 py-2 text-xs font-bold text-sky-300 transition"
+            className="flex items-center gap-2 rounded-xl border border-sky-500/30 bg-sky-950/40 hover:bg-sky-900/50 px-3.5 py-2 text-xs font-bold text-sky-300 transition"
           >
             <Stethoscope className="h-4 w-4" />
             <span>Request Doctor</span>
@@ -158,7 +158,7 @@ export const NursePatientDetailPage: React.FC = () => {
 
           <Link
             to="/nurse/vitals"
-            className="flex items-center gap-2 rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-teal-900/40 transition"
+            className="flex items-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-500 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-teal-900/40 transition"
           >
             <HeartPulse className="h-4 w-4" />
             <span>Record Vitals</span>
@@ -281,7 +281,7 @@ export const NursePatientDetailPage: React.FC = () => {
       {/* Latest Vitals Strip */}
       <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-5 backdrop-blur-md shadow-xl space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-bold text-white flex items-center gap-2">
+          <h2 className="text-sm font-bold text-gray-900 flex items-center gap-2">
             <HeartPulse className="h-4 w-4 text-rose-400" />
             <span>Latest Recorded Vitals</span>
           </h2>
@@ -359,7 +359,7 @@ export const NursePatientDetailPage: React.FC = () => {
         <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-5 backdrop-blur-md shadow-xl space-y-4">
           <div className="flex items-center justify-between border-b border-gray-200 pb-3">
             <div>
-              <h2 className="text-sm font-bold text-white flex items-center gap-2">
+              <h2 className="text-sm font-bold text-gray-900 flex items-center gap-2">
                 <FileText className="h-4 w-4 text-teal-400" />
                 <span>Nursing Progress Notes ({patient.nursing_notes.length})</span>
               </h2>
@@ -367,7 +367,7 @@ export const NursePatientDetailPage: React.FC = () => {
             </div>
             <button
               onClick={() => setShowNoteModal(true)}
-              className="flex items-center gap-1.5 rounded-lg bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 px-3 py-1.5 text-xs font-bold text-white transition"
+              className="flex items-center gap-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 px-3 py-1.5 text-xs font-bold text-white transition"
             >
               <Plus className="h-3.5 w-3.5" />
               <span>Add Note</span>
@@ -402,7 +402,7 @@ export const NursePatientDetailPage: React.FC = () => {
         <div className="rounded-2xl border border-gray-200/80 bg-gray-100/60 p-5 backdrop-blur-md shadow-xl space-y-4">
           <div className="flex items-center justify-between border-b border-gray-200 pb-3">
             <div>
-              <h2 className="text-sm font-bold text-white flex items-center gap-2">
+              <h2 className="text-sm font-bold text-gray-900 flex items-center gap-2">
                 <Pill className="h-4 w-4 text-purple-400" />
                 <span>Medication Schedule ({patient.medications.length})</span>
               </h2>
@@ -410,7 +410,7 @@ export const NursePatientDetailPage: React.FC = () => {
             </div>
             <Link
               to="/nurse/medications"
-              className="text-xs font-semibold text-purple-400 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-purple-300"
+              className="text-xs font-semibold text-purple-400 hover:text-purple-300"
             >
               All Meds
             </Link>
@@ -426,7 +426,7 @@ export const NursePatientDetailPage: React.FC = () => {
                   className="p-3 rounded-xl bg-gray-50/60 border border-gray-200/80 flex items-center justify-between gap-3"
                 >
                   <div className="space-y-0.5 text-xs">
-                    <p className="font-bold text-white">{med.drug_name}</p>
+                    <p className="font-bold text-gray-800">{med.drug_name}</p>
                     <p className="text-gray-500 text-[11px]">
                       Dose: <span className="text-gray-700">{med.dosage}</span> • Route: <span className="font-mono text-teal-300">{med.route}</span> • Freq: {med.frequency}
                     </p>
@@ -438,7 +438,7 @@ export const NursePatientDetailPage: React.FC = () => {
                   {med.status === 'PENDING' || med.status === 'ACTIVE' ? (
                     <button
                       onClick={() => handleAdministerMed(med.id)}
-                      className="rounded-lg bg-purple-600/30 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-purple-600 text-purple-200 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white px-3 py-1.5 text-xs font-bold transition flex-shrink-0"
+                      className="rounded-lg bg-purple-600/30 hover:bg-purple-600 text-purple-200 hover:text-white px-3 py-1.5 text-xs font-bold transition flex-shrink-0"
                     >
                       Administer
                     </button>
@@ -459,11 +459,11 @@ export const NursePatientDetailPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
           <div className="w-full max-w-lg rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <h3 className="text-base font-bold text-white flex items-center gap-2">
+              <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
                 <FileText className="h-5 w-5 text-teal-400" />
                 <span>Add Nursing Progress Note</span>
               </h3>
-              <button onClick={() => setShowNoteModal(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <button onClick={() => setShowNoteModal(false)} className="text-gray-500 hover:text-white">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -487,14 +487,14 @@ export const NursePatientDetailPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowNoteModal(false)}
-                  className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 transition"
+                  className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 hover:bg-gray-300 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submittingNote || !newNote.trim()}
-                  className="rounded-xl bg-teal-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-teal-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-teal-900/40 transition disabled:opacity-50"
+                  className="rounded-xl bg-teal-600 hover:bg-teal-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-teal-900/40 transition disabled:opacity-50"
                 >
                   {submittingNote ? 'Saving Note...' : 'Save Note'}
                 </button>
@@ -509,11 +509,11 @@ export const NursePatientDetailPage: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-50/80 backdrop-blur-sm">
           <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-gray-100 p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-              <h3 className="text-base font-bold text-white flex items-center gap-2">
+              <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
                 <Stethoscope className="h-5 w-5 text-sky-400" />
                 <span>Request Physician Evaluation</span>
               </h3>
-              <button onClick={() => setShowDoctorModal(false)} className="text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-white">
+              <button onClick={() => setShowDoctorModal(false)} className="text-gray-500 hover:text-white">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -552,14 +552,14 @@ export const NursePatientDetailPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowDoctorModal(false)}
-                  className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300 transition"
+                  className="rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 hover:bg-gray-300 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submittingDocReq || !doctorReason.trim()}
-                  className="rounded-xl bg-sky-600 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:bg-sky-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-sky-900/40 transition disabled:opacity-50"
+                  className="rounded-xl bg-sky-600 hover:bg-sky-500 px-5 py-2 text-xs font-bold text-white shadow-lg shadow-sky-900/40 transition disabled:opacity-50"
                 >
                   {submittingDocReq ? 'Submitting...' : 'Submit Request'}
                 </button>
