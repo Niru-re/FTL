@@ -42,7 +42,7 @@ export const HospitalDetailDrawer: React.FC<HospitalDetailDrawerProps> = ({
   const overallPercent = hospital.overall_occupancy_rate || Math.round(((hospital.total_beds - hospital.available_beds) / hospital.total_beds) * 100) || 0;
 
   return (
-    <div className="fixed inset-y-0 right-0 z-50 w-full sm:w-[480px] bg-gray-100/95 border-l border-gray-200 shadow-2xl backdrop-blur-xl flex flex-col justify-between overflow-hidden animate-in slide-in-from-right duration-300">
+    <div className="fixed inset-y-0 right-0 z-50 w-full max-w-[480px] bg-gray-100/95 border-l border-gray-200 shadow-2xl backdrop-blur-xl flex flex-col justify-between overflow-hidden animate-in slide-in-from-right duration-300">
       {/* Header */}
       <div>
         <div className="flex items-start justify-between p-6 border-b border-gray-200 bg-gray-50/60">

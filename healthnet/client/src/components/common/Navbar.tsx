@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { useWebSocket } from '../../hooks/useWebSocket';
 import { useNotificationSound } from '../../hooks/useNotificationSound';
@@ -8,7 +8,7 @@ import { alertsAPI, networkAPI } from '../../services/api';
 import { AlertItem } from '../../types';
 import {
   Bell, ShieldAlert, User, LogOut, ChevronDown, CheckCircle,
-  Siren, Sparkles, Search, Volume2, VolumeX
+  Siren, Sparkles, Search, Volume2, VolumeX, Menu
 } from 'lucide-react';
 import { formatTime } from '../../utils/formatters';
 
