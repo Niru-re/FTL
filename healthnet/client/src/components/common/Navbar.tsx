@@ -8,15 +8,17 @@ import { alertsAPI, networkAPI } from '../../services/api';
 import { AlertItem } from '../../types';
 import {
   Bell, ShieldAlert, User, LogOut, ChevronDown, CheckCircle,
-  Siren, Sparkles, Search, Volume2, VolumeX, Menu
+  Siren, Sparkles, Search, Volume2, VolumeX, Menu, X
 } from 'lucide-react';
 import { formatTime } from '../../utils/formatters';
 
 interface NavbarProps {
   onOpenEmergencyModal?: () => void;
+  onToggleSidebar?: () => void;
+  isSidebarOpen?: boolean;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal, onToggleSidebar, isSidebarOpen }) => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
   const { isConnected, subscribe } = useWebSocket();
@@ -180,7 +182,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal }) => {
     <header className="sticky top-0 z-40 flex h-20 w-full items-center justify-between border-b border-gray-200 bg-white px-6 shadow-sm">
 
       {/* Brand */}
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-3 sm:gap-6">
+        {onToggleSidebar && (
+          <button
+            onClick={onToggleSidebar}
+            type="button"
+            aria-label="Toggle Navigation Menu"
+            className="lg:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors flex items-center justify-center"
+          >
+            {isSidebarOpen ? <X className="h-6 w-6 text-gray-700" /> : <Menu className="h-6 w-6 text-gray-700" />}
+          </button>
+        )}
         <div className="flex items-center gap-3">
           <img
             src="/images/carebridge-logo.png"

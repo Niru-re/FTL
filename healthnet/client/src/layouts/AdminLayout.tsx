@@ -3,17 +3,16 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Navbar } from '../components/common/Navbar';
 import { Sidebar } from '../components/common/Sidebar';
 import { EmergencyIntakeModal } from '../components/common/EmergencyIntakeModal';
-import { Menu, X } from 'lucide-react';
 
 export const AdminLayout: React.FC = () => {
   const [isEmergencyModalOpen, setIsEmergencyModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 640);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
   const location = useLocation();
 
   useEffect(() => {
     const checkWidth = () => {
-      setIsDesktop(window.innerWidth >= 640);
+      setIsDesktop(window.innerWidth >= 1024);
     };
     checkWidth();
     window.addEventListener('resize', checkWidth);
@@ -27,29 +26,38 @@ export const AdminLayout: React.FC = () => {
     }
   }, [location, isDesktop]);
 
-  const sidebarShouldBeOpen = isDesktop || isSidebarOpen;
-
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 flex flex-col">
-      <Navbar onOpenEmergencyModal={() => setIsEmergencyModalOpen(true)} />
+      <Navbar
+        onOpenEmergencyModal={() => setIsEmergencyModalOpen(true)}
+        onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+        isSidebarOpen={isSidebarOpen}
+      />
       <div className="flex flex-1 overflow-hidden relative">
-        {sidebarShouldBeOpen && (
-          <Sidebar
-            className={`${isDesktop ? 'relative' : 'fixed left-0 top-0 bottom-0'} w-64 bg-white border-r border-gray-200 flex flex-col justify-between min-h-[calc(100vh-5rem)] ${isDesktop ? 'z-20' : 'z-50'} transition-transform duration-300 ease-in-out ${!isDesktop && !isSidebarOpen ? '-translate-x-full' : 'translate-x-0'}`}
+        {/* Mobile Backdrop Overlay */}
+        {!isDesktop && isSidebarOpen && (
+          <div
+            onClick={() => setIsSidebarOpen(false)}
+            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-xs transition-opacity lg:hidden"
+            aria-hidden="true"
           />
         )}
-        <main className={`flex-1 min-w-0 overflow-y-auto p-6 custom-scrollbar bg-gray-50 ${isDesktop || isSidebarOpen ? 'ml-64' : 'ml-0'} transition-margin duration-300 ease-in-out`}>
+
+        {/* Sidebar */}
+        {(isDesktop || isSidebarOpen) && (
+          <Sidebar
+            className={`${
+              isDesktop
+                ? 'relative z-20'
+                : 'fixed left-0 top-0 bottom-0 z-50 shadow-2xl'
+            } w-64 bg-white border-r border-gray-200 flex flex-col justify-between min-h-[calc(100vh-5rem)] transition-transform duration-300 ease-in-out`}
+          />
+        )}
+
+        {/* Main Content */}
+        <main className="flex-1 min-w-0 overflow-y-auto p-4 sm:p-6 custom-scrollbar bg-gray-50">
           <Outlet context={{ openEmergencyModal: () => setIsEmergencyModalOpen(true) }} />
         </main>
-        {/* Hamburger button for mobile */}
-        {!isDesktop && (
-          <button
-            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="fixed left-4 top-4 z-60 p-2 bg-white rounded-md shadow-lg text-gray-500 hover:text-gray-900 sm:hidden"
-          >
-            {!isSidebarOpen ? <Menu className="h-6 w-6" /> : <X className="h-6 w-6" />}
-          </button>
-        )}
       </div>
 
       <EmergencyIntakeModal
