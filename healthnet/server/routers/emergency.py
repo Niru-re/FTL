@@ -57,7 +57,7 @@ def add_timeline_event(db: Session, emergency_id: int, event_type: str, title: s
 # 1. CREATE NEW EMERGENCY CASE
 # ----------------------------------------------------
 @router.post("", response_model=EmergencyCaseDetailOut)
-def create_emergency_case(
+async def create_emergency_case(
     payload: EmergencyCaseCreateIn,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
@@ -117,6 +117,21 @@ def create_emergency_case(
     db.add(emergency)
     db.commit()
     db.refresh(emergency)
+
+    # Broadcast emergency case created
+    await notification_service.broadcast("EMERGENCY_CASE_CREATED", {
+        "id": emergency.id,
+        "case_number": emergency.case_number,
+        "patient_name": emergency.patient_name,
+        "patient_age": emergency.patient_age,
+        "patient_gender": emergency.patient_gender,
+        "condition_summary": emergency.condition_summary,
+        "priority": emergency.priority,
+        "emergency_type": emergency.emergency_type,
+        "required_department": emergency.required_department,
+        "required_resources": json.loads(emergency.required_resources) if emergency.required_resources else [],
+        "created_at": emergency.created_at.isoformat() if isinstance(emergency.created_at, datetime.datetime) else emergency.created_at
+    })
 
     # Initial Timeline Event
     add_timeline_event(
@@ -643,7 +658,7 @@ def get_candidate_ambulances_for_emergency(
 # 10. ASSIGN AMBULANCE & DISPATCH
 # ----------------------------------------------------
 @router.post("/{id}/assign-ambulance", response_model=EmergencyCaseDetailOut)
-def assign_ambulance_to_emergency(
+async def assign_ambulance_to_emergency(
     id: int,
     payload: AssignAmbulanceRequestIn,
     db: Session = Depends(get_db),
@@ -719,6 +734,22 @@ def assign_ambulance_to_emergency(
             created_at=datetime.datetime.utcnow()
         )
         db.add(alert)
+        db.commit()
+        db.refresh(alert)
+
+        # Broadcast ALERT_TRIGGERED for the created alert
+        await notification_service.broadcast("ALERT_TRIGGERED", {
+            "id": alert.id,
+            "title": alert.title,
+            "message": alert.message,
+            "severity": alert.severity,
+            "alert_type": alert.alert_type,
+            "hospital_id": alert.hospital_id,
+            "patient_id": alert.patient_id,
+            "ambulance_id": alert.ambulance_id,
+            "target_role": alert.target_role,
+            "created_at": alert.created_at.isoformat() if isinstance(alert.created_at, datetime.datetime) else alert.created_at
+        })
 
     add_timeline_event(
         db, emergency.id, "AMBULANCE_DISPATCHED",

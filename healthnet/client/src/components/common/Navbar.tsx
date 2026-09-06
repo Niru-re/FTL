@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { useWebSocket } from '../../hooks/useWebSocket';
+import { useNotificationSound } from '../../hooks/useNotificationSound';
 import { LiveIndicator } from './LiveIndicator';
 import { alertsAPI, networkAPI } from '../../services/api';
 import { AlertItem } from '../../types';
 import {
   Bell, ShieldAlert, User, LogOut, ChevronDown, CheckCircle,
-  Siren, Sparkles, Search
+  Siren, Sparkles, Search, Volume2, VolumeX
 } from 'lucide-react';
 import { formatTime } from '../../utils/formatters';
 
@@ -22,6 +23,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal }) => {
   const [alerts, setAlerts] = useState<AlertItem[]>([]);
   const [showAlertDropdown, setShowAlertDropdown] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
+  const { playSound, isAudioReady, initAudio } = useNotificationSound();
+  const [playedNotifications, setPlayedNotifications] = useState<Set<number>>(new Set());
+  const [isMuted, setIsMuted] = useState(() => {
+    const stored = localStorage.getItem('carebridge-sound-muted');
+    return stored === 'true';
+  });
+  const notificationsRef = useRef<Set<number>>(new Set());
 
   // Global Network Search State
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -49,16 +57,96 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal }) => {
   };
 
   useEffect(() => {
-    fetchAlerts();
+    const handleInitialLoad = async () => {
+      try {
+        const data = await alertsAPI.getAll({ is_read: false });
+        setAlerts(data);
+        // Mark existing alerts as seen without playing sound
+        data.forEach(alert => {
+          notificationsRef.current.add(alert.id);
+          playedNotifications.add(alert.id);
+          // Auto-remove after 5 minutes to prevent memory leak
+          setTimeout(() => {
+            playedNotifications.delete(alert.id);
+          }, 300000);
+        });
+      } catch (e) {
+        console.warn('Could not fetch initial alerts', e);
+      }
+    };
 
-    const unsubAlert = subscribe('ALERT_TRIGGERED', () => { fetchAlerts(); });
-    const unsubEmerg = subscribe('EMERGENCY_CASE_CREATED', (data) => { fetchAlerts(); });
+    handleInitialLoad();
+
+    const unsubAlert = subscribe('ALERT_TRIGGERED', (newAlert: AlertItem) => {
+      // Play sound ONLY for newly arrived alerts that we haven't seen before
+      if (!notificationsRef.current.has(newAlert.id) && !newAlert.is_read) {
+        // Determine sound type based on severity
+        let soundType: 'NORMAL' | 'WARNING' | 'CRITICAL' | 'EMERGENCY' = 'NORMAL';
+
+        switch (newAlert.severity) {
+          case 'LOW':
+            soundType = 'NORMAL';
+            break;
+          case 'MEDIUM':
+          case 'HIGH':
+            soundType = 'WARNING';
+            break;
+          case 'CRITICAL':
+            soundType = 'CRITICAL';
+            break;
+          default:
+            soundType = 'NORMAL';
+        }
+
+        // Play sound if not muted and audio is ready
+        if (!isMuted && isAudioReady) {
+          playSound(soundType);
+        }
+
+        // Mark as seen
+        notificationsRef.current.add(newAlert.id);
+        playedNotifications.add(newAlert.id);
+        // Auto-remove after 5 minutes to prevent memory leak
+        setTimeout(() => {
+          playedNotifications.delete(newAlert.id);
+          notificationsRef.current.delete(newAlert.id);
+        }, 300000);
+      }
+
+      // Update alerts state - add new alert if not already present
+      setAlerts(prev => {
+        // Avoid duplicates
+        if (prev.some(alert => alert.id === newAlert.id)) return prev;
+        return [newAlert, ...prev.slice(0, 7)]; // Keep max 8 alerts
+      });
+    });
+
+    const unsubEmerg = subscribe('EMERGENCY_CASE_CREATED', (eventData: any) => {
+      // For emergency events, we only update UI/fetch alerts (no sound)
+      // Sound will come from ALERT_TRIGGERED when the actual Alert is created
+      // Assuming eventData contains an alert/notification with an ID
+      const alertId = eventData.id || Date.now(); // Fallback to timestamp if no ID
+
+      if (!notificationsRef.current.has(alertId)) {
+        // Mark as seen
+        notificationsRef.current.add(alertId);
+        playedNotifications.add(alertId);
+        // Auto-remove after 5 minutes
+        setTimeout(() => {
+          playedNotifications.delete(alertId);
+          notificationsRef.current.delete(alertId);
+        }, 300000);
+
+        // Fetch updated alerts
+        fetchAlerts();
+      }
+    });
 
     return () => {
       unsubAlert();
       unsubEmerg();
     };
-  }, []);
+  }, [playSound, isAudioReady, isMuted]);
 
   const fetchAlerts = async () => {
     try {
@@ -231,6 +319,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEmergencyModal }) => {
             <span className="hidden sm:inline">Emergency Intake</span>
           </button>
         )}
+
+        {/* Sound Controls */}
+        <button
+          onClick={() => {
+            setIsMuted(!isMuted);
+            localStorage.setItem('carebridge-sound-muted', String(!isMuted));
+          }}
+          title={isMuted ? 'Unmute Notifications' : 'Mute Notifications'}
+          className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-500 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:border-gray-300 bg-gray-200:bg-gray-300:bg-gray-200:bg-gray-300:hover:bg-gray-300:bg-gray-200:bg-gray-300:bg-gray-200:text-gray-700 transition"
+        >
+          {isMuted ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
+        </button>
 
         {/* Alerts */}
         <div className="relative">
