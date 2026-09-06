@@ -21,6 +21,36 @@ import {
   Loader2, Info, FileImage
 } from 'lucide-react';
 
+// Local types for SpeechRecognition API (since not all TS libs include them)
+interface SpeechRecognitionEvent {
+  resultIndex: number;
+  results: SpeechRecognitionResultList;
+}
+interface SpeechRecognitionResultList {
+  [index: number]: SpeechRecognitionResult;
+  length: number;
+}
+interface SpeechRecognitionResult {
+  [index: number]: SpeechRecognitionAlternative;
+  isFinal: boolean;
+}
+interface SpeechRecognitionAlternative {
+  transcript: string;
+}
+interface SpeechRecognitionErrorEvent {
+  error: string;
+}
+interface SpeechRecognitionInstance {
+  continuous: boolean;
+  interimResults: boolean;
+  lang: string;
+  onresult: (event: SpeechRecognitionEvent) => void;
+  onerror: (event: SpeechRecognitionErrorEvent) => void;
+  onend: () => void;
+  start(): void;
+  stop(): void;
+}
+
 export const DoctorPatientDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const patientId = Number(id) || 1;
@@ -44,6 +74,7 @@ export const DoctorPatientDetailPage: React.FC = () => {
 
   // Form states
   const [noteForm, setNoteForm] = useState({ note_type: 'PROGRESS', content: '', plan: '' });
+  const [isAddingNote, setIsAddingNote] = useState(false);
   const [orderForm, setOrderForm] = useState({ order_type: 'LAB', description: '', priority: 'ROUTINE', notes: '' });
   const [medForm, setMedForm] = useState<{ drug_name: string; dosage: string; frequency: string; route: string; status: any }>({ drug_name: '', dosage: '', frequency: 'Q12H', route: 'ORAL', status: 'ACTIVE' });
   const [labForm, setLabForm] = useState<{ test_name: string; category: string; value: string; unit: string; reference_range: string; status: any }>({ test_name: '', category: 'Biochemistry', value: '', unit: '', reference_range: '', status: 'NORMAL' });
@@ -62,6 +93,26 @@ export const DoctorPatientDetailPage: React.FC = () => {
   const [scansLoading, setScansLoading] = useState(false);
   const xrayFileRef = useRef<HTMLInputElement>(null);
   const API_BASE = (import.meta as any).env?.VITE_API_BASE_URL || 'http://127.0.0.1:8000';
+
+  // Voice recording state
+  const [isVoiceRecording, setIsVoiceRecording] = useState(false);
+  const [voiceRecognition, setVoiceRecognition] = useState<SpeechRecognitionInstance | null>(null);
+  const [voiceError, setVoiceError] = useState<string | null>(null);
+  const [voiceStatus, setVoiceStatus] = useState<string>('');
+  const voiceErrorRef = useRef<string | null>(null);
+  const voiceTimeoutRef = useRef<number | null>(null);
+
+  // Audio recording state
+  const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const [isProcessingAudio, setIsProcessingAudio] = useState(false);
+
+  // Refs for media recording
+  const audioBlobRef = useRef<Blob | null>(null);
+  const audioUrlRef = useRef<string | null>(null);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const streamRef = useRef<MediaStream | null>(null);
+  const recognitionRef = useRef<SpeechRecognitionInstance | null>(null);
 
   const fetchPatientData = async () => {
     try {
@@ -84,15 +135,255 @@ export const DoctorPatientDetailPage: React.FC = () => {
     return () => unsubVitals();
   }, [patientId, vitalRange]);
 
+  // Initialize SpeechRecognition
+  useEffect(() => {
+    // Check if SpeechRecognition is available
+    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+      const recognition = new SpeechRecognition() as SpeechRecognitionInstance;
+      recognitionRef.current = recognition;
+
+      recognition.continuous = true; // We want continuous transcription
+      recognition.interimResults = true; // We want interim results to show as they come
+      recognition.lang = 'en-IN'; // Using Indian English as per requirement
+
+      recognition.onresult = (event: SpeechRecognitionEvent) => {
+        let transcript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          // Append each result's transcript
+          transcript += event.results[i][0].transcript;
+        }
+        // Update the note form content with the latest transcript
+        setNoteForm(prev => ({ ...prev, content: transcript }));
+        setVoiceStatus('Listening...');
+        setVoiceError(null);
+        voiceErrorRef.current = null;
+      };
+
+      recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
+        console.error('Speech recognition error:', event.error);
+        setVoiceError(`Speech recognition error: ${event.error}`);
+        setVoiceStatus('Error occurred');
+        voiceErrorRef.current = `Speech recognition error: ${event.error}`;
+        // Do NOT stop MediaRecorder or microphone tracks on speech recognition error
+        // Clear any existing timeout
+        if (voiceTimeoutRef.current !== null) {
+          clearTimeout(voiceTimeoutRef.current);
+          voiceTimeoutRef.current = null;
+        }
+      };
+
+      recognition.onend = () => {
+        // If there was no error, we can show a status
+        if (!voiceErrorRef.current) {
+          setVoiceStatus('Voice transcription ready — please review before saving.');
+          // Clear any existing timeout
+          if (voiceTimeoutRef.current !== null) {
+            clearTimeout(voiceTimeoutRef.current);
+          }
+          const timeoutId = window.setTimeout(() => {
+            setVoiceStatus('Click to record again or edit transcription above');
+          }, 3000);
+          voiceTimeoutRef.current = timeoutId;
+        }
+        // Note: we do not stop recording here; recording continues until manually stopped
+      };
+
+      setVoiceRecognition(recognition);
+    } else {
+      setVoiceError('Voice transcription is not supported in this browser. Please use Chrome or Edge, or enter the note manually.');
+      setVoiceStatus('Voice transcription not supported');
+      voiceErrorRef.current = 'Voice transcription is not supported in this browser. Please use Chrome or Edge, or enter the note manually.';
+    }
+
+    return () => {
+      if (voiceTimeoutRef.current !== null) {
+        clearTimeout(voiceTimeoutRef.current);
+      }
+      if (recognitionRef.current) {
+        recognitionRef.current.stop();
+      }
+      // Cleanup MediaRecorder and stream
+      if (mediaRecorderRef.current) {
+        try {
+          mediaRecorderRef.current.stop();
+        } catch (e) {/* ignore */};
+      }
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach(track => track.stop());
+        streamRef.current = null;
+      }
+      // Revoke audio object URL
+      if (audioUrlRef.current) {
+        URL.revokeObjectURL(audioUrlRef.current);
+        audioUrlRef.current = null;
+      }
+    };
+  }, []);
+
   const showToast = (msg: string) => {
     setToastMessage(msg);
     setTimeout(() => setToastMessage(null), 3500);
+  };
+
+  // Voice recording functions
+  const startVoiceRecording = async () => {
+    // Reset any previous recording
+    setAudioBlob(null);
+    setAudioUrl(null);
+    if (audioBlobRef.current) {
+      audioBlobRef.current = null;
+    }
+    if (audioUrlRef.current) {
+      URL.revokeObjectURL(audioUrlRef.current);
+      audioUrlRef.current = null;
+    }
+    setVoiceError(null);
+    setVoiceStatus('Requesting microphone access...');
+
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      streamRef.current = stream;
+
+      // Determine supported MIME type
+      let mimeType = '';
+      const isWebmOpusSupported = MediaRecorder.isTypeSupported('audio/webm;codecs=opus');
+      if (isWebmOpusSupported) {
+        mimeType = 'audio/webm;codecs=opus';
+      } else if (MediaRecorder.isTypeSupported('audio/webm')) {
+        mimeType = 'audio/webm';
+      } else {
+        // Fallback, but likely not supported
+        mimeType = 'audio/webm';
+        console.warn('No supported MIME type found for MediaRecorder, using audio/webm');
+      }
+
+      const mediaRecorder = new MediaRecorder(stream, { mimeType });
+      mediaRecorderRef.current = mediaRecorder;
+
+      const audioChunks: BlobPart[] = [];
+
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data && event.data.size > 0) {
+          audioChunks.push(event.data);
+        }
+      };
+
+      mediaRecorder.onstop = () => {
+        const audioBlob = new Blob(audioChunks, { type: mimeType });
+        // Verify blob size
+        if (audioBlob.size > 0) {
+          audioBlobRef.current = audioBlob;
+          setAudioBlob(audioBlob);
+          const audioUrl = URL.createObjectURL(audioBlob);
+          audioUrlRef.current = audioUrl;
+          setAudioUrl(audioUrl);
+          setIsProcessingAudio(false);
+          setIsVoiceRecording(false);
+          // Clean up stream tracks
+          if (streamRef.current) {
+            streamRef.current.getTracks().forEach(track => track.stop());
+            streamRef.current = null;
+          }
+          // Update status after stopping
+          if (!voiceError) {
+            setVoiceStatus('Recording stopped. Preview available.');
+          }
+          // Clear any existing timeout
+          if (voiceTimeoutRef.current !== null) {
+            clearTimeout(voiceTimeoutRef.current);
+          }
+          const timeoutId = window.setTimeout(() => {
+            setVoiceStatus('Click to record again or edit transcription above');
+          }, 3000);
+          voiceTimeoutRef.current = timeoutId;
+        } else {
+          setVoiceError('No audio data recorded.');
+          setVoiceStatus('Error - no audio data');
+          setIsVoiceRecording(false);
+          // Clean up
+          if (streamRef.current) {
+            streamRef.current.getTracks().forEach(track => track.stop());
+            streamRef.current = null;
+          }
+        }
+      };
+
+      mediaRecorder.onerror = (event) => {
+        console.error('MediaRecorder error:', event);
+        setVoiceError('MediaRecorder error: ' + event.error);
+        setVoiceStatus('Error - recording failed');
+        setIsVoiceRecording(false);
+        // Clean up
+        try {
+          mediaRecorder.stop();
+        } catch (e) {/* ignore */};
+        if (streamRef.current) {
+          streamRef.current.getTracks().forEach(track => track.stop());
+          streamRef.current = null;
+        }
+        // Clear any existing timeout
+        if (voiceTimeoutRef.current !== null) {
+          clearTimeout(voiceTimeoutRef.current);
+        }
+      };
+
+      mediaRecorder.start();
+      setIsVoiceRecording(true);
+      setVoiceStatus('Recording...');
+
+      // Start speech recognition if available
+      if (voiceRecognition) {
+        try {
+          voiceRecognition.start();
+        } catch (e) {
+          console.error('Failed to start SpeechRecognition:', e);
+          // Not fatal; we'll still have audio
+          setVoiceError('Speech recognition failed to start, but recording continues.');
+          // Keep voiceError? We'll set it but not fail recording.
+        }
+      }
+    } catch (err) {
+      console.error('Error accessing microphone:', err);
+      setVoiceError('Failed to access microphone. Please check permissions.');
+      setVoiceStatus('Error - microphone access denied');
+      setIsVoiceRecording(false);
+    }
+  };
+
+  const stopVoiceRecording = () => {
+    setVoiceStatus('Processing...');
+
+    // Stop SpeechRecognition safely first
+    if (voiceRecognition) {
+      try {
+        voiceRecognition.stop();
+      } catch (err) {
+        console.error('Error stopping SpeechRecognition:', err);
+      }
+    }
+
+    // Request MediaRecorder.stop()
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
+      try {
+        mediaRecorderRef.current.stop();
+      } catch (err) {
+        console.error('Error stopping MediaRecorder:', err);
+        // If stop fails, we still try to get what we have?
+      }
+    }
+
+    // Note: we do not stop the stream tracks here because they are stopped in the MediaRecorder.onstop/onerror handlers.
+
+    // If we have no audio blob after stopping, we'll set status in the onstop handler (if it fires) or here if we know.
+    // We'll leave it to the onstop handler to set the status, but if onstop doesn't fire (e.g., error), we handle in onerror.
   };
 
   // Action Handlers
   const handleAddNote = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!noteForm.content) return;
+    setIsAddingNote(true);
     try {
       await doctorAPI.addPatientNote(patientId, noteForm);
       setShowNoteModal(false);
@@ -101,6 +392,9 @@ export const DoctorPatientDetailPage: React.FC = () => {
       fetchPatientData();
     } catch (err) {
       console.error(err);
+      showToast('Failed to add clinical note. Please try again.');
+    } finally {
+      setIsAddingNote(false);
     }
   };
 
@@ -997,6 +1291,72 @@ export const DoctorPatientDetailPage: React.FC = () => {
                   <option value="DISCHARGE">Discharge Summary Note</option>
                   <option value="GENERAL">General Physician Note</option>
                 </select>
+              </div>
+              <div>
+                <label className="text-[11px] font-bold text-gray-500 uppercase">Voice Note (Optional)</label>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <button type="button"
+                      onClick={isVoiceRecording ? stopVoiceRecording : startVoiceRecording}
+                      disabled={isAddingNote}
+                      className={`flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-bold transition ${
+  isVoiceRecording
+    ? 'bg-rose-600 text-white hover:bg-rose-700'
+    : 'bg-sky-600 text-white hover:bg-sky-700'
+}`}
+                    >
+                      {isVoiceRecording ? (
+                        <>
+                          <X className="h-4 w-4" />
+                          <span>Stop Recording</span>
+                        </>
+                      ) : (
+                        <>
+                          <FileText className="h-4 w-4" />
+                          <span>Start Voice Note</span>
+                        </>
+                      )}
+                    </button>
+                    <div className="flex-1 space-y-1">
+                      {voiceError ? (
+                        <p className="text-xs text-rose-500">{voiceError}</p>
+                      ) : isVoiceRecording ? (
+                        <>
+                          <div className="flex items-center gap-2 text-xs font-semibold">
+                            <span className="h-2 w-2 rounded-full bg-sky-400 animate-pulse" />
+                            <span>Recording...</span>
+                          </div>
+                        </>
+                      ) : audioUrl ? (
+                        <>
+                          <div className="flex items-center gap-2 text-xs font-semibold">
+                            <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                            <span>Ready to preview</span>
+                          </div>
+                          <audio controls src={audioUrl} className="mt-2" />
+                          <div className="mt-2">
+                            <button
+                              type="button"
+                              onClick={startVoiceRecording}
+                              disabled={isAddingNote || isVoiceRecording}
+                              className={`flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-bold transition ${isVoiceRecording ? 'bg-rose-600 text-white hover:bg-rose-700' : 'bg-sky-600 text-white hover:bg-sky-700'}`}
+                            >
+                              <FileText className="h-4 w-4" />
+                              <span>Record Again</span>
+                            </button>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="flex items-center gap-2 text-xs font-semibold">
+                            <span className="h-2 w-2 rounded-full bg-gray-300" />
+                            <span>Click to record</span>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                                  </div>
               </div>
               <div>
                 <label className="text-[11px] font-bold text-gray-500 uppercase">Clinical Narrative</label>
